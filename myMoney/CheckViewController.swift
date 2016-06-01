@@ -11,7 +11,7 @@ import UIKit
 class CheckViewController: UIViewController
 {
     var allChecks: [Check]!
-    var productsCatalog: Catalog!
+    var catalogExpenditure: Catalog!
     
     let check    = Check()
     let register = Register()
@@ -21,6 +21,17 @@ class CheckViewController: UIViewController
     @IBOutlet weak var tableView:   UITableView!
     @IBOutlet weak var number:      UILabel!
     @IBOutlet weak var date:        UILabel!
+    
+    @IBAction func addNewExpenditure() {
+        
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewExpend") as! AddNewItemOfExpenditureViewController
+        
+        controller.catalogOfExpenditure = catalogExpenditure
+        
+        presentViewController(controller, animated: true, completion: nil)
+        
+    }
+    
     
     @IBAction func record() {
         check.conduct(register)
@@ -87,7 +98,7 @@ class CheckViewController: UIViewController
         let paddingHorz = (itemWidth - buttonWidth) / 2
         let paddingVert = (itemHeight - buttonHeight) / 2
         
-        for (index, product) in productsCatalog.items.enumerate() {
+        for (index, product) in catalogExpenditure.items.enumerate() {
             
             let button = UIButton(type: .Custom)
             let image  = UIImage(named: "LandscapeButton")
@@ -131,7 +142,7 @@ class CheckViewController: UIViewController
         
         let label =  sender.viewWithTag(sender.tag - 1000) as! UILabel
         
-        let product = Product(name: label.text!)
+        let product = Expenditure(name: label.text!)
         let price = Float(priceField.text!)!
         
         check.prices.append(price)

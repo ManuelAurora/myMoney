@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return [Check]()
         
     }()
+    
+    let catalogExpenditure = Catalog()
         
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -30,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let controller = navigation.topViewController as! DocumentJournalCheckTableViewController
         
         controller.allChecks = allChecks
-        
+        controller.catalogExpenditure = catalogExpenditure
+    
         return true
     }
     

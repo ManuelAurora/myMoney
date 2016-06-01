@@ -17,7 +17,7 @@
 		6492B14B1CFED46300133059 /* myMoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B14A1CFED46300133059 /* myMoneyUITests.swift */; };
 		6492B1591CFED48300133059 /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1581CFED48300133059 /* Check.swift */; };
 		6492B15B1CFED4F200133059 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B15A1CFED4F200133059 /* Register.swift */; };
-		6492B1611CFEDC1100133059 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1601CFEDC1100133059 /* Product.swift */; };
+		6492B1611CFEDC1100133059 /* Expenditure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1601CFEDC1100133059 /* Expenditure.swift */; };
 		6492B1631CFEDE2100133059 /* ProductCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1621CFEDE2100133059 /* ProductCellTableViewCell.swift */; };
 		6492B1651CFEE06B00133059 /* RegisterLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1641CFEE06B00133059 /* RegisterLine.swift */; };
 		6492B1671CFEE59200133059 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1661CFEE59200133059 /* Protocols.swift */; };
@@ -25,6 +25,7 @@
 		6492B16B1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */; };
 		6492B16D1CFF0CE300133059 /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B16C1CFF0CE300133059 /* Catalog.swift */; };
 		6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1721CFF197300133059 /* CheckTableViewCell.swift */; };
+		6492B17B1CFF30E300133059 /* AddNewItemOfExpenditureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B17A1CFF30E300133059 /* AddNewItemOfExpenditureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +62,7 @@
 		6492B14C1CFED46300133059 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6492B1581CFED48300133059 /* Check.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Check.swift; sourceTree = "<group>"; };
 		6492B15A1CFED4F200133059 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
-		6492B1601CFEDC1100133059 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		6492B1601CFEDC1100133059 /* Expenditure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expenditure.swift; sourceTree = "<group>"; };
 		6492B1621CFEDE2100133059 /* ProductCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCellTableViewCell.swift; sourceTree = "<group>"; };
 		6492B1641CFEE06B00133059 /* RegisterLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterLine.swift; sourceTree = "<group>"; };
 		6492B1661CFEE59200133059 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 		6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentJournalCheckTableViewController.swift; sourceTree = "<group>"; };
 		6492B16C1CFF0CE300133059 /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
 		6492B1721CFF197300133059 /* CheckTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckTableViewCell.swift; path = ../CheckTableViewCell.swift; sourceTree = "<group>"; };
+		6492B17A1CFF30E300133059 /* AddNewItemOfExpenditureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewItemOfExpenditureViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,23 +121,11 @@
 		6492B1261CFED46300133059 /* myMoney */ = {
 			isa = PBXGroup;
 			children = (
-				6492B1721CFF197300133059 /* CheckTableViewCell.swift */,
 				6492B1271CFED46300133059 /* AppDelegate.swift */,
-				6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */,
-				6492B16C1CFF0CE300133059 /* Catalog.swift */,
-				6492B1291CFED46300133059 /* CheckViewController.swift */,
-				6492B1581CFED48300133059 /* Check.swift */,
-				6492B1681CFEF69E00133059 /* DocumentsJournal.swift */,
-				6492B1621CFEDE2100133059 /* ProductCellTableViewCell.swift */,
-				6492B15A1CFED4F200133059 /* Register.swift */,
-				6492B1641CFEE06B00133059 /* RegisterLine.swift */,
-				6492B1601CFEDC1100133059 /* Product.swift */,
-				6492B1661CFEE59200133059 /* Protocols.swift */,
-				6492B12B1CFED46300133059 /* Main.storyboard */,
-				6492B1311CFED46300133059 /* Assets.xcassets */,
-				6492B1331CFED46300133059 /* LaunchScreen.storyboard */,
-				6492B1361CFED46300133059 /* Info.plist */,
-				6492B12E1CFED46300133059 /* myMoney.xcdatamodeld */,
+				6492B1761CFF301500133059 /* View */,
+				6492B1741CFF2FE200133059 /* Model */,
+				6492B1751CFF300600133059 /* Controller */,
+				6492B1791CFF307200133059 /* Misc */,
 			);
 			path = myMoney;
 			sourceTree = "<group>";
@@ -156,6 +146,67 @@
 				6492B14C1CFED46300133059 /* Info.plist */,
 			);
 			path = myMoneyUITests;
+			sourceTree = "<group>";
+		};
+		6492B1741CFF2FE200133059 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6492B16C1CFF0CE300133059 /* Catalog.swift */,
+				6492B1581CFED48300133059 /* Check.swift */,
+				6492B15A1CFED4F200133059 /* Register.swift */,
+				6492B1641CFEE06B00133059 /* RegisterLine.swift */,
+				6492B1601CFEDC1100133059 /* Expenditure.swift */,
+				6492B1661CFEE59200133059 /* Protocols.swift */,
+				6492B1681CFEF69E00133059 /* DocumentsJournal.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6492B1751CFF300600133059 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */,
+				6492B1291CFED46300133059 /* CheckViewController.swift */,
+				6492B17A1CFF30E300133059 /* AddNewItemOfExpenditureViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		6492B1761CFF301500133059 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6492B1781CFF304400133059 /* Storyboards */,
+				6492B1771CFF303600133059 /* Cells */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		6492B1771CFF303600133059 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6492B1721CFF197300133059 /* CheckTableViewCell.swift */,
+				6492B1621CFEDE2100133059 /* ProductCellTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		6492B1781CFF304400133059 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6492B12B1CFED46300133059 /* Main.storyboard */,
+				6492B1331CFED46300133059 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		6492B1791CFF307200133059 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				6492B1311CFED46300133059 /* Assets.xcassets */,
+				6492B1361CFED46300133059 /* Info.plist */,
+				6492B12E1CFED46300133059 /* myMoney.xcdatamodeld */,
+			);
+			name = Misc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,12 +346,13 @@
 				6492B16D1CFF0CE300133059 /* Catalog.swift in Sources */,
 				6492B1671CFEE59200133059 /* Protocols.swift in Sources */,
 				6492B1301CFED46300133059 /* myMoney.xcdatamodeld in Sources */,
+				6492B17B1CFF30E300133059 /* AddNewItemOfExpenditureViewController.swift in Sources */,
 				6492B1281CFED46300133059 /* AppDelegate.swift in Sources */,
 				6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */,
 				6492B1691CFEF69E00133059 /* DocumentsJournal.swift in Sources */,
 				6492B16B1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift in Sources */,
 				6492B15B1CFED4F200133059 /* Register.swift in Sources */,
-				6492B1611CFEDC1100133059 /* Product.swift in Sources */,
+				6492B1611CFEDC1100133059 /* Expenditure.swift in Sources */,
 				6492B1631CFEDE2100133059 /* ProductCellTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,7 @@ class DocumentJournalCheckTableViewController: UITableViewController {
 
     var allChecks: [Check]!
         
-    var productsCatalog = Catalog()
+    var catalogExpenditure: Catalog!
     
     @IBAction func addNewCheck() {
         showNewController()
@@ -25,11 +25,11 @@ class DocumentJournalCheckTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let banana = Product(name: "Banana")
-        let paw    = Product(name: "Paw")
+        let banana = Expenditure(name: "Banana")
+        let paw    = Expenditure(name: "Paw")
 
-        productsCatalog.items.append(banana)
-        productsCatalog.items.append(paw)
+        catalogExpenditure.items.append(banana)
+        catalogExpenditure.items.append(paw)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -59,7 +59,7 @@ class DocumentJournalCheckTableViewController: UITableViewController {
        let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
         
         controller.allChecks = allChecks
-        controller.productsCatalog = productsCatalog
+        controller.catalogExpenditure = catalogExpenditure
       
         
         presentViewController(controller, animated: true, completion: nil)

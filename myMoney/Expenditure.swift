@@ -8,9 +8,13 @@
 
 import Foundation
 
-class Product: Measure
+class Expenditure: Measure
 {
     var name: String
+    
+    var useQuantityAndPrice = false
+    
+    var parent: Expenditure?
     
     init(name: String) {
         

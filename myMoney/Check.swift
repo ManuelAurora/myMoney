@@ -10,7 +10,7 @@ import Foundation
 
 class Check: Registrator, Document
 {
-    var products  = [Product]()
+    var products  = [Expenditure]()
     var prices    = [Float]()
     let date      = NSDate()
     
@@ -19,7 +19,7 @@ class Check: Registrator, Document
     
     let operation: String = "Check"
     
-    func addProduct(product: Product) {
+    func addProduct(product: Expenditure) {
         products.append(product)
     }
     
