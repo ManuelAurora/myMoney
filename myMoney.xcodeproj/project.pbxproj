@@ -8,13 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		6492B1281CFED46300133059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1271CFED46300133059 /* AppDelegate.swift */; };
-		6492B12A1CFED46300133059 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1291CFED46300133059 /* ViewController.swift */; };
+		6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1291CFED46300133059 /* CheckViewController.swift */; };
 		6492B12D1CFED46300133059 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6492B12B1CFED46300133059 /* Main.storyboard */; };
 		6492B1301CFED46300133059 /* myMoney.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6492B12E1CFED46300133059 /* myMoney.xcdatamodeld */; };
 		6492B1321CFED46300133059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6492B1311CFED46300133059 /* Assets.xcassets */; };
 		6492B1351CFED46300133059 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6492B1331CFED46300133059 /* LaunchScreen.storyboard */; };
 		6492B1401CFED46300133059 /* myMoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B13F1CFED46300133059 /* myMoneyTests.swift */; };
 		6492B14B1CFED46300133059 /* myMoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B14A1CFED46300133059 /* myMoneyUITests.swift */; };
+		6492B1591CFED48300133059 /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1581CFED48300133059 /* Check.swift */; };
+		6492B15B1CFED4F200133059 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B15A1CFED4F200133059 /* Register.swift */; };
+		6492B1611CFEDC1100133059 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1601CFEDC1100133059 /* Product.swift */; };
+		6492B1631CFEDE2100133059 /* ProductCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1621CFEDE2100133059 /* ProductCellTableViewCell.swift */; };
+		6492B1651CFEE06B00133059 /* RegisterLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1641CFEE06B00133059 /* RegisterLine.swift */; };
+		6492B1671CFEE59200133059 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1661CFEE59200133059 /* Protocols.swift */; };
+		6492B1691CFEF69E00133059 /* DocumentsJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1681CFEF69E00133059 /* DocumentsJournal.swift */; };
+		6492B16B1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */; };
+		6492B16D1CFF0CE300133059 /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B16C1CFF0CE300133059 /* Catalog.swift */; };
+		6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1721CFF197300133059 /* CheckTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +47,7 @@
 /* Begin PBXFileReference section */
 		6492B1241CFED46300133059 /* myMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6492B1271CFED46300133059 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6492B1291CFED46300133059 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6492B1291CFED46300133059 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		6492B12C1CFED46300133059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6492B12F1CFED46300133059 /* myMoney.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myMoney.xcdatamodel; sourceTree = "<group>"; };
 		6492B1311CFED46300133059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +59,16 @@
 		6492B1461CFED46300133059 /* myMoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myMoneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6492B14A1CFED46300133059 /* myMoneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myMoneyUITests.swift; sourceTree = "<group>"; };
 		6492B14C1CFED46300133059 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6492B1581CFED48300133059 /* Check.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Check.swift; sourceTree = "<group>"; };
+		6492B15A1CFED4F200133059 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		6492B1601CFEDC1100133059 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		6492B1621CFEDE2100133059 /* ProductCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCellTableViewCell.swift; sourceTree = "<group>"; };
+		6492B1641CFEE06B00133059 /* RegisterLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterLine.swift; sourceTree = "<group>"; };
+		6492B1661CFEE59200133059 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		6492B1681CFEF69E00133059 /* DocumentsJournal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsJournal.swift; sourceTree = "<group>"; };
+		6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentJournalCheckTableViewController.swift; sourceTree = "<group>"; };
+		6492B16C1CFF0CE300133059 /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
+		6492B1721CFF197300133059 /* CheckTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckTableViewCell.swift; path = ../CheckTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +119,18 @@
 		6492B1261CFED46300133059 /* myMoney */ = {
 			isa = PBXGroup;
 			children = (
+				6492B1721CFF197300133059 /* CheckTableViewCell.swift */,
 				6492B1271CFED46300133059 /* AppDelegate.swift */,
-				6492B1291CFED46300133059 /* ViewController.swift */,
+				6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */,
+				6492B16C1CFF0CE300133059 /* Catalog.swift */,
+				6492B1291CFED46300133059 /* CheckViewController.swift */,
+				6492B1581CFED48300133059 /* Check.swift */,
+				6492B1681CFEF69E00133059 /* DocumentsJournal.swift */,
+				6492B1621CFEDE2100133059 /* ProductCellTableViewCell.swift */,
+				6492B15A1CFED4F200133059 /* Register.swift */,
+				6492B1641CFEE06B00133059 /* RegisterLine.swift */,
+				6492B1601CFEDC1100133059 /* Product.swift */,
+				6492B1661CFEE59200133059 /* Protocols.swift */,
 				6492B12B1CFED46300133059 /* Main.storyboard */,
 				6492B1311CFED46300133059 /* Assets.xcassets */,
 				6492B1331CFED46300133059 /* LaunchScreen.storyboard */,
@@ -259,9 +289,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6492B12A1CFED46300133059 /* ViewController.swift in Sources */,
+				6492B1591CFED48300133059 /* Check.swift in Sources */,
+				6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */,
+				6492B1651CFEE06B00133059 /* RegisterLine.swift in Sources */,
+				6492B16D1CFF0CE300133059 /* Catalog.swift in Sources */,
+				6492B1671CFEE59200133059 /* Protocols.swift in Sources */,
 				6492B1301CFED46300133059 /* myMoney.xcdatamodeld in Sources */,
 				6492B1281CFED46300133059 /* AppDelegate.swift in Sources */,
+				6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */,
+				6492B1691CFEF69E00133059 /* DocumentsJournal.swift in Sources */,
+				6492B16B1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift in Sources */,
+				6492B15B1CFED4F200133059 /* Register.swift in Sources */,
+				6492B1611CFEDC1100133059 /* Product.swift in Sources */,
+				6492B1631CFEDE2100133059 /* ProductCellTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +526,7 @@
 				6492B1511CFED46300133059 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6492B1521CFED46300133059 /* Build configuration list for PBXNativeTarget "myMoneyTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +535,7 @@
 				6492B1541CFED46300133059 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6492B1551CFED46300133059 /* Build configuration list for PBXNativeTarget "myMoneyUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +544,7 @@
 				6492B1571CFED46300133059 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
