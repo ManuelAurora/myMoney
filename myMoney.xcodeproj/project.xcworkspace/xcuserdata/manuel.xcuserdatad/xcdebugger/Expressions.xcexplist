@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "allRegisters.(removeOldInfo in _59EB766234F271EC26A534511AB14FD8)(Int, inRegister : Register) -&gt; ():AllRegisters.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "line">
+            </PersistentString>
+            <PersistentString
+               value = "register.lines">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Check.sumOfCheck() -&gt; ():Check.swift">
          <PersistentStrings>
             <PersistentString
@@ -56,6 +67,9 @@
          <PersistentStrings>
             <PersistentString
                value = "check.sumOfCheck()">
+            </PersistentString>
+            <PersistentString
+               value = "check.sumOfCheck">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AllCatalogs: NSObject
+class AllCatalogs
 {
      let catalogExpenditure = Catalog()
     
@@ -21,7 +21,7 @@ class AllCatalogs: NSObject
     }
 }
 
-class AllDocuments: NSObject
+class AllDocuments
 {
      let documentsChecksJournal = DocumentsJournal()
     

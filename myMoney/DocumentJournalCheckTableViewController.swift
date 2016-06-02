@@ -82,7 +82,7 @@ class DocumentJournalCheckTableViewController: UITableViewController {
         cell.date.text      = String(check.date)
         cell.number.text    = String(check.number)
         cell.operation.text = check.operation
-        cell.sum.text       = String(check.sumOfCheck())
+        cell.sum.text       = String(check.sumOfDocument)
       
         return cell
     }

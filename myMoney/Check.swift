@@ -10,14 +10,17 @@ import Foundation
 
 class Check: Registrator, Document
 {
-    var products  = [Expenditure]()
+    var products  = [Measure]()
     var prices    = [Float]()
     let date      = NSDate()
     var mode: Mode
     var ID: Int
     
-    var sum:       Int = 0
-    var number:    Int = 0
+    var sumOfDocument: Int {
+        return sumOfCheck()
+    }
+    
+    var number:        Int = 0
     
     let operation: String = "Check"
     
@@ -40,15 +43,14 @@ class Check: Registrator, Document
     
     func conduct() {
         
-       allRegisters.conduct(self, register: allRegisters.register)
+       allRegisters.sharedInstance().conduct(self, register: allRegisters.sharedInstance().register)       
     }        
     
-    func sumOfCheck() -> Int {
-        
+    private func sumOfCheck() -> Int {
+        var sum = 0
         for product in products.enumerate() {
             sum += Int(self.prices[product.index])
         }
-        
          return sum
     }
     

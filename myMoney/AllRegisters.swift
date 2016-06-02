@@ -8,75 +8,57 @@
 
 import Foundation
 
-struct allRegisters
+class allRegisters
 {
     
-    static let register = Register()
+    let register = Register()
     
     
-    static func conduct(object: Registrator, register: Register) {
+    func conduct(object: Registrator, register: Register) {
         
         let object = object as! Check
-        
-        var index = 0
-        
+                
         if uniqueID(object.ID) {
-            for product in object.products {
+            
                 
-                let registerLine = RegisterLine(registratorID: object.ID, measure: product, resourse: object.prices[index])
-                
-                register.lines.append(registerLine)
-                
-                index += 1
-                
-                print("\(registerLine)")
-            }
+        addNewRecord(object.ID, measure: object.products, resource: object.prices)
+            
             
         } else {
             
+            removeOldInfo(object.ID, inRegister: register)
             
-            
-            
-            
-            
+            addNewRecord(object.ID, measure: object.products, resource: object.prices)
             
         }
         
     }
     
-    func checkTable(object: Registrator) {
+    private func addNewRecord(objectID: Int, measure: [Measure], resource: [Float]) {
         
-        let object = object as! Check
-        
-        for item in object.products.enumerate() {
+        for (index, item) in measure.enumerate() {
             
+            let registerLine = RegisterLine(registratorID: objectID, measure: item, resourse: resource[index])
             
-            
-            
+            register.lines.append(registerLine)
         }
-        
     }
     
-//    func findObjectByID(id: Int) -> Registrator{
-//        
-//      //  let register =
-//        
-//        for item in register.lines.enumerate() {
-//            
-//            if item.element.registratorID == id { return item }
-//            
-//        }
-//   
-//        
-//    }
-//    
+    private func removeOldInfo(objectId: Int, inRegister register: Register) {
+        
+        for (_,line) in register.lines.enumerate() where line.registratorID == objectId {
+            
+            register.lines.removeFirst()
+            
+        }
+    }
     
-    static func uniqueID(id: Int) -> Bool {
+    private func uniqueID(id: Int) -> Bool {
         
         var unique = true
         
         
-        for line in allRegisters.register.lines.enumerate() {
+        for line in register.lines.enumerate() {
             if line.element.registratorID == id {
                 unique = false
             }
@@ -84,5 +66,13 @@ struct allRegisters
         return unique
     }
     
+   class func sharedInstance() -> allRegisters {
+        struct Singletone
+        {
+            static let sharedInstance = allRegisters()
+        }
+        
+        return Singletone.sharedInstance
+    }
     
 }

@@ -11,7 +11,7 @@ import UIKit
 class CheckViewController: UIViewController
 {
     var documentsCheckJournal = AllDocuments.sharedInstance().documentsChecksJournal
-    var catalogExpenditure = AllCatalogs.sharedInstance().catalogExpenditure.items
+    var catalogExpenditure = AllCatalogs.sharedInstance().catalogExpenditure
     
     var check    = Check(mode: Mode.New)
     
@@ -39,6 +39,7 @@ class CheckViewController: UIViewController
             conductProcessing(.Saving)
         }
         
+        check.sumOfDocument
     }
     
     
@@ -98,7 +99,7 @@ class CheckViewController: UIViewController
         let paddingHorz = (buttonWidth) / 3
         let paddingVert = (buttonHeight) / 2
         
-        for (index, product) in catalogExpenditure.enumerate() {
+        for (index, product) in catalogExpenditure.items.enumerate() {
             
             let button = UIButton(type: .Custom)
             let image  = UIImage(named: "LandscapeButton")
