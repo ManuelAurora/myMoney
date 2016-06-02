@@ -13,15 +13,7 @@ import CoreData
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: UIWindow?
-    
-    lazy var allChecks: [Check] = {
-       
-        return [Check]()
-        
-    }()
-    
-    let catalogExpenditure = Catalog()
+    var window: UIWindow?       
         
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -30,10 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigation = delegate.window?.rootViewController as! UINavigationController
         
         let controller = navigation.topViewController as! DocumentJournalCheckTableViewController
-        
-        controller.allChecks = allChecks
-        controller.catalogExpenditure = catalogExpenditure
-    
+            
         return true
     }
     

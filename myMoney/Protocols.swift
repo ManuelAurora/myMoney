@@ -21,9 +21,15 @@ protocol Measure
 
 
 protocol Registrator {
-    func conduct(register: Register)
+    func conduct()
+    var ID: Int { get }
 }
 
 protocol Document {
     var number: Int { get set }
+}
+
+enum ProcessingModes {
+    case Saving
+    case Conduction
 }

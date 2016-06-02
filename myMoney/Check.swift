@@ -13,11 +13,21 @@ class Check: Registrator, Document
     var products  = [Expenditure]()
     var prices    = [Float]()
     let date      = NSDate()
+    var mode: Mode
+    var ID: Int
     
     var sum:       Int = 0
     var number:    Int = 0
     
     let operation: String = "Check"
+    
+    init(mode: Mode) {
+        
+        self.mode = mode
+        
+        ID = self.number + Int(arc4random())
+    }
+    
     
     func addProduct(product: Expenditure) {
         products.append(product)
@@ -28,18 +38,9 @@ class Check: Registrator, Document
         prices.append(price)
     }
     
-    func conduct(register: Register) {
+    func conduct() {
         
-        var index = 0
-        
-        for product in products {
-            
-            let registerLine = RegisterLine(registrator: self, measure: product, resourse: prices[index])
-            
-            register.lines.append(registerLine)
-            
-            index += 1
-        }
+       allRegisters.conduct(self, register: allRegisters.register)
     }        
     
     func sumOfCheck() -> Int {
@@ -52,4 +53,9 @@ class Check: Registrator, Document
     }
     
     
+}
+
+enum Mode {
+    case New
+    case Edit(Int?)
 }

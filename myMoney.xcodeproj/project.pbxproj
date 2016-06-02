@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		643677871D003BFD00EC233F /* AllRegisters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643677861D003BFD00EC233F /* AllRegisters.swift */; };
+		643677891D00615B00EC233F /* DocumentJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643677881D00615B00EC233F /* DocumentJournal.swift */; };
+		6436778B1D0066FF00EC233F /* MainObjectThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6436778A1D0066FF00EC233F /* MainObjectThree.swift */; };
 		6492B1281CFED46300133059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1271CFED46300133059 /* AppDelegate.swift */; };
 		6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1291CFED46300133059 /* CheckViewController.swift */; };
 		6492B12D1CFED46300133059 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6492B12B1CFED46300133059 /* Main.storyboard */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		643677861D003BFD00EC233F /* AllRegisters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRegisters.swift; sourceTree = "<group>"; };
+		643677881D00615B00EC233F /* DocumentJournal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentJournal.swift; sourceTree = "<group>"; };
+		6436778A1D0066FF00EC233F /* MainObjectThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainObjectThree.swift; sourceTree = "<group>"; };
 		6492B1241CFED46300133059 /* myMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6492B1271CFED46300133059 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6492B1291CFED46300133059 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				6492B16C1CFF0CE300133059 /* Catalog.swift */,
+				6436778A1D0066FF00EC233F /* MainObjectThree.swift */,
+				643677861D003BFD00EC233F /* AllRegisters.swift */,
+				643677881D00615B00EC233F /* DocumentJournal.swift */,
 				6492B1581CFED48300133059 /* Check.swift */,
 				6492B15A1CFED4F200133059 /* Register.swift */,
 				6492B1641CFEE06B00133059 /* RegisterLine.swift */,
@@ -341,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6492B1591CFED48300133059 /* Check.swift in Sources */,
+				643677871D003BFD00EC233F /* AllRegisters.swift in Sources */,
 				6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */,
 				6492B1651CFEE06B00133059 /* RegisterLine.swift in Sources */,
 				6492B16D1CFF0CE300133059 /* Catalog.swift in Sources */,
@@ -349,11 +359,13 @@
 				6492B17B1CFF30E300133059 /* AddNewItemOfExpenditureViewController.swift in Sources */,
 				6492B1281CFED46300133059 /* AppDelegate.swift in Sources */,
 				6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */,
+				643677891D00615B00EC233F /* DocumentJournal.swift in Sources */,
 				6492B1691CFEF69E00133059 /* DocumentsJournal.swift in Sources */,
 				6492B16B1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift in Sources */,
 				6492B15B1CFED4F200133059 /* Register.swift in Sources */,
 				6492B1611CFEDC1100133059 /* Expenditure.swift in Sources */,
 				6492B1631CFEDE2100133059 /* ProductCellTableViewCell.swift in Sources */,
+				6436778B1D0066FF00EC233F /* MainObjectThree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

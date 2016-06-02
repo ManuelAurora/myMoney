@@ -10,7 +10,7 @@ import UIKit
 
 class AddNewItemOfExpenditureViewController: UIViewController {
 
-    var catalogOfExpenditure: Catalog!
+    var catalogOfExpenditure = AllCatalogs.sharedInstance().catalogExpenditure.items
     
     @IBOutlet weak var name:                UITextField!
     @IBOutlet weak var useQuantityAndPrice: UISwitch!
@@ -21,7 +21,11 @@ class AddNewItemOfExpenditureViewController: UIViewController {
         
         newItem.useQuantityAndPrice = useQuantityAndPrice.on
         
-        catalogOfExpenditure.items.append(newItem)
+        catalogOfExpenditure.append(newItem)
+        
+        let controller = self.presentingViewController as! CheckViewController
+        
+        controller.tileButtons()
         
         dismissViewControllerAnimated(true, completion: nil)
     }

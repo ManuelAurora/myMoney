@@ -9,13 +9,12 @@
 import UIKit
 
 class DocumentJournalCheckTableViewController: UITableViewController {
-
-    var allChecks: [Check]!
-        
-    var catalogExpenditure: Catalog!
+    
+    let documentsCheckJournal = AllDocuments.sharedInstance().documentsChecksJournal
+    var catalogExpenditure    = AllCatalogs.sharedInstance().catalogExpenditure
     
     @IBAction func addNewCheck() {
-        showNewController()
+        addEditCheck(.New)
     }
     
     @IBAction func refresh() {
@@ -52,26 +51,31 @@ class DocumentJournalCheckTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return allChecks.count
+        return documentsCheckJournal.documents.count
     }
     
-    func showNewController() {
-       let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
+    func addEditCheck(mode: Mode) {
         
-        controller.allChecks = allChecks
-        controller.catalogExpenditure = catalogExpenditure
-      
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
+                
+        switch mode {
+            
+        case .Edit(let index):
+            
+            controller.check = documentsCheckJournal.documents[index!] as! Check
+            controller.check.mode = mode
+        default:
+            break
+        }
         
         presentViewController(controller, animated: true, completion: nil)
-        
-     
-           
-        
+
     }
+    
         
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let check = allChecks[indexPath.row]
+        let check = documentsCheckJournal.documents[indexPath.row] as! Check
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CheckCell", forIndexPath: indexPath) as! CheckTableViewCell
         
@@ -84,6 +88,13 @@ class DocumentJournalCheckTableViewController: UITableViewController {
     }
     
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+       
+        addEditCheck(.Edit(indexPath.row))
+        
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

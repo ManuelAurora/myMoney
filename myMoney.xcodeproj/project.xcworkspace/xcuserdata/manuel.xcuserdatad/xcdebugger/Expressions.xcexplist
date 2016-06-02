@@ -3,14 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:DocumentJournalCheckTableViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "check.sumOfCheck()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "Check.sumOfCheck() -&gt; ():Check.swift">
          <PersistentStrings>
             <PersistentString
@@ -19,10 +11,27 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DocumentJournalCheckTableViewController.showNewController() -&gt; ():DocumentJournalCheckTableViewController.swift">
+         contextName = "CheckViewController.viewDidLoad() -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "allChecks">
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+            </PersistentString>
+            <PersistentString
+               value = "catalogExpenditure">
+            </PersistentString>
+            <PersistentString
+               value = "check.mode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DocumentJournalCheckTableViewController.showNewController(Mode) -&gt; ():DocumentJournalCheckTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:DocumentJournalCheckTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "allChecks.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -35,6 +44,30 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "DocumentJournalCheckTableViewController.viewDidLoad() -&gt; ():DocumentJournalCheckTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:DocumentJournalCheckTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "check.sumOfCheck()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DocumentJournalCheckTableViewController.showNewController() -&gt; ():DocumentJournalCheckTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "allChecks">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CheckViewController.record() -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -42,14 +75,6 @@
             </PersistentString>
             <PersistentString
                value = "allChecks">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:DocumentJournalCheckTableViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "allChecks.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

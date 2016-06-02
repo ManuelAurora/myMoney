@@ -11,7 +11,7 @@ import Foundation
 struct RegisterLine
 {
     
-    let registrator: Registrator
+    let registratorID: Int
     
     let measure: Measure
     
