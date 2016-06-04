@@ -12,7 +12,8 @@ class Check: Registrator, Document
 {
     var products  = [Measure]()
     var prices    = [Float]()
-    let date      = NSDate()
+    let date      =  NSDate()
+    
     var mode: Mode
     var ID: Int
     

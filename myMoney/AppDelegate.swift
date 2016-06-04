@@ -13,15 +13,17 @@ import CoreData
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: UIWindow?       
-        
+    var window: UIWindow?
+    
+    var managedContext = DataManager.sharedInstance().managedObjectContext
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let navigation = delegate.window?.rootViewController as! UINavigationController
+        let navigation = window!.rootViewController as! UINavigationController
         
         let controller = navigation.topViewController as! DocumentJournalCheckTableViewController
+        
+        controller.managedContext = managedContext
             
         return true
     }

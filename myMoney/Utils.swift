@@ -8,26 +8,6 @@
 
 import Foundation
 
-protocol Measure
-{
-    var name: String { set get }
-    
-    
-    
-    
-    
-}
-
-
-
-protocol Registrator {
-    func conduct()
-    var ID: Int { get }
-}
-
-protocol Document {
-    var number: Int { get set }
-}
 
 enum ProcessingModes {
     case Saving

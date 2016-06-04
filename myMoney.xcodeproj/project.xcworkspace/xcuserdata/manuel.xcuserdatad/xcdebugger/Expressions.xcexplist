@@ -3,17 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "allRegisters.(removeOldInfo in _59EB766234F271EC26A534511AB14FD8)(Int, inRegister : Register) -&gt; ():AllRegisters.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "line">
-            </PersistentString>
-            <PersistentString
-               value = "register.lines">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "Check.sumOfCheck() -&gt; ():Check.swift">
          <PersistentStrings>
             <PersistentString
@@ -22,16 +11,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CheckViewController.viewDidLoad() -&gt; ():CheckViewController.swift">
+         contextName = "CheckViewController.record() -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+               value = "self.presentingViewController.class">
             </PersistentString>
             <PersistentString
-               value = "catalogExpenditure">
-            </PersistentString>
-            <PersistentString
-               value = "check.mode">
+               value = "allChecks">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -39,18 +25,10 @@
          contextName = "DocumentJournalCheckTableViewController.showNewController(Mode) -&gt; ():DocumentJournalCheckTableViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:DocumentJournalCheckTableViewController.swift">
+         contextName = "DataManager.fetchData() -&gt; [AnyObject]:DataManager.swift">
          <PersistentStrings>
             <PersistentString
-               value = "allChecks.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "AppDelegate.init() -&gt; AppDelegate:AppDelegate.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "UIApplication.sharedApplication().delegate">
+               value = "result">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -59,6 +37,14 @@
          <PersistentStrings>
             <PersistentString
                value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:DocumentJournalCheckTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "allChecks.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -74,19 +60,58 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DocumentJournalCheckTableViewController.showNewController() -&gt; ():DocumentJournalCheckTableViewController.swift">
+         contextName = "CheckViewController.viewWillAppear(Bool) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "allChecks">
+               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
+            </PersistentString>
+            <PersistentString
+               value = "catalogExpenditure.items">
+            </PersistentString>
+            <PersistentString
+               value = "result.count ">
+            </PersistentString>
+            <PersistentString
+               value = "article.name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CheckViewController.record() -&gt; ():CheckViewController.swift">
+         contextName = "AppDelegate.init() -&gt; AppDelegate:AppDelegate.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.presentingViewController.class">
+               value = "UIApplication.sharedApplication().delegate">
             </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CheckViewController.viewDidLoad() -&gt; ():CheckViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "check.mode">
+            </PersistentString>
+            <PersistentString
+               value = "catalogExpenditure">
+            </PersistentString>
+            <PersistentString
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "allRegisters.(removeOldInfo in _59EB766234F271EC26A534511AB14FD8)(Int, inRegister : Register) -&gt; ():AllRegisters.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "line">
+            </PersistentString>
+            <PersistentString
+               value = "register.lines">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DocumentJournalCheckTableViewController.showNewController() -&gt; ():DocumentJournalCheckTableViewController.swift">
+         <PersistentStrings>
             <PersistentString
                value = "allChecks">
             </PersistentString>

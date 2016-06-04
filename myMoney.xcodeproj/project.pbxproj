@@ -23,12 +23,16 @@
 		6492B1611CFEDC1100133059 /* Expenditure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1601CFEDC1100133059 /* Expenditure.swift */; };
 		6492B1631CFEDE2100133059 /* ProductCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1621CFEDE2100133059 /* ProductCellTableViewCell.swift */; };
 		6492B1651CFEE06B00133059 /* RegisterLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1641CFEE06B00133059 /* RegisterLine.swift */; };
-		6492B1671CFEE59200133059 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1661CFEE59200133059 /* Protocols.swift */; };
+		6492B1671CFEE59200133059 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1661CFEE59200133059 /* Utils.swift */; };
 		6492B1691CFEF69E00133059 /* DocumentsJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1681CFEF69E00133059 /* DocumentsJournal.swift */; };
 		6492B16B1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */; };
 		6492B16D1CFF0CE300133059 /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B16C1CFF0CE300133059 /* Catalog.swift */; };
 		6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1721CFF197300133059 /* CheckTableViewCell.swift */; };
 		6492B17B1CFF30E300133059 /* AddNewItemOfExpenditureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B17A1CFF30E300133059 /* AddNewItemOfExpenditureViewController.swift */; };
+		64F5F7BC1D02C92F00D2C884 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F5F7BB1D02C92F00D2C884 /* DataManager.swift */; };
+		64FE54781D02E75B00D38ADC /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE54771D02E75B00D38ADC /* Measure.swift */; };
+		64FE547A1D02E76B00D38ADC /* Registrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE54791D02E76B00D38ADC /* Registrator.swift */; };
+		64FE547C1D02E77A00D38ADC /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE547B1D02E77A00D38ADC /* Document.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,12 +75,16 @@
 		6492B1601CFEDC1100133059 /* Expenditure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expenditure.swift; sourceTree = "<group>"; };
 		6492B1621CFEDE2100133059 /* ProductCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCellTableViewCell.swift; sourceTree = "<group>"; };
 		6492B1641CFEE06B00133059 /* RegisterLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterLine.swift; sourceTree = "<group>"; };
-		6492B1661CFEE59200133059 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		6492B1661CFEE59200133059 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		6492B1681CFEF69E00133059 /* DocumentsJournal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsJournal.swift; sourceTree = "<group>"; };
 		6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentJournalCheckTableViewController.swift; sourceTree = "<group>"; };
 		6492B16C1CFF0CE300133059 /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
 		6492B1721CFF197300133059 /* CheckTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckTableViewCell.swift; path = ../CheckTableViewCell.swift; sourceTree = "<group>"; };
 		6492B17A1CFF30E300133059 /* AddNewItemOfExpenditureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewItemOfExpenditureViewController.swift; sourceTree = "<group>"; };
+		64F5F7BB1D02C92F00D2C884 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		64FE54771D02E75B00D38ADC /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
+		64FE54791D02E76B00D38ADC /* Registrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registrator.swift; sourceTree = "<group>"; };
+		64FE547B1D02E77A00D38ADC /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,16 +165,9 @@
 		6492B1741CFF2FE200133059 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6492B16C1CFF0CE300133059 /* Catalog.swift */,
-				6436778A1D0066FF00EC233F /* MainObjectThree.swift */,
-				643677861D003BFD00EC233F /* AllRegisters.swift */,
-				643677881D00615B00EC233F /* DocumentJournal.swift */,
-				6492B1581CFED48300133059 /* Check.swift */,
-				6492B15A1CFED4F200133059 /* Register.swift */,
-				6492B1641CFEE06B00133059 /* RegisterLine.swift */,
-				6492B1601CFEDC1100133059 /* Expenditure.swift */,
-				6492B1661CFEE59200133059 /* Protocols.swift */,
-				6492B1681CFEF69E00133059 /* DocumentsJournal.swift */,
+				64FE54751D02E71300D38ADC /* Global */,
+				64FE54741D02E69600D38ADC /* Raw Classes */,
+				6492B1661CFEE59200133059 /* Utils.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -216,6 +217,41 @@
 				6492B12E1CFED46300133059 /* myMoney.xcdatamodeld */,
 			);
 			name = Misc;
+			sourceTree = "<group>";
+		};
+		64FE54741D02E69600D38ADC /* Raw Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6492B16C1CFF0CE300133059 /* Catalog.swift */,
+				6492B1581CFED48300133059 /* Check.swift */,
+				6492B1601CFEDC1100133059 /* Expenditure.swift */,
+				6492B15A1CFED4F200133059 /* Register.swift */,
+				6492B1641CFEE06B00133059 /* RegisterLine.swift */,
+				643677881D00615B00EC233F /* DocumentJournal.swift */,
+				6492B1681CFEF69E00133059 /* DocumentsJournal.swift */,
+				64FE54761D02E75000D38ADC /* Protocols */,
+			);
+			name = "Raw Classes";
+			sourceTree = "<group>";
+		};
+		64FE54751D02E71300D38ADC /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				64F5F7BB1D02C92F00D2C884 /* DataManager.swift */,
+				6436778A1D0066FF00EC233F /* MainObjectThree.swift */,
+				643677861D003BFD00EC233F /* AllRegisters.swift */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
+		64FE54761D02E75000D38ADC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				64FE54771D02E75B00D38ADC /* Measure.swift */,
+				64FE54791D02E76B00D38ADC /* Registrator.swift */,
+				64FE547B1D02E77A00D38ADC /* Document.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +322,7 @@
 				TargetAttributes = {
 					6492B1231CFED46300133059 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 99MX98QF2R;
 					};
 					6492B13A1CFED46300133059 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -351,12 +388,16 @@
 			files = (
 				6492B1591CFED48300133059 /* Check.swift in Sources */,
 				643677871D003BFD00EC233F /* AllRegisters.swift in Sources */,
+				64FE54781D02E75B00D38ADC /* Measure.swift in Sources */,
 				6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */,
 				6492B1651CFEE06B00133059 /* RegisterLine.swift in Sources */,
+				64FE547C1D02E77A00D38ADC /* Document.swift in Sources */,
 				6492B16D1CFF0CE300133059 /* Catalog.swift in Sources */,
-				6492B1671CFEE59200133059 /* Protocols.swift in Sources */,
+				6492B1671CFEE59200133059 /* Utils.swift in Sources */,
 				6492B1301CFED46300133059 /* myMoney.xcdatamodeld in Sources */,
+				64F5F7BC1D02C92F00D2C884 /* DataManager.swift in Sources */,
 				6492B17B1CFF30E300133059 /* AddNewItemOfExpenditureViewController.swift in Sources */,
+				64FE547A1D02E76B00D38ADC /* Registrator.swift in Sources */,
 				6492B1281CFED46300133059 /* AppDelegate.swift in Sources */,
 				6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */,
 				643677891D00615B00EC233F /* DocumentJournal.swift in Sources */,
@@ -507,10 +548,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = myMoney/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AuroraInterplay.myMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -518,10 +562,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = myMoney/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AuroraInterplay.myMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

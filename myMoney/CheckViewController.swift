@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class CheckViewController: UIViewController
 {
+    var managedContext: NSManagedObjectContext!
+    
     var documentsCheckJournal = AllDocuments.sharedInstance().documentsChecksJournal
     var catalogExpenditure = AllCatalogs.sharedInstance().catalogExpenditure
     
@@ -25,7 +28,9 @@ class CheckViewController: UIViewController
     @IBAction func addNewExpenditure() {
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewExpend") as! AddNewItemOfExpenditureViewController
-                
+        
+        controller.managedContext = managedContext
+        
         presentViewController(controller, animated: true, completion: nil)
         
     }
@@ -42,9 +47,26 @@ class CheckViewController: UIViewController
         check.sumOfDocument
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let result = DataManager.sharedInstance().fetchData() as! [NSManagedObject]
+        
+        for object in result {
+            
+            let name = object.valueForKey("name") as! String
+            
+            let article = Expenditure(name: name)
+            
+            catalogExpenditure.items.append(article)
+            
+        }
         
         tileButtons()
         

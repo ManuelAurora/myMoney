@@ -7,19 +7,25 @@
 //
 
 import Foundation
+import CoreData
 
-class Expenditure: Measure
+class Expenditure: NSManagedObject, Measure
 {
-    var name: String
+    @NSManaged var name: String
     
     var useQuantityAndPrice = false
     
     var parent: Expenditure?
     
+    
     init(name: String) {
         
-        self.name  = name
+        let managedContext = DataManager.sharedInstance().managedObjectContext
+        let entity = NSEntityDescription.entityForName("Article", inManagedObjectContext: managedContext )
+
+        super.init(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
+        self.name  = name        
     }
     
     

@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class DocumentJournalCheckTableViewController: UITableViewController {
+    
+    var managedContext: NSManagedObjectContext!
     
     let documentsCheckJournal = AllDocuments.sharedInstance().documentsChecksJournal
     var catalogExpenditure    = AllCatalogs.sharedInstance().catalogExpenditure
@@ -23,13 +26,7 @@ class DocumentJournalCheckTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let banana = Expenditure(name: "Banana")
-        let paw    = Expenditure(name: "Paw")
-
-        catalogExpenditure.items.append(banana)
-        catalogExpenditure.items.append(paw)
-        
+                
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -62,11 +59,14 @@ class DocumentJournalCheckTableViewController: UITableViewController {
             
         case .Edit(let index):
             
-            controller.check = documentsCheckJournal.documents[index!] as! Check
+            controller.check      = documentsCheckJournal.documents[index!] as! Check
             controller.check.mode = mode
+            
         default:
             break
         }
+        
+        controller.managedContext = managedContext
         
         presentViewController(controller, animated: true, completion: nil)
 

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class AddNewItemOfExpenditureViewController: UIViewController {
 
+    var managedContext: NSManagedObjectContext!
+    
     let catalogOfExpenditure = AllCatalogs.sharedInstance().catalogExpenditure
     
     @IBOutlet weak var name:                UITextField!
@@ -17,12 +20,13 @@ class AddNewItemOfExpenditureViewController: UIViewController {
     @IBOutlet weak var parentButton:        UIButton!
     
     @IBAction func AddNew(sender: UIButton) {
-        let newItem = Expenditure(name: name.text!)
         
-        newItem.useQuantityAndPrice = useQuantityAndPrice.on
+        let article = Expenditure(name: name.text!)
         
-        catalogOfExpenditure.items.append(newItem)
+        DataManager.sharedInstance().saveEntity(article)
         
+        catalogOfExpenditure.items.append(article)
+                
         let controller = self.presentingViewController as! CheckViewController
         
         controller.tileButtons()
