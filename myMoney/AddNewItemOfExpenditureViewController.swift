@@ -21,11 +21,16 @@ class AddNewItemOfExpenditureViewController: UIViewController {
     
     @IBAction func AddNew(sender: UIButton) {
         
-        let article = Expenditure(name: name.text!)
+        let entity = NSEntityDescription.entityForName("Expenditure", inManagedObjectContext: managedContext)
+        let article = Expenditure(entity:entity! , insertIntoManagedObjectContext: managedContext)
+        
+        article.name = name.text!
+        
+        
+        catalogOfExpenditure.items.append(article)
         
         DataManager.sharedInstance().saveEntity(article)
         
-        catalogOfExpenditure.items.append(article)
                 
         let controller = self.presentingViewController as! CheckViewController
         

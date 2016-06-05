@@ -11,8 +11,7 @@ import CoreData
 
 class Catalog {
     
-    var items = [Measure]()
-    
+    var items = [AnyObject]()
     
     
     

@@ -13,20 +13,19 @@ class Expenditure: NSManagedObject, Measure
 {
     @NSManaged var name: String
     
-    var useQuantityAndPrice = false
+   // var useQuantityAndPrice = false
     
-    var parent: Expenditure?
-    
-    
-    init(name: String) {
-        
-        let managedContext = DataManager.sharedInstance().managedObjectContext
-        let entity = NSEntityDescription.entityForName("Article", inManagedObjectContext: managedContext )
-
-        super.init(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        
-        self.name  = name        
-    }
+    //var parent: Expenditure?
+ 
+//    init(name: String) {
+//        
+//        let managedContext = DataManager.sharedInstance().managedObjectContext
+//        let entity = NSEntityDescription.entityForName("Expenditure", inManagedObjectContext: managedContext )
+//
+//        super.init(entity: entity!, insertIntoManagedObjectContext: managedContext)
+//        
+//        self.name  = name        
+//    }
     
     
 }

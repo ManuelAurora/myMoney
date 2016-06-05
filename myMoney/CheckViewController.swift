@@ -56,17 +56,9 @@ class CheckViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let result = DataManager.sharedInstance().fetchData() as! [NSManagedObject]
+        let result = DataManager.sharedInstance().fetchData()
         
-        for object in result {
-            
-            let name = object.valueForKey("name") as! String
-            
-            let article = Expenditure(name: name)
-            
-            catalogExpenditure.items.append(article)
-            
-        }
+        catalogExpenditure.items = result
         
         tileButtons()
         
@@ -165,12 +157,17 @@ class CheckViewController: UIViewController
         
         let label =  sender.viewWithTag(sender.tag - 1000) as! UILabel
         
-        let product = Expenditure(name: label.text!)
+        let index = sender.tag - 2000
+        
+        let article = catalogExpenditure.items[index] as! Expenditure
+        
+        article.name = label.text!
+               
         let price = Float(priceField.text!)!
         
         check.prices.append(price)
         
-        check.products.append(product)
+        check.products.append(article)
         
         tableView.reloadData()
         
