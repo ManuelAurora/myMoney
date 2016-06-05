@@ -30,10 +30,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DataManager.fetchData() -&gt; [Expenditure]:DataManager.swift">
+         contextName = "allRegisters.(removeOldInfo in _59EB766234F271EC26A534511AB14FD8)(Int, inRegister : Register) -&gt; ():AllRegisters.swift">
          <PersistentStrings>
             <PersistentString
-               value = "result">
+               value = "line">
+            </PersistentString>
+            <PersistentString
+               value = "register.lines">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -65,6 +68,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PopUpViewController.addItem() -&gt; ():PopUpViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(articlePriceTextField.text!)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -84,13 +95,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "CheckViewController.addNewExpenditure() -&gt; ():CheckViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "managedContext">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CheckViewController.viewWillAppear(Bool) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "catalogExpenditure.items">
+               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
             </PersistentString>
             <PersistentString
-               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
+               value = "catalogExpenditure.items">
             </PersistentString>
             <PersistentString
                value = "result.count ">
@@ -112,13 +131,13 @@
          contextName = "CheckViewController.viewDidLoad() -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+               value = "catalogExpenditure.items">
             </PersistentString>
             <PersistentString
                value = "catalogExpenditure">
             </PersistentString>
             <PersistentString
-               value = "catalogExpenditure.items">
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -126,7 +145,7 @@
          contextName = "AddNewItemOfExpenditureViewController.AddNew(UIButton) -&gt; ():AddNewItemOfExpenditureViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "article">
+               value = "managedContext">
             </PersistentString>
             <PersistentString
                value = "catalogOfExpenditure">
@@ -153,13 +172,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "allRegisters.(removeOldInfo in _59EB766234F271EC26A534511AB14FD8)(Int, inRegister : Register) -&gt; ():AllRegisters.swift">
+         contextName = "DataManager.fetchData() -&gt; [Expenditure]:DataManager.swift">
          <PersistentStrings>
             <PersistentString
-               value = "line">
-            </PersistentString>
-            <PersistentString
-               value = "register.lines">
+               value = "result">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

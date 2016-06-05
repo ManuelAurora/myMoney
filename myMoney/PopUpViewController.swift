@@ -1,0 +1,94 @@
+//
+//  PopUpViewController.swift
+//  myMoney
+//
+//  Created by Мануэль on 05.06.16.
+//  Copyright © 2016 AuroraInterplay. All rights reserved.
+//
+
+import UIKit
+
+class PopUpViewController: UIViewController {
+    
+    var article: Expenditure!
+    var mode:    Mode!
+    
+    @IBOutlet weak var popUpView: UIView!
+    @IBOutlet weak var articleNameLabel: UILabel!
+    @IBOutlet weak var articlePriceTextField: UITextField!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBAction func close() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func addItem() {
+        
+        let controller = presentingViewController as! CheckViewController
+        
+        let priceString = articlePriceTextField.text!.stringByReplacingOccurrencesOfString(",", withString: ".", options: [], range: nil)
+        
+        controller.check.addProduct(article)
+        controller.check.addPrice(Float(priceString)!)
+        
+        
+        controller.tableView.reloadData()
+        
+        dismissViewControllerAnimated(true, completion:nil)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        modalPresentationStyle = .Custom
+        transitioningDelegate = self
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        articlePriceTextField.becomeFirstResponder()
+        
+        view.backgroundColor = UIColor.clearColor()
+        
+        popUpView.layer.cornerRadius = 10
+        
+        articleNameLabel.text! = article.name
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+
+extension PopUpViewController: UIViewControllerTransitioningDelegate
+{
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return DimmingPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BounceAnimationController()
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideOutAnimationController()
+    }
+    
+}

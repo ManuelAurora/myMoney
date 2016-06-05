@@ -60,5 +60,5 @@ class Check: Registrator, Document
 
 enum Mode {
     case New
-    case Edit(Int?)
+    case Edit
 }

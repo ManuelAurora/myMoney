@@ -155,23 +155,19 @@ class CheckViewController: UIViewController
     
     func buttonPressed(sender: UIButton) {
         
-        let label =  sender.viewWithTag(sender.tag - 1000) as! UILabel
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
         let index = sender.tag - 2000
         
         let article = catalogExpenditure.items[index] as! Expenditure
         
-        article.name = label.text!
-               
-        let price = Float(priceField.text!)!
+        controller.article = article
+        controller.mode    = check.mode
         
-        check.prices.append(price)
-        
-        check.products.append(article)
-        
-        tableView.reloadData()
-        
-        priceField.text = ""
+        presentViewController(controller, animated: true) { 
+            
+        }
+       
     }
     
     func conductProcessing(mode: ProcessingModes) {
