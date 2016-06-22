@@ -3,6 +3,9 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "Expenditure.addArticleInTablePart(Article : Article) -&gt; ():Expenditure.swift">
+      </ContextState>
+      <ContextState
          contextName = "AddNewItemOfExpenditureViewController.AddNew(UIButton) -&gt; ():AddNewItemOfExpenditureViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -90,6 +93,14 @@
             </PersistentString>
             <PersistentString
                value = "articleCatalog">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ArticleString.init(AddArticle : Article, intoTablePart : TablePart?, withPrice : Float?, amount : Float?) -&gt; ArticleString:ArticleString.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "article">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

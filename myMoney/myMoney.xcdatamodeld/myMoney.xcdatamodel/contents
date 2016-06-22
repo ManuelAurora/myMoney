@@ -4,9 +4,9 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="articleString" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArticleString" inverseName="article" inverseEntity="ArticleString" syncable="YES"/>
     </entity>
-    <entity name="ArticleString" syncable="YES">
-        <attribute name="amount" optional="YES" syncable="YES"/>
-        <attribute name="price" optional="YES" syncable="YES"/>
+    <entity name="ArticleString" representedClassName="myMoney.ArticleString" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="articleString" inverseEntity="Article" syncable="YES"/>
         <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="articles" inverseEntity="TablePart" syncable="YES"/>
     </entity>

@@ -195,10 +195,10 @@ extension CheckViewController: UITableViewDataSource, UITableViewDelegate
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCellTableViewCell
         
-        let article = check?.tablePart?.articles?.allObjects[indexPath.row] as! Article
+        let articleString = check?.tablePart?.articles?.allObjects[indexPath.row] as! ArticleString
         
-        cell.name.text = article.name!
-        cell.price.text = String(article.price!.floatValue) ?? ""
+        cell.name.text  = articleString.article!.name
+        cell.price.text = String(articleString.price!.floatValue) ?? ""
         
         return cell
     }

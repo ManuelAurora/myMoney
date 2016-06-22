@@ -30,8 +30,8 @@ class Expenditure: NSManagedObject
         self.date      = NSDate()
     }
     
-    func addArticleInTablePart(Article article: Article) {
-        
+    func addArticleInTablePart(Article article: ArticleString) {
+                       
         let table = tablePart?.articles as! NSMutableSet
         
         table.addObject(article)

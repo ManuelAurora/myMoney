@@ -30,9 +30,9 @@ class PopUpViewController: UIViewController
         
         let priceString = articlePriceTextField.text!.stringByReplacingOccurrencesOfString(",", withString: ".", options: [], range: nil)
         
-        article.price = NSNumber(float: Float(priceString)!)
+        let articleString = ArticleString(AddArticle: article, intoTablePart: controller.check!.tablePart, withPrice: Float(priceString), amount: nil)
         
-        controller.check?.addArticleInTablePart(Article: article)
+        controller.check?.addArticleInTablePart(Article: articleString)
                 
         controller.tableView.reloadData()
         

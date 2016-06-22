@@ -12,9 +12,10 @@
 import Foundation
 import CoreData
 
-extension TablePart
-{
+extension TablePart {
+
     @NSManaged var name: String?
-    @NSManaged var expenditure: Expenditure?
     @NSManaged var articles: NSSet?
+    @NSManaged var expenditure: Expenditure?
+
 }
