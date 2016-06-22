@@ -142,18 +142,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoA-Mh-lCM">
-                                <rect key="frame" x="254" y="28" width="46" height="30"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <action selector="addNewExpenditure" destination="BYZ-38-t0r" eventType="touchUpInside" id="to4-rn-8mM"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6V-Ag-c4o">
                                 <rect key="frame" x="20" y="28" width="67" height="30"/>
                                 <state key="normal" title="Record"/>
                                 <connections>
                                     <action selector="record" destination="BYZ-38-t0r" eventType="touchUpInside" id="FYi-eS-OEk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoA-Mh-lCM">
+                                <rect key="frame" x="254" y="28" width="46" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addNewArticle" destination="BYZ-38-t0r" eventType="touchUpInside" id="YEk-ei-dnm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -174,10 +174,10 @@
             </objects>
             <point key="canvasLocation" x="1415" y="437"/>
         </scene>
-        <!--Add New Item Of Expenditure View Controller-->
+        <!--Add New Article View Controller-->
         <scene sceneID="oH4-Yc-LuR">
             <objects>
-                <viewController storyboardIdentifier="AddNewExpend" id="rZi-s5-piq" customClass="AddNewItemOfExpenditureViewController" customModule="myMoney" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addNewArticle" id="rZi-s5-piq" customClass="AddNewArticleViewController" customModule="myMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hDT-od-mlW"/>
                         <viewControllerLayoutGuide type="bottom" id="X6t-Qg-w0X"/>
@@ -314,7 +314,7 @@
                                         <rect key="frame" x="8" y="132" width="110" height="30"/>
                                         <state key="normal" title="Добавить" backgroundImage="LandscapeButton"/>
                                         <connections>
-                                            <action selector="addItem" destination="OFC-WN-D6y" eventType="touchDragInside" id="jxR-eb-DqD"/>
+                                            <action selector="addItem" destination="OFC-WN-D6y" eventType="touchUpInside" id="IFu-DH-N8V"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -9,7 +9,14 @@
 import Foundation
 
 
-enum ProcessingModes {
+enum ProcessingModes
+{
     case Saving
     case Conduction
+}
+
+enum Mode
+{
+    case Edit
+    case New
 }

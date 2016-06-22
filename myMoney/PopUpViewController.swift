@@ -8,10 +8,11 @@
 
 import UIKit
 
-class PopUpViewController: UIViewController {
+class PopUpViewController: UIViewController
+{
     
-    var article: Expenditure!
-    var mode:    Mode!
+    var article: Article!
+   // var mode:    Mode!
     
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var articleNameLabel: UILabel!
@@ -29,10 +30,9 @@ class PopUpViewController: UIViewController {
         
         let priceString = articlePriceTextField.text!.stringByReplacingOccurrencesOfString(",", withString: ".", options: [], range: nil)
         
-        controller.check.addProduct(article)
-        controller.check.addPrice(Float(priceString)!)
-        
-        
+        controller.check?.addArticleInTablePart(Article: article)
+      //  controller.check.addPrice(Float(priceString)!)
+                
         controller.tableView.reloadData()
         
         dismissViewControllerAnimated(true, completion:nil)
@@ -55,7 +55,7 @@ class PopUpViewController: UIViewController {
         
         popUpView.layer.cornerRadius = 10
         
-        articleNameLabel.text! = article.name
+        articleNameLabel.text! = article.name!
         
     }
 

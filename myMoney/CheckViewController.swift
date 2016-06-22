@@ -13,11 +13,17 @@ class CheckViewController: UIViewController
 {
     var managedContext: NSManagedObjectContext!
     
-    var documentsCheckJournal = AllDocuments.sharedInstance().documentsChecksJournal
-    var catalogExpenditure = AllCatalogs.sharedInstance().catalogExpenditure
+    var checkNumber: Int!
+    var mode: Mode = .New
+    var check: Expenditure?
     
-    var check    = Check(mode: Mode.New)
-    
+    var articleCatalog: [Article] = {
+        
+        let articles = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: "Article")) as! [Article]
+        
+        return articles
+    }()
+        
     @IBOutlet weak var priceField:    UITextField!
     @IBOutlet weak var productView:   UIView!
     @IBOutlet weak var tableView:     UITableView!
@@ -25,9 +31,9 @@ class CheckViewController: UIViewController
     @IBOutlet weak var date:          UILabel!
     @IBOutlet weak var AddEditButton: UIButton!
     
-    @IBAction func addNewExpenditure() {
+    @IBAction func addNewArticle() {
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewExpend") as! AddNewItemOfExpenditureViewController
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("addNewArticle") as! AddNewArticleViewController
         
         controller.managedContext = managedContext
         
@@ -37,42 +43,29 @@ class CheckViewController: UIViewController
     
     @IBAction func record() {
         
-        switch check.mode {
-        case .New:
-            conductProcessing(.Conduction)
-        default:
-            conductProcessing(.Saving)
-        }
-        
-        check.sumOfDocument
+        try! DataManager.sharedInstance().saveContext()
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
+        super.viewWillAppear(animated)        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let result = DataManager.sharedInstance().fetchData()
-        
-        catalogExpenditure.items = result
-        
+   
         tileButtons()
         
-        switch check.mode
+        switch mode
         {
         case .Edit:
             AddEditButton.setTitle("Accept", forState: .Normal)
-            number.text = String(check.number)
-            date.text   = String(check.date)
+            number.text = String(check!.number)
+            date.text   = String(check!.date)
             
-        default:
+        case .New:
+            check = Expenditure(Number: checkNumber)
             AddEditButton.setTitle("Record", forState: .Normal)
-            number.text = String(documentsCheckJournal.documents.count + 1)
-            date.text   = String(NSDate())
+            number.text = String(checkNumber)            
         }
     }
     
@@ -82,6 +75,8 @@ class CheckViewController: UIViewController
     }
     
     func tileButtons() {
+        
+        let articleCatalog = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: "Article")) as! [Article]
         
         var rows    = 3
         var columns = 5
@@ -113,7 +108,7 @@ class CheckViewController: UIViewController
         let paddingHorz = (buttonWidth) / 3
         let paddingVert = (buttonHeight) / 2
         
-        for (index, product) in catalogExpenditure.items.enumerate() {
+        for (index, product) in articleCatalog.enumerate() {
             
             let button = UIButton(type: .Custom)
             let image  = UIImage(named: "LandscapeButton")
@@ -149,9 +144,8 @@ class CheckViewController: UIViewController
                     column = 0; x += marginX * 2
                 }
             }
-        }
-    }
-    
+        }      
+    }    
     
     func buttonPressed(sender: UIButton) {
         
@@ -159,15 +153,11 @@ class CheckViewController: UIViewController
         
         let index = sender.tag - 2000
         
-        let article = catalogExpenditure.items[index] as! Expenditure
+        let article = articleCatalog[index]
         
         controller.article = article
-        controller.mode    = check.mode
         
-        presentViewController(controller, animated: true) { 
-            
-        }
-       
+        presentViewController(controller, animated: true, completion: nil)
     }
     
     func conductProcessing(mode: ProcessingModes) {
@@ -176,21 +166,21 @@ class CheckViewController: UIViewController
         
         let controller = navController.topViewController as! DocumentJournalCheckTableViewController
         
-        switch mode
-        {
-        case .Conduction:
-            
-            check.conduct()
-            
-            check.number = Int(number.text!)!
-            
-            documentsCheckJournal.documents.append(check)
-            
-            
-        case .Saving:
-            check.conduct()
-        }
-        
+//        switch mode
+//        {
+//        case .Conduction:
+//            
+//            check.conduct()
+//            
+//            check.number = Int(number.text!)!
+//            
+//            documentsCheckJournal.documents.append(check)
+//            
+//            
+//        case .Saving:
+//            check.conduct()
+//        }
+//        
         
         controller.tableView.reloadData()
         
@@ -203,18 +193,17 @@ class CheckViewController: UIViewController
 extension CheckViewController: UITableViewDataSource, UITableViewDelegate
 {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return check.products.count
+        return check?.tablePart?.articles?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let product = check.products[indexPath.row]
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCellTableViewCell
         
-        cell.name.text  = product.name
-        cell.price.text = String(check.prices[indexPath.row])
-    
+        let article = check?.tablePart?.articles?.allObjects[indexPath.row] as! Article
+        
+        cell.name.text = article.name!
+        
         return cell
     }
 }

@@ -9,12 +9,13 @@
 import UIKit
 import CoreData
 
-class DocumentJournalCheckTableViewController: UITableViewController {
+class DocumentJournalCheckTableViewController: CoreDataTableViewController
+{
     
     var managedContext: NSManagedObjectContext!
     
-    let documentsCheckJournal = AllDocuments.sharedInstance().documentsChecksJournal
-    var catalogExpenditure    = AllCatalogs.sharedInstance().catalogExpenditure
+    var catalogExpenditure = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: "Expenditure")) as? [Expenditure] ?? []
+    var articleCatalog     = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: "Article")) as! [Article]
     
     @IBAction func addNewCheck() {
         addCheck()
@@ -26,12 +27,7 @@ class DocumentJournalCheckTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,15 +43,18 @@ class DocumentJournalCheckTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return documentsCheckJournal.documents.count
+        
+        return catalogExpenditure.count
     }
     
     func addCheck() {
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
         
-        controller.managedContext = managedContext
+        controller.managedContext  = managedContext
+        controller.articleCatalog  = articleCatalog
+        controller.checkNumber     = catalogExpenditure.count + 1
+        controller.mode            = .New
         
         presentViewController(controller, animated: true, completion: nil)
         
@@ -64,14 +63,14 @@ class DocumentJournalCheckTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let check = documentsCheckJournal.documents[indexPath.row] as! Check
+        let expenditure = catalogExpenditure[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CheckCell", forIndexPath: indexPath) as! CheckTableViewCell
         
-        cell.date.text      = String(check.date)
-        cell.number.text    = String(check.number)
-        cell.operation.text = check.operation
-        cell.sum.text       = String(check.sumOfDocument)
+        cell.date.text      = String(expenditure.date)
+        cell.number.text    = String(expenditure.number)
+        cell.operation.text = ""
+        //cell.sum.text       = String(check.sumOfDocument)
         
         return cell
     }
@@ -83,13 +82,9 @@ class DocumentJournalCheckTableViewController: UITableViewController {
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
         
-        let check = documentsCheckJournal.documents[indexPath.row] as! Check
-        
-        check.mode = .Edit
-        
-        controller.check = check
-        
         controller.managedContext = managedContext
+        controller.mode = .Edit
+        controller.check = catalogExpenditure[indexPath.row]
         
         presentViewController(controller, animated: true, completion: nil)        
     }

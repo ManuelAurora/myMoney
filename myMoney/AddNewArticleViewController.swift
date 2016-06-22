@@ -9,30 +9,23 @@
 import UIKit
 import CoreData
 
-class AddNewItemOfExpenditureViewController: UIViewController {
+class AddNewArticleViewController: UIViewController {
 
     var managedContext: NSManagedObjectContext!
-    
-    let catalogOfExpenditure = AllCatalogs.sharedInstance().catalogExpenditure
-    
+       
     @IBOutlet weak var name:                UITextField!
     @IBOutlet weak var useQuantityAndPrice: UISwitch!
     @IBOutlet weak var parentButton:        UIButton!
     
     @IBAction func AddNew(sender: UIButton) {
         
-        let entity = NSEntityDescription.entityForName("Expenditure", inManagedObjectContext: managedContext)
-        let article = Expenditure(entity:entity! , insertIntoManagedObjectContext: managedContext)
+        let article = Article(Name: name.text!)
         
-        article.name = name.text!
-        
-        
-        catalogOfExpenditure.items.append(article)
-        
-        DataManager.sharedInstance().saveEntity(article)
-        
-                
         let controller = self.presentingViewController as! CheckViewController
+        
+        managedContext.insertObject(article)
+        
+        try! DataManager.sharedInstance().saveContext()
         
         controller.tileButtons()
         
