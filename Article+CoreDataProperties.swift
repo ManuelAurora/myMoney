@@ -15,6 +15,7 @@ import CoreData
 extension Article {
 
     @NSManaged var name: String?
+    @NSManaged var price: NSNumber?
     @NSManaged var tablePart: TablePart?
 
 }

@@ -40,15 +40,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myMoney/CheckViewController.swift"
-            timestampString = "488292978.548468"
+            timestampString = "488295016.681302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "tileButtons()"
             landmarkType = "5">
          </BreakpointContent>
@@ -59,29 +59,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myMoney/CheckViewController.swift"
-            timestampString = "488292983.628627"
+            filePath = "Expenditure.swift"
+            timestampString = "488296280.201839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "buttonPressed(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "myMoney/PopUpViewController.swift"
-            timestampString = "488293046.073255"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "addItem()"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "addArticleInTablePart(Article:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

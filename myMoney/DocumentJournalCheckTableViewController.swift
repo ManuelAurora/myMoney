@@ -15,7 +15,7 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
     var managedContext: NSManagedObjectContext!
     
     var catalogExpenditure = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: "Expenditure")) as? [Expenditure] ?? []
-    var articleCatalog     = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: "Article")) as! [Article]
+    var articleCatalog     = AllCatalogs.sharedInstance().catalogArticle
     
     @IBAction func addNewCheck() {
         addCheck()
@@ -82,8 +82,10 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
         
-        controller.managedContext = managedContext
-        controller.mode = .Edit
+        controller.managedContext  = managedContext
+        controller.articleCatalog  = articleCatalog
+        
+        controller.mode  = .Edit
         controller.check = catalogExpenditure[indexPath.row]
         
         presentViewController(controller, animated: true, completion: nil)        

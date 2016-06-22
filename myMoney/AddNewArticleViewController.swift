@@ -23,8 +23,6 @@ class AddNewArticleViewController: UIViewController {
         
         let controller = self.presentingViewController as! CheckViewController
         
-        managedContext.insertObject(article)
-        
         try! DataManager.sharedInstance().saveContext()
         
         controller.tileButtons()

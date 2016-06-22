@@ -7,10 +7,18 @@
 //
 
 import Foundation
+import CoreData
 
 class AllCatalogs
 {
-     let catalogExpenditure = Catalog()
+ 
+    let catalogArticle: Catalog = {
+       
+        let catalog = Catalog(Of: "Article")
+        
+        return catalog
+    }()
+    
     
     class func sharedInstance() -> AllCatalogs {
         struct Singleton {

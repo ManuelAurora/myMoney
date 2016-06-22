@@ -17,13 +17,8 @@ class CheckViewController: UIViewController
     var mode: Mode = .New
     var check: Expenditure?
     
-    var articleCatalog: [Article] = {
-        
-        let articles = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: "Article")) as! [Article]
-        
-        return articles
-    }()
-        
+    var articleCatalog: Catalog!
+    
     @IBOutlet weak var priceField:    UITextField!
     @IBOutlet weak var productView:   UIView!
     @IBOutlet weak var tableView:     UITableView!
@@ -153,7 +148,7 @@ class CheckViewController: UIViewController
         
         let index = sender.tag - 2000
         
-        let article = articleCatalog[index]
+        let article = articleCatalog.allObjects()[index] as! Article
         
         controller.article = article
         
@@ -203,6 +198,7 @@ extension CheckViewController: UITableViewDataSource, UITableViewDelegate
         let article = check?.tablePart?.articles?.allObjects[indexPath.row] as! Article
         
         cell.name.text = article.name!
+        cell.price.text = String(article.price!.floatValue) ?? ""
         
         return cell
     }
