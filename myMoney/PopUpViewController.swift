@@ -11,8 +11,10 @@ import UIKit
 class PopUpViewController: UIViewController
 {
     
-    var article: Article!
-   // var mode:    Mode!
+    var article:             Article!
+    var indexOfStringToEdit: NSIndexPath?
+    
+    var mode: Mode = .New
     
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var articleNameLabel: UILabel!
@@ -30,10 +32,27 @@ class PopUpViewController: UIViewController
         
         let priceString = articlePriceTextField.text!.stringByReplacingOccurrencesOfString(",", withString: ".", options: [], range: nil)
         
-        let articleString = ArticleString(AddArticle: article, intoTablePart: controller.check!.tablePart, withPrice: Float(priceString), amount: nil)
+        if mode == .New {
+            
+            let articleString = ArticleString(AddArticle: article!, intoTablePart: controller.check!.tablePart, withPrice: Float(priceString), amount: nil)
+            
+            controller.check?.addArticleInTablePart(Article: articleString)
+            
+        } else {
+            
+            let articleStrings = controller.check?.tablePart?.articleStrings as! NSMutableSet
+            
+            let stringToEdit = articleStrings.allObjects[indexOfStringToEdit!.row] as! ArticleString
+            
+            stringToEdit.price = Float(articlePriceTextField.text!)
+            
+            let editedString = stringToEdit
+            
+            articleStrings.removeObject(stringToEdit)
+            
+            articleStrings.addObject(editedString)            
+        }
         
-        controller.check?.addArticleInTablePart(Article: articleString)
-                
         controller.tableView.reloadData()
         
         dismissViewControllerAnimated(true, completion:nil)        
@@ -55,7 +74,10 @@ class PopUpViewController: UIViewController
         
         popUpView.layer.cornerRadius = 10
         
-        articleNameLabel.text! = article.name!
+       
+        articleNameLabel.text! = article!.name!
+       
+        
         
     }
 

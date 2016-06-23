@@ -15,7 +15,7 @@ import CoreData
 extension TablePart {
 
     @NSManaged var name: String?
-    @NSManaged var articles: NSSet?
+    @NSManaged var articleStrings: NSSet?
     @NSManaged var expenditure: Expenditure?
 
 }

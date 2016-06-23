@@ -9,10 +9,10 @@
          contextName = "AddNewItemOfExpenditureViewController.AddNew(UIButton) -&gt; ():AddNewItemOfExpenditureViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "catalogOfExpenditure">
+               value = "managedContext">
             </PersistentString>
             <PersistentString
-               value = "managedContext">
+               value = "catalogOfExpenditure">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -20,10 +20,10 @@
          contextName = "CheckViewController.viewWillAppear(Bool) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "catalogExpenditure.items">
+               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
             </PersistentString>
             <PersistentString
-               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
+               value = "catalogExpenditure.items">
             </PersistentString>
             <PersistentString
                value = "result.count ">
@@ -37,10 +37,10 @@
          contextName = "DocumentJournalCheckTableViewController.viewDidLoad() -&gt; ():DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "articleCatalog">
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
             </PersistentString>
             <PersistentString
-               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+               value = "articleCatalog">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -49,6 +49,9 @@
          <PersistentStrings>
             <PersistentString
                value = "article">
+            </PersistentString>
+            <PersistentString
+               value = "article.name">
             </PersistentString>
             <PersistentString
                value = "(articlePriceTextField.text!)">
@@ -78,12 +81,29 @@
          contextName = "CheckViewController.buttonPressed(UIButton) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "article">
+            </PersistentString>
+            <PersistentString
+               value = "articleCatalog.allObjects()[index] as! Article">
+            </PersistentString>
+            <PersistentString
                value = "articleCatalog.allObjects()">
+            </PersistentString>
+            <PersistentString
+               value = "article.name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "DocumentJournalCheckTableViewController.showNewController(Mode) -&gt; ():DocumentJournalCheckTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ArticleString.init(AddArticle : Article, intoTablePart : TablePart?, withPrice : Float?, amount : Float?) -&gt; ArticleString:ArticleString.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "article">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "CheckViewController.tileButtons() -&gt; ():CheckViewController.swift">
@@ -93,14 +113,6 @@
             </PersistentString>
             <PersistentString
                value = "articleCatalog">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ArticleString.init(AddArticle : Article, intoTablePart : TablePart?, withPrice : Float?, amount : Float?) -&gt; ArticleString:ArticleString.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "article">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -124,6 +136,9 @@
          contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "expenditure.date">
+            </PersistentString>
+            <PersistentString
                value = "check.sumOfCheck()">
             </PersistentString>
             <PersistentString
@@ -135,21 +150,24 @@
          contextName = "CheckViewController.viewDidLoad() -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+               value = "catalogExpenditure.items">
             </PersistentString>
             <PersistentString
                value = "catalogExpenditure">
             </PersistentString>
             <PersistentString
-               value = "catalogExpenditure.items">
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CheckViewController.addNewExpenditure() -&gt; ():CheckViewController.swift">
+         contextName = "allRegisters.(removeOldInfo in _59EB766234F271EC26A534511AB14FD8)(Int, inRegister : Register) -&gt; ():AllRegisters.swift">
          <PersistentStrings>
             <PersistentString
-               value = "managedContext">
+               value = "line">
+            </PersistentString>
+            <PersistentString
+               value = "register.lines">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -162,13 +180,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "allRegisters.(removeOldInfo in _59EB766234F271EC26A534511AB14FD8)(Int, inRegister : Register) -&gt; ():AllRegisters.swift">
+         contextName = "CheckViewController.addNewExpenditure() -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "line">
-            </PersistentString>
-            <PersistentString
-               value = "register.lines">
+               value = "managedContext">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

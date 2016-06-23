@@ -136,8 +136,6 @@ extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
         forChangeType type: NSFetchedResultsChangeType,
         newIndexPath: NSIndexPath?) {
             
-            
-            
             switch(type){
                 
             case .Insert:
@@ -153,7 +151,6 @@ extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
                 tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
                 tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
             }
-            
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {

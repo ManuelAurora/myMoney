@@ -8,7 +8,7 @@
         <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="articleString" inverseEntity="Article" syncable="YES"/>
-        <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="articles" inverseEntity="TablePart" syncable="YES"/>
+        <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="articleStrings" inverseEntity="TablePart" syncable="YES"/>
     </entity>
     <entity name="Expenditure" representedClassName="myMoney.Expenditure" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
@@ -17,7 +17,7 @@
     </entity>
     <entity name="TablePart" representedClassName=".TablePart" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="articles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArticleString" inverseName="tablePart" inverseEntity="ArticleString" syncable="YES"/>
+        <relationship name="articleStrings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArticleString" inverseName="tablePart" inverseEntity="ArticleString" syncable="YES"/>
         <relationship name="expenditure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Expenditure" inverseName="tablePart" inverseEntity="Expenditure" syncable="YES"/>
     </entity>
     <elements>

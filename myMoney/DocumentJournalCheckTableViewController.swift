@@ -12,9 +12,8 @@ import CoreData
 class DocumentJournalCheckTableViewController: CoreDataTableViewController
 {
     
-    var managedContext: NSManagedObjectContext!
+    var managedContext: NSManagedObjectContext!    
     
-    var catalogExpenditure = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: "Expenditure")) as? [Expenditure] ?? []
     var articleCatalog     = AllCatalogs.sharedInstance().catalogArticle
     
     @IBAction func addNewCheck() {
@@ -27,7 +26,9 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        fetchData()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,13 +39,14 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return fetchedResultsController!.sections!.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return catalogExpenditure.count
+        let sectionInfo = fetchedResultsController!.sections![section]
+        
+        return sectionInfo.numberOfObjects
     }
     
     func addCheck() {
@@ -53,24 +55,23 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         
         controller.managedContext  = managedContext
         controller.articleCatalog  = articleCatalog
-        controller.checkNumber     = catalogExpenditure.count + 1
+        controller.checkNumber     = fetchedResultsController!.fetchedObjects!.count + 1
         controller.mode            = .New
         
         presentViewController(controller, animated: true, completion: nil)
         
     }
     
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let expenditure = catalogExpenditure[indexPath.row]
+        let expenditure = fetchedResultsController?.objectAtIndexPath(indexPath) as! Expenditure
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CheckCell", forIndexPath: indexPath) as! CheckTableViewCell
-        
-        cell.date.text      = String(expenditure.date)
-        cell.number.text    = String(expenditure.number)
+    
+        cell.date.text      = String(expenditure.date!)
+        cell.number.text    = String(expenditure.number!)
         cell.operation.text = ""
-        //cell.sum.text       = String(check.sumOfDocument)
+        cell.sum.text       = String(expenditure.sumOfDocument())
         
         return cell
     }
@@ -86,46 +87,28 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         controller.articleCatalog  = articleCatalog
         
         controller.mode  = .Edit
-        controller.check = catalogExpenditure[indexPath.row]
+        controller.check = fetchedResultsController!.objectAtIndexPath(indexPath) as? Expenditure
         
         presentViewController(controller, animated: true, completion: nil)        
     }
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-     if editingStyle == .Delete {
-     // Delete the row from the data source
-     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-     } else if editingStyle == .Insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    
-    
+    func fetchData() {
+        
+        let sortDescriptor = NSSortDescriptor(key: "number", ascending: true)
+        
+        let fetchRequest = NSFetchRequest(entityName: "Expenditure")
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            
+            try fetchedResultsController?.performFetch()
+            
+        } catch let error as NSError {
+            
+            print("Error: \(error.localizedDescription)")
+        }
+    }
 }

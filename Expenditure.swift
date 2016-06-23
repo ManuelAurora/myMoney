@@ -32,13 +32,27 @@ class Expenditure: NSManagedObject
     
     func addArticleInTablePart(Article article: ArticleString) {
                        
-        let table = tablePart?.articles as! NSMutableSet
+        let table = tablePart?.articleStrings as! NSMutableSet
         
         table.addObject(article)
         
         let set = table as NSSet
         
-        tablePart?.articles = set        
+        tablePart?.articleStrings = set        
+    }
+    
+    func sumOfDocument() -> Float {
+        
+        let items = tablePart!.articleStrings!.allObjects as! [ArticleString]
+        
+        var sum: Float = 0
+        
+        for item in items {
+            
+            sum += item.price!.floatValue
+        }
+        
+        return sum
     }
     
 }

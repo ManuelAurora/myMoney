@@ -34,11 +34,26 @@ class CheckViewController: UIViewController
         
         presentViewController(controller, animated: true, completion: nil)
         
+        
+    }
+    
+    @IBAction func Cancel() {
+    
+        dismissViewControllerAnimated(true, completion: nil)
+        managedContext.rollback()
     }
     
     @IBAction func record() {
         
         try! DataManager.sharedInstance().saveContext()
+        
+        let navController = self.presentingViewController as! UINavigationController
+        
+        let controller = navController.topViewController as! DocumentJournalCheckTableViewController
+        
+        controller.fetchData()
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,13 +69,14 @@ class CheckViewController: UIViewController
         {
         case .Edit:
             AddEditButton.setTitle("Accept", forState: .Normal)
-            number.text = String(check!.number)
-            date.text   = String(check!.date)
+            number.text = String(check!.number!)
+            date.text   = String(check!.date!)
             
         case .New:
             check = Expenditure(Number: checkNumber)
             AddEditButton.setTitle("Record", forState: .Normal)
-            number.text = String(checkNumber)            
+            number.text = String(checkNumber!)
+            date.text = String(check!.date!)
         }
     }
     
@@ -152,6 +168,8 @@ class CheckViewController: UIViewController
         
         controller.article = article
         
+        controller.mode = .New
+        
         presentViewController(controller, animated: true, completion: nil)
     }
     
@@ -188,19 +206,37 @@ class CheckViewController: UIViewController
 extension CheckViewController: UITableViewDataSource, UITableViewDelegate
 {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return check?.tablePart?.articles?.count ?? 0
+        return check?.tablePart?.articleStrings?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCellTableViewCell
         
-        let articleString = check?.tablePart?.articles?.allObjects[indexPath.row] as! ArticleString
+        let articleString = check?.tablePart?.articleStrings?.allObjects[indexPath.row] as! ArticleString
         
         cell.name.text  = articleString.article!.name
         cell.price.text = String(articleString.price!.floatValue) ?? ""
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
+        
+        let articleString = check?.tablePart?.articleStrings?.allObjects[indexPath.row] as! ArticleString
+        let article       = articleString.article
+                
+        controller.mode                = .Edit
+        controller.article             = article
+        controller.indexOfStringToEdit = indexPath
+        
+        presentViewController(controller, animated: true) { something in
+            //
+        }
+        
     }
 }
 
