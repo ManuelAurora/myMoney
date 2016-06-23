@@ -40,6 +40,8 @@ class PopUpViewController: UIViewController
             
         } else {
             
+            let expenditure = controller.check
+            
             let articleStrings = controller.check?.tablePart?.articleStrings as! NSMutableSet
             
             let stringToEdit = articleStrings.allObjects[indexOfStringToEdit!.row] as! ArticleString
@@ -48,9 +50,7 @@ class PopUpViewController: UIViewController
             
             let editedString = stringToEdit
             
-            articleStrings.removeObject(stringToEdit)
-            
-            articleStrings.addObject(editedString)            
+            expenditure?.editObject(OldVersion: stringToEdit, newVersion: editedString)            
         }
         
         controller.tableView.reloadData()

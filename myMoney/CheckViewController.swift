@@ -171,41 +171,13 @@ class CheckViewController: UIViewController
         controller.mode = .New
         
         presentViewController(controller, animated: true, completion: nil)
-    }
-    
-    func conductProcessing(mode: ProcessingModes) {
-        
-        let navController = self.presentingViewController as! UINavigationController
-        
-        let controller = navController.topViewController as! DocumentJournalCheckTableViewController
-        
-//        switch mode
-//        {
-//        case .Conduction:
-//            
-//            check.conduct()
-//            
-//            check.number = Int(number.text!)!
-//            
-//            documentsCheckJournal.documents.append(check)
-//            
-//            
-//        case .Saving:
-//            check.conduct()
-//        }
-//        
-        
-        controller.tableView.reloadData()
-        
-        dismissViewControllerAnimated(true, completion: nil)        
-        
-    }
-
+    }    
 }
 
 extension CheckViewController: UITableViewDataSource, UITableViewDelegate
 {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return check?.tablePart?.articleStrings?.count ?? 0
     }
     
@@ -222,6 +194,7 @@ extension CheckViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
@@ -233,10 +206,18 @@ extension CheckViewController: UITableViewDataSource, UITableViewDelegate
         controller.article             = article
         controller.indexOfStringToEdit = indexPath
         
-        presentViewController(controller, animated: true) { something in
-            //
-        }
+        presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
+        let articleString = check?.tablePart?.articleStrings?.allObjects[indexPath.row] as! ArticleString
+        
+        check?.removeArticleInTablePart(Article: articleString)
+        
+        try! managedContext.save()
+        
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)      
     }
 }
 
