@@ -21,7 +21,6 @@ class CheckViewController: CoreDataTableViewController
     
     @IBOutlet weak var priceField:    UITextField!
     @IBOutlet weak var productView:   UIView!
-    @IBOutlet weak var number:        UILabel!
     @IBOutlet weak var date:          UILabel!
     @IBOutlet weak var AddEditButton: UIButton!
     
@@ -65,14 +64,12 @@ class CheckViewController: CoreDataTableViewController
         switch mode
         {
         case .Edit:
-            AddEditButton.setTitle("Accept", forState: .Normal)
-            number.text = String(check!.number!)
+            AddEditButton.setTitle("Принять", forState: .Normal)
             date.text   = String(check!.date!)
             
         case .New:
             check = Expenditure(Number: checkNumber)
-            AddEditButton.setTitle("Record", forState: .Normal)
-            number.text = String(checkNumber!)
+            AddEditButton.setTitle("Запись", forState: .Normal)
             date.text = String(check!.date!)
         }
         

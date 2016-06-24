@@ -15,7 +15,6 @@ import CoreData
 extension Expenditure {
 
     @NSManaged var date: NSDate?
-    @NSManaged var number: NSNumber?
     @NSManaged var tablePart: TablePart?
 
 }

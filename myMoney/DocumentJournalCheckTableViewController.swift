@@ -20,8 +20,17 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         addCheck()
     }
     
-    @IBAction func refresh() {
-        tableView.reloadData()
+    @IBAction func addNewIncome() {
+        
+        addIncome()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setToolbarHidden(false, animated: true)
+        
+        
     }
     
     override func viewDidLoad() {
@@ -62,14 +71,22 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         
     }
     
+    func addIncome() {
+        
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("Income") as! IncomeViewController
+        
+        presentViewController(controller, animated: true, completion: nil)
+        
+    }
+    
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let expenditure = fetchedResultsController?.objectAtIndexPath(indexPath) as! Expenditure
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CheckCell", forIndexPath: indexPath) as! CheckTableViewCell
     
-        cell.date.text      = String(expenditure.date!)
-        cell.number.text    = String(expenditure.number!)
+        cell.date.text      = String(expenditure.date!)        
         cell.operation.text = ""
         cell.sum.text       = String(expenditure.sumOfDocument())
         

@@ -25,8 +25,7 @@ class Expenditure: NSManagedObject
         
         self.init(entity: entity!, insertIntoManagedObjectContext: context)
         
-        self.tablePart = tablePart
-        self.number    = NSNumber(integer: number)
+        self.tablePart = tablePart     
         self.date      = NSDate()
     }
     

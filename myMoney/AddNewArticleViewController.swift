@@ -22,7 +22,7 @@ class AddNewArticleViewController: UIViewController {
         let article = Article(Name: name.text!)
         
         let controller = self.presentingViewController as! CheckViewController
-        
+       
         try! DataManager.sharedInstance().saveContext()
         
         controller.tileButtons()
@@ -37,7 +37,7 @@ class AddNewArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        name.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {

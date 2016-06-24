@@ -13,18 +13,17 @@
     </entity>
     <entity name="Expenditure" representedClassName="myMoney.Expenditure" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="number" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="expenditure" inverseEntity="TablePart" syncable="YES"/>
+        <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TablePart" inverseName="expenditure" inverseEntity="TablePart" syncable="YES"/>
     </entity>
     <entity name="TablePart" representedClassName=".TablePart" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="articleStrings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArticleString" inverseName="tablePart" inverseEntity="ArticleString" syncable="YES"/>
+        <relationship name="articleStrings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ArticleString" inverseName="tablePart" inverseEntity="ArticleString" syncable="YES"/>
         <relationship name="expenditure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Expenditure" inverseName="tablePart" inverseEntity="Expenditure" syncable="YES"/>
     </entity>
     <elements>
         <element name="Article" positionX="79" positionY="171" width="128" height="73"/>
         <element name="ArticleString" positionX="-162" positionY="5" width="128" height="118"/>
-        <element name="Expenditure" positionX="-578" positionY="-234" width="128" height="90"/>
+        <element name="Expenditure" positionX="-578" positionY="-234" width="128" height="73"/>
         <element name="TablePart" positionX="-362" positionY="-124" width="128" height="88"/>
     </elements>
 </model>
