@@ -111,7 +111,7 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
     
     func fetchData() {
         
-        let sortDescriptor = NSSortDescriptor(key: "number", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         
         let fetchRequest = NSFetchRequest(entityName: "Expenditure")
         
