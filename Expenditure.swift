@@ -34,21 +34,7 @@ class Expenditure: NSManagedObject
                        
        managedObjectContext?.insertObject(article)        
     }
-    
-    func removeArticleInTablePart(Article article: ArticleString) {
-        
-        managedObjectContext?.deleteObject(article)
-    }
-    
-    func editObject(OldVersion object: ArticleString, newVersion: ArticleString) {
-        
-        let table = tablePart?.articleStrings as! NSMutableSet
-
-        table.removeObject(object)
-        
-        table.addObject(newVersion)
-    }
-    
+      
     func sumOfDocument() -> Float {
         
         let items = tablePart!.articleStrings!.allObjects as! [ArticleString]

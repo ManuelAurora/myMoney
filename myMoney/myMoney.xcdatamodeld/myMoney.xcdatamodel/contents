@@ -6,6 +6,7 @@
     </entity>
     <entity name="ArticleString" representedClassName="myMoney.ArticleString" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="articleString" inverseEntity="Article" syncable="YES"/>
         <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="articleStrings" inverseEntity="TablePart" syncable="YES"/>
@@ -22,8 +23,8 @@
     </entity>
     <elements>
         <element name="Article" positionX="79" positionY="171" width="128" height="73"/>
+        <element name="ArticleString" positionX="-162" positionY="5" width="128" height="118"/>
         <element name="Expenditure" positionX="-578" positionY="-234" width="128" height="90"/>
         <element name="TablePart" positionX="-362" positionY="-124" width="128" height="88"/>
-        <element name="ArticleString" positionX="-162" positionY="5" width="128" height="103"/>
     </elements>
 </model>

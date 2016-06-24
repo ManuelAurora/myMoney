@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CheckViewController: UIViewController
+class CheckViewController: CoreDataTableViewController
 {
     var managedContext: NSManagedObjectContext!
     
@@ -21,7 +21,7 @@ class CheckViewController: UIViewController
     
     @IBOutlet weak var priceField:    UITextField!
     @IBOutlet weak var productView:   UIView!
-    @IBOutlet weak var tableView:     UITableView!
+    @IBOutlet weak var table:     UITableView!
     @IBOutlet weak var number:        UILabel!
     @IBOutlet weak var date:          UILabel!
     @IBOutlet weak var AddEditButton: UIButton!
@@ -62,8 +62,6 @@ class CheckViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
-        tileButtons()
         
         switch mode
         {
@@ -78,6 +76,10 @@ class CheckViewController: UIViewController
             number.text = String(checkNumber!)
             date.text = String(check!.date!)
         }
+        
+        fetchData()
+        
+        tileButtons()
     }
     
     override func didReceiveMemoryWarning() {
@@ -171,37 +173,70 @@ class CheckViewController: UIViewController
         controller.mode = .New
         
         presentViewController(controller, animated: true, completion: nil)
-    }    
-}
-
-extension CheckViewController: UITableViewDataSource, UITableViewDelegate
-{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return check?.tablePart?.articleStrings?.count ?? 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func fetchData() {
+        
+        let sortDescriptor = NSSortDescriptor(key: "number", ascending: true)
+        
+        let predicate = NSPredicate(format: "tablePart.expenditure = %@", check!)
+        
+        let fetchRequest = NSFetchRequest(entityName: "ArticleString")
+        
+        fetchRequest.predicate = predicate
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            
+            try fetchedResultsController?.performFetch()
+            
+        } catch let error as NSError {
+            
+            print("Error: \(error.localizedDescription)")
+        }
+    }
+}
+
+extension CheckViewController
+{
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return fetchedResultsController!.sections!.count
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        let section = fetchedResultsController!.sections![section]
+        
+        return section.objects!.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCellTableViewCell
         
-        let articleString = check?.tablePart?.articleStrings?.allObjects[indexPath.row] as! ArticleString
+        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! ArticleString
         
         cell.name.text  = articleString.article!.name
         cell.price.text = String(articleString.price!.floatValue) ?? ""
+        cell.number.text = String(indexPath.row + 1)
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-       
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
-        let articleString = check?.tablePart?.articleStrings?.allObjects[indexPath.row] as! ArticleString
+        
+        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! ArticleString
+        
         let article       = articleString.article
-                
+        
         controller.mode                = .Edit
         controller.article             = article
         controller.indexOfStringToEdit = indexPath
@@ -209,15 +244,15 @@ extension CheckViewController: UITableViewDataSource, UITableViewDelegate
         presentViewController(controller, animated: true, completion: nil)
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        let articleString = check?.tablePart?.articleStrings?.allObjects[indexPath.row] as! ArticleString
+        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! ArticleString
         
-        check?.removeArticleInTablePart(Article: articleString)
-        
-        try! managedContext.save()
-        
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)      
+        fetchedResultsController?.managedObjectContext.deleteObject(articleString)        
     }
 }
 

@@ -36,25 +36,13 @@ class PopUpViewController: UIViewController
             
             let articleString = ArticleString(AddArticle: article!, intoTablePart: controller.check!.tablePart, withPrice: Float(priceString), amount: nil)
             
-            controller.check?.addArticleInTablePart(Article: articleString)
-            
         } else {
             
-            let expenditure = controller.check
-            
-            let articleStrings = controller.check?.tablePart?.articleStrings as! NSMutableSet
-            
-            let stringToEdit = articleStrings.allObjects[indexOfStringToEdit!.row] as! ArticleString
+            let stringToEdit = controller.fetchedResultsController!.objectAtIndexPath(indexOfStringToEdit!) as! ArticleString
             
             stringToEdit.price = Float(articlePriceTextField.text!)
-            
-            let editedString = stringToEdit
-            
-            expenditure?.editObject(OldVersion: stringToEdit, newVersion: editedString)            
         }
-        
-        controller.tableView.reloadData()
-        
+              
         dismissViewControllerAnimated(true, completion:nil)        
     }
     
@@ -75,10 +63,7 @@ class PopUpViewController: UIViewController
         popUpView.layer.cornerRadius = 10
         
        
-        articleNameLabel.text! = article!.name!
-       
-        
-        
+        articleNameLabel.text! = article!.name!        
     }
 
     override func didReceiveMemoryWarning() {
