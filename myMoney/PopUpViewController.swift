@@ -36,6 +36,10 @@ class PopUpViewController: UIViewController
             
             let articleString = ArticleString(AddArticle: article!, intoTablePart: controller.check!.tablePart, withPrice: Float(priceString), amount: nil)
             
+            articleString.number = controller.fetchedResultsController!.sections![0].numberOfObjects + 1
+            
+            controller.renumerateStrings()
+            
         } else {
             
             let stringToEdit = controller.fetchedResultsController!.objectAtIndexPath(indexOfStringToEdit!) as! ArticleString

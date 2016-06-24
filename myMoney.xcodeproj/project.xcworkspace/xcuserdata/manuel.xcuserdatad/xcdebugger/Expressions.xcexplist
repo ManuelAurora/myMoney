@@ -17,6 +17,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "CheckViewController.tableView(UITableView, commitEditingStyle : UITableViewCellEditingStyle, forRowAtIndexPath : NSIndexPath) -&gt; ():CheckViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CheckViewController.viewWillAppear(Bool) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -123,13 +131,16 @@
          contextName = "CheckViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "tableView.numberOfRowsInSection(0)">
+            </PersistentString>
+            <PersistentString
                value = "indexPath.row + 1">
             </PersistentString>
             <PersistentString
-               value = "indexPath.row">
+               value = "cell.number.text">
             </PersistentString>
             <PersistentString
-               value = "tableView.numberOfRowsInSection(0)">
+               value = "articleString.deleted">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

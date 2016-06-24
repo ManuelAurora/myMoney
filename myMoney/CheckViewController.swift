@@ -21,7 +21,6 @@ class CheckViewController: CoreDataTableViewController
     
     @IBOutlet weak var priceField:    UITextField!
     @IBOutlet weak var productView:   UIView!
-    @IBOutlet weak var table:     UITableView!
     @IBOutlet weak var number:        UILabel!
     @IBOutlet weak var date:          UILabel!
     @IBOutlet weak var AddEditButton: UIButton!
@@ -198,6 +197,20 @@ class CheckViewController: CoreDataTableViewController
             print("Error: \(error.localizedDescription)")
         }
     }
+    
+    func renumerateStrings() {
+        
+        var number = 1
+        
+        for string in fetchedResultsController!.fetchedObjects! as! [ArticleString]
+        {
+            if !string.deleted {
+                string.number = number
+                number += 1
+            }
+        }
+    }
+    
 }
 
 extension CheckViewController
@@ -222,7 +235,7 @@ extension CheckViewController
         cell.name.text  = articleString.article!.name
         cell.price.text = String(articleString.price!.floatValue) ?? ""
         cell.number.text = String(indexPath.row + 1)
-        
+                
         return cell
     }
     
@@ -252,7 +265,8 @@ extension CheckViewController
         
         let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! ArticleString
         
-        fetchedResultsController?.managedObjectContext.deleteObject(articleString)        
+        managedContext.deleteObject(articleString)
+        renumerateStrings()
     }
 }
 
