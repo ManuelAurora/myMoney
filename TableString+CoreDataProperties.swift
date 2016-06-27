@@ -1,5 +1,5 @@
 //
-//  ArticleString+CoreDataProperties.swift
+//  TableString+CoreDataProperties.swift
 //  myMoney
 //
 //  Created by Мануэль on 27.06.16.
@@ -12,7 +12,7 @@
 import Foundation
 import CoreData
 
-extension ArticleString {
+extension TableString {
 
     @NSManaged var amount: NSNumber?
     @NSManaged var number: NSNumber?

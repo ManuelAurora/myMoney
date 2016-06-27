@@ -2,28 +2,34 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Automatic">
     <entity name="Article" representedClassName="myMoney.Article" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="articleString" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArticleString" inverseName="article" inverseEntity="ArticleString" syncable="YES"/>
-    </entity>
-    <entity name="ArticleString" representedClassName="myMoney.ArticleString" syncable="YES">
-        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
-        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="articleString" inverseEntity="Article" syncable="YES"/>
-        <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="articleStrings" inverseEntity="TablePart" syncable="YES"/>
+        <relationship name="articleString" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TableString" inverseName="article" inverseEntity="TableString" syncable="YES"/>
     </entity>
     <entity name="Expenditure" representedClassName="myMoney.Expenditure" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TablePart" inverseName="expenditure" inverseEntity="TablePart" syncable="YES"/>
     </entity>
+    <entity name="Income" representedClassName=".Income" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="income" inverseEntity="TablePart" syncable="YES"/>
+    </entity>
     <entity name="TablePart" representedClassName=".TablePart" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="articleStrings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ArticleString" inverseName="tablePart" inverseEntity="ArticleString" syncable="YES"/>
         <relationship name="expenditure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Expenditure" inverseName="tablePart" inverseEntity="Expenditure" syncable="YES"/>
+        <relationship name="income" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Income" inverseName="tablePart" inverseEntity="Income" syncable="YES"/>
+        <relationship name="tableString" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TableString" inverseName="tablePart" inverseEntity="TableString" syncable="YES"/>
+    </entity>
+    <entity name="TableString" representedClassName="myMoney.TableString" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="articleString" inverseEntity="Article" syncable="YES"/>
+        <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="tableString" inverseEntity="TablePart" syncable="YES"/>
     </entity>
     <elements>
         <element name="Article" positionX="79" positionY="171" width="128" height="73"/>
-        <element name="ArticleString" positionX="-162" positionY="5" width="128" height="118"/>
+        <element name="TableString" positionX="-162" positionY="5" width="128" height="120"/>
         <element name="Expenditure" positionX="-578" positionY="-234" width="128" height="73"/>
-        <element name="TablePart" positionX="-362" positionY="-124" width="128" height="88"/>
+        <element name="TablePart" positionX="-362" positionY="-124" width="128" height="105"/>
+        <element name="Income" positionX="-378" positionY="-90" width="128" height="75"/>
     </elements>
 </model>

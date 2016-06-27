@@ -20,3 +20,9 @@ enum Mode
     case Edit
     case New
 }
+
+enum DocType
+{
+    case Income
+    case Expense
+}

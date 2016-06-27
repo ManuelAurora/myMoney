@@ -29,14 +29,14 @@ class Expenditure: NSManagedObject
         self.date      = NSDate()
     }
     
-    func addArticleInTablePart(Article article: ArticleString) {
+    func addArticleInTablePart(Article article: TableString) {
                        
        managedObjectContext?.insertObject(article)        
     }
       
     func sumOfDocument() -> Float {
         
-        let items = tablePart!.articleStrings!.allObjects as! [ArticleString]
+        let items = tablePart!.tableString!.allObjects as! [TableString]
         
         var sum: Float = 0
         

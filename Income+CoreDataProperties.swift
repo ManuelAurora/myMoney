@@ -1,5 +1,5 @@
 //
-//  ArticleString+CoreDataProperties.swift
+//  Income+CoreDataProperties.swift
 //  myMoney
 //
 //  Created by Мануэль on 27.06.16.
@@ -12,12 +12,9 @@
 import Foundation
 import CoreData
 
-extension ArticleString {
+extension Income {
 
-    @NSManaged var amount: NSNumber?
-    @NSManaged var number: NSNumber?
-    @NSManaged var price: NSNumber?
-    @NSManaged var article: Article?
+    @NSManaged var date: NSDate?
     @NSManaged var tablePart: TablePart?
 
 }

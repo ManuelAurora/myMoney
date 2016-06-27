@@ -75,6 +75,8 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("Income") as! IncomeViewController
         
+        controller.managedContext = managedContext
+        
         presentViewController(controller, animated: true, completion: nil)
         
     }

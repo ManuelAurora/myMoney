@@ -32,7 +32,6 @@ class CheckViewController: CoreDataTableViewController
         
         presentViewController(controller, animated: true, completion: nil)
         
-        
     }
     
     @IBAction func Cancel() {
@@ -119,6 +118,8 @@ class CheckViewController: CoreDataTableViewController
         
         for (index, product) in articleCatalog.enumerate() {
             
+            print(product.name)
+            
             let button = UIButton(type: .Custom)
             let image  = UIImage(named: "LandscapeButton")
             let label  = UILabel()
@@ -167,6 +168,7 @@ class CheckViewController: CoreDataTableViewController
         controller.article = article
         
         controller.mode = .New
+
         
         presentViewController(controller, animated: true, completion: nil)
     }
@@ -177,7 +179,7 @@ class CheckViewController: CoreDataTableViewController
         
         let predicate = NSPredicate(format: "tablePart.expenditure = %@", check!)
         
-        let fetchRequest = NSFetchRequest(entityName: "ArticleString")
+        let fetchRequest = NSFetchRequest(entityName: "TableString")
         
         fetchRequest.predicate = predicate
         
@@ -199,7 +201,7 @@ class CheckViewController: CoreDataTableViewController
         
         var number = 1
         
-        for string in fetchedResultsController!.fetchedObjects! as! [ArticleString]
+        for string in fetchedResultsController!.fetchedObjects! as! [TableString]
         {
             if !string.deleted {
                 string.number = number
@@ -227,7 +229,7 @@ extension CheckViewController
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCellTableViewCell
         
-        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! ArticleString
+        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
         
         cell.name.text  = articleString.article!.name
         cell.price.text = String(articleString.price!.floatValue) ?? ""
@@ -243,7 +245,7 @@ extension CheckViewController
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
         
-        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! ArticleString
+        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
         
         let article       = articleString.article
         
@@ -260,7 +262,7 @@ extension CheckViewController
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! ArticleString
+        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
         
         managedContext.deleteObject(articleString)
         renumerateStrings()

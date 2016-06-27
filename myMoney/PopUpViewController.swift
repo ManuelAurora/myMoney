@@ -14,9 +14,11 @@ class PopUpViewController: UIViewController
     var article:             Article!
     var indexOfStringToEdit: NSIndexPath?
     
-    var mode: Mode = .New
+    var mode:    Mode    = .New
+    var docType: DocType = .Expense
     
-    @IBOutlet weak var popUpView: UIView!
+    @IBOutlet weak var popUpViewExpense: UIView!
+    @IBOutlet weak var popUpViewIncome: UIView!
     @IBOutlet weak var articleNameLabel: UILabel!
     @IBOutlet weak var articlePriceTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
@@ -27,27 +29,8 @@ class PopUpViewController: UIViewController
     }
     
     @IBAction func addItem() {
-        
-        let controller = presentingViewController as! CheckViewController
-        
-        let priceString = articlePriceTextField.text!.stringByReplacingOccurrencesOfString(",", withString: ".", options: [], range: nil)
-        
-        if mode == .New {
-            
-            let articleString = ArticleString(AddArticle: article!, intoTablePart: controller.check!.tablePart, withPrice: Float(priceString), amount: nil)
-            
-            articleString.number = controller.fetchedResultsController!.sections![0].numberOfObjects + 1
-            
-            controller.renumerateStrings()
-            
-        } else {
-            
-            let stringToEdit = controller.fetchedResultsController!.objectAtIndexPath(indexOfStringToEdit!) as! ArticleString
-            
-            stringToEdit.price = Float(articlePriceTextField.text!)
-        }
-              
-        dismissViewControllerAnimated(true, completion:nil)        
+       
+        addNewItem()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,10 +47,21 @@ class PopUpViewController: UIViewController
         
         view.backgroundColor = UIColor.clearColor()
         
-        popUpView.layer.cornerRadius = 10
+        if docType == .Expense {
+            
+            popUpViewIncome.hidden = true
+            articleNameLabel.text! = article!.name!
+            
+        } else {
+            
+            popUpViewExpense.hidden  = true
+            
+        }
         
+        popUpViewIncome.layer.cornerRadius  = 10
+        popUpViewExpense.layer.cornerRadius = 10
        
-        articleNameLabel.text! = article!.name!        
+        
     }
 
     override func didReceiveMemoryWarning() {
