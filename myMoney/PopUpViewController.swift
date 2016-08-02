@@ -12,7 +12,7 @@ class PopUpViewController: UIViewController
 {
     
     var article:      Article?
-    var incomeString: TableString?
+    var tableString:  TableString?
         
     var mode:    Mode    = .New
     var docType: DocType = .Expense

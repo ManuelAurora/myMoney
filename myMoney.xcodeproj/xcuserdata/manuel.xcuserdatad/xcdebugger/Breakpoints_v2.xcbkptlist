@@ -107,54 +107,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myMoney/IncomeViewController.swift"
-            timestampString = "491838677.883594"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "addNew(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "myMoney.IncomeViewController.addNew (Swift.AnyObject) -&gt; ()"
-                  moduleName = "myMoney"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F%201/Projects/myMoney/myMoney/IncomeViewController.swift"
-                  timestampString = "491838976.410311"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "myMoney.IncomeViewController.addNew (Swift.AnyObject) -&gt; ()"
-                  moduleName = "myMoney"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F%201/Projects/myMoney/myMoney/IncomeViewController.swift"
-                  timestampString = "491838976.410409"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "726">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "myMoney/PopUpViewController.swift"
             timestampString = "491839679.850431"
             startingColumnNumber = "9223372036854775807"

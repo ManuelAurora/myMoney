@@ -19,6 +19,9 @@ class IncomeViewController: CoreDataTableViewController
     
     @IBAction func record(sender: AnyObject) {
         
+        try! managedContext.save()
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func cancel(sender: UIButton) {
@@ -64,9 +67,7 @@ class IncomeViewController: CoreDataTableViewController
             
             print("Error: \(error.localizedDescription)")
         }
-    }
-    
-    
+    }    
 }
 
 
@@ -108,7 +109,7 @@ extension IncomeViewController
         controller.mode    = .Edit
         controller.docType = .Income
         
-        controller.incomeString = incomeString
+        controller.tableString = incomeString
         
         presentViewController(controller, animated: true, completion: nil)
     }

@@ -28,7 +28,7 @@ extension PopUpViewController
             }
             else
             {
-                guard let stringToEdit = incomeString else { return }
+                guard let stringToEdit = tableString else { return }
                 
                 stringToEdit.price = Float(articlePriceTextField.text!)
             }
@@ -44,11 +44,13 @@ extension PopUpViewController
             
             if mode == .New
             {
-            _ = TableString(AddArticle: nil, intoTablePart: controller.income!.tablePart, withPrice: Float(priceString), amount: nil)
+                _ = TableString(AddArticle: nil, intoTablePart: controller.income!.tablePart, withPrice: Float(priceString), amount: nil)
             }
             else
             {
+                guard let stringToEdit = tableString else { return }
                 
+                stringToEdit.price = Double(priceString)
             }
         }
      

@@ -42,7 +42,7 @@ class CheckViewController: CoreDataTableViewController
     
     @IBAction func record() {
         
-        try! DataManager.sharedInstance().saveContext()
+        try! managedContext.save()
         
         let navController = self.presentingViewController as! UINavigationController
         
@@ -249,9 +249,9 @@ extension CheckViewController
         
         let article       = articleString.article
         
-        controller.mode                = .Edit
-        controller.article             = article
-        controller.indexOfStringToEdit = indexPath
+        controller.mode        = .Edit
+        controller.article     = article
+        controller.tableString = articleString
         
         presentViewController(controller, animated: true, completion: nil)
     }
