@@ -15,6 +15,6 @@ import CoreData
 extension Article {
 
     @NSManaged var name: String?
-    @NSManaged var articleString: NSSet?
+    @NSManaged var articleString: [TableString]?
 
 }

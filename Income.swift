@@ -31,9 +31,4 @@ class Income: NSManagedObject
         self.date      = NSDate()
     }
     
-    func addIncomeInTablePart(Income income: TableString) {
-        
-        managedObjectContext?.insertObject(income)
-    }
-      
 }

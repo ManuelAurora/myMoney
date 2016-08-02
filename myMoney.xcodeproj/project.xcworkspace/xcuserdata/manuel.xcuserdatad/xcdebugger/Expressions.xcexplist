@@ -3,6 +3,20 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "PopUpViewController.addNewItem() -&gt; ():PopUpVCActions.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "presentingViewController">
+            </PersistentString>
+            <PersistentString
+               value = "controller.income!.tablePart">
+            </PersistentString>
+            <PersistentString
+               value = "controller">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Expenditure.addArticleInTablePart(Article : Article) -&gt; ():Expenditure.swift">
       </ContextState>
       <ContextState
@@ -59,10 +73,13 @@
                value = "article">
             </PersistentString>
             <PersistentString
+               value = "(articlePriceTextField.text!)">
+            </PersistentString>
+            <PersistentString
                value = "article.name">
             </PersistentString>
             <PersistentString
-               value = "(articlePriceTextField.text!)">
+               value = "IncomeNameTextField">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -98,10 +115,10 @@
                value = "articleCatalog.allObjects()[5]">
             </PersistentString>
             <PersistentString
-               value = "articleCatalog.allObjects()">
+               value = "article.name">
             </PersistentString>
             <PersistentString
-               value = "article.name">
+               value = "articleCatalog.allObjects()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -161,6 +178,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Expenditure.sumOfDocument() -&gt; Float:Expenditure.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "items.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -195,13 +220,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "allRegisters.(removeOldInfo in _59EB766234F271EC26A534511AB14FD8)(Int, inRegister : Register) -&gt; ():AllRegisters.swift">
+         contextName = "CheckViewController.addNewExpenditure() -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "line">
-            </PersistentString>
-            <PersistentString
-               value = "register.lines">
+               value = "managedContext">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -214,10 +236,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CheckViewController.addNewExpenditure() -&gt; ():CheckViewController.swift">
+         contextName = "allRegisters.(removeOldInfo in _59EB766234F271EC26A534511AB14FD8)(Int, inRegister : Register) -&gt; ():AllRegisters.swift">
          <PersistentStrings>
             <PersistentString
-               value = "managedContext">
+               value = "line">
+            </PersistentString>
+            <PersistentString
+               value = "register.lines">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

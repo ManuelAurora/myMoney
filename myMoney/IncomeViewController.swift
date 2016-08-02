@@ -88,8 +88,11 @@ extension IncomeViewController
         let cell = tableView.dequeueReusableCellWithIdentifier("IncomeCell") as! IncomeTableViewCell
         
         let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
-                
-        cell.title.text  = String(articleString.price?.floatValue)
+        
+        if let text = articleString.price?.floatValue
+        {
+            cell.title.text  = "\(text)"
+        }
         
         return cell
     }
@@ -100,12 +103,12 @@ extension IncomeViewController
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
+        let incomeString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
         
-        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
+        controller.mode    = .Edit
+        controller.docType = .Income
         
-        controller.mode                = .Edit
-        
-        controller.indexOfStringToEdit = indexPath
+        controller.incomeString = incomeString
         
         presentViewController(controller, animated: true, completion: nil)
     }

@@ -11,12 +11,13 @@ import UIKit
 class PopUpViewController: UIViewController
 {
     
-    var article:             Article!
-    var indexOfStringToEdit: NSIndexPath?
-    
+    var article:      Article?
+    var incomeString: TableString?
+        
     var mode:    Mode    = .New
     var docType: DocType = .Expense
     
+    @IBOutlet weak var incomeNameTextField: UITextField!
     @IBOutlet weak var popUpViewExpense: UIView!
     @IBOutlet weak var popUpViewIncome: UIView!
     @IBOutlet weak var articleNameLabel: UILabel!
@@ -30,7 +31,7 @@ class PopUpViewController: UIViewController
     
     @IBAction func addItem() {
        
-        addNewItem()
+        addNewOrEditItem()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,20 +43,21 @@ class PopUpViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        articlePriceTextField.becomeFirstResponder()
         
         view.backgroundColor = UIColor.clearColor()
         
-        if docType == .Expense {
+        if docType == .Expense
+        {
+            articlePriceTextField.becomeFirstResponder()
             
             popUpViewIncome.hidden = true
             articleNameLabel.text! = article!.name!
             
-        } else {
-            
+        }
+        else
+        {
+            incomeNameTextField.becomeFirstResponder()
             popUpViewExpense.hidden  = true
-            
         }
         
         popUpViewIncome.layer.cornerRadius  = 10
