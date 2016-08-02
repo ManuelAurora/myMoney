@@ -12,24 +12,14 @@ import CoreData
 class DocumentJournalCheckTableViewController: CoreDataTableViewController
 {
     
-    var managedContext: NSManagedObjectContext!    
+    var managedContext: NSManagedObjectContext!
     
-    var articleCatalog     = AllCatalogs.sharedInstance().catalogArticle
-    
-    @IBAction func addNewCheck() {
-        addCheck()
-    }
-    
-    @IBAction func addNewIncome() {
+    let articleCatalog = AllCatalogs.sharedInstance().catalogArticle
         
-        addIncome()
-    }
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setToolbarHidden(false, animated: true)
-        
         
     }
     
@@ -58,28 +48,7 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         return sectionInfo.numberOfObjects
     }
     
-    func addCheck() {
-        
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
-        
-        controller.managedContext  = managedContext
-        controller.articleCatalog  = articleCatalog
-        controller.checkNumber     = fetchedResultsController!.fetchedObjects!.count + 1
-        controller.mode            = .New
-        
-        presentViewController(controller, animated: true, completion: nil)
-        
-    }
-    
-    func addIncome() {
-        
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("Income") as! IncomeViewController
-        
-        controller.managedContext = managedContext
-        
-        presentViewController(controller, animated: true, completion: nil)
-        
-    }
+   
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

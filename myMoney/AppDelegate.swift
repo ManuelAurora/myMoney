@@ -19,12 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let navigation = window!.rootViewController as! UINavigationController
+        let tabBar = window!.rootViewController as! UITabBarController
         
-        let controller = navigation.topViewController as! DocumentJournalCheckTableViewController
+        let documents = tabBar.viewControllers?[1] as! DocumentJournalCheckTableViewController
+        let mainScreen = tabBar.viewControllers?[0]  as! MainScreenViewController
         
-        controller.managedContext = managedContext
-            
+        documents.managedContext  = managedContext
+        mainScreen.managedContext = managedContext
+        
         return true
     }
     

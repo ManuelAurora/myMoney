@@ -42,13 +42,7 @@ class CheckViewController: CoreDataTableViewController
     
     @IBAction func record() {
         
-        try! managedContext.save()
-        
-        let navController = self.presentingViewController as! UINavigationController
-        
-        let controller = navController.topViewController as! DocumentJournalCheckTableViewController
-        
-        controller.fetchData()
+        try! managedContext.save()  
         
         dismissViewControllerAnimated(true, completion: nil)
     }

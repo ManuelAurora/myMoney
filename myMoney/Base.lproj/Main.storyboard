@@ -1,22 +1,163 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="o3p-nv-onn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9qE-3v-6KO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Document Journal Check Table View Controller-->
+        <!--Main screen-->
+        <scene sceneID="jVn-Hf-SQE">
+            <objects>
+                <viewController title="Main screen" id="W9i-Od-kpG" customClass="MainScreenViewController" customModule="myMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L0I-Y8-fQ8"/>
+                        <viewControllerLayoutGuide type="bottom" id="GNR-aT-04C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Beo-Ce-z8h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D48-Dq-Z10">
+                                <rect key="frame" x="16" y="20" width="288" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="P3X-vD-fgM"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="W9i-Od-kpG" id="TNs-da-EzJ"/>
+                                    <outlet property="delegate" destination="W9i-Od-kpG" id="k7f-NB-6uv"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-Go-LPw">
+                                <rect key="frame" x="24" y="156" width="272" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="I81-et-9ky">
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="25"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Money Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRY-Pw-MjS">
+                                                <rect key="frame" x="0.0" y="0.0" width="136" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="0.0$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTp-ms-EsQ">
+                                                <rect key="frame" x="136" y="0.0" width="136" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wN-kv-7RF">
+                                        <rect key="frame" x="0.0" y="25" width="272" height="25"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Income This Month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mI6-Fr-h0n">
+                                                <rect key="frame" x="0.0" y="0.0" width="237" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" text="0.0$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="216-sg-p2V">
+                                                <rect key="frame" x="237" y="0.0" width="35" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TcC-rM-Flk">
+                                        <rect key="frame" x="0.0" y="50" width="272" height="25"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Expenses This Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZU-IP-5bD">
+                                                <rect key="frame" x="0.0" y="0.0" width="237" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" text="0.0$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIn-sk-MaW">
+                                                <rect key="frame" x="237" y="0.0" width="35" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9N8-d0-fTi">
+                                        <rect key="frame" x="0.0" y="75" width="272" height="26"/>
+                                        <segments>
+                                            <segment title="Day"/>
+                                            <segment title="Week"/>
+                                            <segment title="Month"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="TcC-rM-Flk" firstAttribute="leading" secondItem="yZe-Go-LPw" secondAttribute="leading" id="31l-hw-1hU"/>
+                                    <constraint firstAttribute="trailing" secondItem="TcC-rM-Flk" secondAttribute="trailing" id="5Oz-Ew-gIA"/>
+                                    <constraint firstAttribute="trailing" secondItem="I81-et-9ky" secondAttribute="trailing" id="C0Y-PG-uyX"/>
+                                    <constraint firstItem="I81-et-9ky" firstAttribute="leading" secondItem="yZe-Go-LPw" secondAttribute="leading" id="R1t-TL-PxS"/>
+                                    <constraint firstAttribute="trailing" secondItem="9N8-d0-fTi" secondAttribute="trailing" id="XF7-JK-h2E"/>
+                                    <constraint firstAttribute="trailing" secondItem="3wN-kv-7RF" secondAttribute="trailing" id="ZQg-wW-sIR"/>
+                                    <constraint firstItem="9N8-d0-fTi" firstAttribute="leading" secondItem="yZe-Go-LPw" secondAttribute="leading" id="dZm-1t-qNa"/>
+                                    <constraint firstAttribute="height" constant="100" id="jNt-tY-P9b"/>
+                                    <constraint firstItem="3wN-kv-7RF" firstAttribute="leading" secondItem="yZe-Go-LPw" secondAttribute="leading" id="sYT-Or-UgP"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Tcz-jN-Mn7">
+                                <rect key="frame" x="8" y="481" width="304" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sK3-bS-xQO">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="30"/>
+                                        <state key="normal" title="Income"/>
+                                        <connections>
+                                            <action selector="addNewIncome:" destination="W9i-Od-kpG" eventType="touchUpInside" id="26U-zY-CsB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RV7-Uw-7rV">
+                                        <rect key="frame" x="152" y="0.0" width="152" height="30"/>
+                                        <state key="normal" title="Expense"/>
+                                        <connections>
+                                            <action selector="addNewExpense:" destination="W9i-Od-kpG" eventType="touchUpInside" id="J7k-29-Vhu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Tcz-jN-Mn7" firstAttribute="leading" secondItem="Beo-Ce-z8h" secondAttribute="leading" constant="8" id="1Fu-TN-grH"/>
+                            <constraint firstItem="yZe-Go-LPw" firstAttribute="leading" secondItem="Beo-Ce-z8h" secondAttribute="leadingMargin" constant="8" id="1ey-5a-GWC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yZe-Go-LPw" secondAttribute="trailing" constant="8" id="4fA-qE-kdK"/>
+                            <constraint firstAttribute="trailing" secondItem="Tcz-jN-Mn7" secondAttribute="trailing" constant="8" id="P7P-jv-C8C"/>
+                            <constraint firstItem="D48-Dq-Z10" firstAttribute="trailing" secondItem="Beo-Ce-z8h" secondAttribute="trailingMargin" id="b8W-Vh-9fV"/>
+                            <constraint firstItem="yZe-Go-LPw" firstAttribute="top" secondItem="D48-Dq-Z10" secondAttribute="bottom" constant="8" id="fh4-ie-LrW"/>
+                            <constraint firstItem="GNR-aT-04C" firstAttribute="top" secondItem="Tcz-jN-Mn7" secondAttribute="bottom" constant="8" id="oY8-xt-M9v"/>
+                            <constraint firstItem="D48-Dq-Z10" firstAttribute="leading" secondItem="Beo-Ce-z8h" secondAttribute="leadingMargin" id="ryf-QG-APg"/>
+                            <constraint firstItem="D48-Dq-Z10" firstAttribute="top" secondItem="L0I-Y8-fQ8" secondAttribute="bottom" id="xgR-rF-mCN"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="zfE-rp-nyR"/>
+                    <connections>
+                        <outlet property="tableView" destination="D48-Dq-Z10" id="o2U-fG-mkx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xg5-4g-ctQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1518" y="1250"/>
+        </scene>
+        <!--Documents-->
         <scene sceneID="bpp-DG-yNI">
             <objects>
-                <tableViewController id="7iS-oy-fJW" customClass="DocumentJournalCheckTableViewController" customModule="myMoney" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q5m-oi-WQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController title="Documents" id="7iS-oy-fJW" customClass="DocumentJournalCheckTableViewController" customModule="myMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fhk-o0-ZVd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CheckCell" id="9FV-x5-7RJ" customClass="CheckTableViewCell" customModule="myMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9FV-x5-7RJ" id="VNF-7f-5sf">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -72,32 +213,13 @@
                             <outlet property="delegate" destination="7iS-oy-fJW" id="Flr-WL-rKT"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="0Kr-fm-gfk"/>
-                        <barButtonItem title="Доход" id="lm9-Dh-WW0">
-                            <connections>
-                                <action selector="addNewIncome" destination="7iS-oy-fJW" id="ysH-aD-F5n"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zh2-Ob-Jmc"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="neK-jl-23P"/>
-                        <barButtonItem title="Расход" id="q1r-1p-3Be">
-                            <connections>
-                                <action selector="addNewCheck" destination="7iS-oy-fJW" id="uae-Sc-fMA"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem width="10" style="plain" systemItem="flexibleSpace" id="Dlq-Eb-JFJ"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="8Wd-kG-q6t">
-                        <nil key="title"/>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBarItem key="tabBarItem" title="Expenses &amp; Incomes" image="CloseButton" id="mF0-0z-2nh"/>
+                    <toolbarItems/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q5m-oi-WQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="791" y="437"/>
+            <point key="canvasLocation" x="2010" y="1250"/>
         </scene>
-        <!--Check View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="Check" id="BYZ-38-t0r" customClass="CheckViewController" customModule="myMoney" customModuleProvider="target" sceneMemberID="viewController">
@@ -211,6 +333,7 @@
                             <outlet property="delegate" destination="BYZ-38-t0r" id="irg-mX-qMJ"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="WCn-W7-YY0"/>
                     <navigationItem key="navigationItem" id="D3r-97-fWh">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="vBA-Sn-bBE"/>
                     </navigationItem>
@@ -222,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1294" y="437"/>
+            <point key="canvasLocation" x="1254" y="-260"/>
         </scene>
         <!--Income View Controller-->
         <scene sceneID="4PV-0d-jW8">
@@ -336,7 +459,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuX-0Q-gnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732" y="437"/>
+            <point key="canvasLocation" x="1676" y="-260"/>
         </scene>
         <!--Add New Article View Controller-->
         <scene sceneID="oH4-Yc-LuR">
@@ -417,7 +540,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzD-Vv-WKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="260" y="-184"/>
+            <point key="canvasLocation" x="461" y="-260"/>
         </scene>
         <!--Pop Up View Controller-->
         <scene sceneID="ZcS-0m-Lem">
@@ -547,25 +670,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQx-Bd-U7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="791" y="-219"/>
+            <point key="canvasLocation" x="860" y="-260"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Spb-tE-Kzl">
+        <!--Tab Bar Controller-->
+        <scene sceneID="JdD-st-c0B">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o3p-nv-onn" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="9qE-3v-6KO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SxP-Ed-PRZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <navigationItem key="navigationItem" id="XSR-Va-TEW"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="tLC-pd-acB">
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="7iS-oy-fJW" kind="relationship" relationship="rootViewController" id="PrD-fF-Meu"/>
+                        <segue destination="W9i-Od-kpG" kind="relationship" relationship="viewControllers" id="kyu-S9-qCX"/>
+                        <segue destination="7iS-oy-fJW" kind="relationship" relationship="viewControllers" id="c9W-jw-DuC"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e8r-NX-3GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBU-5H-DY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="259" y="437"/>
+            <point key="canvasLocation" x="1704" y="482"/>
         </scene>
     </scenes>
     <resources>
