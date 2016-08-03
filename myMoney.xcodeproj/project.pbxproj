@@ -51,6 +51,10 @@
 		6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1721CFF197300133059 /* CheckTableViewCell.swift */; };
 		6492B17B1CFF30E300133059 /* AddNewArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B17A1CFF30E300133059 /* AddNewArticleViewController.swift */; };
 		64BB58DA1D1D6AD400C14E22 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB58D91D1D6AD400C14E22 /* IncomeViewController.swift */; };
+		64DD05321D52327600509A01 /* Count.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD05301D52327600509A01 /* Count.swift */; };
+		64DD05381D52332200509A01 /* Count+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD05371D52332200509A01 /* Count+CoreDataProperties.swift */; };
+		64DD053A1D5233C300509A01 /* CountManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD05391D5233C300509A01 /* CountManageViewController.swift */; };
+		64DD053C1D52380900509A01 /* PopUpViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD053B1D52380900509A01 /* PopUpViewController + Extension.swift */; };
 		64FE54781D02E75B00D38ADC /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE54771D02E75B00D38ADC /* Measure.swift */; };
 		64FE547A1D02E76B00D38ADC /* Registrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE54791D02E76B00D38ADC /* Registrator.swift */; };
 		64FE547C1D02E77A00D38ADC /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE547B1D02E77A00D38ADC /* Document.swift */; };
@@ -124,6 +128,10 @@
 		6492B1721CFF197300133059 /* CheckTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckTableViewCell.swift; path = ../CheckTableViewCell.swift; sourceTree = "<group>"; };
 		6492B17A1CFF30E300133059 /* AddNewArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewArticleViewController.swift; sourceTree = "<group>"; };
 		64BB58D91D1D6AD400C14E22 /* IncomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
+		64DD05301D52327600509A01 /* Count.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Count.swift; path = ../Count.swift; sourceTree = "<group>"; };
+		64DD05371D52332200509A01 /* Count+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Count+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		64DD05391D5233C300509A01 /* CountManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountManageViewController.swift; sourceTree = "<group>"; };
+		64DD053B1D52380900509A01 /* PopUpViewController + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PopUpViewController + Extension.swift"; sourceTree = "<group>"; };
 		64FE54771D02E75B00D38ADC /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 		64FE54791D02E76B00D38ADC /* Registrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registrator.swift; sourceTree = "<group>"; };
 		64FE547B1D02E77A00D38ADC /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -167,6 +175,7 @@
 		643B3D931D1984E4004A6A43 /* Class extensions */ = {
 			isa = PBXGroup;
 			children = (
+				64DD05371D52332200509A01 /* Count+CoreDataProperties.swift */,
 				643C3D891D21508200BB41D8 /* Income+CoreDataProperties.swift */,
 				643E07C51D1AD39F00E91C4F /* TableString+CoreDataProperties.swift */,
 				643E07BB1D1ABE9900E91C4F /* Article+CoreDataProperties.swift */,
@@ -259,6 +268,7 @@
 		6492B1751CFF300600133059 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				64DD053D1D52382700509A01 /* ViewControllers computing */,
 				64BB58D81D1D64E900C14E22 /* ViewControllers */,
 				643FF7E41D04A7300035F4DE /* Animations */,
 			);
@@ -311,6 +321,7 @@
 			children = (
 				6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */,
 				643B19781D50F89F0081F08D /* MainScreenViewController.swift */,
+				64DD05391D5233C300509A01 /* CountManageViewController.swift */,
 				6492B1291CFED46300133059 /* CheckViewController.swift */,
 				64BB58D91D1D6AD400C14E22 /* IncomeViewController.swift */,
 				6492B17A1CFF30E300133059 /* AddNewArticleViewController.swift */,
@@ -320,9 +331,18 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		64DD053D1D52382700509A01 /* ViewControllers computing */ = {
+			isa = PBXGroup;
+			children = (
+				64DD053B1D52380900509A01 /* PopUpViewController + Extension.swift */,
+			);
+			name = "ViewControllers computing";
+			sourceTree = "<group>";
+		};
 		64FE54741D02E69600D38ADC /* Raw Classes */ = {
 			isa = PBXGroup;
 			children = (
+				64DD05301D52327600509A01 /* Count.swift */,
 				643B3D8E1D1984B2004A6A43 /* CoreDataTableViewController.swift */,
 				643E07C61D1AD39F00E91C4F /* TableString.swift */,
 				643E07BA1D1ABE9900E91C4F /* TablePart.swift */,
@@ -493,9 +513,11 @@
 			files = (
 				643677871D003BFD00EC233F /* AllRegisters.swift in Sources */,
 				64FE54781D02E75B00D38ADC /* Measure.swift in Sources */,
+				64DD053C1D52380900509A01 /* PopUpViewController + Extension.swift in Sources */,
 				64395BE21D045DA800E456C0 /* PopUpViewController.swift in Sources */,
 				643E07BC1D1ABE9900E91C4F /* TablePart+CoreDataProperties.swift in Sources */,
 				6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */,
+				64DD05381D52332200509A01 /* Count+CoreDataProperties.swift in Sources */,
 				643B19791D50F89F0081F08D /* MainScreenViewController.swift in Sources */,
 				643E07BE1D1ABE9900E91C4F /* Article+CoreDataProperties.swift in Sources */,
 				643FF7E11D04A6E70035F4DE /* SlideOutAnimationController.swift in Sources */,
@@ -521,6 +543,7 @@
 				6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */,
 				643E07CA1D1AD39F00E91C4F /* TableString+CoreDataProperties.swift in Sources */,
 				643677891D00615B00EC233F /* DocumentJournal.swift in Sources */,
+				64DD053A1D5233C300509A01 /* CountManageViewController.swift in Sources */,
 				6492B1691CFEF69E00133059 /* DocumentsJournal.swift in Sources */,
 				6492B16B1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift in Sources */,
 				6492B15B1CFED4F200133059 /* Register.swift in Sources */,
@@ -530,6 +553,7 @@
 				643C3D921D21528500BB41D8 /* IncomeTableViewCell.swift in Sources */,
 				643C3D851D21494800BB41D8 /* PopUpVCActions.swift in Sources */,
 				643B197D1D51045B0081F08D /* AccountTableViewCell.swift in Sources */,
+				64DD05321D52327600509A01 /* Count.swift in Sources */,
 				6436778B1D0066FF00EC233F /* MainObjectThree.swift in Sources */,
 				643FF7DF1D04A6BC0035F4DE /* BounceAnimationController.swift in Sources */,
 			);

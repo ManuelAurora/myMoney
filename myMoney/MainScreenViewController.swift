@@ -13,7 +13,14 @@ class MainScreenViewController: UIViewController
 {
     var managedContext: NSManagedObjectContext!
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var moneyTotalTextLabel:    UILabel!
+    @IBOutlet weak var incomeTextLabel:        UILabel!
+    @IBOutlet weak var expensesTextLabel:      UILabel!
+    @IBOutlet weak var incomeCountLabel:       UILabel!
+    @IBOutlet weak var moneyTotalCountLabel:   UILabel!
+    @IBOutlet weak var expensesCountLabel:     UILabel!
+    @IBOutlet weak var tableView:              UITableView!
+    @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     
     let articleCatalog     = AllCatalogs.sharedInstance().catalogArticle
     let catalogExpenditure = AllCatalogs.sharedInstance().catalogExpenditure
@@ -25,7 +32,7 @@ class MainScreenViewController: UIViewController
     @IBAction func addNewExpense(sender: UIButton) {
         addCheck()
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -46,21 +46,24 @@ class PopUpViewController: UIViewController
         
         view.backgroundColor = UIColor.clearColor()
         
-        if docType == .Expense
+        switch docType
         {
-            articlePriceTextField.becomeFirstResponder()
             
-            popUpViewIncome.hidden = true
-            articleNameLabel.text! = article!.name!
+        case .Expense:
+           
+           showExpenseView()
             
-        }
-        else
-        {
-            incomeNameTextField.becomeFirstResponder()
-            popUpViewExpense.hidden  = true
+        case .Income:
+            
+            showIncomeView()
+            
+        case .Count:
+            showCountView()
+            
         }
         
-        popUpViewIncome.layer.cornerRadius  = 10
+        
+       
         popUpViewExpense.layer.cornerRadius = 10
        
         

@@ -25,4 +25,5 @@ enum DocType
 {
     case Income
     case Expense
+    case Count
 }
