@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainScreen = tabBar.viewControllers?[0]   as! MainScreenViewController
         let countsScreen = tabBar.viewControllers?[2] as! CountManageViewController
         
-        countsScreen.managedContext = managedContext
+        countsScreen.managedContext = managedContext        
         documents.managedContext    = managedContext
         mainScreen.managedContext   = managedContext
         

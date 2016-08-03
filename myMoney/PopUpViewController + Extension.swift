@@ -24,10 +24,20 @@ extension PopUpViewController
         
         incomeNameTextField.becomeFirstResponder()
         
-        popUpViewExpense.hidden  = false
-    }
+        popUpViewExpense.layer.cornerRadius = 10
+        popUpViewExpense.hidden             = false
+    }   
     
     func showCountView() {
         
+        let view = NewCountView.loadFromNib()
+        
+        view.layer.cornerRadius = 10
+        
+        view.center = self.view.center
+        
+        view.center.y -= 50
+        
+        self.view.addSubview(view)
     }
 }

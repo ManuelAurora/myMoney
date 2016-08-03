@@ -31,10 +31,10 @@
          contextName = "AddNewItemOfExpenditureViewController.AddNew(UIButton) -&gt; ():AddNewItemOfExpenditureViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "managedContext">
+               value = "catalogOfExpenditure">
             </PersistentString>
             <PersistentString
-               value = "catalogOfExpenditure">
+               value = "managedContext">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -42,10 +42,10 @@
          contextName = "CheckViewController.viewWillAppear(Bool) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
+               value = "catalogExpenditure.items">
             </PersistentString>
             <PersistentString
-               value = "catalogExpenditure.items">
+               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
             </PersistentString>
             <PersistentString
                value = "result.count ">
@@ -59,10 +59,10 @@
          contextName = "DocumentJournalCheckTableViewController.viewDidLoad() -&gt; ():DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+               value = "articleCatalog">
             </PersistentString>
             <PersistentString
-               value = "articleCatalog">
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -278,6 +278,20 @@
          <PersistentStrings>
             <PersistentString
                value = "allChecks">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PopUpViewController.showCountView() -&gt; ():PopUpViewController + Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view.countNameTextField">
+            </PersistentString>
+            <PersistentString
+               value = " view.saveButton">
+            </PersistentString>
+            <PersistentString
+               value = "view.balanceTextField">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
