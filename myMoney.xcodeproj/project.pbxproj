@@ -19,7 +19,6 @@
 		643B3D8F1D1984B2004A6A43 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643B3D8E1D1984B2004A6A43 /* CoreDataTableViewController.swift */; };
 		643B3D911D1984C2004A6A43 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643B3D901D1984C2004A6A43 /* DataManager.swift */; };
 		643B3D9B1D198AD2004A6A43 /* Expenditure+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643B3D9A1D198AD2004A6A43 /* Expenditure+CoreDataProperties.swift */; };
-		643C3D851D21494800BB41D8 /* PopUpVCActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643C3D841D21494800BB41D8 /* PopUpVCActions.swift */; };
 		643C3D8D1D21508200BB41D8 /* Income+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643C3D891D21508200BB41D8 /* Income+CoreDataProperties.swift */; };
 		643C3D8E1D21508200BB41D8 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643C3D8A1D21508200BB41D8 /* Income.swift */; };
 		643C3D921D21528500BB41D8 /* IncomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643C3D911D21528500BB41D8 /* IncomeTableViewCell.swift */; };
@@ -92,7 +91,6 @@
 		643B3D8E1D1984B2004A6A43 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataTableViewController.swift; path = ../CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		643B3D901D1984C2004A6A43 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		643B3D9A1D198AD2004A6A43 /* Expenditure+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expenditure+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		643C3D841D21494800BB41D8 /* PopUpVCActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpVCActions.swift; sourceTree = "<group>"; };
 		643C3D891D21508200BB41D8 /* Income+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Income+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		643C3D8A1D21508200BB41D8 /* Income.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Income.swift; path = ../Income.swift; sourceTree = "<group>"; };
 		643C3D911D21528500BB41D8 /* IncomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 		643C3D861D21495000BB41D8 /* Action handlers */ = {
 			isa = PBXGroup;
 			children = (
-				643C3D841D21494800BB41D8 /* PopUpVCActions.swift */,
 			);
 			name = "Action handlers";
 			sourceTree = "<group>";
@@ -567,7 +564,6 @@
 				6492B1631CFEDE2100133059 /* ProductCellTableViewCell.swift in Sources */,
 				643B3D891D198392004A6A43 /* Expenditure.swift in Sources */,
 				643C3D921D21528500BB41D8 /* IncomeTableViewCell.swift in Sources */,
-				643C3D851D21494800BB41D8 /* PopUpVCActions.swift in Sources */,
 				643B197D1D51045B0081F08D /* AccountTableViewCell.swift in Sources */,
 				64DD05321D52327600509A01 /* Count.swift in Sources */,
 				6436778B1D0066FF00EC233F /* MainObjectThree.swift in Sources */,

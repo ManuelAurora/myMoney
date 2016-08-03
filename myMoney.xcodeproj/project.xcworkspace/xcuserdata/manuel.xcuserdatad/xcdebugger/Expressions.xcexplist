@@ -266,6 +266,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PopUpViewController.viewDidLoad() -&gt; ():PopUpViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view">
+            </PersistentString>
+            <PersistentString
+               value = " view.superclass">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DataManager.init() -&gt; DataManager:DataManager.swift">
          <PersistentStrings>
             <PersistentString

@@ -11,12 +11,17 @@ import UIKit
 class NewCountView: UIView
 {    
     
+    var viewController: PopUpViewController!
+    
     @IBOutlet weak var countNameTextField: UITextField!
     @IBOutlet weak var balanceTextField:   UITextField!
     @IBOutlet weak var currencyLabel:      UILabel!
     @IBOutlet weak var saveButton:         UIButton!
     
     @IBAction func close(sender: UIButton) {
+     
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+        
         
     }
     
