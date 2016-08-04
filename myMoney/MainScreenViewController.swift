@@ -38,10 +38,14 @@ class MainScreenViewController: UIViewController
 
         let accountCellNib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         
-        tableView.registerNib(accountCellNib, forCellReuseIdentifier: "AccountCell")
-        
+        tableView.registerNib(accountCellNib, forCellReuseIdentifier: "AccountCell")        
     }
 
+    override func viewWillAppear(animated: Bool) {
+        
+            tableView.reloadData()        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -75,19 +79,39 @@ class MainScreenViewController: UIViewController
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
 {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        
+        let fetchRequest = NSFetchRequest(entityName: "Account")
+        
+        let sortDescr = NSSortDescriptor(key: "currency", ascending: false)
+        
+        fetchRequest.sortDescriptors = [sortDescr]
+        
+        let result = try!managedContext.executeFetchRequest(fetchRequest)
+        
+        return result.count
     }
  
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let fetchRequest = NSFetchRequest(entityName: "Account")
+        
+        let sortDescr = NSSortDescriptor(key: "currency", ascending: false)
+        
+        fetchRequest.sortDescriptors = [sortDescr]
+        
+        let result = try!managedContext.executeFetchRequest(fetchRequest)
+        
+        let account = result[indexPath.row] as! Account
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
         
-        cell.accountNameLabel.text = "Main"
-        cell.accountBalanceLabel.text = "1000 $"
+        cell.accountNameLabel.text = account.name
+        cell.accountBalanceLabel.text = "\(account.balance!.doubleValue)"
         
         return cell
     }
