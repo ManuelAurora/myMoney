@@ -43,7 +43,9 @@ class MainScreenViewController: UIViewController
 
     override func viewWillAppear(animated: Bool) {
         
-            tableView.reloadData()        
+        tableView.reloadData()
+        
+        updateMoneyInfo()
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,7 +74,24 @@ class MainScreenViewController: UIViewController
         presentViewController(controller, animated: true, completion: nil)
         
     }
-   
+    
+    func updateMoneyInfo() {
+        
+        let fetchRequest = NSFetchRequest(entityName: "Account")
+        
+        let result = try! managedContext.executeFetchRequest(fetchRequest)
+        
+        var sum: Double = 0
+        
+        for item in result
+        {
+            let account = item as! Account
+            
+            sum += account.balance!.doubleValue
+        }
+        
+        moneyTotalCountLabel.text = "\(sum)"
+    }   
 
 }
 
