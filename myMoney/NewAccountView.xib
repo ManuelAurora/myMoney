@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="jf0-z1-z4t" customClass="NewCountView" customModule="myMoney" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="jf0-z1-z4t" customClass="NewAccountView" customModule="myMoney" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="240" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -92,8 +92,8 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="accountNameTextField" destination="31o-sW-p9J" id="3a0-7P-nF4"/>
                 <outlet property="balanceTextField" destination="yF9-Nv-oiW" id="NLQ-E0-e4G"/>
-                <outlet property="countNameTextField" destination="31o-sW-p9J" id="rmW-Pq-9X1"/>
                 <outlet property="currencyLabel" destination="Q0X-RS-x86" id="AA3-3s-x8c"/>
                 <outlet property="saveButton" destination="Of0-se-rTd" id="Id5-Id-2ds"/>
             </connections>

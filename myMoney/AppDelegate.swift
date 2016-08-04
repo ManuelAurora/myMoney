@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let documents = tabBar.viewControllers?[1]    as! DocumentJournalCheckTableViewController
         let mainScreen = tabBar.viewControllers?[0]   as! MainScreenViewController
-        let countsScreen = tabBar.viewControllers?[2] as! CountManageViewController
+        let countsScreen = tabBar.viewControllers?[2] as! AccountManageViewController
         
         countsScreen.managedContext = managedContext        
         documents.managedContext    = managedContext

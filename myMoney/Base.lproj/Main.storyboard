@@ -474,10 +474,10 @@
             </objects>
             <point key="canvasLocation" x="1676" y="-260"/>
         </scene>
-        <!--Your Counts-->
+        <!--Your Accounts-->
         <scene sceneID="uXR-oP-cil">
             <objects>
-                <viewController id="Tys-nC-Wxz" customClass="CountManageViewController" customModule="myMoney" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Tys-nC-Wxz" customClass="AccountManageViewController" customModule="myMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wxj-Ja-NGA"/>
                         <viewControllerLayoutGuide type="bottom" id="GtK-lN-InE"/>
@@ -486,8 +486,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your Counts " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-B0-qoe">
-                                <rect key="frame" x="111" y="28" width="98" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your Accounts " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-B0-qoe">
+                                <rect key="frame" x="93" y="28" width="116" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -498,6 +498,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="5nD-vZ-RIy"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Tys-nC-Wxz" id="Nc4-Zs-Bz9"/>
+                                    <outlet property="delegate" destination="Tys-nC-Wxz" id="Dfr-vF-6EW"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfl-j1-GAN">
                                 <rect key="frame" x="245" y="57" width="63" height="30"/>
@@ -518,9 +522,9 @@
                             <constraint firstItem="5vm-B0-qoe" firstAttribute="centerX" secondItem="GSN-nd-U7B" secondAttribute="centerX" id="z24-GD-rSv"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Your Counts" id="Fuu-eZ-JDF"/>
+                    <tabBarItem key="tabBarItem" title="Your Accounts" id="Fuu-eZ-JDF"/>
                     <connections>
-                        <outlet property="tableView" destination="5Wg-wC-Gzi" id="lFn-YR-XmS"/>
+                        <outlet property="tableView" destination="5Wg-wC-Gzi" id="s7J-wk-3R6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Si-yZ-GYa" userLabel="First Responder" sceneMemberID="firstResponder"/>

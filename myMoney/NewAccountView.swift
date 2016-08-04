@@ -8,12 +8,11 @@
 
 import UIKit
 
-class NewCountView: UIView
-{    
-    
+class NewAccountView: UIView
+{        
     var viewController: PopUpViewController!
     
-    @IBOutlet weak var countNameTextField: UITextField!
+    @IBOutlet weak var accountNameTextField: UITextField!
     @IBOutlet weak var balanceTextField:   UITextField!
     @IBOutlet weak var currencyLabel:      UILabel!
     @IBOutlet weak var saveButton:         UIButton!
@@ -22,21 +21,21 @@ class NewCountView: UIView
      
         viewController.dismissViewControllerAnimated(true, completion: nil)
         
-        
     }
     
     @IBAction func save(sender: UIButton) {
         
+        viewController.addNewAccount(fromAccountView: self)
     }
     
-    class func loadFromNib() -> NewCountView {
+    class func loadFromNib() -> NewAccountView {
         
-        let view = NSBundle.mainBundle().loadNibNamed("NewCountView", owner: self, options: nil).first! as! NewCountView
+        let view = NSBundle.mainBundle().loadNibNamed("NewAccountView", owner: self, options: nil).first! as! NewAccountView
         
         return view
     }
     
-    func fill(withCount count: Count) {
+    func fill(withCount count: Account) {
         
         if let balance = count.balance
         {
@@ -48,7 +47,7 @@ class NewCountView: UIView
             currencyLabel.text      = currency
         }
         
-        countNameTextField.text = count.name
+        accountNameTextField.text = count.name
         
     }
     

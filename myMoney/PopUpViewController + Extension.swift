@@ -26,11 +26,11 @@ extension PopUpViewController
         
         popUpViewExpense.layer.cornerRadius = 10
         popUpViewExpense.hidden             = false
-    }   
+    }
     
     func showCountView() {
         
-        let view = NewCountView.loadFromNib()
+        let view = NewAccountView.loadFromNib()
         
         view.layer.cornerRadius = 10
         
@@ -38,9 +38,9 @@ extension PopUpViewController
         
         view.center.y -= 50
         
-        view.viewController = self
-        
         self.view.addSubview(view)
+        
+        view.viewController = self
     }
     
     func addNewOrEditItem() {
@@ -88,7 +88,42 @@ extension PopUpViewController
         }
         
         dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
-
+    func addNewAccount(fromAccountView accountView: NewAccountView) {        
+        
+        let tabBar = presentingViewController as! UITabBarController
+        
+        let controller = tabBar.viewControllers![2] as! AccountManageViewController
+        
+        // Creating
+        
+        let account = Account(withName: "\(accountView.accountNameTextField.text!)")
+        
+        if let balance = Double(accountView.balanceTextField.text!)
+        {
+            account.balance = balance         
+        }
+        
+        if let currency = accountView.currencyLabel.text
+        {
+            account.currency = currency
+        }
+        
+        // Saving to context 
+        
+        do
+        {
+            try DataManager.sharedInstance().saveContext()
+            
+             controller.tableView.reloadData()
+        }
+        catch
+        {
+            print("Unable to save new count")
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

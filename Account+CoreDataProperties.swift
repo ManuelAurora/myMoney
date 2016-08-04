@@ -12,7 +12,7 @@
 import Foundation
 import CoreData
 
-extension Count {
+extension Account {
 
     @NSManaged var name:     String
     @NSManaged var balance:  NSNumber?

@@ -10,12 +10,14 @@ import UIKit
 
 class PopUpViewController: UIViewController
 {
-    
     var article:      Article?
     var tableString:  TableString?
-        
+    
+    
     var mode:    Mode    = .New
     var docType: DocType = .Expense
+    
+    var accountView: NewAccountView?
     
     @IBOutlet weak var incomeNameTextField: UITextField!
     @IBOutlet weak var popUpViewExpense: UIView!
@@ -58,10 +60,8 @@ class PopUpViewController: UIViewController
             showIncomeView()
             
         case .Count:
-            showCountView()
-            
-        }
-             
+            showCountView()            
+        }             
         
     }
 
@@ -86,3 +86,4 @@ extension PopUpViewController: UIViewControllerTransitioningDelegate
     }
     
 }
+
