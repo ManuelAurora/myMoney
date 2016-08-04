@@ -56,24 +56,14 @@ extension AccountManageViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let fetchRequest   = NSFetchRequest(entityName: "Account")
-        
-        let sortDescriptor = NSSortDescriptor(key: "currency", ascending: false)
-        
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        let result = try! managedContext.executeFetchRequest(fetchRequest)
-        
-        return result.count
+        return fetchData(forEntity: "Account", withSortKey: "currency").count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
         
-        let fetchRequest   = NSFetchRequest(entityName: "Account")
-        
-        let account = try! managedContext.executeFetchRequest(fetchRequest)[indexPath.row] as! Account
+        let account = fetchData(forEntity: "Account", withSortKey: "currency")[indexPath.row] as! Account
         
         cell.accountNameLabel.text = account.name
         cell.accountBalanceLabel.text = "\(account.balance!.doubleValue)"

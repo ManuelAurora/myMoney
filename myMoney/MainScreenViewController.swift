@@ -91,8 +91,8 @@ class MainScreenViewController: UIViewController
         }
         
         moneyTotalCountLabel.text = "\(sum)"
-    }   
-
+    }
+    
 }
 
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
@@ -104,26 +104,12 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let fetchRequest = NSFetchRequest(entityName: "Account")
-        
-        let sortDescr = NSSortDescriptor(key: "currency", ascending: false)
-        
-        fetchRequest.sortDescriptors = [sortDescr]
-        
-        let result = try!managedContext.executeFetchRequest(fetchRequest)
-        
-        return result.count
+        return fetchData(forEntity: "Account", withSortKey: "currency").count
     }
  
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let fetchRequest = NSFetchRequest(entityName: "Account")
-        
-        let sortDescr = NSSortDescriptor(key: "currency", ascending: false)
-        
-        fetchRequest.sortDescriptors = [sortDescr]
-        
-        let result = try!managedContext.executeFetchRequest(fetchRequest)
+        let result = fetchData(forEntity: "Account", withSortKey: "currency")
         
         let account = result[indexPath.row] as! Account
         
