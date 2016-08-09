@@ -21,13 +21,14 @@ enum Mode
     case New
 }
 
-enum DocType
+enum Type
 {  
     case Expense
-    case Count
+    case Account
+    case AccountList
 }
 
-func fetchData(forEntity entityName: String, withSortKey sort: String) -> [AnyObject] {
+func fetchData(forEntity entityName: String, withSortKey sort: String?, predicate: NSPredicate?) -> [AnyObject] {
     
     let managedContext = DataManager.sharedInstance().context
     
@@ -37,5 +38,10 @@ func fetchData(forEntity entityName: String, withSortKey sort: String) -> [AnyOb
     
     fetchRequest.sortDescriptors = [sortDescr]
     
+    if let predicate = predicate
+    {
+        fetchRequest.predicate = predicate
+    }
+        
     return try! managedContext.executeFetchRequest(fetchRequest)
 }

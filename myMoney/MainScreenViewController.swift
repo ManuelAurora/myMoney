@@ -77,10 +77,9 @@ class MainScreenViewController: UIViewController
     
     func updateMoneyInfo() {
         
-        let fetchRequest = NSFetchRequest(entityName: "Account")
         
-        let result = try! managedContext.executeFetchRequest(fetchRequest)
-        
+        let result = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil)
+               
         var sum: Double = 0
         
         for item in result
@@ -104,12 +103,12 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return fetchData(forEntity: "Account", withSortKey: "currency").count
+        return fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil).count
     }
  
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let result = fetchData(forEntity: "Account", withSortKey: "currency")
+        let result = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil)
         
         let account = result[indexPath.row] as! Account
         

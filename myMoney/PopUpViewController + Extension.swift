@@ -15,17 +15,13 @@ extension PopUpViewController
         
     }
     
-    func showIncomeView() {
+    func chooseAccountView() {
         
-        let view = NewIncomeView.loadFromNib()
-        
-        view.layer.cornerRadius = 10
-        view.center             = self.view.center
-        view.center.y          -= 50
-        
-        self.view.addSubview(view)
+        let view = ChooseAccountView.loadFromNib()
         
         view.viewController = self
+        
+        self.view.addSubview(view)
     }
     
     func showAccountView() {
@@ -91,19 +87,6 @@ extension PopUpViewController
 //        
     }
     
-    func addNewIncome(from incomeView: NewIncomeView) {
-        
-        if let controller = presentingViewController as? IncomeViewController
-        {
-            let priceString = incomeView.incomeAmountTextField.text!.stringByReplacingOccurrencesOfString(",", withString: ".", options: [], range: nil)
-            
-            
-            
-            
-            
-        }
-        
-    }
     
     func addNewAccount(from accountView: NewAccountView) {
         

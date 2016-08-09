@@ -40,7 +40,7 @@ class AccountManageViewController: UIViewController
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
-        controller.docType = .Count
+        controller.type = .Account
         
         presentViewController(controller, animated: true, completion: nil)        
         
@@ -56,14 +56,14 @@ extension AccountManageViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return fetchData(forEntity: "Account", withSortKey: "currency").count
+        return fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil).count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
         
-        let account = fetchData(forEntity: "Account", withSortKey: "currency")[indexPath.row] as! Account
+        let account = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil)[indexPath.row] as! Account
         
         cell.accountNameLabel.text = account.name
         cell.accountBalanceLabel.text = "\(account.balance!.doubleValue)"

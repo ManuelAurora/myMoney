@@ -71,10 +71,10 @@
          contextName = "CheckViewController.viewWillAppear(Bool) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "catalogExpenditure.items">
+               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
             </PersistentString>
             <PersistentString
-               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
+               value = "catalogExpenditure.items">
             </PersistentString>
             <PersistentString
                value = "result.count ">
@@ -92,6 +92,14 @@
             </PersistentString>
             <PersistentString
                value = "view.center ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChooseAccountView.toggleCheckMark(inCell : AccountTableViewCell) -&gt; ():ChooseAccountView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.accessoryView?.hidden">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -214,10 +222,18 @@
                value = " view.saveButton">
             </PersistentString>
             <PersistentString
-               value = "view.countNameTextField">
+               value = "view.balanceTextField">
             </PersistentString>
             <PersistentString
-               value = "view.balanceTextField">
+               value = "view.countNameTextField">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChooseAccountView.tableView(UITableView, didSelectRowAtIndexPath : NSIndexPath) -&gt; ():ChooseAccountView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.accessoryView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -307,10 +323,10 @@
          contextName = "AddNewItemOfExpenditureViewController.AddNew(UIButton) -&gt; ():AddNewItemOfExpenditureViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "catalogOfExpenditure">
+               value = "managedContext">
             </PersistentString>
             <PersistentString
-               value = "managedContext">
+               value = "catalogOfExpenditure">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -350,13 +366,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "IncomeViewController.record(AnyObject) -&gt; ():IncomeViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "chooseButton.titleLabel!.text!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DocumentJournalCheckTableViewController.viewDidLoad() -&gt; ():DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "articleCatalog">
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
             </PersistentString>
             <PersistentString
-               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+               value = "articleCatalog">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

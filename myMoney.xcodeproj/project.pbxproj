@@ -10,9 +10,9 @@
 		643677871D003BFD00EC233F /* AllRegisters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643677861D003BFD00EC233F /* AllRegisters.swift */; };
 		643677891D00615B00EC233F /* DocumentJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643677881D00615B00EC233F /* DocumentJournal.swift */; };
 		6436778B1D0066FF00EC233F /* MainObjectThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6436778A1D0066FF00EC233F /* MainObjectThree.swift */; };
-		643810441D5A196100EBEF06 /* NewIncomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643810431D5A196100EBEF06 /* NewIncomeView.xib */; };
+		643810441D5A196100EBEF06 /* ChooseAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643810431D5A196100EBEF06 /* ChooseAccountView.xib */; };
 		643810461D5A19B700EBEF06 /* NewExpenseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643810451D5A19B700EBEF06 /* NewExpenseView.xib */; };
-		643810481D5A1A1800EBEF06 /* NewIncomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643810471D5A1A1800EBEF06 /* NewIncomeView.swift */; };
+		643810481D5A1A1800EBEF06 /* ChooseAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643810471D5A1A1800EBEF06 /* ChooseAccountView.swift */; };
 		6438104E1D5A3D7D00EBEF06 /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6438104B1D5A3D7D00EBEF06 /* Account+CoreDataProperties.swift */; };
 		6438104F1D5A3D7D00EBEF06 /* Expenditure+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6438104C1D5A3D7D00EBEF06 /* Expenditure+CoreDataProperties.swift */; };
 		643810501D5A3D7D00EBEF06 /* Income+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6438104D1D5A3D7D00EBEF06 /* Income+CoreDataProperties.swift */; };
@@ -85,9 +85,9 @@
 		643677861D003BFD00EC233F /* AllRegisters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRegisters.swift; sourceTree = "<group>"; };
 		643677881D00615B00EC233F /* DocumentJournal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentJournal.swift; sourceTree = "<group>"; };
 		6436778A1D0066FF00EC233F /* MainObjectThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainObjectThree.swift; sourceTree = "<group>"; };
-		643810431D5A196100EBEF06 /* NewIncomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewIncomeView.xib; sourceTree = "<group>"; };
+		643810431D5A196100EBEF06 /* ChooseAccountView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseAccountView.xib; sourceTree = "<group>"; };
 		643810451D5A19B700EBEF06 /* NewExpenseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewExpenseView.xib; sourceTree = "<group>"; };
-		643810471D5A1A1800EBEF06 /* NewIncomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewIncomeView.swift; sourceTree = "<group>"; };
+		643810471D5A1A1800EBEF06 /* ChooseAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAccountView.swift; sourceTree = "<group>"; };
 		6438104B1D5A3D7D00EBEF06 /* Account+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Account+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6438104C1D5A3D7D00EBEF06 /* Expenditure+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expenditure+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6438104D1D5A3D7D00EBEF06 /* Income+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Income+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 			children = (
 				643FF7DC1D04A5980035F4DE /* GradientView.swift */,
 				64DD05411D52456E00509A01 /* NewAccountView.swift */,
-				643810471D5A1A1800EBEF06 /* NewIncomeView.swift */,
+				643810471D5A1A1800EBEF06 /* ChooseAccountView.swift */,
 				64DD053E1D52398600509A01 /* XIBs */,
 				6492B1781CFF304400133059 /* Storyboards */,
 				6492B1771CFF303600133059 /* Cells */,
@@ -353,7 +353,7 @@
 			children = (
 				643B197A1D51035A0081F08D /* AccountTableViewCell.xib */,
 				64DD053F1D523A5800509A01 /* NewAccountView.xib */,
-				643810431D5A196100EBEF06 /* NewIncomeView.xib */,
+				643810431D5A196100EBEF06 /* ChooseAccountView.xib */,
 				643810451D5A19B700EBEF06 /* NewExpenseView.xib */,
 			);
 			name = XIBs;
@@ -506,7 +506,7 @@
 				643810461D5A19B700EBEF06 /* NewExpenseView.xib in Resources */,
 				6492B1351CFED46300133059 /* LaunchScreen.storyboard in Resources */,
 				64DD05401D523A5800509A01 /* NewAccountView.xib in Resources */,
-				643810441D5A196100EBEF06 /* NewIncomeView.xib in Resources */,
+				643810441D5A196100EBEF06 /* ChooseAccountView.xib in Resources */,
 				643B197B1D51035A0081F08D /* AccountTableViewCell.xib in Resources */,
 				6492B1321CFED46300133059 /* Assets.xcassets in Resources */,
 				6492B12D1CFED46300133059 /* Main.storyboard in Resources */,
@@ -542,7 +542,7 @@
 				6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */,
 				6438104E1D5A3D7D00EBEF06 /* Account+CoreDataProperties.swift in Sources */,
 				64DD05421D52456E00509A01 /* NewAccountView.swift in Sources */,
-				643810481D5A1A1800EBEF06 /* NewIncomeView.swift in Sources */,
+				643810481D5A1A1800EBEF06 /* ChooseAccountView.swift in Sources */,
 				643B19791D50F89F0081F08D /* MainScreenViewController.swift in Sources */,
 				643E07BE1D1ABE9900E91C4F /* Article+CoreDataProperties.swift in Sources */,
 				643FF7E11D04A6E70035F4DE /* SlideOutAnimationController.swift in Sources */,

@@ -10,13 +10,14 @@ import UIKit
 
 class PopUpViewController: UIViewController
 {
-    var article:      Article?
-    var tableString:  TableString?
-    
-    var mode:    Mode    = .New
-    var docType: DocType = .Expense
-    
+    var article:     Article?
+    var tableString: TableString?
     var accountView: NewAccountView?
+    
+    var mode: Mode = .New
+    var type: Type = .Expense
+    
+   
     
     @IBOutlet weak var popUpViewExpense: UIView!
     
@@ -47,17 +48,21 @@ class PopUpViewController: UIViewController
                   
         view.backgroundColor = UIColor.clearColor()
         
-        switch docType
+        switch type
         {
             
         case .Expense:
-           
-           showExpenseView()
-                   
-        case .Count:
+            
+            showExpenseView()
+            
+        case .Account:
             
             showAccountView()
-        }             
+            
+        case .AccountList:
+            
+            chooseAccountView()
+        }
         
     }
 
