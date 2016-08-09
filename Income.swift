@@ -13,22 +13,16 @@ import CoreData
 class Income: NSManagedObject
 {
 
-    convenience init(Number number: Int) {
+    convenience init(withAmount amount: Double) {
         
         let context = DataManager.sharedInstance().context
         
         let entity = NSEntityDescription.entityForName("Income", inManagedObjectContext: context)
-        
-        let tablePartEntity = NSEntityDescription.entityForName("TablePart", inManagedObjectContext: context)
-        
-        let tablePart = TablePart(entity: tablePartEntity!, insertIntoManagedObjectContext: context)
-        
-        tablePart.name = "TablePartArticles"
-        
+                
         self.init(entity: entity!, insertIntoManagedObjectContext: context)
-        
-        self.tablePart = tablePart
-        self.date      = NSDate()
+      
+        self.date   = NSDate()
+        self.amount = amount
     }
     
 }

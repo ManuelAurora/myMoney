@@ -13,21 +13,20 @@ class PopUpViewController: UIViewController
     var article:      Article?
     var tableString:  TableString?
     
-    
     var mode:    Mode    = .New
     var docType: DocType = .Expense
     
     var accountView: NewAccountView?
     
-    @IBOutlet weak var incomeNameTextField: UITextField!
     @IBOutlet weak var popUpViewExpense: UIView!
-    @IBOutlet weak var popUpViewIncome: UIView!
+    
     @IBOutlet weak var articleNameLabel: UILabel!
     @IBOutlet weak var articlePriceTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     
     @IBAction func close() {
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -54,13 +53,10 @@ class PopUpViewController: UIViewController
         case .Expense:
            
            showExpenseView()
-            
-        case .Income:
-            
-            showIncomeView()
-            
+                   
         case .Count:
-            showCountView()            
+            
+            showAccountView()
         }             
         
     }

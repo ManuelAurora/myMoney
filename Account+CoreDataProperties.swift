@@ -1,8 +1,8 @@
 //
-//  Count+CoreDataProperties.swift
+//  Account+CoreDataProperties.swift
 //  myMoney
 //
-//  Created by Мануэль on 03.08.16.
+//  Created by Мануэль on 09.08.16.
 //  Copyright © 2016 AuroraInterplay. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,8 +14,10 @@ import CoreData
 
 extension Account {
 
-    @NSManaged var name:     String
-    @NSManaged var balance:  NSNumber?
+    @NSManaged var balance: NSNumber?
     @NSManaged var currency: String?
+    @NSManaged var name: String?
+    @NSManaged var income: NSSet?
+    @NSManaged var expenditures: NSSet?
 
 }

@@ -25,7 +25,7 @@ class NewAccountView: UIView
     
     @IBAction func save(sender: UIButton) {
         
-        viewController.addNewAccount(fromAccountView: self)
+        viewController.addNewAccount(from: self)
     }
     
     class func loadFromNib() -> NewAccountView {
@@ -48,8 +48,6 @@ class NewAccountView: UIView
         }
         
         accountNameTextField.text = count.name
-        
     }
-    
     
 }

@@ -17,6 +17,6 @@ extension TablePart {
     @NSManaged var name: String?
     @NSManaged var tableString: NSSet?
     @NSManaged var expenditure: Expenditure?
-    @NSManaged var income: Income?
+    
 
 }

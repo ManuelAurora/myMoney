@@ -97,7 +97,7 @@
                 <outlet property="currencyLabel" destination="Q0X-RS-x86" id="AA3-3s-x8c"/>
                 <outlet property="saveButton" destination="Of0-se-rTd" id="Id5-Id-2ds"/>
             </connections>
-            <point key="canvasLocation" x="976" y="421"/>
+            <point key="canvasLocation" x="1191" y="687"/>
         </view>
     </objects>
     <resources>

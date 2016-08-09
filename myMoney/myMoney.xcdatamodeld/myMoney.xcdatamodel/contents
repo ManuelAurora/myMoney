@@ -4,6 +4,8 @@
         <attribute name="balance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="expenditures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expenditure" inverseName="account" inverseEntity="Expenditure" syncable="YES"/>
+        <relationship name="income" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Income" inverseName="account" inverseEntity="Income" syncable="YES"/>
     </entity>
     <entity name="Article" representedClassName="myMoney.Article" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,16 +13,18 @@
     </entity>
     <entity name="Expenditure" representedClassName="myMoney.Expenditure" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="expenditures" inverseEntity="Account" syncable="YES"/>
         <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TablePart" inverseName="expenditure" inverseEntity="TablePart" syncable="YES"/>
     </entity>
     <entity name="Income" representedClassName=".Income" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="income" inverseEntity="TablePart" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="income" inverseEntity="Account" syncable="YES"/>
     </entity>
     <entity name="TablePart" representedClassName=".TablePart" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="expenditure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Expenditure" inverseName="tablePart" inverseEntity="Expenditure" syncable="YES"/>
-        <relationship name="income" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Income" inverseName="tablePart" inverseEntity="Income" syncable="YES"/>
         <relationship name="tableString" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TableString" inverseName="tablePart" inverseEntity="TableString" syncable="YES"/>
     </entity>
     <entity name="TableString" representedClassName="myMoney.TableString" syncable="YES">
@@ -31,11 +35,11 @@
         <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="tableString" inverseEntity="TablePart" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Article" positionX="79" positionY="171" width="128" height="73"/>
-        <element name="Account" positionX="-378" positionY="-90" width="128" height="90"/>
-        <element name="Expenditure" positionX="-578" positionY="-234" width="128" height="73"/>
-        <element name="Income" positionX="-378" positionY="-90" width="128" height="75"/>
-        <element name="TablePart" positionX="-362" positionY="-124" width="128" height="105"/>
-        <element name="TableString" positionX="-162" positionY="5" width="128" height="120"/>
+        <element name="Account" positionX="-290" positionY="-369" width="128" height="120"/>
+        <element name="Article" positionX="-578" positionY="189" width="128" height="73"/>
+        <element name="Expenditure" positionX="-578" positionY="-234" width="128" height="90"/>
+        <element name="Income" positionX="-47" positionY="-249" width="128" height="105"/>
+        <element name="TablePart" positionX="-578" positionY="-99" width="128" height="90"/>
+        <element name="TableString" positionX="-578" positionY="33" width="128" height="120"/>
     </elements>
 </model>
