@@ -36,6 +36,10 @@ class AddNewArticleViewController: UIViewController {
         
     }
     
+    @IBAction func cancel(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

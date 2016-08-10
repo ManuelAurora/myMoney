@@ -16,24 +16,15 @@ class PopUpViewController: UIViewController
     
     var mode: Mode = .New
     var type: Type = .Expense
-    
-   
+       
     
     @IBOutlet weak var popUpViewExpense: UIView!
-    
-    @IBOutlet weak var articleNameLabel: UILabel!
-    @IBOutlet weak var articlePriceTextField: UITextField!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var addButton:        UIButton!
+    @IBOutlet weak var closeButton:      UIButton!
     
     @IBAction func close() {
         
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func addItem() {
-       
-        addNewOrEditItem()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,7 +44,7 @@ class PopUpViewController: UIViewController
             
         case .Expense:
             
-            showExpenseView()
+            showArticleView()
             
         case .Account:
             

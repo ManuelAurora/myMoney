@@ -7,57 +7,66 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dse-sm-baX" userLabel="PopupExpense">
+        <view contentMode="scaleToFill" id="Kob-Uf-zK6" customClass="AddEditArticleView" customModule="myMoney" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="240" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bny-1v-6cd">
-                    <rect key="frame" x="8" y="72" width="110" height="30"/>
-                    <accessibility key="accessibilityConfiguration">
-                        <accessibilityTraits key="traits" selected="YES"/>
-                    </accessibility>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
-                </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwX-Kk-XVd">
-                    <rect key="frame" x="8" y="8" width="150" height="50"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwX-Kk-XVd">
+                    <rect key="frame" x="8" y="17" width="150" height="50"/>
                     <color key="backgroundColor" red="0.75961223820000001" green="0.75961223820000001" blue="0.75961223820000001" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLw-H1-vQl">
-                    <rect key="frame" x="195" y="6" width="35" height="35"/>
+                    <rect key="frame" x="197" y="17" width="35" height="35"/>
                     <state key="normal" image="CloseButton"/>
+                    <connections>
+                        <action selector="close:" destination="Kob-Uf-zK6" eventType="touchUpInside" id="Ewv-yh-Vpj"/>
+                    </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bny-1v-6cd">
+                    <rect key="frame" x="8" y="85" width="110" height="30"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" selected="YES"/>
+                    </accessibility>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKM-L8-fbH">
-                    <rect key="frame" x="139" y="74" width="93" height="25"/>
+                    <rect key="frame" x="139" y="87" width="93" height="25"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37q-pv-ZDa">
-                    <rect key="frame" x="139" y="107" width="93" height="25"/>
+                    <rect key="frame" x="139" y="120" width="93" height="25"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyh-2O-OdQ">
-                    <rect key="frame" x="139" y="140" width="93" height="25"/>
+                    <rect key="frame" x="139" y="153" width="93" height="25"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSp-wY-yxa">
-                    <rect key="frame" x="8" y="132" width="110" height="30"/>
+                    <rect key="frame" x="8" y="145" width="110" height="30"/>
                     <state key="normal" title="Добавить" backgroundImage="LandscapeButton"/>
+                    <connections>
+                        <action selector="addEdit:" destination="Kob-Uf-zK6" eventType="touchUpInside" id="K0P-Xb-XRo"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="width" constant="240" id="07U-WD-gXE"/>
-                <constraint firstAttribute="height" constant="200" id="bg7-Fm-nXD"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addEditButton" destination="vSp-wY-yxa" id="ury-QA-1KX"/>
+                <outlet property="articleNameLabel" destination="HwX-Kk-XVd" id="9Yl-7L-bcU"/>
+                <outlet property="articlePriceTextField" destination="bny-1v-6cd" id="sOH-Dq-aAo"/>
+            </connections>
+            <point key="canvasLocation" x="357" y="504"/>
         </view>
     </objects>
     <resources>

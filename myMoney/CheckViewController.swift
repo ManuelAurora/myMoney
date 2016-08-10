@@ -68,7 +68,7 @@ class CheckViewController: CoreDataTableViewController
         
         fetchData()
         
-        tileButtons()
+        tileButtons()   
     }
     
     override func didReceiveMemoryWarning() {
@@ -221,7 +221,7 @@ extension CheckViewController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCellTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ArticleCell") as! ArticleCellTableViewCell
         
         let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
         

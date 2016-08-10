@@ -35,6 +35,15 @@ class NewAccountView: UIView
         return view
     }
     
+    override func didMoveToSuperview() {
+        
+        layer.cornerRadius = 10
+        self.center        = viewController.view.center
+        self.center.y     -= 50
+        
+        accountNameTextField.becomeFirstResponder()
+    }
+    
     func fill(withCount count: Account) {
         
         if let balance = count.balance
