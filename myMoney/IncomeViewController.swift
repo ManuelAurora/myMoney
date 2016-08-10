@@ -13,20 +13,23 @@ class IncomeViewController: UIViewController
 {
     var managedContext: NSManagedObjectContext!
     
-    var income:  Income?  
+    var income:  Income?
+    var account: Account?
     
     @IBOutlet weak var totalIncomeTextField: UITextField!
     @IBOutlet weak var chooseButton: UIButton!
     
     @IBAction func record(sender: AnyObject) {
         
-        if let accountTotal = income!.account?.balance?.doubleValue
+        if let accountTotal = account?.balance?.doubleValue
         {
             let totalIncome  = Double(totalIncomeTextField.text!)!
             
             let result       = accountTotal + totalIncome
             
-            income = Income(withAmount: totalIncome )
+            income = Income(withAmount: totalIncome)
+            
+            income!.account = account
             
             income!.account!.balance = result
             
@@ -52,6 +55,7 @@ class IncomeViewController: UIViewController
           
     override func viewDidLoad() {
         super.viewDidLoad()
+                
         
         totalIncomeTextField.becomeFirstResponder()
     }

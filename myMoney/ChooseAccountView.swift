@@ -34,7 +34,7 @@ class ChooseAccountView: UIView
         {
             controller.chooseButton.setTitle(chosenAccountName, forState: .Normal)
             
-            controller.income!.account = fetchAccount(withName: chosenAccountName)
+            controller.account = fetchAccount(withName: chosenAccountName)
             
             
         }

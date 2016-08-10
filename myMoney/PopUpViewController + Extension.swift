@@ -16,7 +16,7 @@ extension PopUpViewController
         let view = AddEditArticleView.loadFromNib()
         
         view.viewController = self
-        view.article = article
+        view.article        = article
         
         self.view.addSubview(view)
     }
@@ -51,7 +51,7 @@ extension PopUpViewController
             {
                 let articleString = TableString(AddArticle: article!, intoTablePart: controller.check!.tablePart, withPrice: Float(priceString), amount: nil)
                 
-                articleString.number = controller.fetchedResultsController!.sections![0].numberOfObjects + 1            
+                articleString.number = controller.fetchedResultsController!.sections![0].numberOfObjects + 1
                
             }
             else
