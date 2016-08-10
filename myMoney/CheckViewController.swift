@@ -14,15 +14,26 @@ class CheckViewController: CoreDataTableViewController
     var managedContext: NSManagedObjectContext!
     
     var checkNumber: Int!
-    var mode: Mode = .New
-    var check: Expenditure?
+    var mode:        Mode = .New
+    var check:       Expenditure?
+   
+    var totalExpense: Double = 0
     
     var articleCatalog: Catalog!
     
-    @IBOutlet weak var priceField:    UITextField!
     @IBOutlet weak var productView:   UIView!
     @IBOutlet weak var date:          UILabel!
     @IBOutlet weak var AddEditButton: UIButton!
+    @IBOutlet weak var accountButton: UIButton!
+    
+    @IBAction func chooseAccount(sender: AnyObject) {
+        
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
+        
+        controller.type = .AccountList
+        
+        presentViewController(controller, animated: true, completion: nil)
+    }
     
     @IBAction func addNewArticle() {
         
@@ -42,7 +53,14 @@ class CheckViewController: CoreDataTableViewController
     
     @IBAction func record() {
         
-        try! managedContext.save()  
+        if let accountTotal = check!.account?.balance?.doubleValue
+        {
+            let result      = accountTotal - totalExpense
+            
+            check!.account!.balance = result
+        }
+        
+        try! managedContext.save()
         
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -54,21 +72,22 @@ class CheckViewController: CoreDataTableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         switch mode
         {
         case .Edit:
-            AddEditButton.setTitle("Принять", forState: .Normal)
+            AddEditButton.setTitle("Save", forState: .Normal)
             date.text   = String(check!.date!)
             
         case .New:
             check = Expenditure(Number: checkNumber)
-            AddEditButton.setTitle("Запись", forState: .Normal)
+            AddEditButton.setTitle("Add", forState: .Normal)
             date.text = String(check!.date!)
         }
         
         fetchData()
         
-        tileButtons()   
+        tileButtons()        
     }
     
     override func didReceiveMemoryWarning() {
@@ -228,7 +247,9 @@ extension CheckViewController
         cell.name.text  = articleString.article!.name
         cell.price.text = String(articleString.price!.floatValue) ?? ""
         cell.number.text = String(indexPath.row + 1)
-                
+        
+        totalExpense += articleString.price!.doubleValue
+        
         return cell
     }
     

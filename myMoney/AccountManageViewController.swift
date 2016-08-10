@@ -45,6 +45,11 @@ class AccountManageViewController: UIViewController
         presentViewController(controller, animated: true, completion: nil)        
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        tableView.reloadData()
+    }
 }
 
 extension AccountManageViewController: UITableViewDataSource, UITableViewDelegate

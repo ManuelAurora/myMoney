@@ -13,30 +13,25 @@ class IncomeViewController: UIViewController
 {
     var managedContext: NSManagedObjectContext!
     
-    var income: Income?
+    var income:  Income?  
     
     @IBOutlet weak var totalIncomeTextField: UITextField!
     @IBOutlet weak var chooseButton: UIButton!
     
     @IBAction func record(sender: AnyObject) {
         
-        guard chooseButton.titleLabel!.text != "Choose" else { return }        
-        
-        let predicate = NSPredicate(format: "name = %@", chooseButton.titleLabel!.text!)
-        
-        let account = fetchData(forEntity: "Account", withSortKey: "currency", predicate: predicate).first! as! Account
-        
-        let totalIncome  = Double(totalIncomeTextField.text!)!
-        let accountTotal = account.balance!.doubleValue
-        let result       = accountTotal + totalIncome
-        
-        income = Income(withAmount: totalIncome )
-        
-        income?.account = account
-        
-        account.balance! = result
-        
-        try! managedContext.save()
+        if let accountTotal = income!.account?.balance?.doubleValue
+        {
+            let totalIncome  = Double(totalIncomeTextField.text!)!
+            
+            let result       = accountTotal + totalIncome
+            
+            income = Income(withAmount: totalIncome )
+            
+            income!.account!.balance = result
+            
+            try! managedContext.save()
+        }
         
         dismissViewControllerAnimated(true, completion: nil)
     }

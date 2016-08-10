@@ -11,8 +11,9 @@ import UIKit
 class ChooseAccountView: UIView
 {
     var viewController: PopUpViewController!
-    var chosenAccount = "Choose"
     
+    var chosenAccountName = "Choose"    
+     
     lazy var allAccounts: [Account] = {
         
         let result = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil) as! [Account]
@@ -27,11 +28,23 @@ class ChooseAccountView: UIView
         viewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func selectAccout(sender: UIButton) {
+    @IBAction func selectAccount(sender: UIButton) {
         
-        let controller = viewController.presentingViewController as! IncomeViewController
+        if let controller = viewController.presentingViewController as? IncomeViewController
+        {
+            controller.chooseButton.setTitle(chosenAccountName, forState: .Normal)
+            
+            controller.income!.account = fetchAccount(withName: chosenAccountName)
+            
+            
+        }
         
-        controller.chooseButton.setTitle(chosenAccount, forState: .Normal)
+        if let controller = viewController.presentingViewController as? CheckViewController
+        {
+            controller.accountButton.setTitle(chosenAccountName, forState: .Normal)
+            
+            controller.check!.account = fetchAccount(withName: chosenAccountName)
+        }
         
         viewController.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -52,6 +65,15 @@ class ChooseAccountView: UIView
         self.layer.cornerRadius = 10
         self.center             = viewController.view.center
         self.center.y          -= 50
+    }
+    
+    func fetchAccount(withName name: String) -> Account {
+        
+        let predicate = NSPredicate(format: "name = %@", name)
+        
+        let account = fetchData(forEntity: "Account", withSortKey: "currency", predicate: predicate).first! as! Account
+
+        return account
     }
 
 }
@@ -96,7 +118,7 @@ extension ChooseAccountView: UITableViewDataSource, UITableViewDelegate
     func toggleCheckMark(inCell cell: AccountTableViewCell) {
         
             cell.accessoryType = .Checkmark
-            chosenAccount      = cell.accountNameLabel.text!        
+            chosenAccountName      = cell.accountNameLabel.text!
     }
     
 }

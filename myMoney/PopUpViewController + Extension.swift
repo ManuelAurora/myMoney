@@ -51,9 +51,8 @@ extension PopUpViewController
             {
                 let articleString = TableString(AddArticle: article!, intoTablePart: controller.check!.tablePart, withPrice: Float(priceString), amount: nil)
                 
-                articleString.number = controller.fetchedResultsController!.sections![0].numberOfObjects + 1
-                
-                controller.renumerateStrings()
+                articleString.number = controller.fetchedResultsController!.sections![0].numberOfObjects + 1            
+               
             }
             else
             {
