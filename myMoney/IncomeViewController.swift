@@ -21,13 +21,15 @@ class IncomeViewController: UIViewController
     
     @IBAction func record(sender: AnyObject) {
         
-            let totalIncome  = Double(totalIncomeTextField.text!)!
-            
-            income = Income(withAmount: totalIncome)
-            
-            income!.account = account
-            
-            income!.conduct()
+        let totalIncome  = Double(totalIncomeTextField.text!)!
+        
+        income = Income(withAmount: totalIncome)
+        
+        income!.account = account
+        
+        income!.conduct()
+        
+        try! DataManager.sharedInstance().saveContext()
         
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -43,12 +45,11 @@ class IncomeViewController: UIViewController
         controller.type = .AccountList
         
         presentViewController(controller, animated: true, completion: nil)
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         totalIncomeTextField.becomeFirstResponder()
     }
 }

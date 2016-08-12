@@ -25,6 +25,7 @@ class Expenditure: Registrator
         
         self.init(entity: entity!, insertIntoManagedObjectContext: context)
         
+        self.name      = Constants.expenditureName
         self.tablePart = tablePart     
         self.date      = NSDate()
     }
@@ -34,18 +35,5 @@ class Expenditure: Registrator
        managedObjectContext?.insertObject(article)        
     }
       
-    func sumOfDocument() -> Float {
         
-        let items = tablePart!.tableString!.allObjects as! [TableString]
-        
-        var sum: Float = 0
-        
-        for item in items {
-            
-            sum += item.price!.floatValue
-        }
-        
-        return sum
-    }
-    
 }

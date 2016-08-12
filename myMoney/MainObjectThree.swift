@@ -12,19 +12,19 @@ import CoreData
 class AllCatalogs
 {
  
-    let catalogArticle: Catalog = {
+    var catalogArticle: Catalog {
        
         let catalog = Catalog(Of: "Article")
         
         return catalog
-    }()
+    }
     
-    let catalogExpenditure: Catalog = {
+    var catalogExpenditure: Catalog {
         
-        let catalog = Catalog(Of: "Expenditure")
+        let catalog = Catalog(Of: "Registrator")
         
         return catalog
-    }()
+    }
     
     
     class func sharedInstance() -> AllCatalogs {
@@ -33,19 +33,5 @@ class AllCatalogs
         }
         
         return Singleton.sharedInstance
-    }
-}
-
-class AllDocuments
-{
-     let documentsChecksJournal = DocumentsJournal()
-    
-        class func sharedInstance() -> AllDocuments {
-        struct Singleton {
-            static let sharedInstance = AllDocuments()
-        }
-        
-        return Singleton.sharedInstance
-    }
-    
+    }   
 }

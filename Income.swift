@@ -23,6 +23,7 @@ class Income: Registrator
       
         self.date   = NSDate()
         self.amount = amount
-    }
+        self.name   = Constants.incomeName
+    }   
     
 }

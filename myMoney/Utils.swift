@@ -45,3 +45,9 @@ func fetchData(forEntity entityName: String, withSortKey sort: String?, predicat
         
     return try! managedContext.executeFetchRequest(fetchRequest)
 }
+
+struct Constants
+{
+    static let expenditureName = "Expenditure"
+    static let incomeName      = "Income"
+}

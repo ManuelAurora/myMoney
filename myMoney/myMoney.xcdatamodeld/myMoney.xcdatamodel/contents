@@ -17,9 +17,9 @@
         <relationship name="registrator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Registrator" inverseName="registerLine" inverseEntity="Registrator" syncable="YES"/>
     </entity>
     <entity name="Registrator" representedClassName="myMoney.Registrator" syncable="YES">
-        <attribute name="amount" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="date" attributeType="Date" syncable="YES"/>
-        <attribute name="type" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="registrators" inverseEntity="Account" syncable="YES"/>
         <relationship name="registerLine" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RegisterLine" inverseName="registrator" inverseEntity="RegisterLine" syncable="YES"/>
         <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TablePart" inverseName="expenditure" inverseEntity="TablePart" syncable="YES"/>

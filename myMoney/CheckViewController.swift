@@ -52,16 +52,14 @@ class CheckViewController: CoreDataTableViewController
     }
     
     @IBAction func record() {
-                
+        
+        check!.conduct()
+        
         try! managedContext.save()
         
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)        
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         

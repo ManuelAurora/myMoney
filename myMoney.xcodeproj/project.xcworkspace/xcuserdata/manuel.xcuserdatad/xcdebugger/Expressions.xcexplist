@@ -164,6 +164,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Registrator.conduct() -&gt; ():Registrator.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "let income = self as? Income">
+            </PersistentString>
+            <PersistentString
+               value = "self.amount == nil">
+            </PersistentString>
+            <PersistentString
+               value = "self.type!.integerValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AppDelegate.init() -&gt; AppDelegate:AppDelegate.swift">
          <PersistentStrings>
             <PersistentString
@@ -310,6 +324,14 @@
             </PersistentString>
             <PersistentString
                value = "IncomeNameTextField">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Catalog.allObjects() -&gt; [AnyObject]:Catalog.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
