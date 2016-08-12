@@ -48,18 +48,21 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         return sectionInfo.numberOfObjects
     }
     
-   
-    
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let expenditure = fetchedResultsController?.objectAtIndexPath(indexPath) as! Expenditure
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("CheckCell", forIndexPath: indexPath) as! CheckTableViewCell
-    
-        cell.date.text      = String(expenditure.date!)        
-        cell.operation.text = ""
-        cell.sum.text       = String(expenditure.sumOfDocument())
+        
+        if let income = fetchedResultsController?.objectAtIndexPath(indexPath) as? Income
+        {
+            cell.date.text      = String(income.date!)
+        }
+       
+        if let expenditure = fetchedResultsController?.objectAtIndexPath(indexPath) as? Expenditure
+        {
+            cell.date.text      = String(expenditure.date!)
+            cell.operation.text = ""
+            cell.sum.text       = String(expenditure.sumOfDocument())
+        }
         
         return cell
     }
@@ -84,7 +87,7 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         
-        let fetchRequest = NSFetchRequest(entityName: "Expenditure")
+        let fetchRequest = NSFetchRequest(entityName: "Registrator")
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         

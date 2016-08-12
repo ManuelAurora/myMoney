@@ -9,13 +9,13 @@
 import Foundation
 import CoreData
 
-class Expenditure: NSManagedObject
+class Expenditure: Registrator
 {
     convenience init(Number number: Int) {
         
         let context = DataManager.sharedInstance().context
         
-        let entity = NSEntityDescription.entityForName("Expenditure", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entityForName("Registrator", inManagedObjectContext: context)
         
         let tablePartEntity = NSEntityDescription.entityForName("TablePart", inManagedObjectContext: context)
         

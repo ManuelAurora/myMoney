@@ -1,8 +1,8 @@
 //
-//  Income+CoreDataProperties.swift
+//  RegisterLine+CoreDataProperties.swift
 //  myMoney
 //
-//  Created by Мануэль on 09.08.16.
+//  Created by Мануэль on 12.08.16.
 //  Copyright © 2016 AuroraInterplay. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,11 +12,12 @@
 import Foundation
 import CoreData
 
-extension Income {
+extension RegisterLine {
 
     @NSManaged var date: NSDate?
-    @NSManaged var amount: NSNumber?
-    @NSManaged var source: String?
-    @NSManaged var account: Account?
+    @NSManaged var kind: NSNumber?
+    @NSManaged var resource: NSNumber?    
+    @NSManaged var registrator: NSManagedObject?
+    @NSManaged var measure: Account?
 
 }

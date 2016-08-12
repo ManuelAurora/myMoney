@@ -13,6 +13,13 @@ class MainScreenViewController: UIViewController
 {
     var managedContext: NSManagedObjectContext!
     
+    var accounts: [Account] {
+        
+       let result = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil) as! [Account]
+        
+        return result
+    }
+    
     @IBOutlet weak var moneyTotalTextLabel:    UILabel!
     @IBOutlet weak var incomeTextLabel:        UILabel!
     @IBOutlet weak var expensesTextLabel:      UILabel!
@@ -77,45 +84,34 @@ class MainScreenViewController: UIViewController
     
     func updateMoneyInfo() {
         
+        var totalMoney: Double = 0
         
-        let result = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil)
-               
-        var sum: Double = 0
-        
-        for item in result
+        for account in accounts
         {
-            let account = item as! Account
-            
-            sum += account.balance!.doubleValue
+            totalMoney += account.accountBalance()
         }
         
-        moneyTotalCountLabel.text = "\(sum)"
+        moneyTotalCountLabel.text = "\(totalMoney)"
     }
     
 }
 
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
 {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
-        return 1
-    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil).count
+        return accounts.count
     }
  
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let result = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil)
-        
-        let account = result[indexPath.row] as! Account
+        let account = accounts[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
         
         cell.accountNameLabel.text = account.name
-        cell.accountBalanceLabel.text = "\(account.balance!.doubleValue)"
+        cell.accountBalanceLabel.text = "\(account.accountBalance())"
         
         return cell
     }

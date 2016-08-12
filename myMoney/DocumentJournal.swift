@@ -10,5 +10,5 @@ import Foundation
 
 class DocumentJournal
 {
-    var documents = [Registrator]()
+   // var documents = [Registrator]()
 }

@@ -10,14 +10,14 @@ import Foundation
 import CoreData
 
 
-class Income: NSManagedObject
+class Income: Registrator
 {
 
     convenience init(withAmount amount: Double) {
         
         let context = DataManager.sharedInstance().context
         
-        let entity = NSEntityDescription.entityForName("Income", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entityForName("Registrator", inManagedObjectContext: context)
                 
         self.init(entity: entity!, insertIntoManagedObjectContext: context)
       

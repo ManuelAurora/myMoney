@@ -1,8 +1,8 @@
 //
-//  Expenditure+CoreDataProperties.swift
+//  Registrator+CoreDataProperties.swift
 //  myMoney
 //
-//  Created by Мануэль on 09.08.16.
+//  Created by Мануэль on 12.08.16.
 //  Copyright © 2016 AuroraInterplay. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,10 +12,13 @@
 import Foundation
 import CoreData
 
-extension Expenditure {
+extension Registrator {
 
     @NSManaged var date: NSDate?
-    @NSManaged var tablePart: TablePart?
+    @NSManaged var amount: NSNumber?
+    @NSManaged var type: NSNumber?
     @NSManaged var account: Account?
+    @NSManaged var tablePart: TablePart?
+    @NSManaged var registerLine: RegisterLine?
 
 }

@@ -12,7 +12,14 @@ import CoreData
 class AccountManageViewController: UIViewController
 {
     
-    var managedContext: NSManagedObjectContext!    
+    var managedContext: NSManagedObjectContext!
+    
+    var accounts: [Account] {
+        
+        let result = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil) as! [Account]
+        
+        return result
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,20 +27,6 @@ class AccountManageViewController: UIViewController
         
         addNew()
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       
-        let nib = UINib(nibName: "AccountTableViewCell", bundle: nil)
-        
-       tableView.registerNib(nib, forCellReuseIdentifier: "AccountCell")
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func addNew() {
@@ -50,28 +43,34 @@ class AccountManageViewController: UIViewController
         
         tableView.reloadData()
     }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        let nib = UINib(nibName: "AccountTableViewCell", bundle: nil)
+        
+        tableView.registerNib(nib, forCellReuseIdentifier: "AccountCell")
+        
+    }
 }
 
 extension AccountManageViewController: UITableViewDataSource, UITableViewDelegate
 {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
-        return 1
-    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil).count
+        return accounts.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
         
-        let account = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil)[indexPath.row] as! Account
+        let account = accounts[indexPath.row]
         
-        cell.accountNameLabel.text = account.name
-        cell.accountBalanceLabel.text = "\(account.balance!.doubleValue)"
+        cell.accountNameLabel.text    = account.name
+        cell.accountBalanceLabel.text = "\(account.accountBalance())"
         
         return cell
     }

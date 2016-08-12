@@ -12,12 +12,11 @@
 import Foundation
 import CoreData
 
-extension Account {
-
-    @NSManaged var balance: NSNumber?
+extension Account
+{
+    
     @NSManaged var currency: String?
-    @NSManaged var name: String?
-    @NSManaged var income: NSSet?
-    @NSManaged var expenditures: NSSet?
+    @NSManaged var name: String
+    @NSManaged var registrators: NSSet?
 
 }

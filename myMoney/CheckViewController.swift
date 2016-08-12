@@ -52,14 +52,7 @@ class CheckViewController: CoreDataTableViewController
     }
     
     @IBAction func record() {
-        
-        if let accountTotal = check!.account?.balance?.doubleValue
-        {
-            let result      = accountTotal - totalExpense
-            
-            check!.account!.balance = result
-        }
-        
+                
         try! managedContext.save()
         
         dismissViewControllerAnimated(true, completion: nil)

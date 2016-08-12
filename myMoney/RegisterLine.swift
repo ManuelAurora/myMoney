@@ -11,13 +11,18 @@ import Foundation
 struct RegisterLine
 {
     
-    let registratorID: Int
+    let registrator: Registrator
     
     let measure: Measure
     
-    let resourse: Float
+    let resourse: Double
     
-  
+    let kind: Kind
     
-    
+}
+
+enum Kind: String
+{
+    case Substracting = "-"
+    case Adding       = "+"
 }

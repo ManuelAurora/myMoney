@@ -78,7 +78,9 @@ extension PopUpViewController
         
         if let balance = Double(accountView.balanceTextField.text!)
         {
-            account.balance = balance         
+            let income = Income(withAmount: balance)
+            
+            _ = RegisterLine(basedOn: income, measure: account, resource: balance, kind: .Adding, date: NSDate())
         }
         
         if let currency = accountView.currencyLabel.text

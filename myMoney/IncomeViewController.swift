@@ -21,20 +21,13 @@ class IncomeViewController: UIViewController
     
     @IBAction func record(sender: AnyObject) {
         
-        if let accountTotal = account?.balance?.doubleValue
-        {
             let totalIncome  = Double(totalIncomeTextField.text!)!
-            
-            let result       = accountTotal + totalIncome
             
             income = Income(withAmount: totalIncome)
             
             income!.account = account
             
-            income!.account!.balance = result
-            
-            try! managedContext.save()
-        }
+            income!.conduct()
         
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -52,11 +45,10 @@ class IncomeViewController: UIViewController
         presentViewController(controller, animated: true, completion: nil)
         
     }
-          
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        
         totalIncomeTextField.becomeFirstResponder()
     }
 }

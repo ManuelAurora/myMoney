@@ -44,19 +44,16 @@ class NewAccountView: UIView
         accountNameTextField.becomeFirstResponder()
     }
     
-    func fill(withCount count: Account) {
+    func fill(withAccount account: Account) {
         
-        if let balance = count.balance
-        {
-            balanceTextField.text   = "\(balance.doubleValue)"
-        }
+        balanceTextField.text   = "\(account.accountBalance())"        
         
-        if let currency = count.currency
+        if let currency = account.currency
         {
             currencyLabel.text      = currency
         }
         
-        accountNameTextField.text = count.name
+        accountNameTextField.text = account.name
     }
     
 }

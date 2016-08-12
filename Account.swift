@@ -22,4 +22,24 @@ class Account: NSManagedObject
         
         self.name = name
     }
+    
+    func accountBalance() -> Double {
+        
+        let predicate = NSPredicate(format: "measure = %@", self)
+        
+        let result = fetchData(forEntity: "RegisterLine", withSortKey: "date", predicate: predicate)
+        
+        var sum: Double = 0
+        
+        for item in result
+        {
+            let regLine = item as! RegisterLine
+            
+            let value   = regLine.resource!.doubleValue * regLine.kind!.doubleValue
+            
+            sum += value
+        }
+        
+        return sum
+    }
 }
