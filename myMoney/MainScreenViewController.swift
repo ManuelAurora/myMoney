@@ -15,7 +15,7 @@ class MainScreenViewController: UIViewController
     
     var accounts: [Account] {
         
-       let result = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil) as! [Account]
+       let result = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil) as! [Account]
         
         return result
     }
@@ -92,7 +92,7 @@ class MainScreenViewController: UIViewController
             totalMoney += account.accountBalance()
         }
         
-        moneyTotalCountLabel.text = "\(totalMoney)"
+        moneyTotalCountLabel.text = String(format: "%.2f", totalMoney)
     }
     
 }
@@ -111,8 +111,8 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
         
         let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
         
-        cell.accountNameLabel.text = account.name
-        cell.accountBalanceLabel.text = "\(account.accountBalance())"
+        cell.accountNameLabel.text    = account.name
+        cell.accountBalanceLabel.text =  String(format: "%.2f", account.accountBalance())
         
         return cell
     }

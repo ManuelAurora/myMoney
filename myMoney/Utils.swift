@@ -33,26 +33,9 @@ enum PopUpElementType
     case ElementAccountListType
 }
 
-func fetchData(forEntity entityName: String, withSortKey sort: String?, predicate: NSPredicate?) -> [AnyObject] {
-    
-    let managedContext = DataManager.sharedInstance().context
-    
-    let fetchRequest = NSFetchRequest(entityName: entityName)
-    
-    let sortDescr = NSSortDescriptor(key: sort, ascending: false)
-    
-    fetchRequest.sortDescriptors = [sortDescr]
-    
-    if let predicate = predicate
-    {
-        fetchRequest.predicate = predicate
-    }
-        
-    return try! managedContext.executeFetchRequest(fetchRequest)
-}
-
-struct Constants  //RENAME THIS!
+struct Constants  //TODO: RENAME THIS!
 {
     static let expenditureName = "Expenditure"
     static let incomeName      = "Income"
 }
+

@@ -165,8 +165,8 @@
 		643B3D921D1984D2004A6A43 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				643B3D931D1984E4004A6A43 /* Class extensions */,
 				643B3D901D1984C2004A6A43 /* DataManager.swift */,
+				643B3D931D1984E4004A6A43 /* Class extensions */,
 			);
 			name = CoreData;
 			path = ..;

@@ -83,6 +83,35 @@ class DataManager
         
         print(dbURL)
     }
+    
+    func fetchData(forEntity entityName: String, withSortKey sort: String?, predicate: NSPredicate?) -> [AnyObject] {
+        
+        let fetchRequest = NSFetchRequest(entityName: entityName)
+        
+        let sortDescr = NSSortDescriptor(key: sort, ascending: false)
+        
+        fetchRequest.sortDescriptors = [sortDescr]
+        
+        if let predicate = predicate
+        {
+            fetchRequest.predicate = predicate
+        }
+        
+        var result = [AnyObject]()
+        
+        do
+        {
+          try result = context.executeFetchRequest(fetchRequest)
+            
+        }
+        catch
+        {
+            print(error)
+        }
+        
+        return result
+    }
+
 }
 
 
@@ -95,7 +124,6 @@ extension DataManager  {
         try coordinator.destroyPersistentStoreAtURL(dbURL, withType:NSSQLiteStoreType , options: nil)
         
         try addStoreCoordinator(NSSQLiteStoreType, configuration: nil, storeURL: dbURL, options: nil)
-
         
     }
 }

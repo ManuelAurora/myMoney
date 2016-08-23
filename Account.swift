@@ -27,7 +27,7 @@ class Account: NSManagedObject
         
         let predicate = NSPredicate(format: "measure = %@", self)
         
-        let result = fetchData(forEntity: "RegisterLine", withSortKey: "date", predicate: predicate)
+        let result = DataManager.sharedInstance().fetchData(forEntity: "RegisterLine", withSortKey: "date", predicate: predicate)
         
         var sum: Double = 0
         

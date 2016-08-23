@@ -16,7 +16,7 @@ class AccountManageViewController: UIViewController
     
     var accounts: [Account] {
         
-        let result = fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil) as! [Account]
+        let result = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil) as! [Account]
         
         return result
     }
