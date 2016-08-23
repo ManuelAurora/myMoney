@@ -10,8 +10,7 @@ import UIKit
 
 class CheckTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var date:      UILabel!
-    @IBOutlet weak var number:    UILabel!
+    @IBOutlet weak var date:      UILabel!    
     @IBOutlet weak var operation: UILabel!
     @IBOutlet weak var sum:       UILabel!
     

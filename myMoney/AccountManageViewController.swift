@@ -70,7 +70,7 @@ extension AccountManageViewController: UITableViewDataSource, UITableViewDelegat
         let account = accounts[indexPath.row]
         
         cell.accountNameLabel.text    = account.name
-        cell.accountBalanceLabel.text = "\(account.accountBalance())"
+        cell.accountBalanceLabel.text = prettyStringFrom(account.accountBalance())
         
         return cell
     }

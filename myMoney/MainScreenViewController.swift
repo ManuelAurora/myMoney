@@ -92,7 +92,7 @@ class MainScreenViewController: UIViewController
             totalMoney += account.accountBalance()
         }
         
-        moneyTotalCountLabel.text = String(format: "%.2f", totalMoney)
+        moneyTotalCountLabel.text = prettyStringFrom(totalMoney)
     }
     
 }
@@ -112,7 +112,7 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
         
         cell.accountNameLabel.text    = account.name
-        cell.accountBalanceLabel.text =  String(format: "%.2f", account.accountBalance())
+        cell.accountBalanceLabel.text = prettyStringFrom(account.accountBalance())
         
         return cell
     }

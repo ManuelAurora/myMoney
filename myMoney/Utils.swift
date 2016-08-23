@@ -39,3 +39,18 @@ struct Constants  //TODO: RENAME THIS!
     static let incomeName      = "Income"
 }
 
+func prettyStringFrom(doubleValue: Double) -> String {
+    
+    let resultString = String(format: "%.2f", doubleValue)
+    
+    return resultString    
+}
+
+func prettyStringFrom(dateValue: NSDate) -> String {
+    
+    let formatter = NSDateFormatter()
+    
+    formatter.dateFormat = "d MMMM hh:mm"
+    
+    return formatter.stringFromDate(dateValue)
+}

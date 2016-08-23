@@ -20,6 +20,7 @@ class IncomeViewController: UIViewController
     @IBOutlet weak var totalIncomeTextField: UITextField!
     @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var dateLabel:    UILabel!
     
     @IBAction func record(sender: AnyObject) {
        
@@ -65,7 +66,9 @@ class IncomeViewController: UIViewController
             chooseButton.setTitle(name, forState: .Normal)
         }
         
-        totalIncomeTextField.text = income?.amount?.stringValue
+        totalIncomeTextField.text = income!.amount == 0 ? "" : income?.amount?.stringValue
+        
+        dateLabel.text = prettyStringFrom(income!.date)
         
         totalIncomeTextField.becomeFirstResponder()
     }
@@ -82,7 +85,7 @@ class IncomeViewController: UIViewController
         case .DocumentNewMode:
             
             income = Income(withAmount: 0)
-         
+            
             recordButton.setTitle("Add", forState: .Normal)
         }
     }

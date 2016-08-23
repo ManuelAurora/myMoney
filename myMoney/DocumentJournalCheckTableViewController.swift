@@ -49,17 +49,13 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CheckCell", forIndexPath: indexPath) as! CheckTableViewCell
-        
-        if let income = fetchedResultsController?.objectAtIndexPath(indexPath) as? Income
+     
+        if let document = fetchedResultsController?.objectAtIndexPath(indexPath) as? Registrator
         {
-            cell.date.text      = String(income.date)
-        }
-       
-        if let expenditure = fetchedResultsController?.objectAtIndexPath(indexPath) as? Expenditure
-        {
-            cell.date.text      = String(expenditure.date)
-            cell.operation.text = ""
-            cell.sum.text       = String(expenditure.sumOfDocument())
+            cell.date.text = prettyStringFrom(document.date)
+            cell.sum.text  = prettyStringFrom(document.sumOfDocument())
+            
+            cell.operation.text = document.name == Constants.expenditureName ? "Expenditure" : "Income"            
         }
         
         return cell
@@ -92,7 +88,7 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
             controller.managedContext   = managedContext
             controller.presentationMode = .DocumentEditMode
             controller.income           = document
-                        
+            
             presentViewController(controller, animated: true, completion: nil)
             
         default:
@@ -101,21 +97,21 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         }
     }
     
-    func fetchData() {
+    func fetchData() {        
         
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         
         let fetchRequest = NSFetchRequest(entityName: "Registrator")
         
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
+     
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         
-        do {
-            
-            try fetchedResultsController?.performFetch()
-            
-        } catch let error as NSError {
+        do
+        {
+            try fetchedResultsController!.performFetch()
+        }
+        catch let error as NSError {
             
             print("Error: \(error.localizedDescription)")
         }

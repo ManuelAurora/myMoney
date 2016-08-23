@@ -34,15 +34,20 @@ class Registrator: NSManagedObject
     
     func sumOfDocument() -> Double {
         
-        guard let tablePart = tablePart else { return 0 }
-        
-        let items = tablePart.tableStrings!.allObjects as! [TableString]
-                
         var sum: Double = 0
         
-        for item in items {
+        if let tablePart = tablePart
+        {
+            let items = tablePart.tableStrings!.allObjects as! [TableString]
             
-            sum += item.price!.doubleValue
+            for item in items {
+                
+                sum += item.price!.doubleValue
+            }
+        }
+        else if let amount = amount
+        {
+            sum = amount.doubleValue
         }
         
         return sum
@@ -64,6 +69,5 @@ class Registrator: NSManagedObject
             managedContext.deleteObject(object as! NSManagedObject)
         }
     }
-    
 
 }

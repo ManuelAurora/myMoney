@@ -42,7 +42,6 @@ class CheckViewController: CoreDataTableViewController
         controller.managedContext = managedContext
         
         presentViewController(controller, animated: true, completion: nil)
-        
     }
     
     @IBAction func Cancel() {
@@ -71,7 +70,7 @@ class CheckViewController: CoreDataTableViewController
     }
         
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         
         switch presentationMode
         {
@@ -80,10 +79,13 @@ class CheckViewController: CoreDataTableViewController
             date.text   = String(check!.date)
             
         case .DocumentNewMode:
+            
             check = Expenditure(Number: checkNumber)
+            
             AddEditButton.setTitle("Add", forState: .Normal)
-            date.text = String(check!.date)
         }
+        
+        date.text = prettyStringFrom(check!.date)
         
         fetchData()
         
@@ -230,8 +232,7 @@ class CheckViewController: CoreDataTableViewController
                 number += 1
             }
         }
-    }
-    
+    }    
 }
 
 extension CheckViewController
