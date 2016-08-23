@@ -20,6 +20,8 @@ class Account: NSManagedObject
         
         self.init(entity: entity!, insertIntoManagedObjectContext: context)
         
+        self.main = false
+        
         self.name = name
     }
     
@@ -27,7 +29,7 @@ class Account: NSManagedObject
         
         let predicate = NSPredicate(format: "measure = %@", self)
         
-        let result = DataManager.sharedInstance().fetchData(forEntity: "RegisterLine", withSortKey: "date", predicate: predicate)
+        let result = DataManager.sharedInstance().fetchData(forEntity: "RegisterLine", withSortKey: "date", predicates: [predicate])
         
         var sum: Double = 0
         
@@ -42,4 +44,34 @@ class Account: NSManagedObject
         
         return sum
     }
+    
+    func makeMain() {
+        
+        let predicate        = NSPredicate(format: "main=%@",  true)
+        let notSelfPredicate = NSPredicate(format: "name!=%@", self.name)
+        
+        let allAccounts = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: nil, predicates: [predicate, notSelfPredicate]) as! [Account]
+        
+        allAccounts.first?.main = false
+        
+        self.main = true
+    }
+    
+    class func mainAccount() -> Account {
+        
+        let predicate        = NSPredicate(format: "main=%@",  true)       
+        
+        let allAccounts = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: nil, predicates: [predicate]) as! [Account]
+        
+        return allAccounts.first!
+    }
+    
+    class func isFirstAccount() -> Bool {
+        
+        let result = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: nil, predicates: nil)
+        
+        return result.count == 0
+    }
+    
+    
 }

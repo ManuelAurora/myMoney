@@ -11,6 +11,9 @@ import UIKit
 
 extension PopUpViewController
 {
+    
+    //MARK: Presenting Views
+    
     func showArticleView() {
         
         let view = AddEditArticleView.loadFromNib()
@@ -34,14 +37,18 @@ extension PopUpViewController
         
         let view = NewAccountView.loadFromNib()
         
+        view.mainAccSwitch.on = Account.isFirstAccount() // If there is no accounts we will make our first account main.
+        
         view.viewController = self
         
         self.view.addSubview(view)
     }
     
+    //MARK: Completion Handlers
+    
+    //Adding Article into Check
+    
     func addEditArticleInTablePart(from articleView: AddEditArticleView) {
-        
-        //Adding or editing for CheckViewController
         
         if let controller = presentingViewController as? CheckViewController
         {
@@ -65,16 +72,19 @@ extension PopUpViewController
         }
     }
     
+    //Adding New Account
     
     func addNewAccount(from accountView: NewAccountView) {
         
-        let tabBar = presentingViewController as! UITabBarController
-        
+        let tabBar     = presentingViewController   as! UITabBarController
         let controller = tabBar.viewControllers![2] as! AccountManageViewController
         
-        // Creating
-        
         let account = Account(withName: "\(accountView.accountNameTextField.text!)")
+        
+        if accountView.mainAccSwitch.on {
+            
+            account.makeMain()            
+        }
         
         if let balance = Double(accountView.balanceTextField.text!)
         {
@@ -83,7 +93,6 @@ extension PopUpViewController
             income.account = account
             
             _ = RegisterLine(basedOn: income, measure: account, resource: balance, kind: .Adding, date: income.date)
-            
         }
         
         if let currency = accountView.currencyLabel.text
@@ -100,7 +109,7 @@ extension PopUpViewController
         }
         catch
         {
-            print("Unable to save new count")
+            print("Unable to save new Account")
         }
         
         dismissViewControllerAnimated(true, completion: nil)

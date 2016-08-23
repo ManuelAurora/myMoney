@@ -16,7 +16,7 @@ class ChooseAccountView: UIView
      
     lazy var allAccounts: [Account] = {
         
-        let result = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil) as! [Account]
+        let result = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: "currency", predicates: nil) as! [Account]
         
         return result
     }()
@@ -73,7 +73,7 @@ class ChooseAccountView: UIView
         
         let predicate = NSPredicate(format: "name = %@", name)
         
-        let account = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: "currency", predicate: predicate).first! as! Account
+        let account = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: "currency", predicates: [predicate]).first! as! Account
 
         return account
     }

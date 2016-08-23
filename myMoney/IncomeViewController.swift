@@ -46,6 +46,9 @@ class IncomeViewController: UIViewController
     }
     
     @IBAction func cancel(sender: UIButton) {
+        
+        managedContext.rollback()
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -61,9 +64,17 @@ class IncomeViewController: UIViewController
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let name = income?.account.name
+        if let account = income?.account
         {
-            chooseButton.setTitle(name, forState: .Normal)
+            chooseButton.setTitle(account.name, forState: .Normal)
+        }
+        else
+        {
+            let mainAcc = Account.mainAccount()
+            
+            chooseButton.setTitle("\(mainAcc.name)", forState: .Normal)
+            
+            income?.account = mainAcc
         }
         
         totalIncomeTextField.text = income!.amount == 0 ? "" : income?.amount?.stringValue

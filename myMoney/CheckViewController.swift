@@ -95,9 +95,17 @@ class CheckViewController: CoreDataTableViewController
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let name = check?.account.name
+        if let account = check?.account
         {
-            accountButton.setTitle(name, forState: .Normal)
+            accountButton.setTitle(account.name, forState: .Normal)
+        }
+        else
+        {
+            let mainAcc = Account.mainAccount()
+            
+            accountButton.setTitle("\(mainAcc.name)", forState: .Normal)
+            
+            check?.account = mainAcc
         }
     }
     

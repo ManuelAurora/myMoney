@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
     <entity name="Account" representedClassName=".Account" syncable="YES">
-        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currency" attributeType="String" syncable="YES"/>
+        <attribute name="main" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Article" representedClassName="myMoney.Article" syncable="YES">
@@ -34,7 +35,7 @@
         <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="tableStrings" inverseEntity="TablePart" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Account" positionX="-324" positionY="-451" width="128" height="43"/>
+        <element name="Account" positionX="-324" positionY="-451" width="128" height="90"/>
         <element name="Article" positionX="-488" positionY="-450" width="128" height="58"/>
         <element name="RegisterLine" positionX="-99" positionY="-405" width="128" height="118"/>
         <element name="Registrator" positionX="-290" positionY="-259" width="128" height="73"/>

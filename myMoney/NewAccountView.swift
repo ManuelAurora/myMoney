@@ -13,14 +13,14 @@ class NewAccountView: UIView
     var viewController: PopUpViewController!
     
     @IBOutlet weak var accountNameTextField: UITextField!
-    @IBOutlet weak var balanceTextField:   UITextField!
-    @IBOutlet weak var currencyLabel:      UILabel!
-    @IBOutlet weak var saveButton:         UIButton!
+    @IBOutlet weak var balanceTextField:     UITextField!
+    @IBOutlet weak var currencyLabel:        UILabel!
+    @IBOutlet weak var saveButton:           UIButton!
+    @IBOutlet weak var mainAccSwitch:        UISwitch!
     
     @IBAction func close(sender: UIButton) {
      
-        viewController.dismissViewControllerAnimated(true, completion: nil)
-        
+        viewController.dismissViewControllerAnimated(true, completion: nil)        
     }
     
     @IBAction func save(sender: UIButton) {
@@ -46,13 +46,8 @@ class NewAccountView: UIView
     
     func fill(withAccount account: Account) {
         
-        balanceTextField.text   = "\(account.accountBalance())"        
-        
-        if let currency = account.currency
-        {
-            currencyLabel.text      = currency
-        }
-        
+        balanceTextField.text     = prettyStringFrom(account.accountBalance())
+        currencyLabel.text        = "\(account.currency)"
         accountNameTextField.text = account.name
     }
     

@@ -84,17 +84,21 @@ class DataManager
         print(dbURL)
     }
     
-    func fetchData(forEntity entityName: String, withSortKey sort: String?, predicate: NSPredicate?) -> [AnyObject] {
+    func fetchData(forEntity entityName: String, withSortKey sort: String?, predicates: [NSPredicate]?) -> [AnyObject] {
         
         let fetchRequest = NSFetchRequest(entityName: entityName)
         
-        let sortDescr = NSSortDescriptor(key: sort, ascending: false)
-        
-        fetchRequest.sortDescriptors = [sortDescr]
-        
-        if let predicate = predicate
+        if let sort = sort
         {
-            fetchRequest.predicate = predicate
+            let sortDescr = NSSortDescriptor(key: sort, ascending: false)
+            fetchRequest.sortDescriptors = [sortDescr]
+        }                
+        
+        if let predicates = predicates
+        {
+            let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+            
+            fetchRequest.predicate = compoundPredicate            
         }
         
         var result = [AnyObject]()

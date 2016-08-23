@@ -15,7 +15,7 @@ class MainScreenViewController: UIViewController
     
     var accounts: [Account] {
         
-       let result = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: "currency", predicate: nil) as! [Account]
+       let result = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: "currency", predicates: nil) as! [Account]
         
         return result
     }
@@ -51,8 +51,6 @@ class MainScreenViewController: UIViewController
     override func viewWillAppear(animated: Bool) {
         
         tableView.reloadData()
-        
-        
         
         updateMoneyInfo()
     }
@@ -111,10 +109,21 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
         
         let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
         
+        cell.accessoryType            = account.main ? .Checkmark : .None
         cell.accountNameLabel.text    = account.name
         cell.accountBalanceLabel.text = prettyStringFrom(account.accountBalance())
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let account = accounts[indexPath.row]
+        
+        account.makeMain()
+        tableView.reloadData()
+        
+        try! managedContext.save()
     }
     
 }
