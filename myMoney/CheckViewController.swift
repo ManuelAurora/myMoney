@@ -71,8 +71,7 @@ class CheckViewController: CoreDataTableViewController
     }
         
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         
         switch presentationMode
         {

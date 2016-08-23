@@ -14,23 +14,32 @@ class IncomeViewController: UIViewController
     var managedContext: NSManagedObjectContext!
     
     var income:  Registrator?
-    var account: Account?
-    var presentationMode: DocumentPresentationMode!
+    
+    var presentationMode: DocumentPresentationMode = .DocumentNewMode
     
     @IBOutlet weak var totalIncomeTextField: UITextField!
     @IBOutlet weak var chooseButton: UIButton!
+    @IBOutlet weak var recordButton: UIButton!
     
     @IBAction func record(sender: AnyObject) {
+       
+        guard let income = income else { return }
         
         let totalIncome  = Double(totalIncomeTextField.text!)!
         
-        income = Income(withAmount: totalIncome)
+        income.amount  = totalIncome
         
-        income!.account = account!
-        
-        income!.conduct()
-        
-        try! DataManager.sharedInstance().saveContext()
+        switch presentationMode
+        {
+        case .DocumentEditMode:
+            
+            income.deleteOldRegisterLine()
+            income.conduct()
+            
+        case .DocumentNewMode:
+            
+            income.conduct()
+        }               
         
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -48,14 +57,34 @@ class IncomeViewController: UIViewController
         presentViewController(controller, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        chooseButton.setTitle(income?.account.name, forState: .Normal)
+        if let name = income?.account.name
+        {
+            chooseButton.setTitle(name, forState: .Normal)
+        }
         
         totalIncomeTextField.text = income?.amount?.stringValue
         
         totalIncomeTextField.becomeFirstResponder()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+                        
+        switch presentationMode
+        {
+        case .DocumentEditMode:
+            
+            recordButton.setTitle("Save", forState: .Normal)
+            
+        case .DocumentNewMode:
+            
+            income = Income(withAmount: 0)
+         
+            recordButton.setTitle("Add", forState: .Normal)
+        }
     }
 }
 

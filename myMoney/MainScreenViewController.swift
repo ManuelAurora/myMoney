@@ -69,7 +69,6 @@ class MainScreenViewController: UIViewController
         controller.managedContext   = managedContext
         controller.articleCatalog   = articleCatalog
         controller.checkNumber      = catalogExpenditure.allObjects().count + 1
-        controller.presentationMode = .DocumentNewMode
         
         presentViewController(controller, animated: true, completion: nil)
     }

@@ -92,7 +92,7 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
             controller.managedContext   = managedContext
             controller.presentationMode = .DocumentEditMode
             controller.income           = document
-            
+                        
             presentViewController(controller, animated: true, completion: nil)
             
         default:

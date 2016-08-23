@@ -32,18 +32,20 @@ class ChooseAccountView: UIView
         
         if let controller = viewController.presentingViewController as? IncomeViewController
         {
+            guard let income = controller.income else { return }
+            
             controller.chooseButton.setTitle(chosenAccountName, forState: .Normal)
             
-            controller.account = fetchAccount(withName: chosenAccountName)
-            
-            
+            income.account = fetchAccount(withName: chosenAccountName)
         }
         
         if let controller = viewController.presentingViewController as? CheckViewController
         {
+            guard let check = controller.check else { return }
+            
             controller.accountButton.setTitle(chosenAccountName, forState: .Normal)
             
-            controller.check!.account = fetchAccount(withName: chosenAccountName)
+            check.account = fetchAccount(withName: chosenAccountName)
         }
         
         viewController.dismissViewControllerAnimated(true, completion: nil)

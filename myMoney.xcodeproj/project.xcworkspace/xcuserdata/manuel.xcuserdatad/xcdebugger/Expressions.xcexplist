@@ -90,10 +90,10 @@
          contextName = "CheckViewController.viewWillAppear(Bool) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
+               value = "catalogExpenditure.items">
             </PersistentString>
             <PersistentString
-               value = "catalogExpenditure.items">
+               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
             </PersistentString>
             <PersistentString
                value = "result.count ">
@@ -126,10 +126,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewAccountView.save(UIButton) -&gt; ():NewAccountView.swift">
+         contextName = "Account.accountBalance() -&gt; Double:Account.swift">
          <PersistentStrings>
             <PersistentString
-               value = "viewController">
+               value = "value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -142,7 +142,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Registrator.sumOfDocument() -&gt; Double:Registrator.swift">
+         contextName = "NewAccountView.save(UIButton) -&gt; ():NewAccountView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewController">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "CheckViewController.tableView(UITableView, commitEditingStyle : UITableViewCellEditingStyle, forRowAtIndexPath : NSIndexPath) -&gt; ():CheckViewController.swift">
@@ -164,24 +169,19 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Account.accountBalance() -&gt; Double:Account.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "value">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "Registrator.sumOfDocument() -&gt; Double:Registrator.swift">
       </ContextState>
       <ContextState
          contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, didSelectRowAtIndexPath : NSIndexPath) -&gt; ():DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "controller.accountButton">
+            </PersistentString>
+            <PersistentString
                value = "controller.articleCatalog">
             </PersistentString>
             <PersistentString
                value = "controller.check!">
-            </PersistentString>
-            <PersistentString
-               value = "controller.accountButton">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -189,13 +189,16 @@
          contextName = "Registrator.conduct() -&gt; ():Registrator.swift">
          <PersistentStrings>
             <PersistentString
-               value = "let income = self as? Income">
-            </PersistentString>
-            <PersistentString
                value = "self.amount == nil">
             </PersistentString>
             <PersistentString
                value = "self.type!.integerValue">
+            </PersistentString>
+            <PersistentString
+               value = "let income = self as? Income">
+            </PersistentString>
+            <PersistentString
+               value = "self.account">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -289,10 +292,10 @@
                value = " view.saveButton">
             </PersistentString>
             <PersistentString
-               value = "view.balanceTextField">
+               value = "view.countNameTextField">
             </PersistentString>
             <PersistentString
-               value = "view.countNameTextField">
+               value = "view.balanceTextField">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -401,10 +404,10 @@
          contextName = "AddNewItemOfExpenditureViewController.AddNew(UIButton) -&gt; ():AddNewItemOfExpenditureViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "managedContext">
+               value = "catalogOfExpenditure">
             </PersistentString>
             <PersistentString
-               value = "catalogOfExpenditure">
+               value = "managedContext">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -469,10 +472,10 @@
          contextName = "DocumentJournalCheckTableViewController.viewDidLoad() -&gt; ():DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+               value = "articleCatalog">
             </PersistentString>
             <PersistentString
-               value = "articleCatalog">
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -480,7 +483,7 @@
          contextName = "CheckViewController.record() -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.presentingViewController.class">
+               value = "check">
             </PersistentString>
             <PersistentString
                value = "allChecks">

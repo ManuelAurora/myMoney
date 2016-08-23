@@ -498,6 +498,7 @@
                     </view>
                     <connections>
                         <outlet property="chooseButton" destination="C9B-G4-dw7" id="xjp-KZ-b8M"/>
+                        <outlet property="recordButton" destination="4wL-fm-NSS" id="6js-D1-nt2"/>
                         <outlet property="totalIncomeTextField" destination="Gec-mo-7gJ" id="So0-IH-UIy"/>
                     </connections>
                 </viewController>
