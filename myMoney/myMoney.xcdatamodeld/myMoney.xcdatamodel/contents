@@ -12,14 +12,13 @@
         <attribute name="kind" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="resource" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="measure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
-        <relationship name="registrator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Registrator" inverseName="registerLine" inverseEntity="Registrator" syncable="YES"/>
+        <relationship name="registrator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Registrator" syncable="YES"/>
     </entity>
     <entity name="Registrator" representedClassName="myMoney.Registrator" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="date" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="account" maxCount="1" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
-        <relationship name="registerLine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RegisterLine" inverseName="registrator" inverseEntity="RegisterLine" syncable="YES"/>
         <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TablePart" inverseName="expenditure" inverseEntity="TablePart" syncable="YES"/>
     </entity>
     <entity name="TablePart" representedClassName=".TablePart" syncable="YES">
@@ -35,11 +34,11 @@
         <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="tableStrings" inverseEntity="TablePart" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Account" positionX="-281" positionY="-451" width="128" height="43"/>
-        <element name="Article" positionX="-315" positionY="-175" width="128" height="58"/>
-        <element name="RegisterLine" positionX="232" positionY="-244" width="128" height="118"/>
-        <element name="Registrator" positionX="-281" positionY="-333" width="128" height="88"/>
-        <element name="TablePart" positionX="-542" positionY="-288" width="128" height="88"/>
-        <element name="TableString" positionX="-704" positionY="-225" width="128" height="118"/>
+        <element name="Account" positionX="-324" positionY="-451" width="128" height="43"/>
+        <element name="Article" positionX="-488" positionY="-450" width="128" height="58"/>
+        <element name="RegisterLine" positionX="-99" positionY="-405" width="128" height="118"/>
+        <element name="Registrator" positionX="-290" positionY="-259" width="128" height="73"/>
+        <element name="TablePart" positionX="-497" positionY="-180" width="128" height="88"/>
+        <element name="TableString" positionX="-711" positionY="-108" width="128" height="118"/>
     </elements>
 </model>
