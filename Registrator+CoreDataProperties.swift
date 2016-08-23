@@ -14,11 +14,9 @@ import CoreData
 
 extension Registrator {
 
-    @NSManaged var date: NSDate?
+    @NSManaged var date: NSDate
     @NSManaged var amount: NSNumber?
     @NSManaged var name: String
-    @NSManaged var account: Account?
+    @NSManaged var account: Account
     @NSManaged var tablePart: TablePart?
-    @NSManaged var registerLine: RegisterLine?
-
 }

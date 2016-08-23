@@ -47,7 +47,7 @@ extension PopUpViewController
         {
             let priceString =  articleView.articlePriceTextField.text!.stringByReplacingOccurrencesOfString(",", withString: ".", options: [], range: nil)
             
-            if mode == .New
+            if elementPresentationMode == .ElementNewMode
             {
                 let articleString = TableString(AddArticle: article!, intoTablePart: controller.check!.tablePart, withPrice: Float(priceString), amount: nil)
                 
@@ -80,7 +80,10 @@ extension PopUpViewController
         {
             let income = Income(withAmount: balance)
             
-            _ = RegisterLine(basedOn: income, measure: account, resource: balance, kind: .Adding, date: NSDate())
+            income.account = account
+            
+            _ = RegisterLine(basedOn: income, measure: account, resource: balance, kind: .Adding, date: income.date)
+            
         }
         
         if let currency = accountView.currencyLabel.text
@@ -93,8 +96,7 @@ extension PopUpViewController
         do
         {
             try DataManager.sharedInstance().saveContext()
-            
-             controller.tableView.reloadData()
+              controller.tableView.reloadData()
         }
         catch
         {

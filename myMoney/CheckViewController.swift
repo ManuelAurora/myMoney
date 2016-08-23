@@ -12,14 +12,14 @@ import CoreData
 class CheckViewController: CoreDataTableViewController
 {
     var managedContext: NSManagedObjectContext!
-    
-    var checkNumber: Int!
-    var mode:        Mode = .New
-    var check:       Expenditure?
-   
-    var totalExpense: Double = 0
-    
+    var checkNumber:    Int!
     var articleCatalog: Catalog!
+    
+    var check: Registrator?
+  
+    var presentationMode: DocumentPresentationMode = .DocumentNewMode
+    
+    var totalExpense: Double = 0
     
     @IBOutlet weak var productView:   UIView!
     @IBOutlet weak var date:          UILabel!
@@ -30,7 +30,7 @@ class CheckViewController: CoreDataTableViewController
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
-        controller.type = .AccountList
+        controller.elementType = .ElementAccountListType
         
         presentViewController(controller, animated: true, completion: nil)
     }
@@ -52,10 +52,20 @@ class CheckViewController: CoreDataTableViewController
     }
     
     @IBAction func record() {
+   
+        guard let check = check else { return }
         
-        check!.conduct()
-        
-        try! managedContext.save()
+        switch presentationMode
+        {
+        case .DocumentEditMode:
+            
+            check.deleteOldRegisterLine()
+            check.conduct()
+            
+        case .DocumentNewMode:
+            
+            check.conduct()
+        }        
         
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -64,21 +74,30 @@ class CheckViewController: CoreDataTableViewController
         super.viewDidLoad()
         
         
-        switch mode
+        switch presentationMode
         {
-        case .Edit:
+        case .DocumentEditMode:
             AddEditButton.setTitle("Save", forState: .Normal)
-            date.text   = String(check!.date!)
+            date.text   = String(check!.date)
             
-        case .New:
+        case .DocumentNewMode:
             check = Expenditure(Number: checkNumber)
             AddEditButton.setTitle("Add", forState: .Normal)
-            date.text = String(check!.date!)
+            date.text = String(check!.date)
         }
         
         fetchData()
         
         tileButtons()        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let name = check?.account.name
+        {
+            accountButton.setTitle(name, forState: .Normal)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -171,8 +190,8 @@ class CheckViewController: CoreDataTableViewController
         
         controller.article = article
         
-        controller.mode = .New
-
+        controller.elementPresentationMode = .ElementNewMode
+        controller.elementType             = .ElementArticleType
         
         presentViewController(controller, animated: true, completion: nil)
     }
@@ -250,14 +269,15 @@ extension CheckViewController
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
+        let tableString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
         
-        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
+        let article = tableString.article
         
-        let article       = articleString.article
+        controller.elementPresentationMode = .ElementEditMode
+        controller.elementType             = .ElementArticleType
         
-        controller.mode        = .Edit
         controller.article     = article
-        controller.tableString = articleString
+        controller.tableString = tableString
         
         presentViewController(controller, animated: true, completion: nil)
     }
@@ -271,6 +291,7 @@ extension CheckViewController
         let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
         
         managedContext.deleteObject(articleString)
+        
         renumerateStrings()
     }
 }

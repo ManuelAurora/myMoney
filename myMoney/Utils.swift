@@ -9,23 +9,28 @@
 import Foundation
 import CoreData
 
-enum ProcessingModes
+enum DocumentPresentationMode
 {
-    case Saving
-    case Conduction
+    case DocumentEditMode
+    case DocumentNewMode
 }
 
-enum Mode
+enum PopUpElementPresentationMode
 {
-    case Edit
-    case New
+    case ElementEditMode
+    case ElementNewMode
 }
 
-enum Type
+enum DocumentType
 {  
-    case Expense
-    case Account
-    case AccountList
+    case DocumentExpenditureType
+}
+
+enum PopUpElementType
+{
+    case ElementArticleType
+    case ElementAccountType
+    case ElementAccountListType
 }
 
 func fetchData(forEntity entityName: String, withSortKey sort: String?, predicate: NSPredicate?) -> [AnyObject] {
@@ -46,7 +51,7 @@ func fetchData(forEntity entityName: String, withSortKey sort: String?, predicat
     return try! managedContext.executeFetchRequest(fetchRequest)
 }
 
-struct Constants
+struct Constants  //RENAME THIS!
 {
     static let expenditureName = "Expenditure"
     static let incomeName      = "Income"

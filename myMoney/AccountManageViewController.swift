@@ -33,7 +33,7 @@ class AccountManageViewController: UIViewController
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
-        controller.type = .Account
+        controller.elementType = .ElementAccountType
         
         presentViewController(controller, animated: true, completion: nil)        
         

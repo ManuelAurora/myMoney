@@ -52,6 +52,8 @@ class MainScreenViewController: UIViewController
         
         tableView.reloadData()
         
+        
+        
         updateMoneyInfo()
     }
     
@@ -64,10 +66,10 @@ class MainScreenViewController: UIViewController
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
         
-        controller.managedContext  = managedContext
-        controller.articleCatalog  = articleCatalog
-        controller.checkNumber     = catalogExpenditure.allObjects().count + 1
-        controller.mode            = .New
+        controller.managedContext   = managedContext
+        controller.articleCatalog   = articleCatalog
+        controller.checkNumber      = catalogExpenditure.allObjects().count + 1
+        controller.presentationMode = .DocumentNewMode
         
         presentViewController(controller, animated: true, completion: nil)
     }

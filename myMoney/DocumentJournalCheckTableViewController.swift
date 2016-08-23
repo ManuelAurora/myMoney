@@ -10,8 +10,7 @@ import UIKit
 import CoreData
 
 class DocumentJournalCheckTableViewController: CoreDataTableViewController
-{
-    
+{    
     var managedContext: NSManagedObjectContext!
     
     let articleCatalog = AllCatalogs.sharedInstance().catalogArticle
@@ -20,14 +19,12 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         super.viewWillAppear(animated)
         
         navigationController?.setToolbarHidden(false, animated: true)
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchData()
-        
+        fetchData()        
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,6 +35,7 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
         return fetchedResultsController!.sections!.count
     }
     
@@ -54,12 +52,12 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         
         if let income = fetchedResultsController?.objectAtIndexPath(indexPath) as? Income
         {
-            cell.date.text      = String(income.date!)
+            cell.date.text      = String(income.date)
         }
        
         if let expenditure = fetchedResultsController?.objectAtIndexPath(indexPath) as? Expenditure
         {
-            cell.date.text      = String(expenditure.date!)
+            cell.date.text      = String(expenditure.date)
             cell.operation.text = ""
             cell.sum.text       = String(expenditure.sumOfDocument())
         }
@@ -67,20 +65,40 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         return cell
     }
     
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
+        let document = fetchedResultsController?.objectAtIndexPath(indexPath) as! Registrator
         
-        controller.managedContext  = managedContext
-        controller.articleCatalog  = articleCatalog
-        
-        controller.mode  = .Edit
-        controller.check = fetchedResultsController!.objectAtIndexPath(indexPath) as? Expenditure
-        
-        presentViewController(controller, animated: true, completion: nil)        
+        switch document.name
+        {
+        case Constants.expenditureName:
+            
+            let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
+            
+            controller.managedContext  = managedContext
+            controller.articleCatalog  = articleCatalog
+            
+            controller.presentationMode  = .DocumentEditMode
+            controller.check             = document
+            
+            presentViewController(controller, animated: true, completion: nil)
+            
+        case Constants.incomeName:
+            
+            let controller = storyboard?.instantiateViewControllerWithIdentifier("Income") as! IncomeViewController
+            
+            controller.managedContext   = managedContext
+            controller.presentationMode = .DocumentEditMode
+            controller.income           = document
+            
+            presentViewController(controller, animated: true, completion: nil)
+            
+        default:
+            
+            print("Error")
+        }
     }
     
     func fetchData() {

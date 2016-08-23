@@ -76,6 +76,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PopUpViewController.addEditArticleInTablePart(from : AddEditArticleView) -&gt; ():PopUpViewController + Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "elementPresentationMode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Expenditure.addArticleInTablePart(Article : Article) -&gt; ():Expenditure.swift">
       </ContextState>
       <ContextState
@@ -134,6 +142,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Registrator.sumOfDocument() -&gt; Double:Registrator.swift">
+      </ContextState>
+      <ContextState
          contextName = "CheckViewController.tableView(UITableView, commitEditingStyle : UITableViewCellEditingStyle, forRowAtIndexPath : NSIndexPath) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -153,13 +164,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Account.accountBalance() -&gt; Double:Account.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, didSelectRowAtIndexPath : NSIndexPath) -&gt; ():DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "controller.articleCatalog">
             </PersistentString>
             <PersistentString
-               value = "articleCatalog">
+               value = "controller.check!">
+            </PersistentString>
+            <PersistentString
+               value = "controller.accountButton">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -261,14 +283,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChooseAccountView.tableView(UITableView, didSelectRowAtIndexPath : NSIndexPath) -&gt; ():ChooseAccountView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cell.accessoryView">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "PopUpViewController.showCountView() -&gt; ():PopUpViewController + Extension.swift">
          <PersistentStrings>
             <PersistentString
@@ -279,6 +293,14 @@
             </PersistentString>
             <PersistentString
                value = "view.countNameTextField">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChooseAccountView.tableView(UITableView, didSelectRowAtIndexPath : NSIndexPath) -&gt; ():ChooseAccountView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.accessoryView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -356,7 +378,7 @@
          contextName = "CheckViewController.viewDidLoad() -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "number.text">
+               value = "check">
             </PersistentString>
             <PersistentString
                value = "checkNumber">
@@ -365,10 +387,10 @@
                value = "catalogExpenditure.items">
             </PersistentString>
             <PersistentString
-               value = "articleCatalog">
+               value = "number.text">
             </PersistentString>
             <PersistentString
-               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+               value = "articleCatalog">
             </PersistentString>
             <PersistentString
                value = "catalogExpenditure">

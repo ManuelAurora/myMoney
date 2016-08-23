@@ -17,14 +17,16 @@ class Registrator: NSManagedObject
         
         if self.name == Constants.expenditureName
         {
-            let sum = sumOfDocument()
+            let sum = sumOfDocument()           
             
-            _ = RegisterLine(basedOn: self, measure: self.account!, resource: sum, kind: .Substracting, date: NSDate())
+            _ = RegisterLine(basedOn: self, measure: self.account, resource: sum, kind: .Substracting, date: NSDate())
+            
+            try! DataManager.sharedInstance().saveContext()
         }
         
         if self.name == Constants.incomeName
         {
-            _ = RegisterLine(basedOn: self, measure: self.account!, resource: amount!.doubleValue, kind: .Adding, date: NSDate())
+            _ = RegisterLine(basedOn: self, measure: self.account, resource: amount!.doubleValue, kind: .Adding, date: NSDate())
             
             try! DataManager.sharedInstance().saveContext()
         }
@@ -34,8 +36,8 @@ class Registrator: NSManagedObject
         
         guard let tablePart = tablePart else { return 0 }
         
-        let items = tablePart.tableString!.allObjects as! [TableString]
-        
+        let items = tablePart.tableStrings!.allObjects as! [TableString]
+                
         var sum: Double = 0
         
         for item in items {
@@ -46,5 +48,22 @@ class Registrator: NSManagedObject
         return sum
     }
 
+    func deleteOldRegisterLine() {
+        
+        let managedContext = DataManager.sharedInstance().context
+        
+        let predicate = NSPredicate(format: "registrator=%@", self)
+        let fetchRequest = NSFetchRequest(entityName: "RegisterLine")
+  
+        fetchRequest.predicate = predicate
+        
+        let result = try! managedContext.executeFetchRequest(fetchRequest)
+        
+        for object in result
+        {
+            managedContext.deleteObject(object as! NSManagedObject)
+        }
+    }
+    
 
 }

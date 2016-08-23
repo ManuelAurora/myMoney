@@ -13,8 +13,9 @@ class IncomeViewController: UIViewController
 {
     var managedContext: NSManagedObjectContext!
     
-    var income:  Income?
+    var income:  Registrator?
     var account: Account?
+    var presentationMode: DocumentPresentationMode!
     
     @IBOutlet weak var totalIncomeTextField: UITextField!
     @IBOutlet weak var chooseButton: UIButton!
@@ -25,7 +26,7 @@ class IncomeViewController: UIViewController
         
         income = Income(withAmount: totalIncome)
         
-        income!.account = account
+        income!.account = account!
         
         income!.conduct()
         
@@ -42,13 +43,17 @@ class IncomeViewController: UIViewController
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
-        controller.type = .AccountList
+        controller.elementType = .ElementAccountListType
         
         presentViewController(controller, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        chooseButton.setTitle(income?.account.name, forState: .Normal)
+        
+        totalIncomeTextField.text = income?.amount?.stringValue
         
         totalIncomeTextField.becomeFirstResponder()
     }

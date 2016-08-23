@@ -17,6 +17,6 @@ extension Account
     
     @NSManaged var currency: String?
     @NSManaged var name: String
-    @NSManaged var registrators: NSSet?
+    @NSManaged var registrators: NSSet?    
 
 }

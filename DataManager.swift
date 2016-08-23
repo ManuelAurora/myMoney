@@ -81,6 +81,7 @@ class DataManager
         
         try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: dbURL, options: nil)
         
+        print(dbURL)
     }
 }
 

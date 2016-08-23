@@ -14,9 +14,9 @@ class PopUpViewController: UIViewController
     var tableString: TableString?
     var accountView: NewAccountView?
     
-    var mode: Mode = .New
-    var type: Type = .Expense
-       
+    var elementPresentationMode: PopUpElementPresentationMode?
+    var presentingDocType:       DocumentType?
+    var elementType:             PopUpElementType?
     
     @IBOutlet weak var popUpViewExpense: UIView!
     @IBOutlet weak var addButton:        UIButton!
@@ -36,30 +36,37 @@ class PopUpViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                  
+        
         view.backgroundColor = UIColor.clearColor()
         
-        switch type
+        if let docType = presentingDocType
         {
-            
-        case .Expense:
-            
-            showArticleView()
-            
-        case .Account:
-            
-            showAccountView()
-            
-        case .AccountList:
-            
-            chooseAccountView()
+            switch docType
+            {
+            case .DocumentExpenditureType:
+                
+                showArticleView()
+            }
         }
-        
+        else if let elementType = elementType
+        {
+            switch elementType
+            {
+            case .ElementArticleType:
+                showArticleView()
+                
+            case .ElementAccountType:
+                showAccountView()
+                
+            case .ElementAccountListType:
+                chooseAccountView()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+      
     }
 }
 

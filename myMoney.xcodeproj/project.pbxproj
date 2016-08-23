@@ -267,7 +267,7 @@
 		6492B1751CFF300600133059 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				64DD053D1D52382700509A01 /* ViewControllers computing */,
+				64DD053D1D52382700509A01 /* ViewController Extensions */,
 				64BB58D81D1D64E900C14E22 /* ViewControllers */,
 				643FF7E41D04A7300035F4DE /* Animations */,
 			);
@@ -333,12 +333,12 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		64DD053D1D52382700509A01 /* ViewControllers computing */ = {
+		64DD053D1D52382700509A01 /* ViewController Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				64DD053B1D52380900509A01 /* PopUpViewController + Extension.swift */,
 			);
-			name = "ViewControllers computing";
+			name = "ViewController Extensions";
 			sourceTree = "<group>";
 		};
 		64DD053E1D52398600509A01 /* XIBs */ = {
