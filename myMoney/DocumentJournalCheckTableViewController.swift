@@ -55,7 +55,7 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
             cell.date.text = prettyStringFrom(document.date)
             cell.sum.text  = prettyStringFrom(document.sumOfDocument())
             
-            cell.operation.text = document.name == Constants.expenditureName ? "Expenditure" : "Income"            
+            cell.operation.text = document.name == Constants.expenditureName ? "Expenditure" : "Income"
         }
         
         return cell
@@ -115,5 +115,18 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
             
             print("Error: \(error.localizedDescription)")
         }
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        guard editingStyle == .Delete else { return }
+        
+        let document = fetchedResultsController?.objectAtIndexPath(indexPath) as! Registrator
+        
+        document.deleteOldRegisterLine()
+        
+        managedContext.deleteObject(document)
+        
+        try! managedContext.save()
     }
 }

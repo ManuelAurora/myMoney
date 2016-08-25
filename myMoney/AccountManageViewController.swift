@@ -39,6 +39,16 @@ class AccountManageViewController: UIViewController
         
     }
     
+    //If someone have reference at an account - delete is unable.
+    func checkAccountIsPossibleTo(delete account: Account) -> Bool {
+        
+        let predicate = NSPredicate(format: "account=%@", account)
+        
+        let references = DataManager.sharedInstance().fetchData(forEntity: "Registrator", withSortKey: nil, predicates: [predicate])
+        
+        return references.count > 0 ? false : true
+    }
+    
     override func viewWillAppear(animated: Bool) {
         
         tableView.reloadData()
@@ -73,6 +83,25 @@ extension AccountManageViewController: UITableViewDataSource, UITableViewDelegat
         cell.accountBalanceLabel.text = prettyStringFrom(account.accountBalance())
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        guard editingStyle == .Delete else { return }
+        
+        let account = accounts[indexPath.row]
+        
+        if checkAccountIsPossibleTo(delete: account)
+        {
+            managedContext.deleteObject(account)
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            try! managedContext.save()
+        }
+        else { tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic) }
+        
+        //TODO: Need to make an Alarm if acc is impossible to delete
     }
     
 }
