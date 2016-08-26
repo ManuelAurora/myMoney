@@ -37,7 +37,7 @@ class Account: NSManagedObject
         {
             let regLine = item as! RegisterLine
                         
-            let value   = regLine.resource!.doubleValue * regLine.kind!.doubleValue
+            let value   = regLine.resource.doubleValue * regLine.kind.doubleValue
             
             sum += value
         }

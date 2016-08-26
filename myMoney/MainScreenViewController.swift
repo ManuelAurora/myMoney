@@ -40,7 +40,12 @@ class MainScreenViewController: UIViewController
         addCheck()
     }
     
+    @IBAction func reportPerodChanged(sender: UISegmentedControl) {
+        changeReportPeriod()
+    }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         let accountCellNib = UINib(nibName: "AccountTableViewCell", bundle: nil)
@@ -52,12 +57,9 @@ class MainScreenViewController: UIViewController
         
         tableView.reloadData()
         
-        updateMoneyInfo()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        updateTotalMoneyInfo()
+        
+        changeReportPeriod()
     }
     
     func addCheck() {
@@ -81,7 +83,48 @@ class MainScreenViewController: UIViewController
         
     }
     
-    func updateMoneyInfo() {
+    func changeReportPeriod() {
+        
+        let commonIncomeText  = "Income This"
+        let commonExpenseText = "Expense This"
+        
+        var period: ReportCurrentPeriod? = nil
+        
+        switch periodSegmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            incomeTextLabel.text   = "\(commonIncomeText ) \(ReportCurrentPeriod.Day.rawValue)"
+            expensesTextLabel.text = "\(commonExpenseText) \(ReportCurrentPeriod.Day.rawValue)"
+            
+            period = ReportCurrentPeriod.Day
+            
+        case 1:
+            incomeTextLabel.text   = "\(commonIncomeText ) \(ReportCurrentPeriod.Week.rawValue)"
+            expensesTextLabel.text = "\(commonExpenseText) \(ReportCurrentPeriod.Week.rawValue)"
+            
+            period = ReportCurrentPeriod.Week
+            
+        case 2:
+            incomeTextLabel.text   = "\(commonIncomeText ) \(ReportCurrentPeriod.Month.rawValue)"
+            expensesTextLabel.text = "\(commonExpenseText) \(ReportCurrentPeriod.Month.rawValue)"
+            
+            period = ReportCurrentPeriod.Month
+            
+        default:
+            break
+        }
+        
+        guard period != nil else { return }
+        
+        let incomeTotal  = calculateMoneyFlowForCurrentPeriod(period!, flowKind: .Adding)
+        let expenseTotal = calculateMoneyFlowForCurrentPeriod(period!, flowKind: .Substracting)
+        
+        incomeCountLabel.text   = "\(prettyStringFrom(incomeTotal))"
+        expensesCountLabel.text = "\(prettyStringFrom(expenseTotal))"
+    }
+    
+    //Counting total money for label view
+    func updateTotalMoneyInfo() {
         
         var totalMoney: Double = 0
         
@@ -91,8 +134,56 @@ class MainScreenViewController: UIViewController
         }
         
         moneyTotalCountLabel.text = prettyStringFrom(totalMoney)
+    }    
+    
+    //Calculates income and expense for chosen period
+    func calculateMoneyFlowForCurrentPeriod(period: ReportCurrentPeriod, flowKind: RegistratorKind) -> Double {
+        
+        var predicates = [NSPredicate]()
+        
+        let predicateAdd       = NSPredicate(format: "kind=%d",  RegistratorKind.Adding.rawValue)
+        let predicateSubstract = NSPredicate(format: "kind=%d",  RegistratorKind.Substracting.rawValue)
+        
+        flowKind == .Adding ? predicates.append(predicateAdd) : predicates.append(predicateSubstract)
+        
+        switch period
+        {
+        case .Day:
+            let thisDay = currentPeriodBorder(.Day)
+            
+            predicates.appendContentsOf(formArrayOfPredicatesFor(thisDay))
+            
+        case .Week:
+            let thisWeek = currentPeriodBorder(.Week)
+            
+            predicates.appendContentsOf(formArrayOfPredicatesFor(thisWeek))
+            
+        case .Month:
+            
+            let thisMonth = currentPeriodBorder(.Month)
+            
+            predicates.appendContentsOf(formArrayOfPredicatesFor(thisMonth))
+        }
+        
+        let result = DataManager.sharedInstance().fetchData(forEntity: "RegisterLine", withSortKey: nil, predicates: predicates) as! [RegisterLine] // 3) We will fetch registered in documents for our needs
+        
+        var total: Double = 0
+        
+        for regLine in result
+        {
+            total += regLine.resource.doubleValue
+        }
+        
+        return total
     }
     
+    func formArrayOfPredicatesFor(currentPeriod: (periodStart: NSDate, periodEnd:NSDate)) -> [NSPredicate] {
+        
+        let predicate  = NSPredicate(format: "date>=%@", currentPeriod.periodStart) // 1) if date of the documents is more than current day's begin time
+        let predicate2 = NSPredicate(format: "date<=%@", currentPeriod.periodEnd)   // 2) and if date of the documents is less than current day's end time
+        
+        return [predicate, predicate2]
+    }
 }
 
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
@@ -121,9 +212,12 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
         let account = accounts[indexPath.row]
         
         account.makeMain()
+        
         tableView.reloadData()
         
         try! managedContext.save()
     }
     
 }
+
+

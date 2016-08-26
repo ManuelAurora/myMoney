@@ -8,6 +8,20 @@
 
 import Foundation
 import CoreData
+import UIKit
+
+enum TimeBorder: String
+{
+    case Begin = "00:00:00"
+    case End   = "23:59:59"
+}
+
+enum ReportCurrentPeriod: String
+{
+    case Day     = "Day"
+    case Week    = "Week"
+    case Month   = "Month"
+}
 
 enum DocumentPresentationMode
 {
@@ -54,3 +68,40 @@ func prettyStringFrom(dateValue: NSDate) -> String {
     
     return formatter.stringFromDate(dateValue)
 }
+
+//Calculates begin and end of chosen period
+func currentPeriodBorder(period: ReportCurrentPeriod) -> (periodStart: NSDate, periodEnd: NSDate) {
+    
+    let calendar = NSCalendar.currentCalendar()
+    
+    var periodStart: NSDate? = nil
+    var periodEnd:   NSDate? = nil
+    
+    var interval: NSTimeInterval = 0
+    
+    var unitPeriod: NSCalendarUnit?
+    
+    switch period
+    {
+    case .Day:
+        unitPeriod = NSCalendarUnit.Day
+        
+    case .Week:
+        unitPeriod = NSCalendarUnit.WeekOfMonth
+        
+    case .Month:
+        unitPeriod = NSCalendarUnit.Month
+    }
+    
+    calendar.rangeOfUnit(unitPeriod!, startDate: &periodStart, interval: &interval, forDate: NSDate())
+    
+    periodEnd = periodStart!.dateByAddingTimeInterval(interval - 1)
+    
+    return (periodStart!, periodEnd!)
+}
+
+
+
+
+
+

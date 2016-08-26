@@ -90,19 +90,19 @@
          contextName = "CheckViewController.viewWillAppear(Bool) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "article.name">
+            </PersistentString>
+            <PersistentString
+               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
+            </PersistentString>
+            <PersistentString
                value = "check?.account.name">
             </PersistentString>
             <PersistentString
                value = "catalogExpenditure.items">
             </PersistentString>
             <PersistentString
-               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
-            </PersistentString>
-            <PersistentString
                value = "result.count ">
-            </PersistentString>
-            <PersistentString
-               value = "article.name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -178,13 +178,13 @@
          contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, didSelectRowAtIndexPath : NSIndexPath) -&gt; ():DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "controller.accountButton">
+            </PersistentString>
+            <PersistentString
                value = "controller.articleCatalog">
             </PersistentString>
             <PersistentString
                value = "controller.check!">
-            </PersistentString>
-            <PersistentString
-               value = "controller.accountButton">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -295,10 +295,10 @@
                value = " view.saveButton">
             </PersistentString>
             <PersistentString
-               value = "view.countNameTextField">
+               value = "view.balanceTextField">
             </PersistentString>
             <PersistentString
-               value = "view.balanceTextField">
+               value = "view.countNameTextField">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -410,10 +410,10 @@
          contextName = "AddNewItemOfExpenditureViewController.AddNew(UIButton) -&gt; ():AddNewItemOfExpenditureViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "catalogOfExpenditure">
+               value = "managedContext">
             </PersistentString>
             <PersistentString
-               value = "managedContext">
+               value = "catalogOfExpenditure">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -453,6 +453,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MainScreenViewController.changeReportPeriod() -&gt; ():MainScreenViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "expensesTextLabel.text ">
+            </PersistentString>
+            <PersistentString
+               value = "periodSegmentedControl.selectedSegmentIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ArticleString.init(AddArticle : Article, intoTablePart : TablePart?, withPrice : Float?, amount : Float?) -&gt; ArticleString:ArticleString.swift">
          <PersistentStrings>
             <PersistentString
@@ -478,10 +489,10 @@
          contextName = "DocumentJournalCheckTableViewController.viewDidLoad() -&gt; ():DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "articleCatalog">
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
             </PersistentString>
             <PersistentString
-               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+               value = "articleCatalog">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

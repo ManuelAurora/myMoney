@@ -90,6 +90,9 @@
                                             <segment title="Week"/>
                                             <segment title="Month"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="reportPerodChanged:" destination="W9i-Od-kpG" eventType="valueChanged" id="aLc-07-RDT"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <constraints>
