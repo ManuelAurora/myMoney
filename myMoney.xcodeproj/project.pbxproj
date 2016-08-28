@@ -705,13 +705,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: naruto06@mail.ru (RQ3TJJ3Q4C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: naruto06@mail.ru (RQ3TJJ3Q4C)";
 				INFOPLIST_FILE = myMoney/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AuroraInterplay.myMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "267c0249-2107-434b-a9d4-e3d193ddd13d";
+				"PROVISIONING_PROFILE[sdk=*]" = "267c0249-2107-434b-a9d4-e3d193ddd13d";
 			};
 			name = Debug;
 		};
@@ -719,13 +720,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: naruto06@mail.ru (RQ3TJJ3Q4C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: naruto06@mail.ru (RQ3TJJ3Q4C)";
 				INFOPLIST_FILE = myMoney/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AuroraInterplay.myMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "267c0249-2107-434b-a9d4-e3d193ddd13d";
+				"PROVISIONING_PROFILE[sdk=*]" = "267c0249-2107-434b-a9d4-e3d193ddd13d";
 			};
 			name = Release;
 		};

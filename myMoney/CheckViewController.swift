@@ -21,10 +21,11 @@ class CheckViewController: CoreDataTableViewController
     
     var totalExpense: Double = 0
     
-    @IBOutlet weak var productView:   UIView!
+    @IBOutlet weak var productView:   UIScrollView!
     @IBOutlet weak var date:          UILabel!
     @IBOutlet weak var AddEditButton: UIButton!
     @IBOutlet weak var accountButton: UIButton!
+    @IBOutlet weak var pageControl:   UIPageControl!
     
     @IBAction func chooseAccount(sender: AnyObject) {
         
@@ -33,6 +34,13 @@ class CheckViewController: CoreDataTableViewController
         controller.elementType = .ElementAccountListType
         
         presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func pageChanged(sender: UIPageControl) {
+        UIView.animateWithDuration(0.3) {
+            self.productView.contentOffset = CGPoint(x: self.productView.bounds.size.width * CGFloat(sender.currentPage),
+                                                    y: 0)
+        }
     }
     
     @IBAction func addNewArticle() {
@@ -89,7 +97,15 @@ class CheckViewController: CoreDataTableViewController
         
         fetchData()
         
-        tileButtons()        
+        tileButtons()
+        
+        productView.removeConstraints(productView.constraints)
+        pageControl.removeConstraints(productView.constraints)
+        tableView.removeConstraints(tableView.constraints)
+        
+        pageControl.translatesAutoresizingMaskIntoConstraints = true
+        productView.translatesAutoresizingMaskIntoConstraints = true
+        tableView.translatesAutoresizingMaskIntoConstraints   = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -119,38 +135,32 @@ class CheckViewController: CoreDataTableViewController
         let articleCatalog = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: "Article")) as! [Article]
         
         var rows    = 3
-        var columns = 5
+        var columns = 4
         
-        var marginX:    CGFloat    = 0
-        var marginY:    CGFloat    = 20
+        var marginX: CGFloat    = 0
+        var marginY: CGFloat    = 4
         
         let productViewWidth = productView.bounds.size.width
         
         switch productViewWidth
         {
-        case 568:
-            columns = 6; marginX = 2
-        case 667:
-            columns = 7; marginX = 1; marginY = 29;
-        case 736:
-            rows = 4;    columns = 8;
+        case 320:
+            columns = 4; marginX = 0
+       
         default:
             break
         }
         
         var row    = 0
         var column = 0
-        var x      = marginX
         
-        let buttonWidth: CGFloat  = 60
-        let buttonHeight: CGFloat = 60
+        var x = marginX
+        var y = marginY
         
-        let paddingHorz = (buttonWidth) / 3
-        let paddingVert = (buttonHeight) / 2
+        let buttonWidth: CGFloat  = 80
+        let buttonHeight: CGFloat = 50       
         
         for (index, product) in articleCatalog.enumerate() {
-            
-            print(product.name)
             
             let button = UIButton(type: .Custom)
             let image  = UIImage(named: "LandscapeButton")
@@ -161,9 +171,9 @@ class CheckViewController: CoreDataTableViewController
             
             button.setBackgroundImage(image, forState: .Normal)
             
-            button.frame =  CGRect(x: x + paddingHorz,
-                                   y: marginY + CGFloat(row) * buttonHeight,
-                                   width: buttonWidth,
+            button.frame =  CGRect(x: x,
+                                   y: y + CGFloat(row) * buttonHeight,
+                                   width:  buttonWidth,
                                    height: buttonHeight)
             
             label.frame = CGRect(x: button.bounds.origin.x, y: button.bounds.origin.x, width: buttonWidth, height: buttonHeight / 3)
@@ -186,7 +196,11 @@ class CheckViewController: CoreDataTableViewController
                     column = 0; x += marginX * 2
                 }
             }
-        }      
+        }   
+        
+        productView.contentSize = CGSize(width: CGFloat(3) * productViewWidth,
+                                         height: productView.bounds.size.height)
+       
     }    
     
     func buttonPressed(sender: UIButton) {
@@ -302,5 +316,24 @@ extension CheckViewController
         
         renumerateStrings()
     }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        guard scrollView == productView else { return }
+        
+        let width       = scrollView.bounds.size.width
+        let currentPage = Int((scrollView.contentOffset.x + width / 2) / width)
+        
+        pageControl.currentPage = currentPage
+    }
+    
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        
+        guard scrollView == productView else { return }
+        
+        print("22")
+    }
+   
+   
 }
 

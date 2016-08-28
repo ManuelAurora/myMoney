@@ -237,11 +237,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="348"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="379"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="01.01.0001 00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEb-5U-qCR">
-                                    <rect key="frame" x="8" y="78" width="304" height="21"/>
+                                    <rect key="frame" x="8" y="66" width="304" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -273,7 +273,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qV-nH-G05">
-                                    <rect key="frame" x="20" y="119" width="280" height="30"/>
+                                    <rect key="frame" x="20" y="95" width="280" height="30"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KwX-qm-xKw">
                                             <rect key="frame" x="0.0" y="0.0" width="73" height="30"/>
@@ -290,31 +290,45 @@
                                         </button>
                                     </subviews>
                                 </stackView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUP-Le-lUa">
-                                    <rect key="frame" x="0.0" y="175" width="320" height="165"/>
-                                    <color key="backgroundColor" red="0.74103299346373674" green="0.73992716940972414" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </view>
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rDi-j6-vjW">
+                                    <rect key="frame" x="0.0" y="142" width="320" height="200"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="BYZ-38-t0r" id="2fy-9z-5K3"/>
+                                    </connections>
+                                </scrollView>
+                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="WgD-Hy-8fc">
+                                    <rect key="frame" x="8" y="342" width="304" height="37"/>
+                                    <color key="backgroundColor" red="1" green="0.55370957677053223" blue="0.65695595945687413" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="pageIndicatorTintColor" red="1" green="0.41449662840000001" blue="0.4865725145" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <connections>
+                                        <action selector="pageChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="SKu-xZ-SRu"/>
+                                    </connections>
+                                </pageControl>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="WgD-Hy-8fc" secondAttribute="trailing" constant="8" id="2gp-hl-Xdf"/>
                                 <constraint firstItem="pQt-Ud-ork" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="28" id="2pE-bc-uNf"/>
-                                <constraint firstAttribute="trailing" secondItem="GUP-Le-lUa" secondAttribute="trailing" id="6BB-2u-CsM"/>
+                                <constraint firstItem="rDi-j6-vjW" firstAttribute="leading" secondItem="AEb-5U-qCR" secondAttribute="leading" constant="-8" id="AcJ-Dp-wn8"/>
+                                <constraint firstItem="rDi-j6-vjW" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" constant="-29" id="SpX-na-vyi"/>
+                                <constraint firstItem="rDi-j6-vjW" firstAttribute="trailing" secondItem="AEb-5U-qCR" secondAttribute="trailing" constant="8" id="TG4-Uj-YFk"/>
                                 <constraint firstAttribute="trailing" secondItem="AEb-5U-qCR" secondAttribute="trailing" constant="8" id="Ums-ME-q9m"/>
-                                <constraint firstItem="GUP-Le-lUa" firstAttribute="top" secondItem="1qV-nH-G05" secondAttribute="bottom" constant="26" id="XeX-UG-a0o"/>
-                                <constraint firstItem="GUP-Le-lUa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dTP-cE-4bi"/>
+                                <constraint firstAttribute="bottom" secondItem="WgD-Hy-8fc" secondAttribute="bottom" id="Vee-90-kQa"/>
+                                <constraint firstItem="WgD-Hy-8fc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="XdI-8e-1Nc"/>
+                                <constraint firstItem="rDi-j6-vjW" firstAttribute="top" secondItem="1qV-nH-G05" secondAttribute="bottom" constant="17" id="YbX-SD-Mdp"/>
                                 <constraint firstItem="1qV-nH-G05" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="eqd-bg-2bR"/>
                                 <constraint firstItem="pQt-Ud-ork" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="iSg-nT-XgG"/>
                                 <constraint firstAttribute="trailing" secondItem="1qV-nH-G05" secondAttribute="trailing" constant="20" id="jzc-rL-sVw"/>
-                                <constraint firstItem="AEb-5U-qCR" firstAttribute="top" secondItem="pQt-Ud-ork" secondAttribute="bottom" constant="20" id="n8O-UV-3wc"/>
-                                <constraint firstItem="1qV-nH-G05" firstAttribute="top" secondItem="AEb-5U-qCR" secondAttribute="bottom" constant="20" id="pUS-IJ-DQ7"/>
+                                <constraint firstItem="AEb-5U-qCR" firstAttribute="top" secondItem="pQt-Ud-ork" secondAttribute="bottom" constant="8" id="n8O-UV-3wc"/>
+                                <constraint firstItem="1qV-nH-G05" firstAttribute="top" secondItem="AEb-5U-qCR" secondAttribute="bottom" constant="8" id="pUS-IJ-DQ7"/>
                                 <constraint firstAttribute="trailing" secondItem="pQt-Ud-ork" secondAttribute="trailing" constant="20" id="rWI-Bj-uRz"/>
                                 <constraint firstItem="AEb-5U-qCR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="tQH-tc-vE6"/>
-                                <constraint firstAttribute="bottom" secondItem="GUP-Le-lUa" secondAttribute="bottom" constant="8" id="tlK-m5-6BA"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleCell" id="2fZ-dx-zKl" customClass="ArticleCellTableViewCell" customModule="myMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="376" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="407" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2fZ-dx-zKl" id="Ddp-vd-dHP">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -360,7 +374,8 @@
                         <outlet property="AddEditButton" destination="y6V-Ag-c4o" id="ySH-Yu-17f"/>
                         <outlet property="accountButton" destination="B7O-Vl-guk" id="KCC-Vg-Q2G"/>
                         <outlet property="date" destination="AEb-5U-qCR" id="nMl-Bf-JHY"/>
-                        <outlet property="productView" destination="GUP-Le-lUa" id="YbT-0J-fBz"/>
+                        <outlet property="pageControl" destination="WgD-Hy-8fc" id="WIS-zu-y4M"/>
+                        <outlet property="productView" destination="rDi-j6-vjW" id="YEy-cu-HBC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -501,7 +516,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YhS-cu-svr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704" y="-260"/>
+            <point key="canvasLocation" x="1960" y="-260"/>
         </scene>
         <!--Your Accounts-->
         <scene sceneID="uXR-oP-cil">

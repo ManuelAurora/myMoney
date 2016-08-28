@@ -42,6 +42,8 @@ class NewAccountView: UIView
         self.center.y     -= 50
         
         accountNameTextField.becomeFirstResponder()
+        
+        accountNameTextField.delegate = viewController
     }
     
     func fill(withAccount account: Account) {

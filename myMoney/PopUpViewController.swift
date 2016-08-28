@@ -63,11 +63,7 @@ class PopUpViewController: UIViewController
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-      
-    }
+    
 }
 
 extension PopUpViewController: UIViewControllerTransitioningDelegate
@@ -84,5 +80,12 @@ extension PopUpViewController: UIViewControllerTransitioningDelegate
         return SlideOutAnimationController()
     }
     
+}
+
+extension PopUpViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return true
+    }
 }
 
