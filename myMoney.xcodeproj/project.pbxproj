@@ -37,6 +37,8 @@
 		644A7D241D5E0C830017A144 /* RegisterLine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644A7D231D5E0C830017A144 /* RegisterLine+CoreDataProperties.swift */; };
 		644A7D321D5E1EFD0017A144 /* Registrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644A7D301D5E1EFD0017A144 /* Registrator.swift */; };
 		644A7D341D5E28C40017A144 /* Registrator+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644A7D331D5E28C40017A144 /* Registrator+CoreDataProperties.swift */; };
+		644F2BB11D7482EA0049835C /* ArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644F2BB01D7482EA0049835C /* ArticleCollectionViewCell.xib */; };
+		644F2BB31D7483AD0049835C /* ArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F2BB21D7483AD0049835C /* ArticleCollectionViewCell.swift */; };
 		6492B1281CFED46300133059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1271CFED46300133059 /* AppDelegate.swift */; };
 		6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1291CFED46300133059 /* CheckViewController.swift */; };
 		6492B12D1CFED46300133059 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6492B12B1CFED46300133059 /* Main.storyboard */; };
@@ -108,6 +110,8 @@
 		644A7D231D5E0C830017A144 /* RegisterLine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RegisterLine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		644A7D301D5E1EFD0017A144 /* Registrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Registrator.swift; path = ../Registrator.swift; sourceTree = "<group>"; };
 		644A7D331D5E28C40017A144 /* Registrator+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Registrator+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		644F2BB01D7482EA0049835C /* ArticleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleCollectionViewCell.xib; sourceTree = "<group>"; };
+		644F2BB21D7483AD0049835C /* ArticleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		6492B1241CFED46300133059 /* myMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6492B1271CFED46300133059 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6492B1291CFED46300133059 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +298,7 @@
 				643B197C1D51045B0081F08D /* AccountTableViewCell.swift */,
 				6492B1621CFEDE2100133059 /* ArticleCellTableViewCell.swift */,
 				643C3D911D21528500BB41D8 /* IncomeTableViewCell.swift */,
+				644F2BB21D7483AD0049835C /* ArticleCollectionViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 				64DD053F1D523A5800509A01 /* NewAccountView.xib */,
 				643810431D5A196100EBEF06 /* ChooseAccountView.xib */,
 				643810451D5A19B700EBEF06 /* AddEditArticleView.xib */,
+				644F2BB01D7482EA0049835C /* ArticleCollectionViewCell.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -492,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				643810461D5A19B700EBEF06 /* AddEditArticleView.xib in Resources */,
+				644F2BB11D7482EA0049835C /* ArticleCollectionViewCell.xib in Resources */,
 				6492B1351CFED46300133059 /* LaunchScreen.storyboard in Resources */,
 				64DD05401D523A5800509A01 /* NewAccountView.xib in Resources */,
 				643810441D5A196100EBEF06 /* ChooseAccountView.xib in Resources */,
@@ -536,6 +543,7 @@
 				643FF7E11D04A6E70035F4DE /* SlideOutAnimationController.swift in Sources */,
 				6492B16D1CFF0CE300133059 /* Catalog.swift in Sources */,
 				643E07BD1D1ABE9900E91C4F /* TablePart.swift in Sources */,
+				644F2BB31D7483AD0049835C /* ArticleCollectionViewCell.swift in Sources */,
 				64BB58DA1D1D6AD400C14E22 /* IncomeViewController.swift in Sources */,
 				643E07CB1D1AD39F00E91C4F /* TableString.swift in Sources */,
 				644A7D341D5E28C40017A144 /* Registrator+CoreDataProperties.swift in Sources */,

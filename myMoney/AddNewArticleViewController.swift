@@ -27,8 +27,6 @@ class AddNewArticleViewController: UIViewController {
         
         try! managedContext.save()
         
-        controller.tileButtons()
-        
         dismissViewControllerAnimated(true, completion: nil)
     }
     

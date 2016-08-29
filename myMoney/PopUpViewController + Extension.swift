@@ -68,6 +68,8 @@ extension PopUpViewController
                 stringToEdit.price = Float(articleView.articlePriceTextField.text!)
             }
             
+            controller.productView.reloadData()
+            
             dismissViewControllerAnimated(true, completion:nil)
         }
     }

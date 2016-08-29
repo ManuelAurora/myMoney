@@ -11,7 +11,7 @@ import CoreData
 
 class Catalog {
     
-    var items: [AnyObject] = []
+    var items: [Article] = []
     var name:  String = ""
     
     convenience init(Of name: String) {
@@ -20,10 +20,10 @@ class Catalog {
         self.name = name
     }
     
-    func allObjects() -> [AnyObject] {
+    func allObjects() -> [Article] {
         
-        let objects = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: name)) 
+        let articles = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: name)) as! [Article]
         
-        return objects
+        return articles
     }
 }

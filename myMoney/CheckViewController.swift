@@ -21,7 +21,7 @@ class CheckViewController: CoreDataTableViewController
     
     var totalExpense: Double = 0
     
-    @IBOutlet weak var productView:   UIView!
+    @IBOutlet weak var productView:   UICollectionView!
     @IBOutlet weak var date:          UILabel!
     @IBOutlet weak var AddEditButton: UIButton!
     @IBOutlet weak var accountButton: UIButton!
@@ -72,6 +72,12 @@ class CheckViewController: CoreDataTableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let nib = UINib(nibName: "ArticleCollectionViewCell", bundle: nil)
+        
+        productView.registerNib(nib, forCellWithReuseIdentifier: "ArticleCollectionViewCell")
+        
+        makeCustomLayout()
+        
         switch presentationMode
         {
         case .DocumentEditMode:
@@ -88,8 +94,6 @@ class CheckViewController: CoreDataTableViewController
         date.text = prettyStringFrom(check!.date)
         
         fetchData()
-        
-        tileButtons()        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -109,93 +113,11 @@ class CheckViewController: CoreDataTableViewController
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func tileButtons() {
-        
-        let articleCatalog = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: "Article")) as! [Article]
-        
-        var rows    = 3
-        var columns = 5
-        
-        var marginX:    CGFloat    = 0
-        var marginY:    CGFloat    = 20
-        
-        let productViewWidth = productView.bounds.size.width
-        
-        switch productViewWidth
-        {
-        case 568:
-            columns = 6; marginX = 2
-        case 667:
-            columns = 7; marginX = 1; marginY = 29;
-        case 736:
-            rows = 4;    columns = 8;
-        default:
-            break
-        }
-        
-        var row    = 0
-        var column = 0
-        var x      = marginX
-        
-        let buttonWidth: CGFloat  = 60
-        let buttonHeight: CGFloat = 60
-        
-        let paddingHorz = (buttonWidth) / 3
-        let paddingVert = (buttonHeight) / 2
-        
-        for (index, product) in articleCatalog.enumerate() {
-            
-            print(product.name)
-            
-            let button = UIButton(type: .Custom)
-            let image  = UIImage(named: "LandscapeButton")
-            let label  = UILabel()
-            
-            label.text  = product.name
-            label.backgroundColor = UIColor.whiteColor()
-            
-            button.setBackgroundImage(image, forState: .Normal)
-            
-            button.frame =  CGRect(x: x + paddingHorz,
-                                   y: marginY + CGFloat(row) * buttonHeight,
-                                   width: buttonWidth,
-                                   height: buttonHeight)
-            
-            label.frame = CGRect(x: button.bounds.origin.x, y: button.bounds.origin.x, width: buttonWidth, height: buttonHeight / 3)
-            label.tag = 1000 + index
-            
-            button.addSubview(label)
-            
-            productView.addSubview(button)
-            
-            button.tag = 2000 + index
-            
-            button.addTarget(self, action: #selector(buttonPressed), forControlEvents: .TouchUpInside)
-            
-            row += 1
-            
-            if row == rows {
-                row = 0; x += buttonWidth; column += 1
-                
-                if column == columns {
-                    column = 0; x += marginX * 2
-                }
-            }
-        }      
-    }    
-    
-    func buttonPressed(sender: UIButton) {
+    func itemSelected(atIndexPath index: NSIndexPath) {
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
-        let index = sender.tag - 2000
-        
-        let article = articleCatalog.allObjects()[index] as! Article
+        let article = articleCatalog.allObjects()[index.row]
         
         controller.article = article
         
@@ -240,7 +162,25 @@ class CheckViewController: CoreDataTableViewController
                 number += 1
             }
         }
-    }    
+    }
+    
+    func makeCustomLayout() {
+        
+        let layout = UICollectionViewFlowLayout()
+        
+        productView.backgroundColor = UIColor.whiteColor()
+        
+        layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        
+        layout.minimumInteritemSpacing = 4
+        layout.minimumLineSpacing      = 14
+        
+        let size = floor(productView.bounds.width / 4)
+        
+        layout.itemSize = CGSize(width: size, height: size)
+        
+        productView.collectionViewLayout = layout
+    }
 }
 
 extension CheckViewController
@@ -303,4 +243,32 @@ extension CheckViewController
         renumerateStrings()
     }
 }
+
+extension CheckViewController: UICollectionViewDelegate
+{
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        itemSelected(atIndexPath: indexPath)
+    }
+}
+
+extension CheckViewController: UICollectionViewDataSource
+{
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = productView.dequeueReusableCellWithReuseIdentifier("ArticleCollectionViewCell", forIndexPath: indexPath) as! ArticleCollectionViewCell
+        
+        cell.articleNameLabel.text = articleCatalog.allObjects()[indexPath.row].name
+               
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return articleCatalog.allObjects().count
+    }
+    
+    
+}
+
 
