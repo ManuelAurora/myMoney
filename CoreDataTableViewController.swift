@@ -100,7 +100,7 @@ extension CoreDataTableViewController{
 
 
 // MARK:  - Delegate
-extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
+extension CoreDataTableViewController: NSFetchedResultsControllerDelegate {
     
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {

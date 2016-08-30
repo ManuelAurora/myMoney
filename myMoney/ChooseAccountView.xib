@@ -56,11 +56,12 @@
                 <constraint firstItem="eXg-id-j7I" firstAttribute="leading" secondItem="NOE-yC-vpY" secondAttribute="leading" constant="8" id="wGX-G7-T3G"/>
                 <constraint firstItem="GG6-5Y-bPN" firstAttribute="top" secondItem="eXg-id-j7I" secondAttribute="bottom" constant="2" id="xas-yc-yUd"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="tableView" destination="eXg-id-j7I" id="Ba2-WB-79L"/>
             </connections>
-            <point key="canvasLocation" x="833" y="732"/>
+            <point key="canvasLocation" x="595" y="432"/>
         </view>
     </objects>
     <resources>

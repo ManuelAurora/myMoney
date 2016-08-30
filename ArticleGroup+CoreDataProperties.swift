@@ -1,5 +1,5 @@
 //
-//  Article+CoreDataProperties.swift
+//  ArticleGroup+CoreDataProperties.swift
 //  myMoney
 //
 //  Created by Мануэль on 29.08.16.
@@ -12,9 +12,9 @@
 import Foundation
 import CoreData
 
-extension Article {
+extension ArticleGroup {
 
     @NSManaged var name: String?
-    @NSManaged var group: ArticleGroup?
+    @NSManaged var parent: ArticleGroup?
 
 }

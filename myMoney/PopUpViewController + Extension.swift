@@ -13,7 +13,6 @@ extension PopUpViewController
 {
     
     //MARK: Presenting Views
-    
     func showArticleView() {
         
         let view = AddEditArticleView.loadFromNib()
@@ -24,8 +23,15 @@ extension PopUpViewController
         self.view.addSubview(view)
     }
     
-    func chooseAccountView() {
+    func showArticleGroupView() {
         
+        let view = AddEditArticleGroupView.loadFromNib()
+        view.viewController = self
+        
+        self.view.addSubview(view)
+    }
+    
+    func chooseAccountView() {
         let view = ChooseAccountView.loadFromNib()
         
         view.viewController = self
@@ -33,8 +39,7 @@ extension PopUpViewController
         self.view.addSubview(view)
     }
     
-    func showAccountView() {
-        
+    func showAccountView() {        
         let view = NewAccountView.loadFromNib()
         
         view.mainAccSwitch.on = Account.isFirstAccount() // If there is no accounts we will make our first account main.
@@ -47,7 +52,6 @@ extension PopUpViewController
     //MARK: Completion Handlers
     
     //Adding Article into Check
-    
     func addEditArticleInTablePart(from articleView: AddEditArticleView) {
         
         if let controller = presentingViewController as? CheckViewController
@@ -66,16 +70,13 @@ extension PopUpViewController
                 guard let stringToEdit = tableString else { return }
                 
                 stringToEdit.price = Float(articleView.articlePriceTextField.text!)
-            }
-            
-            controller.productView.reloadData()
+            }          
             
             dismissViewControllerAnimated(true, completion:nil)
         }
     }
     
     //Adding New Account
-    
     func addNewAccount(from accountView: NewAccountView) {
         
         let tabBar     = presentingViewController   as! UITabBarController
@@ -116,4 +117,53 @@ extension PopUpViewController
         
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    //Adding New Article Group
+    func addEditArticleGroup(from articleGroupView: AddEditArticleGroupView) {
+                
+        let name = articleGroupView.nameTextField.text!
+        
+        let group = ArticleGroup(withName: name)
+        
+        let predicate = NSPredicate(format: "name=%@", articleGroupView.parentChooseButton.titleLabel!.text!)
+        
+        if let parent = (DataManager.sharedInstance().fetchData(forEntity: "ArticleGroup", withSortKey: nil, predicates: [predicate])).first as? ArticleGroup
+        {
+            group.parent = parent
+        }
+        
+        // Saving to context
+        do
+        {
+            try DataManager.sharedInstance().saveContext()
+        }
+        catch
+        {
+            print("Unable to save new Group")
+        }
+        
+        if let presenter = presentingViewController as? AddNewArticleViewController
+        {
+            presenter.parentButton.titleLabel!.text = name
+            
+            presenter.group = group
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

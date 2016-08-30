@@ -7,6 +7,11 @@
     </entity>
     <entity name="Article" representedClassName="myMoney.Article" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArticleGroup" syncable="YES"/>
+    </entity>
+    <entity name="ArticleGroup" representedClassName=".ArticleGroup" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArticleGroup" syncable="YES"/>
     </entity>
     <entity name="RegisterLine" representedClassName=".RegisterLine" syncable="YES">
         <attribute name="date" attributeType="Date" syncable="YES"/>
@@ -35,11 +40,12 @@
         <relationship name="tablePart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TablePart" inverseName="tableStrings" inverseEntity="TablePart" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Account" positionX="-324" positionY="-451" width="128" height="90"/>
-        <element name="Article" positionX="-488" positionY="-450" width="128" height="58"/>
-        <element name="RegisterLine" positionX="-99" positionY="-405" width="128" height="120"/>
-        <element name="Registrator" positionX="-290" positionY="-259" width="128" height="73"/>
-        <element name="TablePart" positionX="-497" positionY="-180" width="128" height="88"/>
-        <element name="TableString" positionX="-711" positionY="-108" width="128" height="118"/>
+        <element name="Account" positionX="-416" positionY="-648" width="128" height="90"/>
+        <element name="Article" positionX="-443" positionY="-48" width="128" height="75"/>
+        <element name="RegisterLine" positionX="-65" positionY="-666" width="128" height="120"/>
+        <element name="Registrator" positionX="-234" positionY="-487" width="128" height="73"/>
+        <element name="TablePart" positionX="-261" positionY="-295" width="128" height="88"/>
+        <element name="TableString" positionX="-209" positionY="-135" width="128" height="118"/>
+        <element name="ArticleGroup" positionX="-738" positionY="-81" width="128" height="73"/>
     </elements>
 </model>

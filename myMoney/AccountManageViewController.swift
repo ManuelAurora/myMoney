@@ -35,7 +35,7 @@ class AccountManageViewController: UIViewController
         
         controller.elementType = .ElementAccountType
         
-        presentViewController(controller, animated: true, completion: nil)        
+        presentViewController(controller, animated: true, completion: nil)
         
     }
     

@@ -14,13 +14,9 @@ class PopUpViewController: UIViewController
     var tableString: TableString?
     var accountView: NewAccountView?
     
-    var elementPresentationMode: PopUpElementPresentationMode?
+    var elementPresentationMode: ElementPresentationMode?
     var presentingDocType:       DocumentType?
     var elementType:             PopUpElementType?
-    
-    @IBOutlet weak var popUpViewExpense: UIView!
-    @IBOutlet weak var addButton:        UIButton!
-    @IBOutlet weak var closeButton:      UIButton!
     
     @IBAction func close() {
         
@@ -60,13 +56,11 @@ class PopUpViewController: UIViewController
                 
             case .ElementAccountListType:
                 chooseAccountView()
+                
+            case .ElementArticleGroupType:
+                showArticleGroupView()
             }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-      
     }
 }
 

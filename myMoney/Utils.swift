@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 import UIKit
 
-enum TimeBorder: String
+enum CollectionViewToFetch: String
 {
-    case Begin = "00:00:00"
-    case End   = "23:59:59"
+    case Articles = "ArticleCollectionView"
+    case Groups   = "ArticleGroupsCollectionView"
 }
 
 enum ReportCurrentPeriod: String
@@ -29,7 +29,7 @@ enum DocumentPresentationMode
     case DocumentNewMode
 }
 
-enum PopUpElementPresentationMode
+enum ElementPresentationMode: Int
 {
     case ElementEditMode
     case ElementNewMode
@@ -45,6 +45,7 @@ enum PopUpElementType
     case ElementArticleType
     case ElementAccountType
     case ElementAccountListType
+    case ElementArticleGroupType
 }
 
 struct Constants  //TODO: RENAME THIS!
