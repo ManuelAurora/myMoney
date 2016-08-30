@@ -119,8 +119,6 @@ extension ArticleManageViewController: UICollectionViewDelegate
         default:
             break
         }
-        
-        
     }
 }
 
@@ -203,65 +201,47 @@ extension ArticleManageViewController: NSFetchedResultsControllerDelegate
         
         guard let collectionViewToFetch = collectionViewToFetch else { return }
         
+        var collectionView: UICollectionView?
+        
         switch collectionViewToFetch.rawValue
         {
         case "ArticleCollectionView":
             
-            articlesCollectionView.performBatchUpdates({
-                
-                for indexPath in self.deleteIndexPaths
-                {
-                    self.articlesCollectionView.deleteItemsAtIndexPaths([indexPath])
-                }
-                
-                self.deleteIndexPaths = [NSIndexPath]()
-                
-                for indexPath in self.insertIndexPaths
-                {
-                    self.articlesCollectionView.insertItemsAtIndexPaths([indexPath])
-                }
-                
-                self.insertIndexPaths = [NSIndexPath]()
-                
-                for indexPath in self.updateIndexPaths
-                {
-                    self.articlesCollectionView.reloadItemsAtIndexPaths([indexPath])
-                }
-                
-                self.updateIndexPaths = [NSIndexPath]()
-                
-            }, completion: nil)
+            collectionView = articlesCollectionView
             
         case "ArticleGroupsCollectionView":
             
-            groupsCollectionView.performBatchUpdates({
-                
-                for indexPath in self.deleteIndexPaths
-                {
-                    self.groupsCollectionView.deleteItemsAtIndexPaths([indexPath])
-                }
-                
-                self.deleteIndexPaths = [NSIndexPath]()
-                
-                for indexPath in self.insertIndexPaths
-                {
-                    self.groupsCollectionView.insertItemsAtIndexPaths([indexPath])
-                }
-                
-                self.insertIndexPaths = [NSIndexPath]()
-                
-                for indexPath in self.updateIndexPaths
-                {
-                    self.groupsCollectionView.reloadItemsAtIndexPaths([indexPath])
-                }
-                
-                self.updateIndexPaths = [NSIndexPath]()
-                
-                }, completion: nil)
+            collectionView = groupsCollectionView
             
         default:
             break
         }
         
+        guard let collection = collectionView else { return }
+        
+        collection.performBatchUpdates({
+            
+            for indexPath in self.deleteIndexPaths
+            {
+                collection.deleteItemsAtIndexPaths([indexPath])
+            }
+            
+            self.deleteIndexPaths = [NSIndexPath]()
+            
+            for indexPath in self.insertIndexPaths
+            {
+                collection.insertItemsAtIndexPaths([indexPath])
+            }
+            
+            self.insertIndexPaths = [NSIndexPath]()
+            
+            for indexPath in self.updateIndexPaths
+            {
+                collection.reloadItemsAtIndexPaths([indexPath])
+            }
+            
+            self.updateIndexPaths = [NSIndexPath]()
+            
+            }, completion: nil)
     }
 }
