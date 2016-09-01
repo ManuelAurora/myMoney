@@ -20,11 +20,20 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gPy-Q8-MQJ">
                     <rect key="frame" x="0.0" y="0.0" width="90" height="69"/>
                 </imageView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae4-ge-51o">
+                    <rect key="frame" x="38" y="34" width="15" height="22"/>
+                    <state key="normal" image="CloseButton"/>
+                    <connections>
+                        <action selector="remove:" destination="iN0-l3-epB" eventType="touchUpInside" id="5AG-aF-3Jt"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.95006814892163949" green="0.69040473013144155" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="gPy-Q8-MQJ" secondAttribute="trailing" id="2zi-H5-J6O"/>
                 <constraint firstItem="gPy-Q8-MQJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9fE-Je-BbF"/>
+                <constraint firstItem="ae4-ge-51o" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="G9l-JD-NGD"/>
+                <constraint firstItem="ae4-ge-51o" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Wot-Ee-zRL"/>
                 <constraint firstItem="fKm-vG-Ycb" firstAttribute="top" secondItem="gPy-Q8-MQJ" secondAttribute="bottom" id="bWn-yQ-4hI"/>
                 <constraint firstAttribute="trailing" secondItem="fKm-vG-Ycb" secondAttribute="trailing" id="wB4-Nc-fsw"/>
                 <constraint firstItem="fKm-vG-Ycb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xfu-M9-5nt"/>
@@ -36,8 +45,12 @@
             <connections>
                 <outlet property="articleImageView" destination="gPy-Q8-MQJ" id="Icw-wn-DZU"/>
                 <outlet property="articleNameLabel" destination="fKm-vG-Ycb" id="l0o-H7-T9k"/>
+                <outlet property="removeButton" destination="ae4-ge-51o" id="REe-vb-CAe"/>
             </connections>
-            <point key="canvasLocation" x="269" y="249"/>
+            <point key="canvasLocation" x="521" y="368"/>
         </view>
     </objects>
+    <resources>
+        <image name="CloseButton" width="15" height="15"/>
+    </resources>
 </document>

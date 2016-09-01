@@ -619,6 +619,13 @@
                                             <action selector="addNewArticle:" destination="7WZ-GC-pU8" eventType="touchUpInside" id="E2X-YR-xjk"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slj-M7-XYC" userLabel="Stop Editing">
+                                        <rect key="frame" x="136" y="0.0" width="0.0" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="stopEditing:" destination="7WZ-GC-pU8" eventType="touchUpInside" id="I9d-cn-qDX"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVh-kd-IEf">
                                         <rect key="frame" x="136" y="0.0" width="136" height="30"/>
                                         <state key="normal" title="Add Group"/>
@@ -664,8 +671,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Articles" id="Ncv-IZ-89F"/>
                     <connections>
+                        <outlet property="addArticleButton" destination="3Vv-Kc-d8N" id="egg-zm-LSa"/>
+                        <outlet property="addGroupButton" destination="ZVh-kd-IEf" id="o4o-jQ-50u"/>
                         <outlet property="articlesCollectionView" destination="97F-id-nrs" id="TZ3-c5-00r"/>
                         <outlet property="groupsCollectionView" destination="l01-gj-dvS" id="sII-pS-dbw"/>
+                        <outlet property="stopEdingButton" destination="Slj-M7-XYC" id="Oel-AH-rvM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xb7-ez-hm9" userLabel="First Responder" sceneMemberID="firstResponder"/>

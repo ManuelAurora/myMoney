@@ -13,6 +13,7 @@ class ArticleCollectionViewCell: UICollectionViewCell
     
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var articleNameLabel: UILabel!
+    @IBOutlet weak var removeButton:     UIButton!
     
     override func didMoveToSuperview() {
         
@@ -20,5 +21,9 @@ class ArticleCollectionViewCell: UICollectionViewCell
         
     }
     
+    @IBAction func remove(sender: UIButton) {
+        
+        self.removeFromSuperview()        
+    }
 }
 

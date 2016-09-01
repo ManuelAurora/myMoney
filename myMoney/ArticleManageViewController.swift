@@ -18,6 +18,9 @@ class ArticleManageViewController: UIViewController
     
     var collectionViewToFetch: CollectionViewToFetch?
     
+    var articleCollectionInEditMode = false
+    var groupsCollectionInEditMode  = false
+    
     var managedContext: NSManagedObjectContext!
     
     lazy var fetchedResultsControllerArticles: NSFetchedResultsController = {
@@ -39,8 +42,11 @@ class ArticleManageViewController: UIViewController
         
     }()
 
-    @IBOutlet weak var groupsCollectionView: UICollectionView!
+    @IBOutlet weak var addGroupButton:   UIButton!
+    @IBOutlet weak var addArticleButton: UIButton!
+    @IBOutlet weak var stopEdingButton:  UIButton!
     
+    @IBOutlet weak var groupsCollectionView:   UICollectionView!
     @IBOutlet weak var articlesCollectionView: UICollectionView!
     
     @IBAction func addNewArticle(sender: UIButton) {
@@ -54,6 +60,52 @@ class ArticleManageViewController: UIViewController
     
     @IBAction func addNewGroup(sender: UIButton) {
         
+    }
+    
+    @IBAction func stopEditing(sender: UIButton) {
+        
+        if articleCollectionInEditMode
+        {
+            toggleEditingMode(false, inCollection: articlesCollectionView)
+        }
+        else if groupsCollectionInEditMode
+        {
+            toggleEditingMode(false, inCollection: groupsCollectionView)
+        }
+    }
+    
+    func addGestureRecognizerForDeletion() {
+        
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(self.updateSectionForDeletionProcess(_:)))
+        
+        gesture.minimumPressDuration = 1.5
+        gesture.delegate = self
+        
+        articlesCollectionView.addGestureRecognizer(gesture)
+    }
+    
+    func updateSectionForDeletionProcess(sender: UILongPressGestureRecognizer) {
+        
+        articleCollectionInEditMode = true
+        
+        articlesCollectionView.reloadData()
+    }
+    
+    func toggleEditingMode(isOn: Bool, inCollection view: UICollectionView)
+    {
+        switch view
+        {
+        case articlesCollectionView:
+            articleCollectionInEditMode = isOn
+            articlesCollectionView.reloadData()
+            
+        case groupsCollectionView:
+            break
+            
+        default:
+            break
+            
+        }
     }
     
     func makeCustomLayout() {
@@ -72,9 +124,25 @@ class ArticleManageViewController: UIViewController
         layout.itemSize = CGSize(width: size, height: size)
         
         articlesCollectionView.collectionViewLayout = layout
-    }    
+    }
+    
+    func deleteObject(article: Article) {
+        
+        managedContext.deleteObject(article)
+        
+        do
+        {
+            try managedContext.save()
+        }
+        catch
+        {
+            print(error)
+        }
+    }
     
     override func viewDidLoad() {
+        
+       addGestureRecognizerForDeletion()
         
        registerNibs()
         
@@ -90,6 +158,7 @@ class ArticleManageViewController: UIViewController
     }
 }
 
+//MARK: >> EXT - UICollectionViewDelegate
 extension ArticleManageViewController: UICollectionViewDelegate
 {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -97,6 +166,14 @@ extension ArticleManageViewController: UICollectionViewDelegate
         switch collectionView
         {
         case articlesCollectionView:
+            
+            guard !articleCollectionInEditMode else {
+                let article = fetchedResultsControllerArticles.objectAtIndexPath(indexPath) as! Article
+                
+                deleteObject(article)
+                
+                return
+            }
             
             let controller = storyboard?.instantiateViewControllerWithIdentifier("addNewArticle") as! AddNewArticleViewController
             
@@ -114,6 +191,7 @@ extension ArticleManageViewController: UICollectionViewDelegate
     }
 }
 
+//MARK: >> EXT - UICollectionViewDataSource
 extension ArticleManageViewController: UICollectionViewDataSource
 {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -133,7 +211,6 @@ extension ArticleManageViewController: UICollectionViewDataSource
         default:
             break
         }
-
         
         return result
     }
@@ -169,12 +246,19 @@ extension ArticleManageViewController: UICollectionViewDataSource
         let cell = collection?.dequeueReusableCellWithReuseIdentifier("ArticleCollectionViewCell", forIndexPath: indexPath) as! ArticleCollectionViewCell
         
         cell.articleNameLabel.text = name
+        cell.removeButton.hidden   = articleCollectionInEditMode ? false : true
         
         return cell
     }
+}
+
+//MARK: >> EXT - UIGestureRecognizerDelegate
+extension ArticleManageViewController: UIGestureRecognizerDelegate
+{
     
 }
 
+//MARK: >> EXT - NSFetchedResultsControllerDelegate
 extension ArticleManageViewController: NSFetchedResultsControllerDelegate
 {
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
