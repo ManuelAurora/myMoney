@@ -42,7 +42,9 @@ class MainScreenViewController: UIViewController
     
     @IBAction func reportPerodChanged(sender: UISegmentedControl) {
         changeReportPeriod()
+        savePeriod()
     }
+ 
     
     override func viewDidLoad() {
         
@@ -50,7 +52,9 @@ class MainScreenViewController: UIViewController
 
         let accountCellNib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         
-        tableView.registerNib(accountCellNib, forCellReuseIdentifier: "AccountCell")        
+        tableView.registerNib(accountCellNib, forCellReuseIdentifier: "AccountCell")
+        
+        loadPeriod()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -123,6 +127,24 @@ class MainScreenViewController: UIViewController
         expensesCountLabel.text = "\(prettyStringFrom(expenseTotal))"
     }
     
+    //Saving index of Period Segmented control
+    func savePeriod() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setInteger(periodSegmentedControl.selectedSegmentIndex, forKey: "Period")
+    }
+    
+    //Loads index of Period Segmented control
+    func loadPeriod() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        let index = defaults.integerForKey("Period")
+        
+        periodSegmentedControl.selectedSegmentIndex = index
+    }
+    
     //Counting total money for label view
     func updateTotalMoneyInfo() {
         
@@ -186,7 +208,14 @@ class MainScreenViewController: UIViewController
     }
 }
 
-extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource
+// MARK: >> EXT - UITableViewDelegate
+extension MainScreenViewController: UITableViewDelegate
+{
+    
+}
+
+// MARK: >> EXT - UITableViewDataSource
+extension MainScreenViewController:UITableViewDataSource
 {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
