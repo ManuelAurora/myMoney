@@ -14,7 +14,7 @@ import CoreData
 
 extension ArticleGroup {
 
-    @NSManaged var name: String?
+    @NSManaged var name: String
     @NSManaged var parent: ArticleGroup?
 
 }

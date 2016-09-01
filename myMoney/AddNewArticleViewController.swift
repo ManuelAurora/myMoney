@@ -31,7 +31,7 @@ class AddNewArticleViewController: UIViewController
         }
         else
         {
-            article.name = nameTextField.text
+            article.name = nameTextField.text!
         }
         
         if let group = group

@@ -101,7 +101,30 @@ func currentPeriodBorder(period: ReportCurrentPeriod) -> (periodStart: NSDate, p
     return (periodStart!, periodEnd!)
 }
 
-
+//Instantiates fetch controller for controlling a collection view, or a table view with certain entity
+func instantiateFetchControllerWithRequest(entity name: String, forDelegate delegate: NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {
+    
+    let managedContext = DataManager.sharedInstance().context
+    
+    let request = NSFetchRequest(entityName: name)
+    
+    request.sortDescriptors = []
+    
+    let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+    
+    controller.delegate = delegate
+        
+    do
+    {
+        try controller.performFetch()
+    }
+    catch
+    {
+        print(error)
+    }
+    
+    return controller
+}
 
 
 

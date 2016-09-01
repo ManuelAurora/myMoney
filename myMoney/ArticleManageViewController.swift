@@ -17,33 +17,27 @@ class ArticleManageViewController: UIViewController
     var insertIndexPaths   = [NSIndexPath]()
     
     var collectionViewToFetch: CollectionViewToFetch?
-    var entityName:            String?
     
     var managedContext: NSManagedObjectContext!
     
-    var fetchedResultsController: NSFetchedResultsController {
+    lazy var fetchedResultsControllerArticles: NSFetchedResultsController = {
         
-        if collectionViewToFetch == .Articles
-        {
-            entityName = "Article"
-        }
-        else if collectionViewToFetch == .Groups
-        {
-            entityName = "ArticleGroup"
-        }
-        
-        let fetchRequest = NSFetchRequest(entityName: entityName!)
-        
-        fetchRequest.sortDescriptors = []
-        
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        controller.delegate = self
-        
-        try! controller.performFetch()
+        let entityName = "Article"
+       
+        let controller = instantiateFetchControllerWithRequest(entity: entityName, forDelegate: self)       
         
         return controller
-    }
+    }()
+    
+    lazy var fetchedResultsControllerArticleGroups: NSFetchedResultsController = {
+        
+        let entityName = "ArticleGroup"
+        
+        let controller = instantiateFetchControllerWithRequest(entity: entityName, forDelegate: self)
+        
+        return controller
+        
+    }()
 
     @IBOutlet weak var groupsCollectionView: UICollectionView!
     
@@ -78,7 +72,7 @@ class ArticleManageViewController: UIViewController
         layout.itemSize = CGSize(width: size, height: size)
         
         articlesCollectionView.collectionViewLayout = layout
-    }
+    }    
     
     override func viewDidLoad() {
         
@@ -104,11 +98,9 @@ extension ArticleManageViewController: UICollectionViewDelegate
         {
         case articlesCollectionView:
             
-            toggleCollectionView(collectionView)
-            
             let controller = storyboard?.instantiateViewControllerWithIdentifier("addNewArticle") as! AddNewArticleViewController
             
-            let article = fetchedResultsController.fetchedObjects![indexPath.row] as! Article
+            let article = fetchedResultsControllerArticles.fetchedObjects![indexPath.row] as! Article
             
             controller.article        = article
             controller.editMode       = .ElementEditMode
@@ -126,42 +118,61 @@ extension ArticleManageViewController: UICollectionViewDataSource
 {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        toggleCollectionView(collectionView)
-        
-        return fetchedResultsController.fetchedObjects!.count
-    }
-    
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        toggleCollectionView(collectionView)
-        
-        var cell = ArticleCollectionViewCell()
+        var result = 0
         
         switch collectionView
         {
         case articlesCollectionView:
             
-            cell = articlesCollectionView.dequeueReusableCellWithReuseIdentifier("ArticleCollectionViewCell", forIndexPath: indexPath) as! ArticleCollectionViewCell
+            result = fetchedResultsControllerArticles.fetchedObjects!.count
             
-            let article = fetchedResultsController.fetchedObjects![indexPath.row] as! Article
-            
-            cell.articleNameLabel.text = article.name
-        
         case groupsCollectionView:
             
-            cell = groupsCollectionView.dequeueReusableCellWithReuseIdentifier("ArticleCollectionViewCell", forIndexPath: indexPath) as! ArticleCollectionViewCell
+            result = fetchedResultsControllerArticleGroups.fetchedObjects!.count
             
-            let group = fetchedResultsController.fetchedObjects![indexPath.row] as! ArticleGroup
+        default:
+            break
+        }
+
+        
+        return result
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        var collection: UICollectionView?
+        
+        var name = ""
+        
+        switch collectionView
+        {
+        case articlesCollectionView:
             
-            cell.articleNameLabel.text = group.name
+            collection = articlesCollectionView
+            
+            let article = fetchedResultsControllerArticles.fetchedObjects![indexPath.row] as! Article
+            
+            name = article.name
+            
+        case groupsCollectionView:
+            
+            collection = groupsCollectionView
+            
+            let group = fetchedResultsControllerArticleGroups.fetchedObjects![indexPath.row] as! ArticleGroup
+            
+            name = group.name
             
         default:
             break
         }
         
+        let cell = collection?.dequeueReusableCellWithReuseIdentifier("ArticleCollectionViewCell", forIndexPath: indexPath) as! ArticleCollectionViewCell
+        
+        cell.articleNameLabel.text = name
+        
         return cell
     }
+    
 }
 
 extension ArticleManageViewController: NSFetchedResultsControllerDelegate
@@ -189,27 +200,21 @@ extension ArticleManageViewController: NSFetchedResultsControllerDelegate
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         
-        changeItemsInContent()
+        changeItemsInContentControlled(by: controller)
     }
     
-    func toggleCollectionView(collectionView: UICollectionView)
-    {
-        collectionViewToFetch = collectionView == articlesCollectionView ? .Articles : .Groups
-    }
-    
-    func changeItemsInContent() {
+    func changeItemsInContentControlled(by controller: NSFetchedResultsController) {
         
-        guard let collectionViewToFetch = collectionViewToFetch else { return }
         
         var collectionView: UICollectionView?
         
-        switch collectionViewToFetch.rawValue
+        switch controller
         {
-        case "ArticleCollectionView":
+        case fetchedResultsControllerArticles:
             
             collectionView = articlesCollectionView
             
-        case "ArticleGroupsCollectionView":
+        case fetchedResultsControllerArticleGroups:
             
             collectionView = groupsCollectionView
             
@@ -244,4 +249,5 @@ extension ArticleManageViewController: NSFetchedResultsControllerDelegate
             
             }, completion: nil)
     }
+    
 }

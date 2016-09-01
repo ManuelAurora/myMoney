@@ -6,7 +6,7 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Article" representedClassName="myMoney.Article" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArticleGroup" syncable="YES"/>
     </entity>
     <entity name="ArticleGroup" representedClassName=".ArticleGroup" syncable="YES">
@@ -42,10 +42,10 @@
     <elements>
         <element name="Account" positionX="-416" positionY="-648" width="128" height="90"/>
         <element name="Article" positionX="-443" positionY="-48" width="128" height="75"/>
+        <element name="ArticleGroup" positionX="-738" positionY="-81" width="128" height="73"/>
         <element name="RegisterLine" positionX="-65" positionY="-666" width="128" height="120"/>
         <element name="Registrator" positionX="-234" positionY="-487" width="128" height="73"/>
         <element name="TablePart" positionX="-261" positionY="-295" width="128" height="88"/>
         <element name="TableString" positionX="-209" positionY="-135" width="128" height="118"/>
-        <element name="ArticleGroup" positionX="-738" positionY="-81" width="128" height="73"/>
     </elements>
 </model>

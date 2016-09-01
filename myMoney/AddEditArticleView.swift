@@ -29,7 +29,7 @@ class AddEditArticleView: UIView
     
     override func didMoveToSuperview() {
         
-        articleNameLabel.text = article.name!
+        articleNameLabel.text = article.name
                 
         self.layer.cornerRadius = 10
         self.center             = viewController.view.center
