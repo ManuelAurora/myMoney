@@ -25,7 +25,7 @@ extension PopUpViewController
     
     func showArticleGroupView() {
         
-        let view = AddEditArticleGroupView.loadFromNib()
+        let view = SelectArticleGroupView.loadFromNib()
         view.viewController = self
         
         self.view.addSubview(view)
@@ -118,35 +118,13 @@ extension PopUpViewController
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //Adding New Article Group
-    func addEditArticleGroup(from articleGroupView: AddEditArticleGroupView) {
-                
-        let name = articleGroupView.nameTextField.text!
+    //Selecting Article Group
+    func selectArticleGroup(from articleGroupView: SelectArticleGroupView) {
         
-        let group = ArticleGroup(withName: name)
-        
-        let predicate = NSPredicate(format: "name=%@", articleGroupView.parentChooseButton.titleLabel!.text!)
-        
-        if let parent = (DataManager.sharedInstance().fetchData(forEntity: "ArticleGroup", withSortKey: nil, predicates: [predicate])).first as? ArticleGroup
+        if let group = articleGroupView.selectedGroup, let controller = presentingViewController as? AddNewGroupViewController
         {
-            group.parent = parent
-        }
-        
-        // Saving to context
-        do
-        {
-            try DataManager.sharedInstance().saveContext()
-        }
-        catch
-        {
-            print("Unable to save new Group")
-        }
-        
-        if let presenter = presentingViewController as? AddNewArticleViewController
-        {
-            presenter.parentButton.titleLabel!.text = name
-            
-            presenter.group = group
+            controller.group.parent = group
+            controller.parentButton.setTitle("\(group.name)", forState: .Normal)
         }
         
         dismissViewControllerAnimated(true, completion: nil)

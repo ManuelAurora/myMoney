@@ -3,10 +3,19 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "Check.sumOfCheck() -&gt; ():Check.swift">
+         contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "sum">
+               value = "check.sumOfCheck">
+            </PersistentString>
+            <PersistentString
+               value = "check.sumOfCheck()">
+            </PersistentString>
+            <PersistentString
+               value = "fetchedResultsController!.objectAtIndexPath(indexPath) as! Registrator">
+            </PersistentString>
+            <PersistentString
+               value = "expenditure.date">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -104,10 +113,10 @@
          contextName = "AddNewItemOfExpenditureViewController.AddNew(UIButton) -&gt; ():AddNewItemOfExpenditureViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "managedContext">
+               value = "catalogOfExpenditure">
             </PersistentString>
             <PersistentString
-               value = "catalogOfExpenditure">
+               value = "managedContext">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -148,7 +157,7 @@
          contextName = "CheckViewController.viewWillAppear(Bool) -&gt; ():CheckViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "catalogExpenditure.items">
+               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
             </PersistentString>
             <PersistentString
                value = "article.name">
@@ -157,10 +166,10 @@
                value = "check?.account.name">
             </PersistentString>
             <PersistentString
-               value = "result.count ">
+               value = "catalogExpenditure.items">
             </PersistentString>
             <PersistentString
-               value = "DataManager.sharedInstance().fetchData() as! [Expenditure]">
+               value = "result.count ">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -171,10 +180,10 @@
                value = " view.saveButton">
             </PersistentString>
             <PersistentString
-               value = "view.balanceTextField">
+               value = "view.countNameTextField">
             </PersistentString>
             <PersistentString
-               value = "view.countNameTextField">
+               value = "view.balanceTextField">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -282,6 +291,14 @@
          <PersistentStrings>
             <PersistentString
                value = "managedContext">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddNewGroupViewController.save(UIButton) -&gt; ():AddNewGroupViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "nameTextField.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -482,10 +499,10 @@
          contextName = "DocumentJournalCheckTableViewController.viewDidLoad() -&gt; ():DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
+               value = "articleCatalog">
             </PersistentString>
             <PersistentString
-               value = "articleCatalog">
+               value = "AllCatalogs.sharedInstance().catalogExpenditure.items">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -531,13 +548,13 @@
          contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, didSelectRowAtIndexPath : NSIndexPath) -&gt; ():DocumentJournalCheckTableViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "controller.accountButton">
+            </PersistentString>
+            <PersistentString
                value = "controller.articleCatalog">
             </PersistentString>
             <PersistentString
                value = "controller.check!">
-            </PersistentString>
-            <PersistentString
-               value = "controller.accountButton">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -587,19 +604,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DocumentJournalCheckTableViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:DocumentJournalCheckTableViewController.swift">
+         contextName = "Check.sumOfCheck() -&gt; ():Check.swift">
          <PersistentStrings>
             <PersistentString
-               value = "check.sumOfCheck">
-            </PersistentString>
-            <PersistentString
-               value = "check.sumOfCheck()">
-            </PersistentString>
-            <PersistentString
-               value = "fetchedResultsController!.objectAtIndexPath(indexPath) as! Registrator">
-            </PersistentString>
-            <PersistentString
-               value = "expenditure.date">
+               value = "sum">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

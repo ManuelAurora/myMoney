@@ -11,7 +11,6 @@ import CoreData
 
 class Catalog {
     
-    var items: [Article] = []
     var name:  String = ""
     
     convenience init(Of name: String) {
@@ -20,9 +19,9 @@ class Catalog {
         self.name = name
     }
     
-    func allObjects() -> [Article] {
+    func allObjects() -> [NSManagedObject] {
         
-        let articles = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: name)) as! [Article]
+        let articles = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: name)) as! [NSManagedObject]
         
         return articles
     }

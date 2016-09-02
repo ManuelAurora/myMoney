@@ -28,6 +28,9 @@
 		643E07BE1D1ABE9900E91C4F /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643E07BB1D1ABE9900E91C4F /* Article+CoreDataProperties.swift */; };
 		643E07CA1D1AD39F00E91C4F /* TableString+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643E07C51D1AD39F00E91C4F /* TableString+CoreDataProperties.swift */; };
 		643E07CB1D1AD39F00E91C4F /* TableString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643E07C61D1AD39F00E91C4F /* TableString.swift */; };
+		643ED6811D79E55800810F10 /* AddNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643ED6801D79E55800810F10 /* AddNewGroupViewController.swift */; };
+		643ED6871D79F64E00810F10 /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643ED6861D79F64E00810F10 /* GroupTableViewCell.xib */; };
+		643ED6891D79F70600810F10 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643ED6881D79F70600810F10 /* GroupTableViewCell.swift */; };
 		643F67761D5B536900714496 /* AddEditArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F67751D5B536900714496 /* AddEditArticleView.swift */; };
 		643FF7DB1D04A5800035F4DE /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FF7DA1D04A5800035F4DE /* DimmingPresentationController.swift */; };
 		643FF7DD1D04A5980035F4DE /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FF7DC1D04A5980035F4DE /* GradientView.swift */; };
@@ -40,9 +43,8 @@
 		644F2BB11D7482EA0049835C /* ArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644F2BB01D7482EA0049835C /* ArticleCollectionViewCell.xib */; };
 		644F2BB31D7483AD0049835C /* ArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F2BB21D7483AD0049835C /* ArticleCollectionViewCell.swift */; };
 		644F2BB51D7496E80049835C /* ChooseArticleGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644F2BB41D7496E80049835C /* ChooseArticleGroupView.xib */; };
-		644F2BB71D7497B30049835C /* AddEditArticleGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644F2BB61D7497B30049835C /* AddEditArticleGroupView.xib */; };
-		644F2BBA1D7499440049835C /* AddEditArticleGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F2BB91D7499440049835C /* AddEditArticleGroupView.swift */; };
-		644F2BBC1D749B600049835C /* ChooseArticleGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F2BBB1D749B600049835C /* ChooseArticleGroupView.swift */; };
+		644F2BB71D7497B30049835C /* SelectGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644F2BB61D7497B30049835C /* SelectGroupView.xib */; };
+		644F2BBA1D7499440049835C /* SelectArticleGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F2BB91D7499440049835C /* SelectArticleGroupView.swift */; };
 		644F2BC11D749DB70049835C /* ArticleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F2BBE1D749DB70049835C /* ArticleGroup.swift */; };
 		644F2BC41D749E020049835C /* ArticleGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F2BC31D749E020049835C /* ArticleGroup+CoreDataProperties.swift */; };
 		644F2BC61D74A7B00049835C /* ArticleManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F2BC51D74A7B00049835C /* ArticleManageViewController.swift */; };
@@ -108,6 +110,9 @@
 		643E07BB1D1ABE9900E91C4F /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		643E07C51D1AD39F00E91C4F /* TableString+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableString+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		643E07C61D1AD39F00E91C4F /* TableString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableString.swift; path = ../TableString.swift; sourceTree = "<group>"; };
+		643ED6801D79E55800810F10 /* AddNewGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewGroupViewController.swift; sourceTree = "<group>"; };
+		643ED6861D79F64E00810F10 /* GroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupTableViewCell.xib; sourceTree = "<group>"; };
+		643ED6881D79F70600810F10 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		643F67751D5B536900714496 /* AddEditArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditArticleView.swift; sourceTree = "<group>"; };
 		643FF7DA1D04A5800035F4DE /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		643FF7DC1D04A5980035F4DE /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -120,9 +125,8 @@
 		644F2BB01D7482EA0049835C /* ArticleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleCollectionViewCell.xib; sourceTree = "<group>"; };
 		644F2BB21D7483AD0049835C /* ArticleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		644F2BB41D7496E80049835C /* ChooseArticleGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseArticleGroupView.xib; sourceTree = "<group>"; };
-		644F2BB61D7497B30049835C /* AddEditArticleGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEditArticleGroupView.xib; sourceTree = "<group>"; };
-		644F2BB91D7499440049835C /* AddEditArticleGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditArticleGroupView.swift; sourceTree = "<group>"; };
-		644F2BBB1D749B600049835C /* ChooseArticleGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseArticleGroupView.swift; sourceTree = "<group>"; };
+		644F2BB61D7497B30049835C /* SelectGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectGroupView.xib; sourceTree = "<group>"; };
+		644F2BB91D7499440049835C /* SelectArticleGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectArticleGroupView.swift; sourceTree = "<group>"; };
 		644F2BBE1D749DB70049835C /* ArticleGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleGroup.swift; path = ../ArticleGroup.swift; sourceTree = "<group>"; };
 		644F2BC31D749E020049835C /* ArticleGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArticleGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		644F2BC51D74A7B00049835C /* ArticleManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleManageViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 			children = (
 				644F2BB01D7482EA0049835C /* ArticleCollectionViewCell.xib */,
 				643B197A1D51035A0081F08D /* AccountTableViewCell.xib */,
+				643ED6861D79F64E00810F10 /* GroupTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -308,8 +313,7 @@
 				64DD05411D52456E00509A01 /* NewAccountView.swift */,
 				643810471D5A1A1800EBEF06 /* ChooseAccountView.swift */,
 				643F67751D5B536900714496 /* AddEditArticleView.swift */,
-				644F2BB91D7499440049835C /* AddEditArticleGroupView.swift */,
-				644F2BBB1D749B600049835C /* ChooseArticleGroupView.swift */,
+				644F2BB91D7499440049835C /* SelectArticleGroupView.swift */,
 				64DD053E1D52398600509A01 /* XIBs */,
 				6492B1781CFF304400133059 /* Storyboards */,
 				6492B1771CFF303600133059 /* Cells */,
@@ -321,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				6492B1721CFF197300133059 /* CheckTableViewCell.swift */,
+				643ED6881D79F70600810F10 /* GroupTableViewCell.swift */,
 				643B197C1D51045B0081F08D /* AccountTableViewCell.swift */,
 				6492B1621CFEDE2100133059 /* ArticleCellTableViewCell.swift */,
 				643C3D911D21528500BB41D8 /* IncomeTableViewCell.swift */,
@@ -359,6 +364,7 @@
 				6492B1291CFED46300133059 /* CheckViewController.swift */,
 				64BB58D91D1D6AD400C14E22 /* IncomeViewController.swift */,
 				6492B17A1CFF30E300133059 /* AddNewArticleViewController.swift */,
+				643ED6801D79E55800810F10 /* AddNewGroupViewController.swift */,
 				64395BE11D045DA800E456C0 /* PopUpViewController.swift */,
 				643C3D861D21495000BB41D8 /* Action handlers */,
 			);
@@ -380,7 +386,7 @@
 				64DD053F1D523A5800509A01 /* NewAccountView.xib */,
 				643810431D5A196100EBEF06 /* ChooseAccountView.xib */,
 				643810451D5A19B700EBEF06 /* AddEditArticleView.xib */,
-				644F2BB61D7497B30049835C /* AddEditArticleGroupView.xib */,
+				644F2BB61D7497B30049835C /* SelectGroupView.xib */,
 				644F2BB81D7497D50049835C /* Cells */,
 			);
 			name = XIBs;
@@ -527,13 +533,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				643810461D5A19B700EBEF06 /* AddEditArticleView.xib in Resources */,
-				644F2BB71D7497B30049835C /* AddEditArticleGroupView.xib in Resources */,
+				644F2BB71D7497B30049835C /* SelectGroupView.xib in Resources */,
 				644F2BB11D7482EA0049835C /* ArticleCollectionViewCell.xib in Resources */,
 				6492B1351CFED46300133059 /* LaunchScreen.storyboard in Resources */,
 				64DD05401D523A5800509A01 /* NewAccountView.xib in Resources */,
 				643810441D5A196100EBEF06 /* ChooseAccountView.xib in Resources */,
 				644F2BB51D7496E80049835C /* ChooseArticleGroupView.xib in Resources */,
 				643B197B1D51035A0081F08D /* AccountTableViewCell.xib in Resources */,
+				643ED6871D79F64E00810F10 /* GroupTableViewCell.xib in Resources */,
 				6492B1321CFED46300133059 /* Assets.xcassets in Resources */,
 				6492B12D1CFED46300133059 /* Main.storyboard in Resources */,
 			);
@@ -560,13 +567,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				643ED6891D79F70600810F10 /* GroupTableViewCell.swift in Sources */,
 				643677871D003BFD00EC233F /* AllRegisters.swift in Sources */,
 				64DD053C1D52380900509A01 /* PopUpViewController + Extension.swift in Sources */,
 				64395BE21D045DA800E456C0 /* PopUpViewController.swift in Sources */,
 				643E07BC1D1ABE9900E91C4F /* TablePart+CoreDataProperties.swift in Sources */,
 				6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */,
 				64F81D501D5BA40000B8D61C /* RegisterLine.swift in Sources */,
-				644F2BBC1D749B600049835C /* ChooseArticleGroupView.swift in Sources */,
 				6438104E1D5A3D7D00EBEF06 /* Account+CoreDataProperties.swift in Sources */,
 				644F2BC61D74A7B00049835C /* ArticleManageViewController.swift in Sources */,
 				64DD05421D52456E00509A01 /* NewAccountView.swift in Sources */,
@@ -588,7 +595,7 @@
 				643C3D8E1D21508200BB41D8 /* Income.swift in Sources */,
 				643FF7DB1D04A5800035F4DE /* DimmingPresentationController.swift in Sources */,
 				643F67761D5B536900714496 /* AddEditArticleView.swift in Sources */,
-				644F2BBA1D7499440049835C /* AddEditArticleGroupView.swift in Sources */,
+				644F2BBA1D7499440049835C /* SelectArticleGroupView.swift in Sources */,
 				6492B1671CFEE59200133059 /* Utils.swift in Sources */,
 				6492B1301CFED46300133059 /* myMoney.xcdatamodeld in Sources */,
 				6492B17B1CFF30E300133059 /* AddNewArticleViewController.swift in Sources */,
@@ -597,6 +604,7 @@
 				6492B1281CFED46300133059 /* AppDelegate.swift in Sources */,
 				6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */,
 				643E07CA1D1AD39F00E91C4F /* TableString+CoreDataProperties.swift in Sources */,
+				643ED6811D79E55800810F10 /* AddNewGroupViewController.swift in Sources */,
 				64DD053A1D5233C300509A01 /* AccountManageViewController.swift in Sources */,
 				644A7D321D5E1EFD0017A144 /* Registrator.swift in Sources */,
 				6492B16B1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift in Sources */,

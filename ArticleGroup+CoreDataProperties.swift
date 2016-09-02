@@ -2,7 +2,7 @@
 //  ArticleGroup+CoreDataProperties.swift
 //  myMoney
 //
-//  Created by Мануэль on 29.08.16.
+//  Created by Мануэль on 02.09.16.
 //  Copyright © 2016 AuroraInterplay. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,5 +16,6 @@ extension ArticleGroup {
 
     @NSManaged var name: String
     @NSManaged var parent: ArticleGroup?
+    @NSManaged var articleBasedOnGroup: Article
 
 }

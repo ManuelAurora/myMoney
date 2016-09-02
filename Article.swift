@@ -12,7 +12,7 @@ import CoreData
 
 class Article: NSManagedObject
 {
-    convenience init(Name name: String) {
+    convenience init(named name: String) {
         
         let context = DataManager.sharedInstance().context
         let entity = NSEntityDescription.entityForName("Article", inManagedObjectContext: context)

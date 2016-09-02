@@ -26,6 +26,13 @@ class AllCatalogs
         return catalog
     }
     
+    var catalogArticleGroups: Catalog {
+        
+        let catalog = Catalog(Of: "ArticleGroup")
+        
+        return catalog
+    }
+    
     
     class func sharedInstance() -> AllCatalogs {
         struct Singleton {

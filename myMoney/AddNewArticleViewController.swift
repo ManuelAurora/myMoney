@@ -22,12 +22,15 @@ class AddNewArticleViewController: UIViewController
     @IBOutlet weak var nameTextField:       UITextField!
     @IBOutlet weak var useQuantityAndPrice: UISwitch!
     @IBOutlet weak var parentButton:        UIButton!
+    @IBOutlet weak var articleImageView:    UIImageView!
     
-    @IBAction func AddNew(sender: UIButton) {
+    @IBAction func save(sender: UIButton) {
         
         if editMode == .ElementNewMode
         {
-            article = Article(Name: nameTextField.text!)
+            article = Article(named: nameTextField.text!)
+            
+            article.basedOnGroup = false
         }
         else
         {

@@ -27,7 +27,9 @@ class ArticleManageViewController: UIViewController
         
         let entityName = "Article"
        
-        let controller = instantiateFetchControllerWithRequest(entity: entityName, forDelegate: self)       
+        let predicate = NSPredicate(format: "basedOnGroup=%@", NSNumber(bool: false))
+        
+        let controller = instantiateFetchControllerWithRequest(entity: entityName, predicate: predicate, forDelegate: self)
         
         return controller
     }()
@@ -36,7 +38,7 @@ class ArticleManageViewController: UIViewController
         
         let entityName = "ArticleGroup"
         
-        let controller = instantiateFetchControllerWithRequest(entity: entityName, forDelegate: self)
+        let controller = instantiateFetchControllerWithRequest(entity: entityName, predicate: nil, forDelegate: self)
         
         return controller
         
@@ -51,7 +53,7 @@ class ArticleManageViewController: UIViewController
     
     @IBAction func addNewArticle(sender: UIButton) {
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("addNewArticle") as! AddNewArticleViewController
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewArticle") as! AddNewArticleViewController
         
         controller.managedContext = managedContext
         
@@ -60,6 +62,11 @@ class ArticleManageViewController: UIViewController
     
     @IBAction func addNewGroup(sender: UIButton) {
         
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewGroup") as! AddNewGroupViewController
+        
+        controller.managedContext = managedContext
+        
+        presentViewController(controller, animated: true, completion: nil)
     }
     
     @IBAction func stopEditing(sender: UIButton) {
@@ -72,23 +79,50 @@ class ArticleManageViewController: UIViewController
         {
             toggleEditingMode(false, inCollection: groupsCollectionView)
         }
+        
+        hideAddButtons(false)
     }
     
     func addGestureRecognizerForDeletion() {
+        
+        groupsCollectionView.addGestureRecognizer(  makeGesturesFor(collection: groupsCollectionView))
+        articlesCollectionView.addGestureRecognizer(makeGesturesFor(collection: articlesCollectionView))
+    }
+    
+    func makeGesturesFor(collection view: UICollectionView) -> UILongPressGestureRecognizer {
         
         let gesture = UILongPressGestureRecognizer(target: self, action: #selector(self.updateSectionForDeletionProcess(_:)))
         
         gesture.minimumPressDuration = 1.5
         gesture.delegate = self
-        
-        articlesCollectionView.addGestureRecognizer(gesture)
+
+        return gesture
     }
     
     func updateSectionForDeletionProcess(sender: UILongPressGestureRecognizer) {
         
-        articleCollectionInEditMode = true
+        let collection = sender.view as! UICollectionView
         
-        articlesCollectionView.reloadData()
+        switch collection
+        {
+        case articlesCollectionView:
+            toggleEditingMode(true, inCollection: articlesCollectionView)
+            
+        case groupsCollectionView:
+            toggleEditingMode(true, inCollection: groupsCollectionView)
+            
+        default:
+            break
+        }
+        
+        hideAddButtons(true)        
+    }
+    
+    func hideAddButtons(isHidden: Bool) {
+        
+        addGroupButton.hidden   = isHidden
+        addArticleButton.hidden = isHidden
+        stopEdingButton.hidden  = !isHidden
     }
     
     func toggleEditingMode(isOn: Bool, inCollection view: UICollectionView)
@@ -100,7 +134,8 @@ class ArticleManageViewController: UIViewController
             articlesCollectionView.reloadData()
             
         case groupsCollectionView:
-            break
+            groupsCollectionInEditMode = isOn
+            groupsCollectionView.reloadData()
             
         default:
             break
@@ -126,9 +161,9 @@ class ArticleManageViewController: UIViewController
         articlesCollectionView.collectionViewLayout = layout
     }
     
-    func deleteObject(article: Article) {
+    func deleteObject(object: NSManagedObject) {
         
-        managedContext.deleteObject(article)
+        managedContext.deleteObject(object)
         
         do
         {
@@ -148,7 +183,8 @@ class ArticleManageViewController: UIViewController
         
        makeCustomLayout()
     }
-    
+   
+
     private func registerNibs() {
         
         let nib = UINib(nibName: "ArticleCollectionViewCell", bundle: nil)
@@ -167,7 +203,8 @@ extension ArticleManageViewController: UICollectionViewDelegate
         {
         case articlesCollectionView:
             
-            guard !articleCollectionInEditMode else {
+            guard !articleCollectionInEditMode else
+            {
                 let article = fetchedResultsControllerArticles.objectAtIndexPath(indexPath) as! Article
                 
                 deleteObject(article)
@@ -175,13 +212,34 @@ extension ArticleManageViewController: UICollectionViewDelegate
                 return
             }
             
-            let controller = storyboard?.instantiateViewControllerWithIdentifier("addNewArticle") as! AddNewArticleViewController
+            let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewArticle") as! AddNewArticleViewController
             
             let article = fetchedResultsControllerArticles.fetchedObjects![indexPath.row] as! Article
             
             controller.article        = article
             controller.editMode       = .ElementEditMode
             controller.managedContext = managedContext
+            
+            presentViewController(controller, animated: true, completion: nil)
+            
+        case groupsCollectionView:
+            
+            let group = fetchedResultsControllerArticleGroups.objectAtIndexPath(indexPath) as! ArticleGroup
+            
+            guard !groupsCollectionInEditMode else
+            {
+                deleteObject(group)
+                
+                return
+            }
+            
+            let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewGroup") as! AddNewGroupViewController
+            
+            controller.managedContext = managedContext
+            
+            controller.group = group
+            
+            controller.editMode = .ElementEditMode
             
             presentViewController(controller, animated: true, completion: nil)
             
@@ -217,36 +275,33 @@ extension ArticleManageViewController: UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        var collection: UICollectionView?
-        
         var name = ""
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ArticleCollectionViewCell", forIndexPath: indexPath) as! ArticleCollectionViewCell
         
         switch collectionView
         {
         case articlesCollectionView:
             
-            collection = articlesCollectionView
-            
             let article = fetchedResultsControllerArticles.fetchedObjects![indexPath.row] as! Article
             
             name = article.name
             
-        case groupsCollectionView:
+            cell.removeButton.hidden   = articleCollectionInEditMode ? false : true
             
-            collection = groupsCollectionView
+        case groupsCollectionView:
             
             let group = fetchedResultsControllerArticleGroups.fetchedObjects![indexPath.row] as! ArticleGroup
             
             name = group.name
             
+            cell.removeButton.hidden   = groupsCollectionInEditMode ? false : true
+            
         default:
             break
         }
         
-        let cell = collection?.dequeueReusableCellWithReuseIdentifier("ArticleCollectionViewCell", forIndexPath: indexPath) as! ArticleCollectionViewCell
-        
-        cell.articleNameLabel.text = name
-        cell.removeButton.hidden   = articleCollectionInEditMode ? false : true
+        cell.articleNameLabel.text = name        
         
         return cell
     }

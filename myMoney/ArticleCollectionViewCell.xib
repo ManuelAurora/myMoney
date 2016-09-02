@@ -11,15 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKm-vG-Ycb">
-                    <rect key="frame" x="0.0" y="69" width="90" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gPy-Q8-MQJ">
-                    <rect key="frame" x="0.0" y="0.0" width="90" height="69"/>
-                </imageView>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae4-ge-51o">
                     <rect key="frame" x="38" y="34" width="15" height="22"/>
                     <state key="normal" image="CloseButton"/>
@@ -27,18 +18,28 @@
                         <action selector="remove:" destination="iN0-l3-epB" eventType="touchUpInside" id="5AG-aF-3Jt"/>
                     </connections>
                 </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mqY-kl-oUa">
+                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="242" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gPy-Q8-MQJ">
+                            <rect key="frame" x="0.0" y="0.0" width="90" height="60"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKm-vG-Ycb">
+                            <rect key="frame" x="0.0" y="60" width="90" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
-            <color key="backgroundColor" red="0.95006814892163949" green="0.69040473013144155" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="gPy-Q8-MQJ" secondAttribute="trailing" id="2zi-H5-J6O"/>
-                <constraint firstItem="gPy-Q8-MQJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9fE-Je-BbF"/>
+                <constraint firstAttribute="trailing" secondItem="mqY-kl-oUa" secondAttribute="trailing" id="E9h-1r-Gmt"/>
                 <constraint firstItem="ae4-ge-51o" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="G9l-JD-NGD"/>
+                <constraint firstItem="mqY-kl-oUa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Pc1-lX-5GQ"/>
                 <constraint firstItem="ae4-ge-51o" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Wot-Ee-zRL"/>
-                <constraint firstItem="fKm-vG-Ycb" firstAttribute="top" secondItem="gPy-Q8-MQJ" secondAttribute="bottom" id="bWn-yQ-4hI"/>
-                <constraint firstAttribute="trailing" secondItem="fKm-vG-Ycb" secondAttribute="trailing" id="wB4-Nc-fsw"/>
-                <constraint firstItem="fKm-vG-Ycb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xfu-M9-5nt"/>
-                <constraint firstAttribute="bottom" secondItem="fKm-vG-Ycb" secondAttribute="bottom" id="zBL-PF-UBF"/>
-                <constraint firstItem="gPy-Q8-MQJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zcb-wc-tP9"/>
+                <constraint firstItem="mqY-kl-oUa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xxe-yh-bYZ"/>
+                <constraint firstAttribute="bottom" secondItem="mqY-kl-oUa" secondAttribute="bottom" id="qb8-x9-TPE"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -52,5 +53,6 @@
     </objects>
     <resources>
         <image name="CloseButton" width="15" height="15"/>
+        <image name="Placeholder" width="60" height="60"/>
     </resources>
 </document>

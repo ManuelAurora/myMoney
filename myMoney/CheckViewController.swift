@@ -37,7 +37,7 @@ class CheckViewController: CoreDataTableViewController
     
     @IBAction func addNewArticle() {
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("addNewArticle") as! AddNewArticleViewController
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewArticle") as! AddNewArticleViewController
         
         controller.managedContext = managedContext
         
@@ -117,7 +117,7 @@ class CheckViewController: CoreDataTableViewController
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
         
-        let article = articleCatalog.allObjects()[index.row]
+        let article = articleCatalog.allObjects()[index.row] as! Article
         
         controller.article = article
         
@@ -258,7 +258,8 @@ extension CheckViewController: UICollectionViewDataSource
         
         let cell = productView.dequeueReusableCellWithReuseIdentifier("ArticleCollectionViewCell", forIndexPath: indexPath) as! ArticleCollectionViewCell
         
-        cell.articleNameLabel.text = articleCatalog.allObjects()[indexPath.row].name
+        let article = articleCatalog.allObjects()[indexPath.row] as! Article
+        cell.articleNameLabel.text = article.name
                
         return cell
     }
