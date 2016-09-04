@@ -21,32 +21,22 @@ class AddNewGroupViewController: UIViewController
     
     @IBOutlet weak var headerLabel:    UILabel!
     @IBOutlet weak var nameTextField:  UITextField!
-    @IBOutlet weak var parentButton:   UIButton!
     @IBOutlet weak var groupImageView: UIImageView!
     
     @IBAction func save(sender: UIButton) {
         
-        if editMode == .ElementNewMode
+        switch editMode
         {
-            let group   = ArticleGroup(withName: nameTextField.text!)
-            let article = Article(named: group.name)
-            
-            article.basedOnGroup = true
-            article.group        = group
-            
-            if let image = groupImageView.image
-            {
-                article.image = UIImagePNGRepresentation(image)
-            }
+        case .ElementNewMode:
+            group = ArticleGroup(withName: nameTextField.text!)
+        
+        case .ElementEditMode:
+            group.name = nameTextField.text!            
         }
-        else
+        
+        if let image = groupImageView.image
         {
-            group.name = nameTextField.text!
-            
-            if let image = groupImageView.image
-            {
-                group.articleBasedOnGroup.image = UIImagePNGRepresentation(image)
-            }
+            group.image = UIImagePNGRepresentation(image)
         }
         
         do
@@ -82,12 +72,7 @@ class AddNewGroupViewController: UIViewController
             headerLabel.text   = "Edit"
             nameTextField.text = group.name
             
-            if let parent = group.parent
-            {
-                parentButton.setTitle(parent.name, forState: .Normal)
-            }
-            
-            if let image = group.articleBasedOnGroup.image
+            if let image = group.image
             {
                 groupImageView.image = UIImage(data: image)
             }

@@ -6,15 +6,13 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Article" representedClassName="myMoney.Article" syncable="YES">
-        <attribute name="basedOnGroup" attributeType="Boolean" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArticleGroup" syncable="YES"/>
     </entity>
     <entity name="ArticleGroup" representedClassName=".ArticleGroup" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="articleBasedOnGroup" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" syncable="YES"/>
-        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArticleGroup" syncable="YES"/>
     </entity>
     <entity name="RegisterLine" representedClassName=".RegisterLine" syncable="YES">
         <attribute name="date" attributeType="Date" syncable="YES"/>
@@ -44,8 +42,8 @@
     </entity>
     <elements>
         <element name="Account" positionX="-416" positionY="-648" width="128" height="90"/>
-        <element name="Article" positionX="-443" positionY="-48" width="128" height="105"/>
-        <element name="ArticleGroup" positionX="-738" positionY="-81" width="128" height="90"/>
+        <element name="Article" positionX="-443" positionY="-48" width="128" height="90"/>
+        <element name="ArticleGroup" positionX="-738" positionY="-81" width="128" height="75"/>
         <element name="RegisterLine" positionX="-65" positionY="-666" width="128" height="120"/>
         <element name="Registrator" positionX="-234" positionY="-487" width="128" height="73"/>
         <element name="TablePart" positionX="-261" positionY="-295" width="128" height="88"/>

@@ -39,7 +39,8 @@ class NewAccountView: UIView
         
         layer.cornerRadius = 10
         self.center        = viewController.view.center
-        self.center.y     -= 50
+        self.center.y     -= 95
+        
         
         accountNameTextField.becomeFirstResponder()
     }

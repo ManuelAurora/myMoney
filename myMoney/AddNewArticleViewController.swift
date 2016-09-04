@@ -26,25 +26,21 @@ class AddNewArticleViewController: UIViewController
     
     @IBAction func save(sender: UIButton) {
         
-        if editMode == .ElementNewMode
-        {
-            article = Article(named: nameTextField.text!)
-            
-            article.basedOnGroup = false
-        }
-        else
-        {
-            article.name = nameTextField.text!
-        }
-        
         if let group = group
         {
             article.group = group
         }
         
-        try! DataManager.sharedInstance().saveContext()
+        article.name       = nameTextField.text!
         
-        try! managedContext.save()
+        do
+        {
+            try managedContext.save()
+        }
+        catch
+        {
+            print(error)
+        }
         
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -65,17 +61,21 @@ class AddNewArticleViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let article = article
+        switch editMode
         {
-            headerLabel.text = "Edit"
-            nameTextField.text        = article.name
+        case .ElementNewMode:
+            article = Article(named: nameTextField.text!)
+            
+        case .ElementEditMode:
+            
+            headerLabel.text   = "Edit"
+            nameTextField.text = article.name
             
             if let group = article.group
             {
                 parentButton.setTitle(group.name, forState: .Normal)
-            }           
-            
-        }
+            }
+        }        
                 
         nameTextField.becomeFirstResponder()
     }

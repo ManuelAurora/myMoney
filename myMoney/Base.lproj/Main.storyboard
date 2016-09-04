@@ -237,7 +237,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="382"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="01.01.0001 00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEb-5U-qCR">
@@ -284,7 +284,7 @@
                                     </subviews>
                                 </stackView>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eDX-4Y-xlS">
-                                    <rect key="frame" x="0.0" y="159" width="320" height="179"/>
+                                    <rect key="frame" x="0.0" y="159" width="320" height="245"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yaW-Zo-1Cz">
                                         <size key="itemSize" width="50" height="50"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -298,7 +298,7 @@
                                     </connections>
                                 </collectionView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoA-Mh-lCM">
-                                    <rect key="frame" x="96" y="346" width="129" height="30"/>
+                                    <rect key="frame" x="96" y="412" width="129" height="30"/>
                                     <state key="normal" title="Create New Article"/>
                                     <connections>
                                         <action selector="addNewArticle" destination="BYZ-38-t0r" eventType="touchUpInside" id="YEk-ei-dnm"/>
@@ -312,12 +312,12 @@
                                 <constraint firstAttribute="trailing" secondItem="AEb-5U-qCR" secondAttribute="trailing" constant="8" id="Ums-ME-q9m"/>
                                 <constraint firstItem="FoA-Mh-lCM" firstAttribute="top" secondItem="eDX-4Y-xlS" secondAttribute="bottom" constant="8" id="WZy-Qh-3Qo"/>
                                 <constraint firstItem="1qV-nH-G05" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="eqd-bg-2bR"/>
-                                <constraint firstAttribute="bottom" secondItem="FoA-Mh-lCM" secondAttribute="bottom" constant="6" id="fhY-Ng-wFb"/>
+                                <constraint firstAttribute="bottom" secondItem="FoA-Mh-lCM" secondAttribute="bottom" constant="8" id="fhY-Ng-wFb"/>
                                 <constraint firstItem="pQt-Ud-ork" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="iSg-nT-XgG"/>
                                 <constraint firstAttribute="trailing" secondItem="1qV-nH-G05" secondAttribute="trailing" constant="20" id="jzc-rL-sVw"/>
                                 <constraint firstItem="eDX-4Y-xlS" firstAttribute="top" secondItem="1qV-nH-G05" secondAttribute="bottom" constant="10" id="mKl-xN-9WJ"/>
                                 <constraint firstItem="AEb-5U-qCR" firstAttribute="top" secondItem="pQt-Ud-ork" secondAttribute="bottom" constant="20" id="n8O-UV-3wc"/>
-                                <constraint firstAttribute="bottom" secondItem="eDX-4Y-xlS" secondAttribute="bottom" constant="44" id="no4-hn-hU6"/>
+                                <constraint firstAttribute="bottom" secondItem="eDX-4Y-xlS" secondAttribute="bottom" constant="46" id="no4-hn-hU6"/>
                                 <constraint firstItem="1qV-nH-G05" firstAttribute="top" secondItem="AEb-5U-qCR" secondAttribute="bottom" constant="20" id="pUS-IJ-DQ7"/>
                                 <constraint firstItem="FoA-Mh-lCM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qVq-5U-T8H"/>
                                 <constraint firstAttribute="trailing" secondItem="pQt-Ud-ork" secondAttribute="trailing" constant="20" id="rWI-Bj-uRz"/>
@@ -327,7 +327,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleCell" id="2fZ-dx-zKl" customClass="ArticleCellTableViewCell" customModule="myMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="410" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="478" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2fZ-dx-zKl" id="Ddp-vd-dHP">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -918,21 +918,6 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lb-Yj-Qpi">
                                         <rect key="frame" x="0.0" y="0.0" width="296" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="Parent Group:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vM-ou-zkU">
-                                                <rect key="frame" x="0.0" y="0.0" width="106" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgD-gw-i0E">
-                                                <rect key="frame" x="106" y="0.0" width="190" height="30"/>
-                                                <state key="normal" title="Tap To Choose Parent"/>
-                                                <connections>
-                                                    <action selector="addParent:" destination="oXr-QQ-oI8" eventType="touchUpInside" id="8Gf-3T-8FG"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="NsJ-fW-Zfi">
                                         <rect key="frame" x="0.0" y="43" width="296" height="30"/>
@@ -978,7 +963,6 @@
                         <outlet property="groupImageView" destination="fQ4-Cg-GFG" id="gVo-2b-xvI"/>
                         <outlet property="headerLabel" destination="lg6-PY-iwW" id="99j-hn-GbT"/>
                         <outlet property="nameTextField" destination="UBZ-dk-DbK" id="9xx-NR-sRF"/>
-                        <outlet property="parentButton" destination="xgD-gw-i0E" id="21Y-Yv-Cqx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04A-Jx-yZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>

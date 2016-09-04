@@ -71,7 +71,7 @@ extension SelectArticleGroupView: UITableViewDataSource
         
         let group = allGroups[indexPath.row] as! ArticleGroup
         
-        if let imageData = group.articleBasedOnGroup.image
+        if let imageData = group.image
         {
             cell.groupImageView.image = UIImage(data: imageData)
         }

@@ -75,14 +75,94 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myMoney/AddNewGroupViewController.swift"
-            timestampString = "494534799.63388"
+            filePath = "myMoney/ArticleManageViewController.swift"
+            timestampString = "494687488.046774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "addNewGroup(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myMoney.ArticleManageViewController.addNewGroup (__ObjC.UIButton) -&gt; ()"
+                  moduleName = "myMoney"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Volume/Projects/myMoney/myMoney/ArticleManageViewController.swift"
+                  timestampString = "494687552.038158"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myMoney.ArticleManageViewController.addNewGroup (__ObjC.UIButton) -&gt; ()"
+                  moduleName = "myMoney"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Volume/Projects/myMoney/myMoney/ArticleManageViewController.swift"
+                  timestampString = "494687552.038371"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "728">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myMoney/PopUpViewController + Extension.swift"
+            timestampString = "494687855.183268"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "selectArticleGroup(from:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myMoney.PopUpViewController.selectArticleGroup (from : myMoney.SelectArticleGroupView) -&gt; ()"
+                  moduleName = "myMoney"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Volume/Projects/myMoney/myMoney/PopUpViewController%20+%20Extension.swift"
+                  timestampString = "494688124.999811"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myMoney.PopUpViewController.selectArticleGroup (from : myMoney.SelectArticleGroupView) -&gt; ()"
+                  moduleName = "myMoney"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Volume/Projects/myMoney/myMoney/PopUpViewController%20+%20Extension.swift"
+                  timestampString = "494688124.99996"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

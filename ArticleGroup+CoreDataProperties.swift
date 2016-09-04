@@ -12,10 +12,9 @@
 import Foundation
 import CoreData
 
-extension ArticleGroup {
-
+extension ArticleGroup
+{
     @NSManaged var name: String
-    @NSManaged var parent: ArticleGroup?
-    @NSManaged var articleBasedOnGroup: Article
-
+    @NSManaged var image: NSData?
+   
 }

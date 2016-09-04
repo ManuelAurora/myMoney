@@ -121,9 +121,9 @@ extension PopUpViewController
     //Selecting Article Group
     func selectArticleGroup(from articleGroupView: SelectArticleGroupView) {
         
-        if let group = articleGroupView.selectedGroup, let controller = presentingViewController as? AddNewGroupViewController
+        if let group = articleGroupView.selectedGroup, let controller = presentingViewController as? AddNewArticleViewController
         {
-            controller.group.parent = group
+            controller.article.group = group
             controller.parentButton.setTitle("\(group.name)", forState: .Normal)
         }
         

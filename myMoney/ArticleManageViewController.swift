@@ -25,11 +25,9 @@ class ArticleManageViewController: UIViewController
     
     lazy var fetchedResultsControllerArticles: NSFetchedResultsController = {
         
-        let entityName = "Article"
-       
-        let predicate = NSPredicate(format: "basedOnGroup=%@", NSNumber(bool: false))
+        let entityName = "Article"        
         
-        let controller = instantiateFetchControllerWithRequest(entity: entityName, predicate: predicate, forDelegate: self)
+        let controller = instantiateFetchControllerWithRequest(entity: entityName, predicate: nil, forDelegate: self)
         
         return controller
     }()
