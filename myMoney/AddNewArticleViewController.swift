@@ -31,7 +31,7 @@ class AddNewArticleViewController: UIViewController
             article.group = group
         }
         
-        article.name       = nameTextField.text!
+        article.name = nameTextField.text!
         
         do
         {
@@ -55,6 +55,9 @@ class AddNewArticleViewController: UIViewController
     }
     
     @IBAction func cancel(sender: UIButton) {
+        
+        managedContext.rollback()
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
