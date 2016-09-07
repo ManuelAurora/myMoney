@@ -23,6 +23,9 @@
 		643B3D911D1984C2004A6A43 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643B3D901D1984C2004A6A43 /* DataManager.swift */; };
 		643C3D8E1D21508200BB41D8 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643C3D8A1D21508200BB41D8 /* Income.swift */; };
 		643C3D921D21528500BB41D8 /* IncomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643C3D911D21528500BB41D8 /* IncomeTableViewCell.swift */; };
+		643DAD001D7C705D009397D3 /* GroupFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643DACFF1D7C705D009397D3 /* GroupFilterView.xib */; };
+		643DAD021D7C70D8009397D3 /* GroupFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643DAD011D7C70D8009397D3 /* GroupFilterView.swift */; };
+		643DAD041D7C7B4A009397D3 /* CheckViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643DAD031D7C7B4A009397D3 /* CheckViewController + Extension.swift */; };
 		643E07BC1D1ABE9900E91C4F /* TablePart+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643E07B91D1ABE9900E91C4F /* TablePart+CoreDataProperties.swift */; };
 		643E07BD1D1ABE9900E91C4F /* TablePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643E07BA1D1ABE9900E91C4F /* TablePart.swift */; };
 		643E07BE1D1ABE9900E91C4F /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643E07BB1D1ABE9900E91C4F /* Article+CoreDataProperties.swift */; };
@@ -105,6 +108,9 @@
 		643B3D901D1984C2004A6A43 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		643C3D8A1D21508200BB41D8 /* Income.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Income.swift; path = ../Income.swift; sourceTree = "<group>"; };
 		643C3D911D21528500BB41D8 /* IncomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeTableViewCell.swift; sourceTree = "<group>"; };
+		643DACFF1D7C705D009397D3 /* GroupFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupFilterView.xib; sourceTree = "<group>"; };
+		643DAD011D7C70D8009397D3 /* GroupFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupFilterView.swift; sourceTree = "<group>"; };
+		643DAD031D7C7B4A009397D3 /* CheckViewController + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CheckViewController + Extension.swift"; sourceTree = "<group>"; };
 		643E07B91D1ABE9900E91C4F /* TablePart+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TablePart+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		643E07BA1D1ABE9900E91C4F /* TablePart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TablePart.swift; path = ../TablePart.swift; sourceTree = "<group>"; };
 		643E07BB1D1ABE9900E91C4F /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -299,7 +305,7 @@
 		6492B1751CFF300600133059 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				64DD053D1D52382700509A01 /* ViewController Extensions */,
+				64DD053D1D52382700509A01 /* ViewController + Extensions */,
 				64BB58D81D1D64E900C14E22 /* ViewControllers */,
 				643FF7E41D04A7300035F4DE /* Animations */,
 			);
@@ -314,6 +320,7 @@
 				643810471D5A1A1800EBEF06 /* ChooseAccountView.swift */,
 				643F67751D5B536900714496 /* AddEditArticleView.swift */,
 				644F2BB91D7499440049835C /* SelectArticleGroupView.swift */,
+				643DAD011D7C70D8009397D3 /* GroupFilterView.swift */,
 				64DD053E1D52398600509A01 /* XIBs */,
 				6492B1781CFF304400133059 /* Storyboards */,
 				6492B1771CFF303600133059 /* Cells */,
@@ -357,6 +364,7 @@
 		64BB58D81D1D64E900C14E22 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				643B3D8E1D1984B2004A6A43 /* CoreDataTableViewController.swift */,
 				6492B16A1CFEFEFD00133059 /* DocumentJournalCheckTableViewController.swift */,
 				644F2BC51D74A7B00049835C /* ArticleManageViewController.swift */,
 				643B19781D50F89F0081F08D /* MainScreenViewController.swift */,
@@ -371,12 +379,13 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		64DD053D1D52382700509A01 /* ViewController Extensions */ = {
+		64DD053D1D52382700509A01 /* ViewController + Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				64DD053B1D52380900509A01 /* PopUpViewController + Extension.swift */,
+				643DAD031D7C7B4A009397D3 /* CheckViewController + Extension.swift */,
 			);
-			name = "ViewController Extensions";
+			name = "ViewController + Extensions";
 			sourceTree = "<group>";
 		};
 		64DD053E1D52398600509A01 /* XIBs */ = {
@@ -387,6 +396,7 @@
 				643810431D5A196100EBEF06 /* ChooseAccountView.xib */,
 				643810451D5A19B700EBEF06 /* AddEditArticleView.xib */,
 				644F2BB61D7497B30049835C /* SelectGroupView.xib */,
+				643DACFF1D7C705D009397D3 /* GroupFilterView.xib */,
 				644F2BB81D7497D50049835C /* Cells */,
 			);
 			name = XIBs;
@@ -399,7 +409,6 @@
 				644A7D301D5E1EFD0017A144 /* Registrator.swift */,
 				64F81D4C1D5BA40000B8D61C /* RegisterLine.swift */,
 				64DD05301D52327600509A01 /* Account.swift */,
-				643B3D8E1D1984B2004A6A43 /* CoreDataTableViewController.swift */,
 				643E07C61D1AD39F00E91C4F /* TableString.swift */,
 				643E07BA1D1ABE9900E91C4F /* TablePart.swift */,
 				643B3D8B1D198490004A6A43 /* Article.swift */,
@@ -534,6 +543,7 @@
 			files = (
 				643810461D5A19B700EBEF06 /* AddEditArticleView.xib in Resources */,
 				644F2BB71D7497B30049835C /* SelectGroupView.xib in Resources */,
+				643DAD001D7C705D009397D3 /* GroupFilterView.xib in Resources */,
 				644F2BB11D7482EA0049835C /* ArticleCollectionViewCell.xib in Resources */,
 				6492B1351CFED46300133059 /* LaunchScreen.storyboard in Resources */,
 				64DD05401D523A5800509A01 /* NewAccountView.xib in Resources */,
@@ -567,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				643DAD041D7C7B4A009397D3 /* CheckViewController + Extension.swift in Sources */,
 				643ED6891D79F70600810F10 /* GroupTableViewCell.swift in Sources */,
 				643677871D003BFD00EC233F /* AllRegisters.swift in Sources */,
 				64DD053C1D52380900509A01 /* PopUpViewController + Extension.swift in Sources */,
@@ -575,6 +586,7 @@
 				6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */,
 				64F81D501D5BA40000B8D61C /* RegisterLine.swift in Sources */,
 				6438104E1D5A3D7D00EBEF06 /* Account+CoreDataProperties.swift in Sources */,
+				643DAD021D7C70D8009397D3 /* GroupFilterView.swift in Sources */,
 				644F2BC61D74A7B00049835C /* ArticleManageViewController.swift in Sources */,
 				64DD05421D52456E00509A01 /* NewAccountView.swift in Sources */,
 				643810481D5A1A1800EBEF06 /* ChooseAccountView.swift in Sources */,

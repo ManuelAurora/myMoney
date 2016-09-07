@@ -45,6 +45,15 @@ class MainScreenViewController: UIViewController
         savePeriod()
     }
  
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let navController = segue.destinationViewController as! UINavigationController
+        
+        let controller = navController.viewControllers.first as! CheckViewController
+        
+        controller.managedContext = managedContext
+       
+    }
     
     override func viewDidLoad() {
         
@@ -52,7 +61,7 @@ class MainScreenViewController: UIViewController
 
         let accountCellNib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         
-        tableView.registerNib(accountCellNib, forCellReuseIdentifier: "AccountCell")
+        tableView.registerNib(accountCellNib, forCellReuseIdentifier: "AccountCell")        
         
         loadPeriod()
     }
@@ -67,14 +76,8 @@ class MainScreenViewController: UIViewController
     }
     
     func addCheck() {
-        
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
-        
-        controller.managedContext   = managedContext
-        controller.articleCatalog   = articleCatalog
-        controller.checkNumber      = catalogExpenditure.allObjects().count + 1
-        
-        presentViewController(controller, animated: true, completion: nil)
+       
+        performSegueWithIdentifier("AddNewExpense", sender: nil)       
     }
     
     func addIncome() {

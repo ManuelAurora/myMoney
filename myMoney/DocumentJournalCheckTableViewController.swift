@@ -73,9 +73,7 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
             
             let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
             
-            controller.managedContext  = managedContext
-            controller.articleCatalog  = articleCatalog
-            
+            controller.managedContext  = managedContext            
             controller.presentationMode  = .DocumentEditMode
             controller.check             = document
             

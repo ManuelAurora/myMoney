@@ -25,4 +25,15 @@ class Catalog {
         
         return articles
     }
+    
+    func objectsFiltered(by predicate: NSPredicate) -> [NSManagedObject] {
+
+        let fetchRequest = NSFetchRequest(entityName: name)
+        
+        fetchRequest.predicate = predicate
+        
+        let articles = try! DataManager.sharedInstance().context.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        
+        return articles        
+    }
 }

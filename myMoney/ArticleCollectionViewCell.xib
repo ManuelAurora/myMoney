@@ -52,7 +52,7 @@
         </view>
     </objects>
     <resources>
-        <image name="CloseButton" width="15" height="15"/>
+        <image name="CloseButton" width="60" height="60"/>
         <image name="Placeholder" width="60" height="60"/>
     </resources>
 </document>

@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 extension PopUpViewController
-{
-    
+{    
     //MARK: Presenting Views
     func showArticleView() {
         
@@ -54,7 +53,7 @@ extension PopUpViewController
     //Adding Article into Check
     func addEditArticleInTablePart(from articleView: AddEditArticleView) {
         
-        if let controller = presentingViewController as? CheckViewController
+        if let navController = presentingViewController as? UINavigationController, let controller = navController.viewControllers.first as? CheckViewController
         {
             let priceString =  articleView.articlePriceTextField.text!.stringByReplacingOccurrencesOfString(",", withString: ".", options: [], range: nil)
             
@@ -129,19 +128,20 @@ extension PopUpViewController
         
         dismissViewControllerAnimated(true, completion: nil)
     }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// MARK: >> EXT - UIViewControllerTransitioningDelegate
+extension PopUpViewController: UIViewControllerTransitioningDelegate
+{
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return DimmingPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BounceAnimationController()
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideOutAnimationController()
+    }    
 }

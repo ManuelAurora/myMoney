@@ -11,7 +11,7 @@ import CoreData
 
 class Expenditure: Registrator
 {
-    convenience init(Number number: Int) {
+    convenience init() {
         
         let context = DataManager.sharedInstance().context
         
