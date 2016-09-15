@@ -15,24 +15,24 @@ class Expenditure: Registrator
         
         let context = DataManager.sharedInstance().context
         
-        let entity = NSEntityDescription.entityForName("Registrator", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Registrator", in: context)
         
-        let tablePartEntity = NSEntityDescription.entityForName("TablePart", inManagedObjectContext: context)
+        let tablePartEntity = NSEntityDescription.entity(forEntityName: "TablePart", in: context)
         
-        let tablePart = TablePart(entity: tablePartEntity!, insertIntoManagedObjectContext: context)
+        let tablePart = TablePart(entity: tablePartEntity!, insertInto: context)
         
         tablePart.name = "TablePartArticles"
         
-        self.init(entity: entity!, insertIntoManagedObjectContext: context)
+        self.init(entity: entity!, insertInto: context)
         
         self.name      = Constants.expenditureName
         self.tablePart = tablePart     
-        self.date      = NSDate()
+        self.date      = Date()
     }
     
     func addArticleInTablePart(Article article: TableString) {
                        
-       managedObjectContext?.insertObject(article)        
+       managedObjectContext?.insert(article)        
     }
       
         

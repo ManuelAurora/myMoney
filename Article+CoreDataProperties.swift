@@ -15,7 +15,7 @@ import CoreData
 extension Article {
 
     @NSManaged var name: String
-    @NSManaged var image: NSData?    
+    @NSManaged var image: Data?    
     @NSManaged var group: ArticleGroup?
 
 }

@@ -16,12 +16,12 @@ class TableString: NSManagedObject
     convenience init(AddArticle article: Article?, intoTablePart: TablePart?, withPrice: Float?, amount: Float?) {
         
         let context = DataManager.sharedInstance().context
-        let entity = NSEntityDescription.entityForName("TableString", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "TableString", in: context)
         
-        self.init(entity: entity!, insertIntoManagedObjectContext: context)
+        self.init(entity: entity!, insertInto: context)
        
-        self.amount    = amount
-        self.price     = withPrice
+        self.amount    = amount as NSNumber?
+        self.price     = withPrice as NSNumber?
         self.tablePart = intoTablePart
         self.article   = article
     }

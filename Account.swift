@@ -16,9 +16,9 @@ class Account: NSManagedObject
         
         let context = DataManager.sharedInstance().context
         
-        let entity = NSEntityDescription.entityForName("Account", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Account", in: context)
         
-        self.init(entity: entity!, insertIntoManagedObjectContext: context)
+        self.init(entity: entity!, insertInto: context)
         
         self.main = false
         
@@ -47,7 +47,7 @@ class Account: NSManagedObject
     
     func makeMain() {
         
-        let predicate        = NSPredicate(format: "main=%@",  true)
+        let predicate        = NSPredicate(format: "main=%@",  true as CVarArg)
         let notSelfPredicate = NSPredicate(format: "name!=%@", self.name)
         
         let allAccounts = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: nil, predicates: [predicate, notSelfPredicate]) as! [Account]
@@ -59,7 +59,7 @@ class Account: NSManagedObject
     
     class func mainAccount() -> Account {
         
-        let predicate        = NSPredicate(format: "main=%@",  true)       
+        let predicate        = NSPredicate(format: "main=%@",  true as CVarArg)       
         
         let allAccounts = DataManager.sharedInstance().fetchData(forEntity: "Account", withSortKey: nil, predicates: [predicate]) as! [Account]
         

@@ -15,9 +15,9 @@ class Article: NSManagedObject
     convenience init(named name: String) {
         
         let context = DataManager.sharedInstance().context
-        let entity = NSEntityDescription.entityForName("Article", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Article", in: context)
         
-        self.init(entity: entity!, insertIntoManagedObjectContext: context)
+        self.init(entity: entity!, insertInto: context)
         
         self.name = name
         

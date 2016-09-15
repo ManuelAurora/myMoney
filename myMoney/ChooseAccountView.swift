@@ -23,18 +23,18 @@ class ChooseAccountView: UIView
      
     @IBOutlet weak var tableView: UITableView!
         
-    @IBAction func close(sender: UIButton) {
+    @IBAction func close(_ sender: UIButton) {
         
-        viewController.dismissViewControllerAnimated(true, completion: nil)
+        viewController.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func selectAccount(sender: UIButton) {
+    @IBAction func selectAccount(_ sender: UIButton) {
         
         if let controller = viewController.presentingViewController as? IncomeViewController
         {
             guard let income = controller.income else { return }
             
-            controller.chooseButton.setTitle(chosenAccountName, forState: .Normal)
+            controller.chooseButton.setTitle(chosenAccountName, for: UIControlState())
             
             income.account = fetchAccount(withName: chosenAccountName)
         }
@@ -43,17 +43,17 @@ class ChooseAccountView: UIView
         {
             guard let check = controller.check else { return }
             
-            controller.accountButton.setTitle(chosenAccountName, forState: .Normal)
+            controller.accountButton.setTitle(chosenAccountName, for: UIControlState())
             
             check.account = fetchAccount(withName: chosenAccountName)
         }
         
-        viewController.dismissViewControllerAnimated(true, completion: nil)
+        viewController.dismiss(animated: true, completion: nil)
     }
     
     class func loadFromNib() -> ChooseAccountView {
         
-        let view = NSBundle.mainBundle().loadNibNamed("ChooseAccountView", owner: self, options: nil).first! as! ChooseAccountView
+        let view = Bundle.main.loadNibNamed("ChooseAccountView", owner: self, options: nil)?.first! as! ChooseAccountView
         
         return view
     }
@@ -62,7 +62,7 @@ class ChooseAccountView: UIView
         
         let nib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         
-        tableView.registerNib(nib, forCellReuseIdentifier: "AccountCell")
+        tableView.register(nib, forCellReuseIdentifier: "AccountCell")
         
         self.layer.cornerRadius = 10
         self.center             = viewController.view.center
@@ -83,43 +83,43 @@ class ChooseAccountView: UIView
 extension ChooseAccountView: UITableViewDataSource, UITableViewDelegate
 {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return allAccounts.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell") as! AccountTableViewCell
         
-        cell.accessoryType              = .None
-        cell.accountBalanceLabel.hidden = true
-        cell.accountNameLabel.text      = allAccounts[indexPath.row].name
+        cell.accessoryType              = .none
+        cell.accountBalanceLabel.isHidden = true
+        cell.accountNameLabel.text      = allAccounts[(indexPath as NSIndexPath).row].name
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath)as! AccountTableViewCell
+        let cell = tableView.cellForRow(at: indexPath)as! AccountTableViewCell
         
         toggleCheckMark(inCell: cell)
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath)as! AccountTableViewCell
+        let cell = tableView.cellForRow(at: indexPath)as! AccountTableViewCell
         
-        cell.accessoryType = .None
+        cell.accessoryType = .none
     }
     
     func toggleCheckMark(inCell cell: AccountTableViewCell) {
         
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
             chosenAccountName      = cell.accountNameLabel.text!
     }
     

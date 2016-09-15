@@ -31,7 +31,7 @@ class CheckViewController: CoreDataTableViewController
     
     var check: Registrator?
   
-    var presentationMode: DocumentPresentationMode = .DocumentNewMode
+    var presentationMode: DocumentPresentationMode = .documentNewMode
     
     var totalExpense: Double = 0
     
@@ -41,7 +41,7 @@ class CheckViewController: CoreDataTableViewController
     @IBOutlet weak var accountButton: UIButton!
     @IBOutlet weak var groupScrollView: UIScrollView!
     
-    @IBAction func chooseAccount(sender: AnyObject) {
+    @IBAction func chooseAccount(_ sender: AnyObject) {
         
         chooseAccount()
     }
@@ -56,7 +56,7 @@ class CheckViewController: CoreDataTableViewController
         saveExpense()
     }
     
-    func filterArticles(sender: UIButton) {
+    func filterArticles(_ sender: UIButton) {
         
         guard let button = sender as? GroupFilterView else { return }
         
@@ -65,6 +65,8 @@ class CheckViewController: CoreDataTableViewController
             button.selectedAsFilter = false
             
             groupFilterPredicate = nil
+            
+            filterView = nil
         }
         else
         {

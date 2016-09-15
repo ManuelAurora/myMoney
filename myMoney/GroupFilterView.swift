@@ -13,30 +13,30 @@ class GroupFilterView: UIButton
     @IBOutlet weak var nameLabel: UILabel!    
     @IBOutlet weak var groupImageView: UIImageView!
     
-    private var filtered = false
+    fileprivate var filtered = false
     
     var selectedAsFilter: Bool {
         
-        set {
-            
-            self.backgroundColor = newValue == true ? UIColor.cyanColor() : UIColor.whiteColor()
+        set
+        {
+            self.backgroundColor = newValue == true ? UIColor.cyan : UIColor.white
             
             filtered = newValue
         }
-        
-        get {
+        get
+        {
             return filtered
         }
     }
     
     
     override func didMoveToSuperview() {
-        self.layer.cornerRadius = 10        
+        self.layer.cornerRadius = 10
     }
     
     class func loadFromNib() -> GroupFilterView {
         
-        let view = NSBundle.mainBundle().loadNibNamed("GroupFilterView", owner: self, options: nil).first! as! GroupFilterView
+        let view = Bundle.main.loadNibNamed("GroupFilterView", owner: self, options: nil)?.first! as! GroupFilterView
         
         return view
     }

@@ -12,18 +12,18 @@ import CoreData
 extension CheckViewController
 {
     //Executed when user tap on Article in collectionView
-    func itemSelected(atIndexPath index: NSIndexPath) {
+    func itemSelected(atIndexPath index: IndexPath) {
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "PopUpController") as! PopUpViewController
         
-        let article = articleCatalog[index.row]
+        let article = articleCatalog[(index as NSIndexPath).row]
         
         controller.article = article
         
-        controller.elementPresentationMode = .ElementNewMode
-        controller.elementType             = .ElementArticleType
+        controller.elementPresentationMode = .elementNewMode
+        controller.elementType             = .elementArticleType
         
-        presentViewController(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
     
     func fetchData() {
@@ -32,7 +32,16 @@ extension CheckViewController
         
         let predicate = NSPredicate(format: "tablePart.expenditure = %@", check!)
         
-        let fetchRequest = NSFetchRequest(entityName: "TableString")
+        var fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        
+        if #available(iOS 10.0, *)
+        {
+             fetchRequest = TableString.fetchRequest()
+        }
+        else
+        {
+             fetchRequest = NSFetchRequest(entityName: "TableString")
+        }
         
         fetchRequest.predicate = predicate
         
@@ -40,11 +49,13 @@ extension CheckViewController
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         
-        do {
-            
+        do
+        {
             try fetchedResultsController?.performFetch()
             
-        } catch let error as NSError {
+        }
+        catch let error as NSError
+        {
             
             print("Error: \(error.localizedDescription)")
         }
@@ -54,28 +65,28 @@ extension CheckViewController
         
         switch presentationMode
         {
-        case .DocumentEditMode:
-            AddEditButton.setTitle("Save", forState: .Normal)
-            date.text   = String(check!.date)
+        case .documentEditMode:
+            AddEditButton.setTitle("Save", for: UIControlState())
+            date.text   = String(describing: check!.date)
             
-        case .DocumentNewMode:
+        case .documentNewMode:
             
             check = Expenditure()
             
-            AddEditButton.setTitle("Add", forState: .Normal)
+            AddEditButton.setTitle("Add", for: UIControlState())
         }
         
         date.text = prettyStringFrom(check!.date)
         
         if let account = check?.account
         {
-            accountButton.setTitle(account.name, forState: .Normal)
+            accountButton.setTitle(account.name, for: UIControlState())
         }
         else
         {
             let mainAcc = Account.mainAccount()
             
-            accountButton.setTitle("\(mainAcc.name)", forState: .Normal)
+            accountButton.setTitle("\(mainAcc.name)", for: UIControlState())
             
             check?.account = mainAcc
         }
@@ -89,19 +100,20 @@ extension CheckViewController
         let padding: CGFloat = 5
         var itemIndex: CGFloat = 0
         
-        groupScrollView.contentSize.width = self.view.frame.width * 10
+        groupScrollView.frame.size = CGSize(width: view.bounds.width, height: 50)
+        groupScrollView.contentSize.width = view.frame.width * 10
         
         for group in AllCatalogs.sharedInstance().catalogArticleGroups.allObjects() as! [ArticleGroup]
         {
-            let view = GroupFilterView.loadFromNib()
+            let gView = GroupFilterView.loadFromNib()
             
-            view.frame = CGRect(x: itemIndex * (view.bounds.width + padding), y: view.frame.origin.y, width: view.bounds.width, height: view.bounds.height)
+            gView.frame = CGRect(x: itemIndex * (gView.bounds.width + padding), y: gView.frame.origin.y, width: gView.bounds.width, height: gView.bounds.height)
             
-            view.addTarget(self, action: #selector(CheckViewController.filterArticles(_:)), forControlEvents: .TouchUpInside)
+            gView.addTarget(self, action: #selector(CheckViewController.filterArticles(_:)), for: .touchUpInside)
             
-            view.nameLabel.text = group.name            
+            gView.nameLabel.text = group.name
             
-            groupScrollView.addSubview(view)
+            groupScrollView.addSubview(gView)
             
             itemIndex += 1
         }
@@ -109,7 +121,7 @@ extension CheckViewController
     
     func registerNibs() {
         let nib = UINib(nibName: "ArticleCollectionViewCell", bundle: nil)
-        productView.registerNib(nib, forCellWithReuseIdentifier: "ArticleCollectionViewCell")
+        productView.register(nib, forCellWithReuseIdentifier: "ArticleCollectionViewCell")
     }
     
     //Save operation
@@ -118,33 +130,33 @@ extension CheckViewController
         
         switch presentationMode
         {
-        case .DocumentEditMode:
+        case .documentEditMode:
             
             check.deleteOldRegisterLine()
             check.conduct()
             
-        case .DocumentNewMode:
+        case .documentNewMode:
             
             check.conduct()
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     //Cancel operation
     func cancel() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
         managedContext.rollback()
     }
     
     //Account choosing
     func chooseAccount() {
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "PopUpController") as! PopUpViewController
         
-        controller.elementType = .ElementAccountListType
+        controller.elementType = .elementAccountListType
         
-        presentViewController(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
     
     //Renumerates table view cells 
@@ -152,10 +164,11 @@ extension CheckViewController
         
         var number = 1
         
-        for string in fetchedResultsController!.fetchedObjects! as! [TableString]
+        for string in fetchedResultsController?.fetchedObjects as! [TableString]
         {
-            if !string.deleted {
-                string.number = number
+            if !string.isDeleted
+            {
+                string.number = number as NSNumber?
                 number += 1
             }
         }
@@ -166,14 +179,14 @@ extension CheckViewController
         
         let layout = UICollectionViewFlowLayout()
         
-        productView.backgroundColor = UIColor.whiteColor()
+        productView.backgroundColor = UIColor.brown
         
         layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         
         layout.minimumInteritemSpacing = 4
         layout.minimumLineSpacing      = 14
         
-        let size = floor(productView.bounds.width / 4)
+        let size = floor(productView.superview!.bounds.width / 4)
         
         layout.itemSize = CGSize(width: size, height: size)
         
@@ -184,7 +197,7 @@ extension CheckViewController
 // MARK: >> EXT - UICollectionViewDelegate
 extension CheckViewController: UICollectionViewDelegate
 {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         itemSelected(atIndexPath: indexPath)
     }
@@ -193,18 +206,18 @@ extension CheckViewController: UICollectionViewDelegate
 // MARK: >> EXT - UICollectionViewDataSource
 extension CheckViewController: UICollectionViewDataSource
 {
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = productView.dequeueReusableCellWithReuseIdentifier("ArticleCollectionViewCell", forIndexPath: indexPath) as! ArticleCollectionViewCell
+        let cell = productView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell", for: indexPath) as! ArticleCollectionViewCell
         
-        let article = articleCatalog[indexPath.row]
+        let article = articleCatalog[(indexPath as NSIndexPath).row]
         
         cell.articleNameLabel.text = article.name
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return articleCatalog.count
     }
@@ -213,60 +226,60 @@ extension CheckViewController: UICollectionViewDataSource
 // MARK: >> EXT - UITableViewDelegate & DataSource
 extension CheckViewController
 {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultsController!.sections!.count
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController!.sections?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let section = fetchedResultsController!.sections![section]
+        let section = fetchedResultsController?.sections?[section]
         
-        return section.objects!.count
+        return section?.objects?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("ArticleCell") as! ArticleCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell") as! ArticleCellTableViewCell
         
-        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
+        let articleString = fetchedResultsController?.object(at: indexPath) as! TableString
         
         cell.name.text  = articleString.article!.name
-        cell.price.text = String(articleString.price!.floatValue) ?? ""
-        cell.number.text = String(indexPath.row + 1)
+        cell.price.text = String(articleString.price!.floatValue) 
+        cell.number.text = String((indexPath as NSIndexPath).row + 1)
         
         totalExpense += articleString.price!.doubleValue
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "PopUpController") as! PopUpViewController
         
-        let tableString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
+        let tableString = fetchedResultsController?.object(at: indexPath) as! TableString
         
         let article = tableString.article
         
-        controller.elementPresentationMode = .ElementEditMode
-        controller.elementType             = .ElementArticleType
+        controller.elementPresentationMode = .elementEditMode
+        controller.elementType             = .elementArticleType
         
         controller.article     = article
         controller.tableString = tableString
         
-        presentViewController(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        let articleString = fetchedResultsController?.objectAtIndexPath(indexPath) as! TableString
+        let articleString = fetchedResultsController?.object(at: indexPath) as! TableString
         
-        managedContext.deleteObject(articleString)
+        managedContext.delete(articleString)
         
         renumerateStrings()
     }
@@ -275,7 +288,7 @@ extension CheckViewController
 // MARK: >> EXT - UITapGestureRecognizer
 extension CheckViewController: UIGestureRecognizerDelegate
 {
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {        
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {        
         
         return true
     }

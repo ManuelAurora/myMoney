@@ -15,64 +15,64 @@ class IncomeViewController: UIViewController
     
     var income:  Registrator?
     
-    var presentationMode: DocumentPresentationMode = .DocumentNewMode
+    var presentationMode: DocumentPresentationMode = .documentNewMode
     
     @IBOutlet weak var totalIncomeTextField: UITextField!
     @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var dateLabel:    UILabel!
     
-    @IBAction func record(sender: AnyObject) {
+    @IBAction func record(_ sender: AnyObject) {
        
         guard let income = income else { return }
         
         let totalIncome  = Double(totalIncomeTextField.text!)!
         
-        income.amount  = totalIncome
+        income.amount  = totalIncome as NSNumber?
         
         switch presentationMode
         {
-        case .DocumentEditMode:
+        case .documentEditMode:
             
             income.deleteOldRegisterLine()
             income.conduct()
             
-        case .DocumentNewMode:
+        case .documentNewMode:
             
             income.conduct()
         }               
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cancel(sender: UIButton) {
+    @IBAction func cancel(_ sender: UIButton) {
         
         managedContext.rollback()
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func chooseAccount(sender: UIButton) {
+    @IBAction func chooseAccount(_ sender: UIButton) {
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "PopUpController") as! PopUpViewController
         
-        controller.elementType = .ElementAccountListType
+        controller.elementType = .elementAccountListType
         
-        presentViewController(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let account = income?.account
         {
-            chooseButton.setTitle(account.name, forState: .Normal)
+            chooseButton.setTitle(account.name, for: UIControlState())
         }
         else
         {
             let mainAcc = Account.mainAccount()
             
-            chooseButton.setTitle("\(mainAcc.name)", forState: .Normal)
+            chooseButton.setTitle("\(mainAcc.name)", for: UIControlState())
             
             income?.account = mainAcc
         }
@@ -89,15 +89,15 @@ class IncomeViewController: UIViewController
                         
         switch presentationMode
         {
-        case .DocumentEditMode:
+        case .documentEditMode:
             
-            recordButton.setTitle("Save", forState: .Normal)
+            recordButton.setTitle("Save", for: UIControlState())
             
-        case .DocumentNewMode:
+        case .documentNewMode:
             
             income = Income(withAmount: 0)
             
-            recordButton.setTitle("Add", forState: .Normal)
+            recordButton.setTitle("Add", for: UIControlState())
         }
     }
 }

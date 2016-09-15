@@ -23,7 +23,7 @@ class AccountManageViewController: UIViewController
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func addNewCount(sender: UIButton) {
+    @IBAction func addNewCount(_ sender: UIButton) {
         
         addNew()
         
@@ -31,11 +31,11 @@ class AccountManageViewController: UIViewController
     
     func addNew() {
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "PopUpController") as! PopUpViewController
         
-        controller.elementType = .ElementAccountType
+        controller.elementType = .elementAccountType
         
-        presentViewController(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
         
     }
     
@@ -49,7 +49,7 @@ class AccountManageViewController: UIViewController
         return references.count > 0 ? false : true
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         tableView.reloadData()
     }
@@ -60,7 +60,7 @@ class AccountManageViewController: UIViewController
         
         let nib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         
-        tableView.registerNib(nib, forCellReuseIdentifier: "AccountCell")
+        tableView.register(nib, forCellReuseIdentifier: "AccountCell")
         
     }
 }
@@ -68,16 +68,16 @@ class AccountManageViewController: UIViewController
 extension AccountManageViewController: UITableViewDataSource, UITableViewDelegate
 {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return accounts.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell") as! AccountTableViewCell
         
-        let account = accounts[indexPath.row]
+        let account = accounts[(indexPath as NSIndexPath).row]
         
         cell.accountNameLabel.text    = account.name
         cell.accountBalanceLabel.text = prettyStringFrom(account.accountBalance())
@@ -85,26 +85,26 @@ extension AccountManageViewController: UITableViewDataSource, UITableViewDelegat
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        guard editingStyle == .Delete else { return }
+        guard editingStyle == .delete else { return }
         
-        let account = accounts[indexPath.row]
+        let account = accounts[(indexPath as NSIndexPath).row]
         
         if checkAccountIsPossibleTo(delete: account)
         {
-            managedContext.deleteObject(account)
+            managedContext.delete(account)
             
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             
             try! managedContext.save()
         }
-        else { tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic) }
+        else { tableView.reloadRows(at: [indexPath], with: .automatic) }
         
         //TODO: Need to make an Alarm if acc is impossible to delete
     }

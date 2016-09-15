@@ -11,19 +11,19 @@ import UIKit
 
 class FadeOutAnimationController: NSObject, UIViewControllerAnimatedTransitioning
 {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.33
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) else { return }
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) else { return }
         
-        let duration = transitionDuration(transitionContext)
+        let duration = transitionDuration(using: transitionContext)
         
-        UIView.animateWithDuration(duration, animations: { 
+        UIView.animate(withDuration: duration, animations: { 
             fromView.alpha = 0
-            }) { finished in
+            }, completion: { finished in
                 transitionContext.completeTransition(finished)
-        }
+        }) 
     }
 }

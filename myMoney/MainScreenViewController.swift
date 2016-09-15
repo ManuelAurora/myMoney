@@ -32,22 +32,22 @@ class MainScreenViewController: UIViewController
     let articleCatalog     = AllCatalogs.sharedInstance().catalogArticle
     let catalogExpenditure = AllCatalogs.sharedInstance().catalogExpenditure
     
-    @IBAction func addNewIncome(sender: UIButton) {
+    @IBAction func addNewIncome(_ sender: UIButton) {
         addIncome()
     }
     
-    @IBAction func addNewExpense(sender: UIButton) {
+    @IBAction func addNewExpense(_ sender: UIButton) {
         addCheck()
     }
     
-    @IBAction func reportPerodChanged(sender: UISegmentedControl) {
+    @IBAction func reportPerodChanged(_ sender: UISegmentedControl) {
         changeReportPeriod()
         savePeriod()
     }
  
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let navController = segue.destinationViewController as! UINavigationController
+        let navController = segue.destination as! UINavigationController
         
         let controller = navController.viewControllers.first as! CheckViewController
         
@@ -61,12 +61,12 @@ class MainScreenViewController: UIViewController
 
         let accountCellNib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         
-        tableView.registerNib(accountCellNib, forCellReuseIdentifier: "AccountCell")        
+        tableView.register(accountCellNib, forCellReuseIdentifier: "AccountCell")        
         
         loadPeriod()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         tableView.reloadData()
         
@@ -77,16 +77,16 @@ class MainScreenViewController: UIViewController
     
     func addCheck() {
        
-        performSegueWithIdentifier("AddNewExpense", sender: nil)       
+        performSegue(withIdentifier: "AddNewExpense", sender: nil)       
     }
     
     func addIncome() {
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("Income") as! IncomeViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "Income") as! IncomeViewController
         
         controller.managedContext = managedContext
         
-        presentViewController(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
         
     }
     
@@ -123,8 +123,8 @@ class MainScreenViewController: UIViewController
         
         guard period != nil else { return }
         
-        let incomeTotal  = calculateMoneyFlowForCurrentPeriod(period!, flowKind: .Adding)
-        let expenseTotal = calculateMoneyFlowForCurrentPeriod(period!, flowKind: .Substracting)
+        let incomeTotal  = calculateMoneyFlowForCurrentPeriod(period!, flowKind: .adding)
+        let expenseTotal = calculateMoneyFlowForCurrentPeriod(period!, flowKind: .substracting)
         
         incomeCountLabel.text   = "\(prettyStringFrom(incomeTotal))"
         expensesCountLabel.text = "\(prettyStringFrom(expenseTotal))"
@@ -133,17 +133,17 @@ class MainScreenViewController: UIViewController
     //Saving index of Period Segmented control
     func savePeriod() {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        defaults.setInteger(periodSegmentedControl.selectedSegmentIndex, forKey: "Period")
+        defaults.set(periodSegmentedControl.selectedSegmentIndex, forKey: "Period")
     }
     
     //Loads index of Period Segmented control
     func loadPeriod() {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        let index = defaults.integerForKey("Period")
+        let index = defaults.integer(forKey: "Period")
         
         periodSegmentedControl.selectedSegmentIndex = index
     }
@@ -162,32 +162,32 @@ class MainScreenViewController: UIViewController
     }    
     
     //Calculates income and expense for chosen period
-    func calculateMoneyFlowForCurrentPeriod(period: ReportCurrentPeriod, flowKind: RegistratorKind) -> Double {
+    func calculateMoneyFlowForCurrentPeriod(_ period: ReportCurrentPeriod, flowKind: RegistratorKind) -> Double {
         
         var predicates = [NSPredicate]()
         
-        let predicateAdd       = NSPredicate(format: "kind=%d",  RegistratorKind.Adding.rawValue)
-        let predicateSubstract = NSPredicate(format: "kind=%d",  RegistratorKind.Substracting.rawValue)
+        let predicateAdd       = NSPredicate(format: "kind=%d",  RegistratorKind.adding.rawValue)
+        let predicateSubstract = NSPredicate(format: "kind=%d",  RegistratorKind.substracting.rawValue)
         
-        flowKind == .Adding ? predicates.append(predicateAdd) : predicates.append(predicateSubstract)
+        flowKind == .adding ? predicates.append(predicateAdd) : predicates.append(predicateSubstract)
         
         switch period
         {
         case .Day:
             let thisDay = currentPeriodBorder(.Day)
             
-            predicates.appendContentsOf(formArrayOfPredicatesFor(thisDay))
+            predicates.append(contentsOf:formArrayOfPredicatesFor(thisDay))
             
         case .Week:
             let thisWeek = currentPeriodBorder(.Week)
             
-            predicates.appendContentsOf(formArrayOfPredicatesFor(thisWeek))
+            predicates.append(contentsOf: formArrayOfPredicatesFor(thisWeek))
             
         case .Month:
             
             let thisMonth = currentPeriodBorder(.Month)
             
-            predicates.appendContentsOf(formArrayOfPredicatesFor(thisMonth))
+            predicates.append(contentsOf: formArrayOfPredicatesFor(thisMonth))
         }
         
         let result = DataManager.sharedInstance().fetchData(forEntity: "RegisterLine", withSortKey: nil, predicates: predicates) as! [RegisterLine] // 3) We will fetch registered in documents for our needs
@@ -202,7 +202,7 @@ class MainScreenViewController: UIViewController
         return total
     }
     
-    func formArrayOfPredicatesFor(currentPeriod: (periodStart: NSDate, periodEnd:NSDate)) -> [NSPredicate] {
+    func formArrayOfPredicatesFor(_ currentPeriod: (periodStart: NSDate, periodEnd: NSDate)) -> [NSPredicate] {
         
         let predicate  = NSPredicate(format: "date>=%@", currentPeriod.periodStart) // 1) if date of the documents is more than current day's begin time
         let predicate2 = NSPredicate(format: "date<=%@", currentPeriod.periodEnd)   // 2) and if date of the documents is less than current day's end time
@@ -214,40 +214,38 @@ class MainScreenViewController: UIViewController
 // MARK: >> EXT - UITableViewDelegate
 extension MainScreenViewController: UITableViewDelegate
 {
-    
-}
-
-// MARK: >> EXT - UITableViewDataSource
-extension MainScreenViewController:UITableViewDataSource
-{
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        return accounts.count
-    }
- 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let account = accounts[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell") as! AccountTableViewCell
-        
-        cell.accessoryType            = account.main ? .Checkmark : .None
-        cell.accountNameLabel.text    = account.name
-        cell.accountBalanceLabel.text = prettyStringFrom(account.accountBalance())
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let account = accounts[indexPath.row]
+        let account = accounts[(indexPath as NSIndexPath).row]
         
         account.makeMain()
         
         tableView.reloadData()
         
         try! managedContext.save()
+    }
+}
+
+// MARK: >> EXT - UITableViewDataSource
+extension MainScreenViewController: UITableViewDataSource
+{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return accounts.count
+    }
+ 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let account = accounts[(indexPath as NSIndexPath).row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell") as! AccountTableViewCell
+        
+        cell.accessoryType            = account.main ? .checkmark : .none
+        cell.accountNameLabel.text    = account.name
+        cell.accountBalanceLabel.text = prettyStringFrom(account.accountBalance())
+        
+        return cell
     }
     
 }

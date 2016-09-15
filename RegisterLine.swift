@@ -12,16 +12,16 @@ import CoreData
 
 class RegisterLine: NSManagedObject
 {
-    convenience init(basedOn registrator: Registrator, measure: Account, resource: Double, kind: RegistratorKind, date: NSDate) {
+    convenience init(basedOn registrator: Registrator, measure: Account, resource: Double, kind: RegistratorKind, date: Date) {
         
         let context = DataManager.sharedInstance().context
-        let entity = NSEntityDescription.entityForName("RegisterLine", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "RegisterLine", in: context)
         
-        self.init(entity: entity!, insertIntoManagedObjectContext: context)
+        self.init(entity: entity!, insertInto: context)
         
         self.date        = date
-        self.kind        = kind.rawValue
-        self.resource    = resource
+        self.kind        = NSNumber(value: kind.rawValue)
+        self.resource    = NSNumber(value: resource)
         self.registrator = registrator
         self.measure     = measure
     }
@@ -30,6 +30,6 @@ class RegisterLine: NSManagedObject
 
 enum RegistratorKind: Int
 {
-    case Substracting = -1
-    case Adding       =  1
+    case substracting = -1
+    case adding       =  1
 }

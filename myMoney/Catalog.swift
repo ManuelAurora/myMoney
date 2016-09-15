@@ -21,18 +21,18 @@ class Catalog {
     
     func allObjects() -> [NSManagedObject] {
         
-        let articles = try! DataManager.sharedInstance().context.executeFetchRequest(NSFetchRequest(entityName: name)) as! [NSManagedObject]
+        let articles = try! DataManager.sharedInstance().context.fetch(NSFetchRequest(entityName: name)) 
         
-        return articles
+        return articles as! [NSManagedObject]
     }
     
     func objectsFiltered(by predicate: NSPredicate) -> [NSManagedObject] {
 
-        let fetchRequest = NSFetchRequest(entityName: name)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
         
         fetchRequest.predicate = predicate
         
-        let articles = try! DataManager.sharedInstance().context.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        let articles = try! DataManager.sharedInstance().context.fetch(fetchRequest) as! [NSManagedObject]
         
         return articles        
     }

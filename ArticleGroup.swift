@@ -16,9 +16,9 @@ class ArticleGroup: NSManagedObject
         
         let context = DataManager.sharedInstance().context
         
-        let entity = NSEntityDescription.entityForName("ArticleGroup", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "ArticleGroup", in: context)
         
-        self.init(entity: entity!, insertIntoManagedObjectContext: context)
+        self.init(entity: entity!, insertInto: context)
         
         self.name = name
     }

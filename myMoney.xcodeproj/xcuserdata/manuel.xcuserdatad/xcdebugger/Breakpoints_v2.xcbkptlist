@@ -16,7 +16,7 @@
             startingLineNumber = "35"
             endingLineNumber = "35"
             landmarkName = "objectsFiltered(by:)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myMoney/GroupFilterView.swift"
-            timestampString = "494959693.219317"
+            timestampString = "495646011.536205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "GroupFilterView"
             landmarkType = "3">
          </BreakpointContent>

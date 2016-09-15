@@ -12,9 +12,9 @@ import CoreData
 
 class ArticleManageViewController: UIViewController
 {
-    var updateIndexPaths   = [NSIndexPath]()
-    var deleteIndexPaths   = [NSIndexPath]()
-    var insertIndexPaths   = [NSIndexPath]()
+    var updateIndexPaths   = [IndexPath]()
+    var deleteIndexPaths   = [IndexPath]()
+    var insertIndexPaths   = [IndexPath]()
     
     var collectionViewToFetch: CollectionViewToFetch?
     
@@ -23,23 +23,21 @@ class ArticleManageViewController: UIViewController
     
     var managedContext: NSManagedObjectContext!
     
-    lazy var fetchedResultsControllerArticles: NSFetchedResultsController = {
-        
+    lazy var fetchedResultsControllerArticles: NSFetchedResultsController<Article> = {
         let entityName = "Article"        
         
         let controller = instantiateFetchControllerWithRequest(entity: entityName, predicate: nil, forDelegate: self)
         
-        return controller
+        return controller as! NSFetchedResultsController<Article>
     }()
     
-    lazy var fetchedResultsControllerArticleGroups: NSFetchedResultsController = {
+    lazy var fetchedResultsControllerArticleGroups: NSFetchedResultsController<ArticleGroup> = {
         
         let entityName = "ArticleGroup"
         
         let controller = instantiateFetchControllerWithRequest(entity: entityName, predicate: nil, forDelegate: self)
         
-        return controller
-        
+        return controller as! NSFetchedResultsController<ArticleGroup>
     }()
 
     @IBOutlet weak var addGroupButton:   UIButton!
@@ -49,25 +47,25 @@ class ArticleManageViewController: UIViewController
     @IBOutlet weak var groupsCollectionView:   UICollectionView!
     @IBOutlet weak var articlesCollectionView: UICollectionView!
     
-    @IBAction func addNewArticle(sender: UIButton) {
+    @IBAction func addNewArticle(_ sender: UIButton) {
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewArticle") as! AddNewArticleViewController
-        
-        controller.managedContext = managedContext
-        
-        presentViewController(controller, animated: true, completion: nil)
-    }
-    
-    @IBAction func addNewGroup(sender: UIButton) {
-        
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewGroup") as! AddNewGroupViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "AddNewArticle") as! AddNewArticleViewController
         
         controller.managedContext = managedContext
         
-        presentViewController(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
     
-    @IBAction func stopEditing(sender: UIButton) {
+    @IBAction func addNewGroup(_ sender: UIButton) {
+        
+        let controller = storyboard?.instantiateViewController(withIdentifier: "AddNewGroup") as! AddNewGroupViewController
+        
+        controller.managedContext = managedContext
+        
+        present(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func stopEditing(_ sender: UIButton) {
         
         if articleCollectionInEditMode
         {
@@ -97,7 +95,7 @@ class ArticleManageViewController: UIViewController
         return gesture
     }
     
-    func updateSectionForDeletionProcess(sender: UILongPressGestureRecognizer) {
+    func updateSectionForDeletionProcess(_ sender: UILongPressGestureRecognizer) {
         
         let collection = sender.view as! UICollectionView
         
@@ -116,14 +114,14 @@ class ArticleManageViewController: UIViewController
         hideAddButtons(true)        
     }
     
-    func hideAddButtons(isHidden: Bool) {
+    func hideAddButtons(_ isHidden: Bool) {
         
-        addGroupButton.hidden   = isHidden
-        addArticleButton.hidden = isHidden
-        stopEdingButton.hidden  = !isHidden
+        addGroupButton.isHidden   = isHidden
+        addArticleButton.isHidden = isHidden
+        stopEdingButton.isHidden  = !isHidden
     }
     
-    func toggleEditingMode(isOn: Bool, inCollection view: UICollectionView)
+    func toggleEditingMode(_ isOn: Bool, inCollection view: UICollectionView)
     {
         switch view
         {
@@ -145,23 +143,23 @@ class ArticleManageViewController: UIViewController
         
         let layout = UICollectionViewFlowLayout()
         
-        articlesCollectionView.backgroundColor = UIColor.whiteColor()
+        articlesCollectionView.backgroundColor = UIColor.white
         
         layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         
         layout.minimumInteritemSpacing = 4
         layout.minimumLineSpacing      = 14
-        
-        let size = floor(articlesCollectionView.bounds.width / 4)
-        
+                
+        let size = floor(articlesCollectionView.superview!.bounds.width / 4)
+       
         layout.itemSize = CGSize(width: size, height: size)
         
         articlesCollectionView.collectionViewLayout = layout
     }
     
-    func deleteObject(object: NSManagedObject) {
+    func deleteObject(_ object: NSManagedObject) {
         
-        managedContext.deleteObject(object)
+        managedContext.delete(object)
         
         do
         {
@@ -183,19 +181,19 @@ class ArticleManageViewController: UIViewController
     }
    
 
-    private func registerNibs() {
+    fileprivate func registerNibs() {
         
         let nib = UINib(nibName: "ArticleCollectionViewCell", bundle: nil)
         
-        articlesCollectionView.registerNib(nib, forCellWithReuseIdentifier: "ArticleCollectionViewCell")
-        groupsCollectionView.registerNib(nib,   forCellWithReuseIdentifier: "ArticleCollectionViewCell")
+        articlesCollectionView.register(nib, forCellWithReuseIdentifier: "ArticleCollectionViewCell")
+        groupsCollectionView.register(nib,   forCellWithReuseIdentifier: "ArticleCollectionViewCell")
     }
 }
 
 //MARK: >> EXT - UICollectionViewDelegate
 extension ArticleManageViewController: UICollectionViewDelegate
 {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
         switch collectionView
         {
@@ -203,26 +201,26 @@ extension ArticleManageViewController: UICollectionViewDelegate
             
             guard !articleCollectionInEditMode else
             {
-                let article = fetchedResultsControllerArticles.objectAtIndexPath(indexPath) as! Article
+                let article = fetchedResultsControllerArticles.object(at: indexPath)
                 
                 deleteObject(article)
                 
                 return
             }
             
-            let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewArticle") as! AddNewArticleViewController
+            let controller = storyboard?.instantiateViewController(withIdentifier: "AddNewArticle") as! AddNewArticleViewController
             
-            let article = fetchedResultsControllerArticles.fetchedObjects![indexPath.row] as! Article
+            let article = fetchedResultsControllerArticles.fetchedObjects![(indexPath as NSIndexPath).row]
             
             controller.article        = article
-            controller.editMode       = .ElementEditMode
+            controller.editMode       = .elementEditMode
             controller.managedContext = managedContext
             
-            presentViewController(controller, animated: true, completion: nil)
+            present(controller, animated: true, completion: nil)
             
         case groupsCollectionView:
             
-            let group = fetchedResultsControllerArticleGroups.objectAtIndexPath(indexPath) as! ArticleGroup
+            let group = fetchedResultsControllerArticleGroups.object(at: indexPath)
             
             guard !groupsCollectionInEditMode else
             {
@@ -231,15 +229,15 @@ extension ArticleManageViewController: UICollectionViewDelegate
                 return
             }
             
-            let controller = storyboard?.instantiateViewControllerWithIdentifier("AddNewGroup") as! AddNewGroupViewController
+            let controller = storyboard?.instantiateViewController(withIdentifier: "AddNewGroup") as! AddNewGroupViewController
             
             controller.managedContext = managedContext
             
             controller.group = group
             
-            controller.editMode = .ElementEditMode
+            controller.editMode = .elementEditMode
             
-            presentViewController(controller, animated: true, completion: nil)
+            present(controller, animated: true, completion: nil)
             
         default:
             break
@@ -250,7 +248,7 @@ extension ArticleManageViewController: UICollectionViewDelegate
 //MARK: >> EXT - UICollectionViewDataSource
 extension ArticleManageViewController: UICollectionViewDataSource
 {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         var result = 0
         
@@ -271,29 +269,29 @@ extension ArticleManageViewController: UICollectionViewDataSource
         return result
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         var name = ""
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ArticleCollectionViewCell", forIndexPath: indexPath) as! ArticleCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell", for: indexPath) as! ArticleCollectionViewCell
         
         switch collectionView
         {
         case articlesCollectionView:
             
-            let article = fetchedResultsControllerArticles.fetchedObjects![indexPath.row] as! Article
+            let article = fetchedResultsControllerArticles.fetchedObjects![(indexPath as NSIndexPath).row]
             
             name = article.name
             
-            cell.removeButton.hidden   = articleCollectionInEditMode ? false : true
+            cell.removeButton.isHidden   = articleCollectionInEditMode ? false : true
             
         case groupsCollectionView:
             
-            let group = fetchedResultsControllerArticleGroups.fetchedObjects![indexPath.row] as! ArticleGroup
+            let group = fetchedResultsControllerArticleGroups.fetchedObjects![(indexPath as NSIndexPath).row]
             
             name = group.name
             
-            cell.removeButton.hidden   = groupsCollectionInEditMode ? false : true
+            cell.removeButton.isHidden   = groupsCollectionInEditMode ? false : true
             
         default:
             break
@@ -314,33 +312,33 @@ extension ArticleManageViewController: UIGestureRecognizerDelegate
 //MARK: >> EXT - NSFetchedResultsControllerDelegate
 extension ArticleManageViewController: NSFetchedResultsControllerDelegate
 {
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         switch type
         {
-        case .Update:
+        case .update:
             
             updateIndexPaths.append(indexPath!)
             
-        case .Delete:
+        case .delete:
             
             deleteIndexPaths.append(indexPath!)
             
-        case .Insert:
+        case .insert:
             
             insertIndexPaths.append(newIndexPath!)
             
-        case .Move:
+        case .move:
             print("Moved")
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         changeItemsInContentControlled(by: controller)
     }
     
-    func changeItemsInContentControlled(by controller: NSFetchedResultsController) {
+    func changeItemsInContentControlled(by controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         
         var collectionView: UICollectionView?
@@ -365,24 +363,24 @@ extension ArticleManageViewController: NSFetchedResultsControllerDelegate
             
             for indexPath in self.deleteIndexPaths
             {
-                collection.deleteItemsAtIndexPaths([indexPath])
+                collection.deleteItems(at: [indexPath])
             }
             
-            self.deleteIndexPaths = [NSIndexPath]()
+            self.deleteIndexPaths = [IndexPath]()
             
             for indexPath in self.insertIndexPaths
             {
-                collection.insertItemsAtIndexPaths([indexPath])
+                collection.insertItems(at: [indexPath])
             }
             
-            self.insertIndexPaths = [NSIndexPath]()
+            self.insertIndexPaths = [IndexPath]()
             
             for indexPath in self.updateIndexPaths
             {
-                collection.reloadItemsAtIndexPaths([indexPath])
+                collection.reloadItems(at: [indexPath])
             }
             
-            self.updateIndexPaths = [NSIndexPath]()
+            self.updateIndexPaths = [IndexPath]()
             
             }, completion: nil)
     }

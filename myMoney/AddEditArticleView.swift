@@ -17,14 +17,14 @@ class AddEditArticleView: UIView
     @IBOutlet weak var articlePriceTextField: UITextField!
     @IBOutlet weak var addEditButton:         UIButton!
 
-    @IBAction func addEdit(sender: UIButton) {
+    @IBAction func addEdit(_ sender: UIButton) {
         
         viewController.addEditArticleInTablePart(from: self)
     }
     
-    @IBAction func close(sender: UIButton) {
+    @IBAction func close(_ sender: UIButton) {
         
-        viewController.dismissViewControllerAnimated(true, completion: nil)
+        viewController.dismiss(animated: true, completion: nil)
     }
     
     override func didMoveToSuperview() {
@@ -40,7 +40,7 @@ class AddEditArticleView: UIView
     
     class func loadFromNib() -> AddEditArticleView {
         
-        let view = NSBundle.mainBundle().loadNibNamed("AddEditArticleView", owner: self, options: nil).first! as! AddEditArticleView
+        let view = Bundle.main.loadNibNamed("AddEditArticleView", owner: self, options: nil)?.first! as! AddEditArticleView
         
         return view
     }

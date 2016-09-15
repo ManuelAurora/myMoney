@@ -20,26 +20,26 @@ class PopUpViewController: UIViewController
     
     @IBAction func close() {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        modalPresentationStyle = .Custom
+        modalPresentationStyle = .custom
         transitioningDelegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.clear
         
         if let docType = presentingDocType
         {
             switch docType
             {
-            case .DocumentExpenditureType:
+            case .documentExpenditureType:
                 
                 showArticleView()
             }
@@ -48,16 +48,16 @@ class PopUpViewController: UIViewController
         {
             switch elementType
             {
-            case .ElementArticleType:
+            case .elementArticleType:
                 showArticleView()
                 
-            case .ElementAccountType:
+            case .elementAccountType:
                 showAccountView()
                 
-            case .ElementAccountListType:
+            case .elementAccountListType:
                 chooseAccountView()
                 
-            case .ElementArticleGroupType:
+            case .elementArticleGroupType:
                 showArticleGroupView()
             }
         }

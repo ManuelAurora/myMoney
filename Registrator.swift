@@ -19,14 +19,14 @@ class Registrator: NSManagedObject
         {
             let sum = sumOfDocument()           
             
-            _ = RegisterLine(basedOn: self, measure: self.account, resource: sum, kind: .Substracting, date: NSDate())
+            _ = RegisterLine(basedOn: self, measure: self.account, resource: sum, kind: .substracting, date: Date())
             
             try! DataManager.sharedInstance().saveContext()
         }
         
         if self.name == Constants.incomeName
         {
-            _ = RegisterLine(basedOn: self, measure: self.account, resource: amount!.doubleValue, kind: .Adding, date: NSDate())
+            _ = RegisterLine(basedOn: self, measure: self.account, resource: amount!.doubleValue, kind: .adding, date: Date())
             
             try! DataManager.sharedInstance().saveContext()
         }
@@ -58,15 +58,25 @@ class Registrator: NSManagedObject
         let managedContext = DataManager.sharedInstance().context
         
         let predicate = NSPredicate(format: "registrator=%@", self)
-        let fetchRequest = NSFetchRequest(entityName: "RegisterLine")
+        
+        var fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        
+        if #available(iOS 10.0, *)
+        {
+            fetchRequest = RegisterLine.fetchRequest()
+        }
+        else
+        {
+            fetchRequest = NSFetchRequest(entityName: "RegisterLine")
+        }
   
         fetchRequest.predicate = predicate
         
-        let result = try! managedContext.executeFetchRequest(fetchRequest)
+        let result = try! managedContext.fetch(fetchRequest)
         
         for object in result
         {
-            managedContext.deleteObject(object as! NSManagedObject)
+            managedContext.delete(object as! NSManagedObject)
         }
     }
 

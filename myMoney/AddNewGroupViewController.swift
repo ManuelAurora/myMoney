@@ -17,20 +17,20 @@ class AddNewGroupViewController: UIViewController
     
     var group:   ArticleGroup!
     
-    var editMode: ElementPresentationMode = .ElementNewMode
+    var editMode: ElementPresentationMode = .elementNewMode
     
     @IBOutlet weak var headerLabel:    UILabel!
     @IBOutlet weak var nameTextField:  UITextField!
     @IBOutlet weak var groupImageView: UIImageView!
     
-    @IBAction func save(sender: UIButton) {
+    @IBAction func save(_ sender: UIButton) {
         
         switch editMode
         {
-        case .ElementNewMode:
+        case .elementNewMode:
             group = ArticleGroup(withName: nameTextField.text!)
         
-        case .ElementEditMode:
+        case .elementEditMode:
             group.name = nameTextField.text!            
         }
         
@@ -48,20 +48,20 @@ class AddNewGroupViewController: UIViewController
             print(error)
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func addParent(sender: UIButton) {
+    @IBAction func addParent(_ sender: UIButton) {
         
-        let popController = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
+        let popController = storyboard?.instantiateViewController(withIdentifier: "PopUpController") as! PopUpViewController
         
-        popController.elementType = .ElementArticleGroupType
+        popController.elementType = .elementArticleGroupType
         
-        presentViewController(popController, animated: true, completion: nil)
+        present(popController, animated: true, completion: nil)
     }
     
-    @IBAction func cancel(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -74,7 +74,7 @@ class AddNewGroupViewController: UIViewController
             
             if let image = group.image
             {
-                groupImageView.image = UIImage(data: image)
+                groupImageView.image = UIImage(data: image as Data)
             }
         }
         

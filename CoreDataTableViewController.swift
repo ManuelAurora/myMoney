@@ -6,7 +6,7 @@ class CoreDataTableViewController: UITableViewController
 {
     
     // MARK:  - Properties
-    var fetchedResultsController : NSFetchedResultsController?{
+    var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>? {
         didSet{
             // Whenever the frc changes, we execute the search and
             // reload the table
@@ -16,12 +16,9 @@ class CoreDataTableViewController: UITableViewController
         }
     }
     
-    init(fetchedResultsController fc : NSFetchedResultsController,
-        style : UITableViewStyle = .Plain){
+    init(fetchedResultsController fc : NSFetchedResultsController<NSFetchRequestResult>, style : UITableViewStyle = .plain) {
             fetchedResultsController = fc
             super.init(style: style)
-            
-            
     }
   
     required init?(coder aDecoder: NSCoder) {
@@ -32,7 +29,7 @@ class CoreDataTableViewController: UITableViewController
 // MARK:  - Subclass responsability
 extension CoreDataTableViewController {
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         fatalError("This method MUST be implemented by a subclass of CoreDataTableViewController")
     }
@@ -40,87 +37,72 @@ extension CoreDataTableViewController {
 
 // MARK:  - Table Data Source
 extension CoreDataTableViewController{
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let fc = fetchedResultsController{
-            return (fc.sections?.count)!;
-        }else{
-            return 0
-        }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return fetchedResultsController!.sections?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let fc = fetchedResultsController {
-            return fc.sections![section].numberOfObjects;
-        }else{
-            return 0
-        }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      
+        return fetchedResultsController!.sections?[section].numberOfObjects ?? 0
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let fc = fetchedResultsController{
-            return fc.sections![section].name;
-        }else{
-            return nil
-        }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return fetchedResultsController?.sections?[section].name ?? nil
     }
     
-    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        if let fc = fetchedResultsController{
-            return fc.sectionForSectionIndexTitle(title, atIndex: index)
-        }else{
-            return 0
-        }
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+     
+            return fetchedResultsController!.section(forSectionIndexTitle: title, at: index)
     }
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        if let fc = fetchedResultsController{
-            return  fc.sectionIndexTitles
-        }else{
-            return nil
-        }
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+         return  fetchedResultsController?.sectionIndexTitles
     }
-    
-    
 }
 
 // MARK:  - Fetches
 extension CoreDataTableViewController{
     
     func executeSearch(){
-        if let fc = fetchedResultsController{
-            do{
-                try fc.performFetch()
-            }catch let e as NSError{
-                print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
-            }
+        
+        do
+        {
+            try fetchedResultsController?.performFetch()
+        }
+        catch let e as NSError
+        {
+            print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
         }
     }
 }
+
 
 
 // MARK:  - Delegate
 extension CoreDataTableViewController: NSFetchedResultsControllerDelegate {
     
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController,
+    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>,
         didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
         atIndex sectionIndex: Int,
         forChangeType type: NSFetchedResultsChangeType) {
             
             let set = NSIndexSet(index: sectionIndex)
-            
-            switch (type){
+        
+        
+            switch (type)
+            {
+            case .insert:
+                tableView.insertSections(set as IndexSet, with: .fade)
                 
-            case .Insert:
-                tableView.insertSections(set, withRowAnimation: .Fade)
-                
-            case .Delete:
-                tableView.deleteSections(set, withRowAnimation: .Fade)
+            case .delete:
+                tableView.deleteSections(set as IndexSet, with: .fade)
                 
             default:
                 // irrelevant in our case
@@ -130,30 +112,31 @@ extension CoreDataTableViewController: NSFetchedResultsControllerDelegate {
     }
     
     
-    func controller(controller: NSFetchedResultsController,
+    private func controller(controller: NSFetchedResultsController<NSFetchRequestResult>,
         didChangeObject anObject: AnyObject,
-        atIndexPath indexPath: NSIndexPath?,
+        atIndexPath indexPath: IndexPath?,
         forChangeType type: NSFetchedResultsChangeType,
-        newIndexPath: NSIndexPath?) {
+        newIndexPath: IndexPath?) {
             
-            switch(type){
+            switch(type)
+            {
                 
-            case .Insert:
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            case .insert:
+                tableView.insertRows(at: [newIndexPath!], with: .fade)
                 
-            case .Delete:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            case .delete:
+                tableView.deleteRows(at: [indexPath!], with: .fade)
                 
-            case .Update:
-                tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            case .update:
+                tableView.reloadRows(at: [indexPath!], with: .fade)
                 
-            case .Move:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            case .move:
+                tableView.deleteRows(at: [indexPath!], with: .fade)
+                tableView.insertRows(at: [newIndexPath!], with: .fade)
             }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    private func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
 }

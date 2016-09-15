@@ -13,31 +13,31 @@ class GradienView: UIView
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor  = UIColor.clearColor()
-        autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        backgroundColor  = UIColor.clear
+        autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         
         let locations:  [CGFloat] = [0, 1]
         let components: [CGFloat] = [0, 0, 0, 0.2, 0, 0, 0, 0.85]
        
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let gradient   = CGGradientCreateWithColorComponents(colorSpace, components, locations, 2)
+        let gradient   = CGGradient(colorSpace: colorSpace, colorComponents: components, locations: locations, count: 2)
         
-        let x       = CGRectGetMidX(bounds)
-        let y       = CGRectGetMidY(bounds)
+        let x       = bounds.midX
+        let y       = bounds.midY
         let point   = CGPoint(x: x, y: y)
         let radiust = max(x, y)
         
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextDrawRadialGradient(context, gradient, point, 0, point, radiust, .DrawsAfterEndLocation)
+        context?.drawRadialGradient(gradient!, startCenter: point, startRadius: 0, endCenter: point, endRadius: radiust, options: .drawsAfterEndLocation)
     }    
 }

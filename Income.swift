@@ -17,12 +17,12 @@ class Income: Registrator
         
         let context = DataManager.sharedInstance().context
         
-        let entity = NSEntityDescription.entityForName("Registrator", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Registrator", in: context)
                 
-        self.init(entity: entity!, insertIntoManagedObjectContext: context)
+        self.init(entity: entity!, insertInto: context)
       
-        self.date   = NSDate()
-        self.amount = amount
+        self.date   = Date()
+        self.amount = amount as NSNumber?
         self.name   = Constants.incomeName
     }   
     

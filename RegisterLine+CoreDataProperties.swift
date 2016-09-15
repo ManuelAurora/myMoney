@@ -14,7 +14,7 @@ import CoreData
 
 extension RegisterLine {
 
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var kind: NSNumber
     @NSManaged var resource: NSNumber 
     @NSManaged var registrator: NSManagedObject?

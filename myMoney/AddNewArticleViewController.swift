@@ -16,7 +16,7 @@ class AddNewArticleViewController: UIViewController
     var article: Article!
     var group:   ArticleGroup?
     
-    var editMode: ElementPresentationMode = .ElementNewMode
+    var editMode: ElementPresentationMode = .elementNewMode
     
     @IBOutlet weak var headerLabel:         UILabel!
     @IBOutlet weak var nameTextField:       UITextField!
@@ -24,7 +24,7 @@ class AddNewArticleViewController: UIViewController
     @IBOutlet weak var parentButton:        UIButton!
     @IBOutlet weak var articleImageView:    UIImageView!
     
-    @IBAction func save(sender: UIButton) {
+    @IBAction func save(_ sender: UIButton) {
         
         if let group = group
         {
@@ -42,23 +42,23 @@ class AddNewArticleViewController: UIViewController
             print(error)
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func addGroup(sender: UIButton) {
+    @IBAction func addGroup(_ sender: UIButton) {
         
-        let popController = storyboard?.instantiateViewControllerWithIdentifier("PopUpController") as! PopUpViewController
+        let popController = storyboard?.instantiateViewController(withIdentifier: "PopUpController") as! PopUpViewController
         
-        popController.elementType = .ElementArticleGroupType
+        popController.elementType = .elementArticleGroupType
         
-        presentViewController(popController, animated: true, completion: nil)        
+        present(popController, animated: true, completion: nil)        
     }
     
-    @IBAction func cancel(sender: UIButton) {
+    @IBAction func cancel(_ sender: UIButton) {
         
         managedContext.rollback()
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -66,17 +66,17 @@ class AddNewArticleViewController: UIViewController
         
         switch editMode
         {
-        case .ElementNewMode:
+        case .elementNewMode:
             article = Article(named: nameTextField.text!)
             
-        case .ElementEditMode:
+        case .elementEditMode:
             
             headerLabel.text   = "Edit"
             nameTextField.text = article.name
             
             if let group = article.group
             {
-                parentButton.setTitle(group.name, forState: .Normal)
+                parentButton.setTitle(group.name, for: UIControlState())
             }
         }        
                 

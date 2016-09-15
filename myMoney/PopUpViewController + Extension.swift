@@ -41,7 +41,7 @@ extension PopUpViewController
     func showAccountView() {        
         let view = NewAccountView.loadFromNib()
         
-        view.mainAccSwitch.on = Account.isFirstAccount() // If there is no accounts we will make our first account main.
+        view.mainAccSwitch.isOn = Account.isFirstAccount() // If there is no accounts we will make our first account main.
         
         view.viewController = self
         
@@ -55,23 +55,22 @@ extension PopUpViewController
         
         if let navController = presentingViewController as? UINavigationController, let controller = navController.viewControllers.first as? CheckViewController
         {
-            let priceString =  articleView.articlePriceTextField.text!.stringByReplacingOccurrencesOfString(",", withString: ".", options: [], range: nil)
+            let priceString =  articleView.articlePriceTextField.text!.replacingOccurrences(of: ",", with: ".", options: [], range: nil)
             
-            if elementPresentationMode == .ElementNewMode
+            if elementPresentationMode == .elementNewMode
             {
                 let articleString = TableString(AddArticle: article!, intoTablePart: controller.check!.tablePart, withPrice: Float(priceString), amount: nil)
                 
-                articleString.number = controller.fetchedResultsController!.sections![0].numberOfObjects + 1
-               
+                 articleString.number = (controller.fetchedResultsController?.sections![0].objects?.count)! + 1 as NSNumber               
             }
             else
             {
                 guard let stringToEdit = tableString else { return }
                 
-                stringToEdit.price = Float(articleView.articlePriceTextField.text!)
+                stringToEdit.price = Float(articleView.articlePriceTextField.text!) as NSNumber?
             }          
             
-            dismissViewControllerAnimated(true, completion:nil)
+            dismiss(animated: true, completion:nil)
         }
     }
     
@@ -83,7 +82,7 @@ extension PopUpViewController
         
         let account = Account(withName: "\(accountView.accountNameTextField.text!)")
         
-        if accountView.mainAccSwitch.on {
+        if accountView.mainAccSwitch.isOn {
             
             account.makeMain()            
         }
@@ -94,7 +93,7 @@ extension PopUpViewController
             
             income.account = account
             
-            _ = RegisterLine(basedOn: income, measure: account, resource: balance, kind: .Adding, date: income.date)
+            _ = RegisterLine(basedOn: income, measure: account, resource: balance, kind: .adding, date: income.date)
         }
         
         if let currency = accountView.currencyLabel.text
@@ -114,7 +113,7 @@ extension PopUpViewController
             print("Unable to save new Account")
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     //Selecting Article Group
@@ -123,25 +122,25 @@ extension PopUpViewController
         if let group = articleGroupView.selectedGroup, let controller = presentingViewController as? AddNewArticleViewController
         {
             controller.article.group = group
-            controller.parentButton.setTitle("\(group.name)", forState: .Normal)
+            controller.parentButton.setTitle("\(group.name)", for: UIControlState())
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 
 // MARK: >> EXT - UIViewControllerTransitioningDelegate
 extension PopUpViewController: UIViewControllerTransitioningDelegate
 {
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return DimmingPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return DimmingPresentationController(presentedViewController: presented, presenting: presenting)
     }
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return BounceAnimationController()
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SlideOutAnimationController()
     }    
 }

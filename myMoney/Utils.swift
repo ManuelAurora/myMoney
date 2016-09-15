@@ -25,27 +25,27 @@ enum ReportCurrentPeriod: String
 
 enum DocumentPresentationMode
 {
-    case DocumentEditMode
-    case DocumentNewMode
+    case documentEditMode
+    case documentNewMode
 }
 
 enum ElementPresentationMode: Int
 {
-    case ElementEditMode
-    case ElementNewMode
+    case elementEditMode
+    case elementNewMode
 }
 
 enum DocumentType
 {  
-    case DocumentExpenditureType
+    case documentExpenditureType
 }
 
 enum PopUpElementType
 {
-    case ElementArticleType
-    case ElementAccountType
-    case ElementAccountListType
-    case ElementArticleGroupType
+    case elementArticleType
+    case elementAccountType
+    case elementAccountListType
+    case elementArticleGroupType
 }
 
 struct Constants  //TODO: RENAME THIS!
@@ -54,59 +54,59 @@ struct Constants  //TODO: RENAME THIS!
     static let incomeName      = "Income"
 }
 
-func prettyStringFrom(doubleValue: Double) -> String {
+func prettyStringFrom(_ doubleValue: Double) -> String {
     
     let resultString = String(format: "%.2f", doubleValue)
     
     return resultString    
 }
 
-func prettyStringFrom(dateValue: NSDate) -> String {
+func prettyStringFrom(_ dateValue: Date) -> String {
     
-    let formatter = NSDateFormatter()
+    let formatter = DateFormatter()
     
     formatter.dateFormat = "d MMMM hh:mm"
     
-    return formatter.stringFromDate(dateValue)
+    return formatter.string(from: dateValue)
 }
 
 //Calculates begin and end of chosen period
-func currentPeriodBorder(period: ReportCurrentPeriod) -> (periodStart: NSDate, periodEnd: NSDate) {
+func currentPeriodBorder(_ period: ReportCurrentPeriod) -> (periodStart: NSDate, periodEnd: NSDate) {
     
-    let calendar = NSCalendar.currentCalendar()
+    let calendar = NSCalendar.current
     
     var periodStart: NSDate? = nil
     var periodEnd:   NSDate? = nil
     
-    var interval: NSTimeInterval = 0
+    var interval: TimeInterval = 0
     
-    var unitPeriod: NSCalendarUnit?
+    var unitPeriod: NSCalendar.Unit?
     
     switch period
     {
     case .Day:
-        unitPeriod = NSCalendarUnit.Day
+        unitPeriod = NSCalendar.Unit.day
         
     case .Week:
-        unitPeriod = NSCalendarUnit.WeekOfMonth
+        unitPeriod = NSCalendar.Unit.weekOfMonth
         
     case .Month:
-        unitPeriod = NSCalendarUnit.Month
+        unitPeriod = NSCalendar.Unit.month
     }
     
-    calendar.rangeOfUnit(unitPeriod!, startDate: &periodStart, interval: &interval, forDate: NSDate())
+    (calendar as NSCalendar).range(of: unitPeriod!, start: &periodStart, interval: &interval, for: Date())
     
-    periodEnd = periodStart!.dateByAddingTimeInterval(interval - 1)
+    periodEnd = periodStart!.addingTimeInterval(interval - 1)
     
     return (periodStart!, periodEnd!)
 }
 
 //Instantiates fetch controller for controlling a collection view, or a table view with certain entity
-func instantiateFetchControllerWithRequest(entity name: String, predicate: NSPredicate?, forDelegate delegate: NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {
+func instantiateFetchControllerWithRequest(entity name: String, predicate: NSPredicate?, forDelegate delegate: NSFetchedResultsControllerDelegate) -> NSFetchedResultsController<NSFetchRequestResult> {
     
     let managedContext = DataManager.sharedInstance().context
     
-    let request = NSFetchRequest(entityName: name)
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: name)
     
     request.sortDescriptors = []
     

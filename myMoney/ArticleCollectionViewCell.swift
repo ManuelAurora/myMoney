@@ -21,7 +21,7 @@ class ArticleCollectionViewCell: UICollectionViewCell
         
     }
     
-    @IBAction func remove(sender: UIButton) {
+    @IBAction func remove(_ sender: UIButton) {
         
         self.removeFromSuperview()        
     }

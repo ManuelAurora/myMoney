@@ -18,19 +18,19 @@ class NewAccountView: UIView
     @IBOutlet weak var saveButton:           UIButton!
     @IBOutlet weak var mainAccSwitch:        UISwitch!
     
-    @IBAction func close(sender: UIButton) {
+    @IBAction func close(_ sender: UIButton) {
      
-        viewController.dismissViewControllerAnimated(true, completion: nil)        
+        viewController.dismiss(animated: true, completion: nil)        
     }
     
-    @IBAction func save(sender: UIButton) {
+    @IBAction func save(_ sender: UIButton) {
         
         viewController.addNewAccount(from: self)
     }
     
     class func loadFromNib() -> NewAccountView {
         
-        let view = NSBundle.mainBundle().loadNibNamed("NewAccountView", owner: self, options: nil).first! as! NewAccountView
+        let view = Bundle.main.loadNibNamed("NewAccountView", owner: self, options: nil)?.first! as! NewAccountView
         
         return view
     }

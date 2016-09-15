@@ -19,9 +19,9 @@ class SelectArticleGroupView: UIView
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func close(sender: UIButton) {
+    @IBAction func close(_ sender: UIButton) {
         
-        viewController.dismissViewControllerAnimated(true, completion: nil)
+        viewController.dismiss(animated: true, completion: nil)
     }
     
     override func didMoveToSuperview() {
@@ -35,12 +35,12 @@ class SelectArticleGroupView: UIView
         
         let nib = UINib(nibName: "GroupTableViewCell", bundle: nil)
         
-        tableView.registerNib(nib, forCellReuseIdentifier: "GroupCell")
+        tableView.register(nib, forCellReuseIdentifier: "GroupCell")
     }
     
     class func loadFromNib() -> SelectArticleGroupView {
         
-        let view = NSBundle.mainBundle().loadNibNamed("SelectGroupView", owner: self, options: nil).first! as! SelectArticleGroupView
+        let view = Bundle.main.loadNibNamed("SelectGroupView", owner: self, options: nil)?.first! as! SelectArticleGroupView
         
         return view
     }
@@ -48,10 +48,10 @@ class SelectArticleGroupView: UIView
 
 extension SelectArticleGroupView: UITableViewDelegate
 {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        selectedGroup = allGroups[indexPath.row] as? ArticleGroup
+        selectedGroup = allGroups[(indexPath as NSIndexPath).row] as? ArticleGroup
         
         viewController.selectArticleGroup(from: self)
     }
@@ -61,19 +61,19 @@ extension SelectArticleGroupView: UITableViewDelegate
 
 extension SelectArticleGroupView: UITableViewDataSource
 {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allGroups.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("GroupCell") as! GroupTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as! GroupTableViewCell
         
-        let group = allGroups[indexPath.row] as! ArticleGroup
+        let group = allGroups[(indexPath as NSIndexPath).row] as! ArticleGroup
         
         if let imageData = group.image
         {
-            cell.groupImageView.image = UIImage(data: imageData)
+            cell.groupImageView.image = UIImage(data: imageData as Data)
         }
         
         cell.nameLabel.text = group.name

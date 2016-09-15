@@ -14,7 +14,7 @@ import CoreData
 
 extension Registrator {
 
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var amount: NSNumber?
     @NSManaged var name: String
     @NSManaged var account: Account

@@ -15,7 +15,7 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
     
     let articleCatalog = AllCatalogs.sharedInstance().catalogArticle
         
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setToolbarHidden(false, animated: true)
@@ -34,23 +34,23 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return fetchedResultsController!.sections!.count
+        return fetchedResultsController!.sections?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let sectionInfo = fetchedResultsController!.sections![section]
+        let sectionInfo = fetchedResultsController?.sections?[section]
         
-        return sectionInfo.numberOfObjects
+        return sectionInfo?.numberOfObjects ?? 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("CheckCell", forIndexPath: indexPath) as! CheckTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CheckCell", for: indexPath) as! CheckTableViewCell
      
-        if let document = fetchedResultsController?.objectAtIndexPath(indexPath) as? Registrator
+        if let document = fetchedResultsController?.object(at: indexPath) as? Registrator
         {
             cell.date.text = prettyStringFrom(document.date)
             cell.sum.text  = prettyStringFrom(document.sumOfDocument())
@@ -61,33 +61,33 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        let document = fetchedResultsController?.objectAtIndexPath(indexPath) as! Registrator
+        let document = fetchedResultsController?.object(at: indexPath) as! Registrator
         
         switch document.name
         {
         case Constants.expenditureName:
             
-            let controller = storyboard?.instantiateViewControllerWithIdentifier("Check") as! CheckViewController
+            let controller = storyboard?.instantiateViewController(withIdentifier: "Check") as! CheckViewController
             
             controller.managedContext  = managedContext            
-            controller.presentationMode  = .DocumentEditMode
+            controller.presentationMode  = .documentEditMode
             controller.check             = document
             
-            presentViewController(controller, animated: true, completion: nil)
+            present(controller, animated: true, completion: nil)
             
         case Constants.incomeName:
             
-            let controller = storyboard?.instantiateViewControllerWithIdentifier("Income") as! IncomeViewController
+            let controller = storyboard?.instantiateViewController(withIdentifier: "Income") as! IncomeViewController
             
             controller.managedContext   = managedContext
-            controller.presentationMode = .DocumentEditMode
+            controller.presentationMode = .documentEditMode
             controller.income           = document
             
-            presentViewController(controller, animated: true, completion: nil)
+            present(controller, animated: true, completion: nil)
             
         default:
             
@@ -99,15 +99,24 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         
-        let fetchRequest = NSFetchRequest(entityName: "Registrator")
+        var fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        
+        if #available(iOS 10.0, *)
+        {
+            fetchRequest = Registrator.fetchRequest()
+        }
+        else
+        {
+            fetchRequest = NSFetchRequest(entityName: "Registrator")
+        }
         
         fetchRequest.sortDescriptors = [sortDescriptor]
-     
+        
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         
         do
         {
-            try fetchedResultsController!.performFetch()
+            try fetchedResultsController?.performFetch()
         }
         catch let error as NSError {
             
@@ -115,15 +124,15 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         }
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        guard editingStyle == .Delete else { return }
+        guard editingStyle == .delete else { return }
         
-        let document = fetchedResultsController?.objectAtIndexPath(indexPath) as! Registrator
+        let document = fetchedResultsController?.object(at: indexPath) as! Registrator
         
         document.deleteOldRegisterLine()
         
-        managedContext.deleteObject(document)
+        managedContext.delete(document)
         
         try! managedContext.save()
     }
