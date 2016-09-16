@@ -41,21 +41,21 @@
                         <action selector="close:" destination="Kob-Uf-zK6" eventType="touchUpInside" id="Ewv-yh-Vpj"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="B5O-bD-Lsd">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="B5O-bD-Lsd">
                     <constraints>
-                        <constraint firstAttribute="width" constant="180" id="5XI-Z1-AP5"/>
+                        <constraint firstAttribute="width" constant="80" id="5XI-Z1-AP5"/>
                         <constraint firstAttribute="height" constant="80" id="Ixr-RR-nBH"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="B5O-bD-Lsd" firstAttribute="top" secondItem="HwX-Kk-XVd" secondAttribute="bottom" constant="6" id="174-Em-3b0"/>
+                <constraint firstItem="B5O-bD-Lsd" firstAttribute="top" secondItem="HwX-Kk-XVd" secondAttribute="bottom" constant="8" id="174-Em-3b0"/>
                 <constraint firstItem="vSp-wY-yxa" firstAttribute="centerX" secondItem="Kob-Uf-zK6" secondAttribute="centerX" id="JB4-Kh-i9g"/>
                 <constraint firstAttribute="trailing" secondItem="HwX-Kk-XVd" secondAttribute="trailing" constant="8" id="Lv3-En-h2A"/>
                 <constraint firstItem="HwX-Kk-XVd" firstAttribute="leading" secondItem="Kob-Uf-zK6" secondAttribute="leading" constant="8" id="Qob-QD-mlg"/>
                 <constraint firstAttribute="trailing" secondItem="oLw-H1-vQl" secondAttribute="trailing" constant="8" id="VyS-9v-wik"/>
-                <constraint firstItem="bny-1v-6cd" firstAttribute="top" secondItem="B5O-bD-Lsd" secondAttribute="bottom" constant="8" id="kIE-oT-Lod"/>
+                <constraint firstItem="bny-1v-6cd" firstAttribute="top" secondItem="B5O-bD-Lsd" secondAttribute="bottom" constant="6" id="kIE-oT-Lod"/>
                 <constraint firstItem="HwX-Kk-XVd" firstAttribute="centerX" secondItem="Kob-Uf-zK6" secondAttribute="centerX" id="m7C-0B-oL7"/>
                 <constraint firstAttribute="bottom" secondItem="vSp-wY-yxa" secondAttribute="bottom" constant="6" id="p13-Pb-x4t"/>
                 <constraint firstItem="oLw-H1-vQl" firstAttribute="top" secondItem="Kob-Uf-zK6" secondAttribute="top" constant="8" id="qAI-Lj-xsR"/>
@@ -69,6 +69,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="addEditButton" destination="vSp-wY-yxa" id="ury-QA-1KX"/>
+                <outlet property="articleImageView" destination="B5O-bD-Lsd" id="XGX-N3-CAt"/>
                 <outlet property="articleNameLabel" destination="HwX-Kk-XVd" id="9Yl-7L-bcU"/>
                 <outlet property="articlePriceTextField" destination="bny-1v-6cd" id="sOH-Dq-aAo"/>
             </connections>

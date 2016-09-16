@@ -59,7 +59,11 @@ class PopUpViewController: UIViewController
                 
             case .elementArticleGroupType:
                 showArticleGroupView()
+                
+            case .elementPictureListType:
+                showPictureList()
             }
+            
         }
     }
 }

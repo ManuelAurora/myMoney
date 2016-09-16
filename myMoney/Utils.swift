@@ -46,6 +46,7 @@ enum PopUpElementType
     case elementAccountType
     case elementAccountListType
     case elementArticleGroupType
+    case elementPictureListType
 }
 
 struct Constants  //TODO: RENAME THIS!

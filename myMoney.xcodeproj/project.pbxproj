@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6415F0DA1D8C1A9200EFE0F8 /* PictureSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6415F0D91D8C1A9200EFE0F8 /* PictureSelectionView.xib */; };
+		6415F0DC1D8C1AF100EFE0F8 /* PictureSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6415F0DB1D8C1AF100EFE0F8 /* PictureSelectionView.swift */; };
+		6415F0DE1D8C1CFE00EFE0F8 /* Pictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6415F0DD1D8C1CFE00EFE0F8 /* Pictures.swift */; };
+		6415F0E01D8C25AD00EFE0F8 /* PictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6415F0DF1D8C25AD00EFE0F8 /* PictureCollectionViewCell.xib */; };
+		6415F0E21D8C25DD00EFE0F8 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6415F0E11D8C25DD00EFE0F8 /* PictureCollectionViewCell.swift */; };
 		643677871D003BFD00EC233F /* AllRegisters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643677861D003BFD00EC233F /* AllRegisters.swift */; };
 		6436778B1D0066FF00EC233F /* MainObjectThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6436778A1D0066FF00EC233F /* MainObjectThree.swift */; };
 		643810441D5A196100EBEF06 /* ChooseAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643810431D5A196100EBEF06 /* ChooseAccountView.xib */; };
@@ -92,6 +97,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6415F0D91D8C1A9200EFE0F8 /* PictureSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PictureSelectionView.xib; sourceTree = "<group>"; };
+		6415F0DB1D8C1AF100EFE0F8 /* PictureSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureSelectionView.swift; sourceTree = "<group>"; };
+		6415F0DD1D8C1CFE00EFE0F8 /* Pictures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pictures.swift; sourceTree = "<group>"; };
+		6415F0DF1D8C25AD00EFE0F8 /* PictureCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PictureCollectionViewCell.xib; sourceTree = "<group>"; };
+		6415F0E11D8C25DD00EFE0F8 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		643677861D003BFD00EC233F /* AllRegisters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRegisters.swift; sourceTree = "<group>"; };
 		6436778A1D0066FF00EC233F /* MainObjectThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainObjectThree.swift; sourceTree = "<group>"; };
 		643810431D5A196100EBEF06 /* ChooseAccountView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseAccountView.xib; sourceTree = "<group>"; };
@@ -237,6 +247,7 @@
 			children = (
 				644F2BB01D7482EA0049835C /* ArticleCollectionViewCell.xib */,
 				643B197A1D51035A0081F08D /* AccountTableViewCell.xib */,
+				6415F0DF1D8C25AD00EFE0F8 /* PictureCollectionViewCell.xib */,
 				643ED6861D79F64E00810F10 /* GroupTableViewCell.xib */,
 			);
 			name = Cells;
@@ -321,6 +332,9 @@
 				643F67751D5B536900714496 /* AddEditArticleView.swift */,
 				644F2BB91D7499440049835C /* SelectArticleGroupView.swift */,
 				643DAD011D7C70D8009397D3 /* GroupFilterView.swift */,
+				6415F0DB1D8C1AF100EFE0F8 /* PictureSelectionView.swift */,
+				6415F0DD1D8C1CFE00EFE0F8 /* Pictures.swift */,
+				6415F0E11D8C25DD00EFE0F8 /* PictureCollectionViewCell.swift */,
 				64DD053E1D52398600509A01 /* XIBs */,
 				6492B1781CFF304400133059 /* Storyboards */,
 				6492B1771CFF303600133059 /* Cells */,
@@ -397,6 +411,7 @@
 				643810451D5A19B700EBEF06 /* AddEditArticleView.xib */,
 				644F2BB61D7497B30049835C /* SelectGroupView.xib */,
 				643DACFF1D7C705D009397D3 /* GroupFilterView.xib */,
+				6415F0D91D8C1A9200EFE0F8 /* PictureSelectionView.xib */,
 				644F2BB81D7497D50049835C /* Cells */,
 			);
 			name = XIBs;
@@ -544,6 +559,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6415F0DA1D8C1A9200EFE0F8 /* PictureSelectionView.xib in Resources */,
 				643810461D5A19B700EBEF06 /* AddEditArticleView.xib in Resources */,
 				644F2BB71D7497B30049835C /* SelectGroupView.xib in Resources */,
 				643DAD001D7C705D009397D3 /* GroupFilterView.xib in Resources */,
@@ -554,6 +570,7 @@
 				644F2BB51D7496E80049835C /* ChooseArticleGroupView.xib in Resources */,
 				643B197B1D51035A0081F08D /* AccountTableViewCell.xib in Resources */,
 				643ED6871D79F64E00810F10 /* GroupTableViewCell.xib in Resources */,
+				6415F0E01D8C25AD00EFE0F8 /* PictureCollectionViewCell.xib in Resources */,
 				6492B1321CFED46300133059 /* Assets.xcassets in Resources */,
 				6492B12D1CFED46300133059 /* Main.storyboard in Resources */,
 			);
@@ -589,17 +606,20 @@
 				6492B12A1CFED46300133059 /* CheckViewController.swift in Sources */,
 				64F81D501D5BA40000B8D61C /* RegisterLine.swift in Sources */,
 				6438104E1D5A3D7D00EBEF06 /* Account+CoreDataProperties.swift in Sources */,
+				6415F0E21D8C25DD00EFE0F8 /* PictureCollectionViewCell.swift in Sources */,
 				643DAD021D7C70D8009397D3 /* GroupFilterView.swift in Sources */,
 				644F2BC61D74A7B00049835C /* ArticleManageViewController.swift in Sources */,
 				64DD05421D52456E00509A01 /* NewAccountView.swift in Sources */,
 				643810481D5A1A1800EBEF06 /* ChooseAccountView.swift in Sources */,
 				643B19791D50F89F0081F08D /* MainScreenViewController.swift in Sources */,
+				6415F0DC1D8C1AF100EFE0F8 /* PictureSelectionView.swift in Sources */,
 				644F2BC41D749E020049835C /* ArticleGroup+CoreDataProperties.swift in Sources */,
 				643E07BE1D1ABE9900E91C4F /* Article+CoreDataProperties.swift in Sources */,
 				643FF7E11D04A6E70035F4DE /* SlideOutAnimationController.swift in Sources */,
 				6492B16D1CFF0CE300133059 /* Catalog.swift in Sources */,
 				643E07BD1D1ABE9900E91C4F /* TablePart.swift in Sources */,
 				644F2BB31D7483AD0049835C /* ArticleCollectionViewCell.swift in Sources */,
+				6415F0DE1D8C1CFE00EFE0F8 /* Pictures.swift in Sources */,
 				64BB58DA1D1D6AD400C14E22 /* IncomeViewController.swift in Sources */,
 				643E07CB1D1AD39F00E91C4F /* TableString.swift in Sources */,
 				644A7D341D5E28C40017A144 /* Registrator+CoreDataProperties.swift in Sources */,

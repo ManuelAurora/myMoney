@@ -283,6 +283,11 @@ extension ArticleManageViewController: UICollectionViewDataSource
             
             name = article.name
             
+            if let imageData = article.image
+            {
+                cell.articleImageView.image = UIImage(data: imageData)
+            }
+            
             cell.removeButton.isHidden   = articleCollectionInEditMode ? false : true
             
         case groupsCollectionView:

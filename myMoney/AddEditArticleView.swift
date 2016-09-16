@@ -16,6 +16,7 @@ class AddEditArticleView: UIView
     @IBOutlet weak var articleNameLabel:      UILabel!
     @IBOutlet weak var articlePriceTextField: UITextField!
     @IBOutlet weak var addEditButton:         UIButton!
+    @IBOutlet weak var articleImageView:      UIImageView!
 
     @IBAction func addEdit(_ sender: UIButton) {
         

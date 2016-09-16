@@ -12,12 +12,28 @@ import UIKit
 extension PopUpViewController
 {    
     //MARK: Presenting Views
+    //TODO: REFACTOR IMPLEMENTATION, NEED TO DELETE REPETITION
     func showArticleView() {
         
         let view = AddEditArticleView.loadFromNib()
         
         view.viewController = self
         view.article        = article
+        
+        if let imageData = article?.image
+        {
+            view.articleImageView.image = UIImage(data: imageData)
+        }
+        
+        self.view.addSubview(view)
+    }
+    
+    func showPictureList() {
+        
+        let view = PictureSelectionView.loadFromNib()
+        
+        view.viewController = self
+        view.pictures       = Pictures()
         
         self.view.addSubview(view)
     }
@@ -123,6 +139,16 @@ extension PopUpViewController
         {
             controller.article.group = group
             controller.parentButton.setTitle("\(group.name)", for: UIControlState())
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func recieveSelectedImage(_ image: UIImage) {
+        
+        if let presentingController = presentingViewController as? AddNewArticleViewController
+        {
+            presentingController.articleImageView.image = image
         }
         
         dismiss(animated: true, completion: nil)

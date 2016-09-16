@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xg5-4g-ctQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="1226"/>
+            <point key="canvasLocation" x="1125" y="1304"/>
         </scene>
         <!--Documents-->
         <scene sceneID="bpp-DG-yNI">
@@ -208,7 +208,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5m-oi-WQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="1343"/>
+            <point key="canvasLocation" x="1704" y="1304"/>
         </scene>
         <!--Income View Controller-->
         <scene sceneID="9gS-87-zyh">
@@ -330,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YhS-cu-svr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236" y="-260"/>
+            <point key="canvasLocation" x="2822.5" y="-260.5"/>
         </scene>
         <!--Your Accounts-->
         <scene sceneID="uXR-oP-cil">
@@ -384,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Si-yZ-GYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2296" y="1304"/>
+            <point key="canvasLocation" x="2342" y="1304"/>
         </scene>
         <!--Catalog Of Articles-->
         <scene sceneID="sQm-7z-NZK">
@@ -531,11 +531,17 @@
                                     <action selector="save:" destination="rZi-s5-piq" eventType="touchUpInside" id="zro-Gi-YQb"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GiK-pK-AXf">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="GiK-pK-AXf">
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="Z1f-rQ-AwU"/>
-                                    <constraint firstAttribute="width" constant="120" id="t6D-18-D10"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="8SC-w4-9ec"/>
+                                    <constraint firstAttribute="height" constant="90" id="Z1f-rQ-AwU"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="cu3-pK-cj0"/>
+                                    <constraint firstAttribute="width" constant="90" id="t6D-18-D10"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="2aP-p0-fU9" appends="YES" id="gPK-my-gig"/>
+                                </connections>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="etV-Gr-EbZ">
                                 <subviews>
@@ -575,12 +581,12 @@
                                     <constraint firstAttribute="trailing" secondItem="Kne-Tg-rpC" secondAttribute="trailing" id="h84-xJ-Plv"/>
                                 </constraints>
                             </stackView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HvN-rS-gHM">
+                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HvN-rS-gHM">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="CVc-Vj-EF7"/>
                                 </constraints>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="749" text="Enable Amount &amp; Price:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5r-sJ-EzK">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="749" text="Enable Amount &amp; Price:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5r-sJ-EzK">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -588,11 +594,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="GiK-pK-AXf" firstAttribute="centerX" secondItem="BkI-Ii-Vcf" secondAttribute="centerX" id="3SX-lz-0hT"/>
+                            <constraint firstItem="GiK-pK-AXf" firstAttribute="centerX" secondItem="BkI-Ii-Vcf" secondAttribute="centerX" constant="-1.5" id="3SX-lz-0hT"/>
                             <constraint firstItem="ZyT-l5-D6K" firstAttribute="top" secondItem="hDT-od-mlW" secondAttribute="bottom" constant="8" id="52l-a2-LWt"/>
                             <constraint firstAttribute="trailing" secondItem="etV-Gr-EbZ" secondAttribute="trailing" constant="12" id="ESI-fb-APn"/>
                             <constraint firstItem="X5r-sJ-EzK" firstAttribute="top" secondItem="etV-Gr-EbZ" secondAttribute="bottom" constant="13" id="RgA-D4-Cfy"/>
-                            <constraint firstItem="etV-Gr-EbZ" firstAttribute="top" secondItem="GiK-pK-AXf" secondAttribute="bottom" constant="10" id="SeK-Ch-qkw"/>
+                            <constraint firstItem="etV-Gr-EbZ" firstAttribute="top" secondItem="GiK-pK-AXf" secondAttribute="bottom" constant="40" id="SeK-Ch-qkw"/>
                             <constraint firstItem="etV-Gr-EbZ" firstAttribute="leading" secondItem="BkI-Ii-Vcf" secondAttribute="leading" constant="12" id="a26-Yi-rMG"/>
                             <constraint firstItem="ZyT-l5-D6K" firstAttribute="leading" secondItem="BkI-Ii-Vcf" secondAttribute="leadingMargin" id="bVr-AW-ofs"/>
                             <constraint firstItem="CSh-3o-zqB" firstAttribute="top" secondItem="hDT-od-mlW" secondAttribute="bottom" constant="8" id="bz2-vT-ITb"/>
@@ -605,6 +611,7 @@
                             <constraint firstItem="HvN-rS-gHM" firstAttribute="leading" secondItem="X5r-sJ-EzK" secondAttribute="trailing" constant="21" id="zq2-bM-W5U"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="2gM-vC-8eU"/>
                     <connections>
                         <outlet property="articleImageView" destination="GiK-pK-AXf" id="CHR-aR-TRK"/>
                         <outlet property="headerLabel" destination="tVE-Xb-qzu" id="mqs-FP-NVt"/>
@@ -614,8 +621,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzD-Vv-WKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="2aP-p0-fU9">
+                    <connections>
+                        <action selector="userTappedOnPicture:" destination="rZi-s5-piq" id="VgL-lC-GRg"/>
+                        <outlet property="delegate" destination="BkI-Ii-Vcf" id="CwG-Zk-rHh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="442" y="-260"/>
+            <point key="canvasLocation" x="1676.5" y="-261.5"/>
         </scene>
         <!--Pop Up View Controller-->
         <scene sceneID="ZcS-0m-Lem">
@@ -633,7 +646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQx-Bd-U7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860" y="-260"/>
+            <point key="canvasLocation" x="950" y="462"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JdD-st-c0B">
@@ -749,7 +762,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04A-Jx-yZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2684" y="-260"/>
+            <point key="canvasLocation" x="3270.5" y="-260.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="dA2-St-NCz">
@@ -920,6 +933,7 @@
     </scenes>
     <resources>
         <image name="CloseButton" width="15" height="15"/>
+        <image name="Placeholder" width="60" height="60"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

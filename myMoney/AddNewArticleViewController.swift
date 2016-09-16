@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddNewArticleViewController: UIViewController
+class AddNewArticleViewController: UIViewController, UIGestureRecognizerDelegate
 {
 
     var managedContext: NSManagedObjectContext!
@@ -24,6 +24,16 @@ class AddNewArticleViewController: UIViewController
     @IBOutlet weak var parentButton:        UIButton!
     @IBOutlet weak var articleImageView:    UIImageView!
     
+    @IBAction func userTappedOnPicture(_ sender: UITapGestureRecognizer) {        
+        
+        let popController = storyboard?.instantiateViewController(withIdentifier: "PopUpController") as! PopUpViewController
+        
+        popController.elementType = .elementPictureListType
+        
+        present(popController, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func save(_ sender: UIButton) {
         
         if let group = group
@@ -31,7 +41,8 @@ class AddNewArticleViewController: UIViewController
             article.group = group
         }
         
-        article.name = nameTextField.text!
+        article.name  = nameTextField.text!
+        article.image = UIImagePNGRepresentation(articleImageView.image!)
         
         do
         {
@@ -77,6 +88,11 @@ class AddNewArticleViewController: UIViewController
             if let group = article.group
             {
                 parentButton.setTitle(group.name, for: UIControlState())
+            }
+            
+            if let imageData = article.image
+            {
+                articleImageView.image = UIImage(data: imageData)
             }
         }        
                 

@@ -181,12 +181,12 @@ extension CheckViewController
         
         productView.backgroundColor = UIColor.brown
         
-        layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 4, bottom: 4, right: 4)
         
         layout.minimumInteritemSpacing = 4
         layout.minimumLineSpacing      = 14
         
-        let size = floor(productView.superview!.bounds.width / 4)
+        let size = floor(productView.superview!.bounds.width / 6)
         
         layout.itemSize = CGSize(width: size, height: size)
         
@@ -213,6 +213,11 @@ extension CheckViewController: UICollectionViewDataSource
         let article = articleCatalog[(indexPath as NSIndexPath).row]
         
         cell.articleNameLabel.text = article.name
+        
+        if let imageData = article.image
+        {
+            cell.articleImageView.image = UIImage(data: imageData)
+        }
         
         return cell
     }
