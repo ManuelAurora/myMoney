@@ -11,20 +11,29 @@ import CoreData
 
 class DocumentJournalCheckTableViewController: CoreDataTableViewController
 {    
+    @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
+    
     var managedContext: NSManagedObjectContext!
     
     let articleCatalog = AllCatalogs.sharedInstance().catalogArticle
         
+    @IBAction func recalculateData(_ sender: UISegmentedControl) {
+        fetchData()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setToolbarHidden(false, animated: true)
+        
+        tableView.reloadData()        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchData()        
+        fetchData()
+        loadPeriod()
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,13 +80,14 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         {
         case Constants.expenditureName:
             
-            let controller = storyboard?.instantiateViewController(withIdentifier: "Check") as! CheckViewController
+            let controller    = storyboard?.instantiateViewController(withIdentifier: "Check") as! CheckViewController
+            let navController = UINavigationController(rootViewController: controller)
             
-            controller.managedContext  = managedContext            
-            controller.presentationMode  = .documentEditMode
-            controller.check             = document
+            controller.managedContext   = managedContext
+            controller.presentationMode = .documentEditMode
+            controller.check            = document
             
-            present(controller, animated: true, completion: nil)
+            present(navController, animated: true, completion: nil)
             
         case Constants.incomeName:
             
@@ -95,11 +105,54 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         }
     }
     
-    func fetchData() {        
+    func loadPeriod() {
+        
+        let defaults = UserDefaults.standard
+        
+        let index = defaults.integer(forKey: "Period")
+        
+        periodSegmentedControl.selectedSegmentIndex = index
+    }
+    
+    func formArrayOfPredicatesFor(_ currentPeriod: (periodStart: NSDate, periodEnd: NSDate)) -> [NSPredicate] {
+        
+        let predicate  = NSPredicate(format: "date>=%@", currentPeriod.periodStart) // 1) if date of the documents is more than current day's begin time
+        let predicate2 = NSPredicate(format: "date<=%@", currentPeriod.periodEnd)   // 2) and if date of the documents is less than current day's end time
+        
+        return [predicate, predicate2]
+    }
+    
+    func fetchData() {
+        
+        var predicates = [NSPredicate]()
+        
+        switch periodSegmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            let thisDay = currentPeriodBorder(.Day)
+            
+            predicates.append(contentsOf:formArrayOfPredicatesFor(thisDay))
+            
+        case 1:
+            let thisWeek = currentPeriodBorder(.Week)
+            
+            predicates.append(contentsOf: formArrayOfPredicatesFor(thisWeek))
+            
+        case 2:
+            
+            let thisMonth = currentPeriodBorder(.Month)
+            
+            predicates.append(contentsOf: formArrayOfPredicatesFor(thisMonth))
+            
+        default:
+            break
+        }
         
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         
         var fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         if #available(iOS 10.0, *)
         {
@@ -111,6 +164,8 @@ class DocumentJournalCheckTableViewController: CoreDataTableViewController
         }
         
         fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchRequest.predicate = compoundPredicate
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         

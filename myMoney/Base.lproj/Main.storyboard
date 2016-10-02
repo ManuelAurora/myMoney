@@ -158,10 +158,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CheckCell" id="9FV-x5-7RJ" customClass="CheckTableViewCell" customModule="myMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9FV-x5-7RJ" id="VNF-7f-5sf">
-                                    <frame key="frameInset" width="342" height="43"/>
+                                    <frame key="frameInset" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="eQe-A9-XXY">
@@ -203,12 +203,28 @@
                             <outlet property="delegate" destination="7iS-oy-fJW" id="Flr-WL-rKT"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Expenses &amp; Incomes" image="CloseButton" id="mF0-0z-2nh"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="CAV-K9-7Io">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="RX1-vC-m4y">
+                            <rect key="frame" x="107" y="7" width="161" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Day"/>
+                                <segment title="Week"/>
+                                <segment title="Month"/>
+                            </segments>
+                            <connections>
+                                <action selector="recalculateData:" destination="7iS-oy-fJW" eventType="valueChanged" id="0QL-cw-hZM"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="periodSegmentedControl" destination="RX1-vC-m4y" id="yE5-aa-Brr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5m-oi-WQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704" y="1304"/>
+            <point key="canvasLocation" x="2290.5" y="1303.5"/>
         </scene>
         <!--Income View Controller-->
         <scene sceneID="9gS-87-zyh">
@@ -384,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Si-yZ-GYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2342" y="1304"/>
+            <point key="canvasLocation" x="2928.5" y="1303.5"/>
         </scene>
         <!--Catalog Of Articles-->
         <scene sceneID="sQm-7z-NZK">
@@ -491,7 +507,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xb7-ez-hm9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2925" y="1304"/>
+            <point key="canvasLocation" x="3511.5" y="1303.5"/>
         </scene>
         <!--Add New Article View Controller-->
         <scene sceneID="oH4-Yc-LuR">
@@ -661,7 +677,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="W9i-Od-kpG" kind="relationship" relationship="viewControllers" id="kyu-S9-qCX"/>
-                        <segue destination="7iS-oy-fJW" kind="relationship" relationship="viewControllers" id="c9W-jw-DuC"/>
+                        <segue destination="kdL-ZJ-Gwa" kind="relationship" relationship="viewControllers" id="c9W-jw-DuC"/>
                         <segue destination="Tys-nC-Wxz" kind="relationship" relationship="viewControllers" id="Wmt-MG-ST3"/>
                         <segue destination="7WZ-GC-pU8" kind="relationship" relationship="viewControllers" id="2e8-eu-K6b"/>
                     </connections>
@@ -858,7 +874,7 @@
                                 <rect key="frame" x="0.0" y="527" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z0Q-0L-Yhr" id="ABf-lY-Dmr">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsk-SE-Oiq" userLabel="Product">
@@ -929,6 +945,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRE-Gg-7ut" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1729" y="2094"/>
+        </scene>
+        <!--Expenses & Incomes-->
+        <scene sceneID="Abm-Wb-ovu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kdL-ZJ-Gwa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Expenses &amp; Incomes" image="CloseButton" id="mF0-0z-2nh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NHK-hM-pdz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7iS-oy-fJW" kind="relationship" relationship="rootViewController" id="sSX-g8-RKY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6b6-fD-z5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1703.5" y="1303.5"/>
         </scene>
     </scenes>
     <resources>
