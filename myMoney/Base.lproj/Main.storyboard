@@ -29,7 +29,7 @@
                                     <outlet property="delegate" destination="W9i-Od-kpG" id="k7f-NB-6uv"/>
                                 </connections>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-Go-LPw">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-Go-LPw">
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="I81-et-9ky">
                                         <subviews>
@@ -115,6 +115,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrT-Gc-3iK">
                                 <state key="normal" title="Manage Counts"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QnC-af-RIR" customClass="PieChartView" customModule="Charts">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -122,17 +125,22 @@
                             <constraint firstItem="yZe-Go-LPw" firstAttribute="leading" secondItem="Beo-Ce-z8h" secondAttribute="leadingMargin" constant="8" id="1ey-5a-GWC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yZe-Go-LPw" secondAttribute="trailing" constant="8" id="4fA-qE-kdK"/>
                             <constraint firstItem="DrT-Gc-3iK" firstAttribute="top" secondItem="D48-Dq-Z10" secondAttribute="bottom" constant="8" id="4rJ-Yw-phE"/>
+                            <constraint firstItem="Tcz-jN-Mn7" firstAttribute="top" secondItem="QnC-af-RIR" secondAttribute="bottom" constant="8" id="BO2-vu-sC5"/>
                             <constraint firstAttribute="trailing" secondItem="Tcz-jN-Mn7" secondAttribute="trailing" constant="8" id="P7P-jv-C8C"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QnC-af-RIR" secondAttribute="trailing" constant="8" id="VZX-Dp-80P"/>
                             <constraint firstAttribute="trailing" secondItem="DrT-Gc-3iK" secondAttribute="trailing" constant="16" id="WZE-vC-LV4"/>
                             <constraint firstItem="D48-Dq-Z10" firstAttribute="trailing" secondItem="Beo-Ce-z8h" secondAttribute="trailingMargin" id="b8W-Vh-9fV"/>
+                            <constraint firstItem="QnC-af-RIR" firstAttribute="top" secondItem="yZe-Go-LPw" secondAttribute="bottom" constant="8" id="f6s-QA-V6L"/>
                             <constraint firstItem="GNR-aT-04C" firstAttribute="top" secondItem="Tcz-jN-Mn7" secondAttribute="bottom" constant="8" id="oY8-xt-M9v"/>
                             <constraint firstItem="yZe-Go-LPw" firstAttribute="top" secondItem="DrT-Gc-3iK" secondAttribute="bottom" constant="8" id="rJk-ga-bRF"/>
                             <constraint firstItem="D48-Dq-Z10" firstAttribute="leading" secondItem="Beo-Ce-z8h" secondAttribute="leadingMargin" id="ryf-QG-APg"/>
+                            <constraint firstItem="QnC-af-RIR" firstAttribute="leading" secondItem="Beo-Ce-z8h" secondAttribute="leadingMargin" constant="8" id="vmh-Yy-Bm9"/>
                             <constraint firstItem="D48-Dq-Z10" firstAttribute="top" secondItem="L0I-Y8-fQ8" secondAttribute="bottom" id="xgR-rF-mCN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="topRated" id="zfE-rp-nyR"/>
                     <connections>
+                        <outlet property="chartView" destination="QnC-af-RIR" id="7qG-aj-7mn"/>
                         <outlet property="expensesCountLabel" destination="SIn-sk-MaW" id="Rw8-JD-cjH"/>
                         <outlet property="expensesTextLabel" destination="zZU-IP-5bD" id="BeN-zy-Mix"/>
                         <outlet property="incomeCountLabel" destination="216-sg-p2V" id="6vv-5O-KDN"/>
@@ -146,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xg5-4g-ctQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125" y="1304"/>
+            <point key="canvasLocation" x="1124.5" y="1303.5"/>
         </scene>
         <!--Documents-->
         <scene sceneID="bpp-DG-yNI">
@@ -161,7 +169,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9FV-x5-7RJ" id="VNF-7f-5sf">
-                                    <frame key="frameInset" width="342" height="44"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="eQe-A9-XXY">
@@ -874,7 +882,7 @@
                                 <rect key="frame" x="0.0" y="527" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z0Q-0L-Yhr" id="ABf-lY-Dmr">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsk-SE-Oiq" userLabel="Product">

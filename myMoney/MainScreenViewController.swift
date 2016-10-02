@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Charts
 
 class MainScreenViewController: UIViewController
 {
@@ -28,6 +29,7 @@ class MainScreenViewController: UIViewController
     @IBOutlet weak var expensesCountLabel:     UILabel!
     @IBOutlet weak var tableView:              UITableView!
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var chartView: PieChartView!
     
     let articleCatalog     = AllCatalogs.sharedInstance().catalogArticle
     let catalogExpenditure = AllCatalogs.sharedInstance().catalogExpenditure

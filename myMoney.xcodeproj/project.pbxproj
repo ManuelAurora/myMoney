@@ -71,6 +71,8 @@
 		6492B1731CFF197300133059 /* CheckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B1721CFF197300133059 /* CheckTableViewCell.swift */; };
 		6492B17B1CFF30E300133059 /* AddNewArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492B17A1CFF30E300133059 /* AddNewArticleViewController.swift */; };
 		64BB58DA1D1D6AD400C14E22 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB58D91D1D6AD400C14E22 /* IncomeViewController.swift */; };
+		64C5CFBE1DA1313E00F9C44A /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C5CFBD1DA1313E00F9C44A /* Charts.framework */; };
+		64C5CFBF1DA1313E00F9C44A /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 64C5CFBD1DA1313E00F9C44A /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		64DD05321D52327600509A01 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD05301D52327600509A01 /* Account.swift */; };
 		64DD053A1D5233C300509A01 /* AccountManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD05391D5233C300509A01 /* AccountManageViewController.swift */; };
 		64DD053C1D52380900509A01 /* PopUpViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD053B1D52380900509A01 /* PopUpViewController + Extension.swift */; };
@@ -95,6 +97,20 @@
 			remoteInfo = myMoney;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		64C5CFC01DA1313E00F9C44A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				64C5CFBF1DA1313E00F9C44A /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6415F0D91D8C1A9200EFE0F8 /* PictureSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PictureSelectionView.xib; sourceTree = "<group>"; };
@@ -167,6 +183,7 @@
 		6492B1721CFF197300133059 /* CheckTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckTableViewCell.swift; path = ../CheckTableViewCell.swift; sourceTree = "<group>"; };
 		6492B17A1CFF30E300133059 /* AddNewArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewArticleViewController.swift; sourceTree = "<group>"; };
 		64BB58D91D1D6AD400C14E22 /* IncomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
+		64C5CFBD1DA1313E00F9C44A /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DD05301D52327600509A01 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = ../Account.swift; sourceTree = "<group>"; };
 		64DD05391D5233C300509A01 /* AccountManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManageViewController.swift; sourceTree = "<group>"; };
 		64DD053B1D52380900509A01 /* PopUpViewController + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PopUpViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -180,6 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64C5CFBE1DA1313E00F9C44A /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +274,7 @@
 		6492B11B1CFED46300133059 = {
 			isa = PBXGroup;
 			children = (
+				64C5CFBD1DA1313E00F9C44A /* Charts.framework */,
 				6492B1261CFED46300133059 /* myMoney */,
 				6492B13E1CFED46300133059 /* myMoneyTests */,
 				6492B1491CFED46300133059 /* myMoneyUITests */,
@@ -461,6 +480,7 @@
 				6492B1201CFED46300133059 /* Sources */,
 				6492B1211CFED46300133059 /* Frameworks */,
 				6492B1221CFED46300133059 /* Resources */,
+				64C5CFC01DA1313E00F9C44A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
