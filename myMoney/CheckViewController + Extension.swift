@@ -34,14 +34,9 @@ extension CheckViewController
         
         var fetchRequest = NSFetchRequest<NSFetchRequestResult>()
         
-        if #available(iOS 10.0, *)
-        {
-             fetchRequest = TableString.fetchRequest()
-        }
-        else
-        {
-             fetchRequest = NSFetchRequest(entityName: "TableString")
-        }
+      
+        fetchRequest = NSFetchRequest(entityName: "TableString")
+        
         
         fetchRequest.predicate = predicate
         
@@ -230,18 +225,7 @@ extension CheckViewController: UICollectionViewDataSource
 
 // MARK: >> EXT - UITableViewDelegate & DataSource
 extension CheckViewController
-{
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchedResultsController!.sections?.count ?? 0
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        let section = fetchedResultsController?.sections?[section]
-        
-        return section?.objects?.count ?? 0
-    }
-    
+{        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell") as! ArticleCellTableViewCell

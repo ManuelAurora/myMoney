@@ -85,60 +85,53 @@ extension CoreDataTableViewController: NSFetchedResultsControllerDelegate {
     
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>,
-        didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-        atIndex sectionIndex: Int,
-        forChangeType type: NSFetchedResultsChangeType) {
-            
-            let set = NSIndexSet(index: sectionIndex)
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         
+        let set = NSIndexSet(index: sectionIndex)
         
-            switch (type)
-            {
-            case .insert:
-                tableView.insertSections(set as IndexSet, with: .fade)
-                
-            case .delete:
-                tableView.deleteSections(set as IndexSet, with: .fade)
-                
-            default:
-                // irrelevant in our case
-                break
-                
-            }
-    }
-    
-    
-    private func controller(controller: NSFetchedResultsController<NSFetchRequestResult>,
-        didChangeObject anObject: AnyObject,
-        atIndexPath indexPath: IndexPath?,
-        forChangeType type: NSFetchedResultsChangeType,
-        newIndexPath: IndexPath?) {
+        switch (type)
+        {
+        case .insert:
+            tableView.insertSections(set as IndexSet, with: .fade)
             
-            switch(type)
-            {
-                
-            case .insert:
-                tableView.insertRows(at: [newIndexPath!], with: .fade)
-                
-            case .delete:
-                tableView.deleteRows(at: [indexPath!], with: .fade)
-                
-            case .update:
-                tableView.reloadRows(at: [indexPath!], with: .fade)
-                
-            case .move:
-                tableView.deleteRows(at: [indexPath!], with: .fade)
-                tableView.insertRows(at: [newIndexPath!], with: .fade)
-            }
+        case .delete:
+            tableView.deleteSections(set as IndexSet, with: .fade)
+            
+        default:
+            
+            break
+        }
+
     }
     
-    private func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch(type)
+        {
+            
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+            
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            
+        case .update:
+            tableView.reloadRows(at: [indexPath!], with: .fade)
+            
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        }
     }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+         tableView.endUpdates()
+    }
+    
 }
 
 
