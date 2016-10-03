@@ -29,7 +29,8 @@ class MainScreenViewController: UIViewController
     @IBOutlet weak var expensesCountLabel:     UILabel!
     @IBOutlet weak var tableView:              UITableView!
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var chartView: PieChartView!
+    @IBOutlet weak var chartView:              PieChartView!
+
     
     let articleCatalog     = AllCatalogs.sharedInstance().catalogArticle
     let catalogExpenditure = AllCatalogs.sharedInstance().catalogExpenditure
@@ -44,7 +45,7 @@ class MainScreenViewController: UIViewController
     
     @IBAction func reportPerodChanged(_ sender: UISegmentedControl) {
         changeReportPeriod()
-        savePeriod()
+        savePeriod()        
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,6 +67,7 @@ class MainScreenViewController: UIViewController
         tableView.register(accountCellNib, forCellReuseIdentifier: "AccountCell")        
         
         loadPeriod()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
